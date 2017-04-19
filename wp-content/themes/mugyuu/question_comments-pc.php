@@ -32,18 +32,33 @@
     $questions = get_post_meta( $post->ID, '_question_type', true );
     $GLOBALS['questions'] = $questions; 
     global $answers;
+
 ?>
 <section class="commentArea">
 	<label for="qaSort" class="sortWrap">
 		<select id="qaSort" name="qaSort" class="sort">
-			<option value="古い順">古い順</option>
-			<option value="新着順">新着順</option>
-			<option value="共感順">共感順</option>
-		</select>
+            <option value="new" <?php if($_GET['comment_order_by'] == 'new') echo 'selected' ?>>新着順</option>
+            <option value="old" <?php if($_GET['comment_order_by'] == 'old') echo 'selected' ?>>古い順</option>
+            <option value="like_count" <?php if($_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
+        </select>
 	</label>
 	<?php if(have_comments()): ?>
    　<ul class="commentList">
-	   <?php wp_list_comments('type=comment&callback=question_comment'); ?>
+	   <?php 
+        $args = array('type' =>'comment','callback' => 'question_comment');
+        $resource = null;
+        if (isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'new' )
+            { $args['reverse_top_level'] = true; }
+        elseif (isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'old' )
+           { $args['reverse_top_level'] = false; }
+        else {
+            global $wp_query;
+            $comment_arr = $wp_query->comments;
+            usort($comment_arr, 'comment_comparator');
+            $resource = $comment_arr;
+        }
+        wp_list_comments($args,$resource); 
+        ?>
 	</ul>
 	 <?php endif; ?>
 	 <?php
@@ -159,6 +174,13 @@
         </form>
     </div>
 </section>
-
+<script type="text/javascript">
+    // Sort list comment
+    $('#qaSort').on("change", function(e){
+        var target = $(this);
+        var current_link = window.location.origin + window.location.pathname;
+        window.location = current_link + '?comment_order_by=' + target.val();
+    });
+</script>
 
 <?php add_comment_on_questions(get_the_ID()) ?>

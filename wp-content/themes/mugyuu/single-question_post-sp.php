@@ -61,17 +61,11 @@
                         <div class="articleData">
                             <p class="commentCount"><i class="fa fa-comments" aria-hidden="true"></i><?php echo wp_count_comments( get_the_ID() )->total_comments; ?></p>
                         </div>
-                        <div class="buttonReport">
-                    	<?php 
-                            $GLOBALS['comment'] = null;
-                            wprc_report_submission_form(); ?>
-                    	</div>
                     </div>
-                    <br>
                     <div class="btnArea">
                         <a href="#send">コメントする
                         </a>
-                	</div>
+                    </div>
                     <?php endwhile; ?>
                     <?php else : ?>
                     <p class="none">記事が見つかりませんでした。</p>

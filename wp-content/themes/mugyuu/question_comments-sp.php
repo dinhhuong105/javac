@@ -35,6 +35,10 @@
         margin-top:0px;
         padding-top: 20px;
     }
+    .editFrom input{
+        width: auto!important; 
+        height: auto!important;
+    }
 </style>
 <?php 
     $limited = get_post_meta( $post->ID, '_limited_answer', true );
@@ -44,22 +48,29 @@
 ?>
 <section class="commentArea">
 	<label for="qaSort" class="sortWrap">
-                   <select id="qaSort" name="qaSort" class="sort">
-                       <option value="古い順">古い順</option>
-                       <option value="新着順">新着順</option>
-                       <option value="共感順">共感順</option>
-                       <option value="0歳〜1歳">0歳〜1歳</option>
-                       <option value="2歳〜3歳">2歳〜3歳</option>
-                       <option value="4歳〜">4歳〜</option>
-                       <option value="チョコ">チョコ</option>
-                       <option value="マカロン">マカロン</option>
-                       <option value="アメ">アメ</option>
-                       <option value="たまごボーロ">たまごボーロ</option>
-                   </select>
-               </label>
+       <select id="qaSort" name="qaSort" class="sort">
+           <option value="new" <?php if($_GET['comment_order_by'] == 'new') echo 'selected' ?>>新着順</option>
+            <option value="old" <?php if($_GET['comment_order_by'] == 'old') echo 'selected' ?>>古い順</option>
+            <option value="like_count" <?php if($_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
+       </select>
+   </label>
 	<?php if(have_comments()): ?>
    　<ul class="commentList">
-	   <?php wp_list_comments('type=comment&callback=question_comment'); ?>
+	   <?php 
+            $args = array('type' =>'comment','callback' => 'question_comment');
+            $resource = null;
+            if (isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'new' )
+                { $args['reverse_top_level'] = true; }
+            elseif (isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'old' )
+               { $args['reverse_top_level'] = false; }
+            else {
+                global $wp_query;
+                $comment_arr = $wp_query->comments;
+                usort($comment_arr, 'comment_comparator');
+                $resource = $comment_arr;
+            }
+            wp_list_comments($args,$resource); 
+        ?>
 	</ul>
 	 <?php endif; ?>
 	 <?php
@@ -75,24 +86,82 @@
      ?>
 </section>
 <section class="commentFormArea" id="send">
-	<div class="commentFormWrap">
-    	<div class="ttlArea">
-            <h1>コメントを投稿する</h1>
-            <p>
-                <span class="red">※</span>は必須項目になります。
-            </p>
-        </div>
+    	<h1>アンケートに答える</h1>
+        <p class="notes"><sup class="red">※</sup>は必須項目になります。</p>
     	<form action="" id="formComment" method="POST">
-            <ul>
+            <ul class="answerList">
                 <li>
                     <h3>ニックネーム<span class="red">※</span></h3>
                     <input type="text" name="name" required placeholder="ニックネームを入力してください">
                 </li>
+                <?php 
+                    
+                    foreach ($questions[$post->ID] as $qkey => $question) {
+                        if($question['type'] == 'checkbox'){
+                            ?>
+                            <li class="editFrom">
+                                <h3><?=$question['question']?><span class="red">※</span></h3>
+                                <div class="checkArea">
+                                    <?php foreach ($question['answer'] as $anskey => $ansval) {
+                                        ?>
+                                    <label>
+                                        <input value="<?=$anskey?>" name="answer[<?=$qkey?>][]" type="checkbox" id="<?=$anskey?>" required="required"><?=$ansval?>
+                                    </label>
+                                        <?php
+                                    } ?>
+                                </div>
+                            </li>
+                            <?php
+                        }elseif($question['type'] == 'radio'){
+                            ?>
+                            <li class="editFrom">
+                                <h3><?=$question['question']?><span class="red">※</span></h3>
+                                <?php foreach ($question['answer'] as $anskey => $ansval) {
+                                    ?>
+                                    <label >
+                                        <input value="<?=$anskey?>" name="answer[<?=$qkey?>][]" type="radio" required="required"><?=$ansval?>
+                                    </label>
+                                <?php
+                                } ?>
+                            </li>
+                            <?php
+                        }elseif($question['type'] == 'pulldown'){
+                            ?>
+                            <li class="editFrom">
+                                <h3><?=$question['question']?><span class="red">※</span></h3>
+                                <label for="select" class="selectArea">
+                                    <select name="answer[<?=$qkey?>][]" id="select" required="required" class="selectArea">
+                                    <?php foreach ($question['answer'] as $anskey => $ansval) {
+                                        ?>
+                                        <option value="<?=$anskey?>"><?=$ansval?></option>
+                                        <?php
+                                    } ?>
+                                    </select>
+                                </label>
+                            </li>
+                            <?php
+                        }elseif($question['type'] == 'textbox'){
+                            ?>
+                            <li>
+                                <h3><?=$question['question']?><span class="red">※</span></h3>
+                                <input name="answer[<?=$qkey?>][textbox]" type="text" placeholder="回答を入力してください" required="required">
+                            </li>
+                            <?php
+                        }elseif($question['type'] == 'textarea'){
+                            ?>
+                            <li>
+                                <h3><?=$question['question']?><span class="red">※</span></h3>
+                                <textarea name="answer[<?=$qkey?>][textarea]" placeholder="回答を入力してください" required="required"></textarea>
+                            </li>
+                            <?php
+                        }
+                    }
+                 ?>
                 <li>
                     <h3>コメント<span class="red">※</span></h3>
                     <p>参考になるような意見を書いてね！誹謗中傷コメントは消しちゃうよ！的な注意コメント入れる</p>
                     <div class="textArea">
-                        <textarea name="comment" required cols="30" rows="10"></textarea>
+                        <textarea name="comment" required cols="30" rows="10" required="required"></textarea>
                     </div>
                 </li>
                 <li>
@@ -101,6 +170,5 @@
                 </li>
             </ul>
         </form>
-	</div>
 </section>
 <?php add_comment_on_notice(get_the_ID()) ?>

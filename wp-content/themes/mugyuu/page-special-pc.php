@@ -63,7 +63,7 @@
                         <?php wp_reset_postdata(); ?>
                     </ul>
                     <?php if (function_exists("pagination")) {
-                            pagination($query->max_num_pages);
+                        pagination($query->max_num_pages);
                         }
                     ?>
                 </section>
