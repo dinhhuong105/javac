@@ -12,7 +12,6 @@ wp-content/plugins/hello.php
 wp-content/translate-accelerator
 wp-content/ewww
 
-/.htaccess
 /license.txt
 /readme.html
 /sitemap.xml
