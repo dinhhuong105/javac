@@ -1,0 +1,2761 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+input, textarea {
+  margin: 0;
+  padding: 0;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th {
+  text-align: left;
+}
+
+a:focus {
+  outline: none;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+
+.clearfix {
+  min-height: 1px;
+}
+
+* html .clearfix {
+  height: 1px;
+  /*¥*/
+     /*/
+height: auto;
+overflow: hidden;
+/**/
+}
+
+.both {
+  clear: both;
+}
+
+.inline_block {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+button, textarea, input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+button {
+  border: 0;
+  padding: 0;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
+  display: block;
+}
+
+/*******
+フォントサイズ
+*************************/
+footer .infoList li, footer .copy small, .specialArea .articleList li a .content .data, .rankingArea .articleList li a .content .data, .newArea .articleList li a .content .data, .plusArea .articleList li a .content .data, .categoryArea .articleList li a .content .data, .author .articleList li a .content .data, .qaArea .articleList li a .content .data, .specialArea .articleList li a .content .articleData, .rankingArea .articleList li a .content .articleData, .newArea .articleList li a .content .articleData, .plusArea .articleList li a .content .articleData, .categoryArea .articleList li a .content .articleData, .author .articleList li a .content .articleData, .qaArea .articleList li a .content .articleData, .breadcrumbList li, .breadcrumbList li a, .breadcrumbList li i, .single .singleArea .dataArea .data, .single .singleArea .dataArea .pv, .single .singleArea .writerArea .dataArea .type, .single .singleArea .writerArea .dataArea .profile, .job .jobArea .formArea p, .contact .formArea p, .qaSingle .qaSingleArea .top .articleData .dataArea .data, .qaSingle .qaSingleArea .top .articleData .dataArea .pv, .qaSingle .qaSingleArea .articleData .comment, .qaSingle .commentArea .commentList li .commentData .data, .qaSingle .commentArea .commentList li .commentData .report, .qaSingle .commentArea .commentList li .countArea, .qaSingle .commentFormArea form ul li p, .qaSingle .commentFormArea form ul li ::-webkit-input-placeholder {
+  font-size: 1.1rem;
+}
+
+.specialArea .articleList li a .content h2, .rankingArea .articleList li a .content h2, .newArea .articleList li a .content h2, .plusArea .articleList li a .content h2, .categoryArea .articleList li a .content h2, .author .articleList li a .content h2, .qaArea .articleList li a .content h2, .single .singleArea h1, .single .singleArea .snsArea .fb .icon, .single .singleArea .snsArea .tw .icon, .single .singleArea .snsArea .hb .icon, .single .singleArea .snsArea .pk .icon, .single .singleArea .content .heading, .single .singleArea .content .subhead, .single .singleArea .content .subhead2, .category .categoryArea h1, .authorAll .authorArea h1, .author .authorProfileArea .name, .info .infoArea h1, .qa .qaArea h1, .qaSingle .qaSingleArea .top .articleData h1 {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/*******
+文字数制限
+*************************/
+.single .singleArea .writerArea .dataArea .profile {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.specialArea .articleList li a .content h2, .rankingArea .articleList li a .content h2, .newArea .articleList li a .content h2, .plusArea .articleList li a .content h2, .categoryArea .articleList li a .content h2, .author .articleList li a .content h2, .qaArea .articleList li a .content h2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/*******
+webfont カテゴリアイコン
+*************************/
+@font-face {
+  font-family: 'mugyuu';
+  src: url("../fonts/icomoon.eot?h9vdbr");
+  src: url("../fonts/icomoon.eot?h9vdbr#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?h9vdbr") format("truetype"), url("../fonts/icomoon.woff?h9vdbr") format("woff"), url("../fonts/icomoon.svg?h9vdbr#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'mugyuu' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-baby:before {
+  content: "\e904";
+}
+
+.icon-mama:before {
+  content: "\e905";
+}
+
+.icon-heart-o:before {
+  content: "\f08a";
+}
+
+.icon-mugyuu:before {
+  content: "\e900";
+}
+
+.icon-bubbles2:before {
+  content: "\e902";
+}
+
+.icon-important_devices:before {
+  content: "\e912";
+}
+
+.icon-feedly:before {
+  content: "\e906";
+}
+
+.icon-hatebu:before {
+  content: "\e901";
+}
+
+.icon-pocket:before {
+  content: "\e903";
+}
+
+/*******
+タイトル
+*************************/
+.specialArea .heading span, .rankingArea .heading span, .newArea .heading span, .plusArea .heading span, .categoryArea .heading span, .author .heading span, .qaArea .heading span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 2px 2px #ffffff;
+  position: relative;
+  z-index: 2;
+}
+
+.specialArea .heading span:nth-child(4n+1), .rankingArea .heading span:nth-child(4n+1), .newArea .heading span:nth-child(4n+1), .plusArea .heading span:nth-child(4n+1), .categoryArea .heading span:nth-child(4n+1), .author .heading span:nth-child(4n+1), .qaArea .heading span:nth-child(4n+1), .specialArea .heading:before {
+  background: #e95383;
+}
+
+.specialArea .heading span:nth-child(4n+2), .rankingArea .heading span:nth-child(4n+2), .newArea .heading span:nth-child(4n+2), .plusArea .heading span:nth-child(4n+2), .categoryArea .heading span:nth-child(4n+2), .author .heading span:nth-child(4n+2), .qaArea .heading span:nth-child(4n+2), .newArea .heading:before {
+  background: #7fb9ea;
+}
+
+.specialArea .heading span:nth-child(4n+3), .rankingArea .heading span:nth-child(4n+3), .newArea .heading span:nth-child(4n+3), .plusArea .heading span:nth-child(4n+3), .categoryArea .heading span:nth-child(4n+3), .author .heading span:nth-child(4n+3), .qaArea .heading span:nth-child(4n+3), .rankingArea .heading:before {
+  background: #ecd35d;
+}
+
+.specialArea .heading span:nth-child(4n+4), .rankingArea .heading span:nth-child(4n+4), .newArea .heading span:nth-child(4n+4), .plusArea .heading span:nth-child(4n+4), .categoryArea .heading span:nth-child(4n+4), .author .heading span:nth-child(4n+4), .qaArea .heading span:nth-child(4n+4), .plusArea .heading:before {
+  background: #6fd74b;
+}
+
+.specialArea .heading span:nth-child(1), .rankingArea .heading span:nth-child(1), .newArea .heading span:nth-child(1), .plusArea .heading span:nth-child(1), .categoryArea .heading span:nth-child(1), .author .heading span:nth-child(1), .qaArea .heading span:nth-child(1) {
+  transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  -webkit-transform: rotate(-10deg);
+  -o-transform: rotate(-10deg);
+  margin-right: 4px;
+}
+
+/*******
+角丸
+*************************/
+.pagination ul li a, .pagination ul li.active, .moreBtn a, .qaSingle .qaSingleArea .btnArea a, .qaSingle .commentArea .sortWrap .sort, .qaSingle .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap, .qaSingle .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap .btnArea .reportBtn, .qaSingle .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap .btnArea .cancelBtn, .qaSingle .commentFormArea form ul li input, .qaSingle .commentFormArea form ul li textarea, .qaSingle .commentFormArea form ul li .textArea, .qaSingle .commentFormArea form ul li .sendBtn {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  line-height: 1.2;
+  color: #333333;
+  background: #ffffff;
+  font-size: 1.4rem;
+}
+
+a:hover {
+  transition: all 1s ease-in;
+}
+
+.wrapper {
+  top: 48px;
+}
+
+/*******
+ヘッダー
+*************************/
+header .sb-slide {
+  width: 100%;
+  height: 46px;
+  position: fixed;
+  z-index: 100;
+  overflow: hidden;
+  background: #ffffff;
+  border-top: solid 2px #d9517c;
+  -webkit-box-shadow: 0 1px 7px #bdbcbc;
+  box-shadow: 0 1px 7px #bdbcbc;
+}
+header .sb-slide h1 {
+  margin: 0 auto;
+  float: left;
+  width: 86%;
+}
+header .sb-slide h1 img {
+  width: 178px;
+  display: block;
+  margin: 0 auto;
+}
+header .sb-slide .menuIcon, header .sb-slide .shareIcon {
+  float: left;
+  width: 5%;
+}
+header .sb-slide .menuIcon i, header .sb-slide .shareIcon i {
+  line-height: 48px;
+  font-size: 25px;
+  color: #d9517c;
+}
+header .sb-slide .menuIcon {
+  margin-left: 2%;
+}
+header .sb-slide .shareIcon {
+  margin-right: 2%;
+}
+header nav .sb-right li a {
+  height: 44px;
+  box-sizing: border-box;
+  padding: 5%;
+  color: inherit;
+  display: block;
+  background: url(../images/border.png) repeat-x bottom left;
+}
+header nav .sb-right li a i {
+  font-size: 2rem;
+  transition: all 0.2s ease-in;
+  margin-right: 5%;
+}
+header nav .sb-right li a:hover i.fb {
+  color: #305097;
+}
+header nav .sb-right li a:hover i.tw {
+  color: #55acee;
+}
+header nav .sb-right li a:hover i.inst {
+  color: #3f729b;
+}
+header nav .sb-left .searchArea {
+  background: url(../images/border.png) repeat-x bottom left;
+  padding: 20px 0;
+}
+header nav .sb-left .searchArea form {
+  width: 90%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+header nav .sb-left .searchArea form input {
+  width: 85%;
+  height: 35px;
+  line-height: 35px;
+  float: left;
+  background: #ffffff;
+  border: solid 1px #bbbbbb;
+  box-sizing: border-box;
+  border-radius: 3px 0 0 3px;
+}
+header nav .sb-left .searchArea form .searchIcon {
+  width: 15%;
+  height: 35px;
+  line-height: 35px;
+  float: left;
+  background: #848383;
+  border-radius: 0 3px 3px 0;
+}
+header nav .sb-left .searchArea form .searchIcon i {
+  color: #ffffff;
+  font-size: 2rem;
+  line-height: 35px;
+}
+header nav .sb-left .catArea {
+  background: url(../images/border.png) repeat-x left bottom;
+  margin-bottom: 0;
+}
+header nav .sb-left .catArea h2 {
+  color: inherit;
+  padding: 15px 10px;
+}
+header nav .sb-left .catArea h2 a {
+  color: inherit;
+}
+header nav .sb-left .catArea h2 .icon {
+  margin-right: 15px;
+  transition: all .1s ease-in;
+}
+header nav .sb-left .catArea h1.active {
+  margin-bottom: 2%;
+}
+header nav .sb-left .childArea h1.active .icon {
+  color: #fcc68c;
+}
+header nav .sb-left .mamaArea h1.active .icon {
+  color: #fc8c96;
+}
+header nav .sb-left .mamaArea .icon-mama {
+  font-size: 1.7rem;
+}
+header nav .sb-left .ageArea h1.active .icon {
+  color: #7fb9ea;
+}
+header nav .sb-left .ageArea .icon-mama {
+  font-size: 1.7rem;
+}
+header nav .sb-left .mugyuuArea h2, header nav .sb-left .infoArea h2, header nav .sb-left .recruitArea h2, header nav .sb-left .qaArea h2 {
+  padding: 0;
+}
+header nav .sb-left .mugyuuArea h2 a, header nav .sb-left .infoArea h2 a, header nav .sb-left .recruitArea h2 a, header nav .sb-left .qaArea h2 a {
+  padding: 15px 10px;
+}
+header nav .sb-left .mugyuuArea h2 a .icon {
+  font-size: 1.5rem;
+}
+header nav .sb-left .recruitArea {
+  background: none;
+}
+header nav .sb-left .catList {
+  display: none;
+}
+header nav .sb-left .catList li {
+  padding: 0 5% 5% 20%;
+}
+header nav .sb-left .catList .grandsonCatList {
+  display: none;
+  padding-top: 5%;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+header nav .sb-left .catList .grandsonCatList li {
+  padding: 0;
+  float: left;
+  width: calc(100% / 2);
+}
+header nav .sb-left .catList .grandsonCatList li a {
+  padding: 10px;
+  color: inherit;
+}
+header nav .sb-left .catList .grandsonCatList li:last-child {
+  padding-bottom: 0;
+}
+header nav .sb-left .shareList {
+  overflow: hidden;
+}
+header nav .sb-left .shareList li {
+  float: left;
+  width: 50%;
+}
+header nav .sb-left .shareList li a {
+  color: #ffffff;
+  padding: 10%;
+  height: 44px;
+  box-sizing: border-box;
+}
+header nav .sb-left .shareList li a .icon {
+  font-size: 1.6rem;
+  margin-right: 10%;
+}
+header nav .sb-left .shareList li.fd a {
+  background: #6cc655;
+}
+header nav .sb-left .shareList li.rss a {
+  background: #ff8c00;
+}
+
+/*******
+フッター
+*************************/
+footer .writerBnr {
+  width: 100%;
+  margin-bottom: 40px;
+}
+footer .writerBnr a img {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+}
+footer .fb {
+  margin-bottom: 40px;
+  overflow: hidden;
+  max-height: 350px;
+}
+footer .fb p {
+  height: 30px;
+  line-height: 30px;
+  color: #ffffff;
+  background: #3f5d98;
+  padding: 0 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+footer .fb p i {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 1.6rem;
+}
+footer .fb .fb-page {
+  padding: 0 10px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+footer .infoList {
+  width: 100%;
+  overflow: hidden;
+  border-top: solid 1px #c9c9c9;
+  border-bottom: solid 1px #c9c9c9;
+  box-sizing: border-box;
+}
+footer .infoList li {
+  width: calc(100% / 2);
+  float: left;
+  text-align: center;
+  height: 36px;
+  line-height: 36px;
+  box-sizing: border-box;
+  border-bottom: solid 1px #c9c9c9;
+}
+footer .infoList li a {
+  color: inherit;
+}
+footer .infoList li:nth-child(2n+1) {
+  border-right: solid 1px #c9c9c9;
+}
+footer .infoList li:last-child, footer .infoList li:nth-last-child(2) {
+  border-bottom: none;
+}
+footer .copy {
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+}
+
+/*******
+【一覧：共通】特集、ランキング、新着、合わせて読みたい、ライター毎の記事一覧　
+***********************************************/
+.specialArea, .rankingArea, .newArea, .plusArea, .categoryArea, .author, .qaArea {
+  margin-bottom: 40px;
+}
+.specialArea .heading, .rankingArea .heading, .newArea .heading, .plusArea .heading, .categoryArea .heading, .author .heading, .qaArea .heading {
+  position: relative;
+  padding: 0 0 5px 5px;
+  margin-bottom: 5px;
+}
+.specialArea .heading span, .rankingArea .heading span, .newArea .heading span, .plusArea .heading span, .categoryArea .heading span, .author .heading span, .qaArea .heading span {
+  margin-right: 2px;
+}
+.specialArea .heading:before, .rankingArea .heading:before, .newArea .heading:before, .plusArea .heading:before, .categoryArea .heading:before, .author .heading:before, .qaArea .heading:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  height: 5px;
+  width: 100%;
+}
+.specialArea .articleList, .rankingArea .articleList, .newArea .articleList, .plusArea .articleList, .categoryArea .articleList, .author .articleList, .qaArea .articleList {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.specialArea .articleList li a, .rankingArea .articleList li a, .newArea .articleList li a, .plusArea .articleList li a, .categoryArea .articleList li a, .author .articleList li a, .qaArea .articleList li a {
+  overflow: hidden;
+  padding: 10px;
+  color: inherit;
+  position: relative;
+  background: url(../images/border.png) repeat-x bottom left;
+}
+.specialArea .articleList li a .imgArea, .rankingArea .articleList li a .imgArea, .newArea .articleList li a .imgArea, .plusArea .articleList li a .imgArea, .categoryArea .articleList li a .imgArea, .author .articleList li a .imgArea, .qaArea .articleList li a .imgArea {
+  width: 75px;
+  height: 75px;
+  margin-right: 5px;
+  float: left;
+}
+.specialArea .articleList li a .imgArea img, .rankingArea .articleList li a .imgArea img, .newArea .articleList li a .imgArea img, .plusArea .articleList li a .imgArea img, .categoryArea .articleList li a .imgArea img, .author .articleList li a .imgArea img, .qaArea .articleList li a .imgArea img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+.specialArea .articleList li a .content, .rankingArea .articleList li a .content, .newArea .articleList li a .content, .plusArea .articleList li a .content, .categoryArea .articleList li a .content, .author .articleList li a .content, .qaArea .articleList li a .content {
+  float: left;
+  width: calc(100% - 80px);
+}
+.specialArea .articleList li a .content .data, .rankingArea .articleList li a .content .data, .newArea .articleList li a .content .data, .plusArea .articleList li a .content .data, .categoryArea .articleList li a .content .data, .author .articleList li a .content .data, .qaArea .articleList li a .content .data {
+  margin-bottom: 5px;
+}
+.specialArea .articleList li a .content .articleData, .rankingArea .articleList li a .content .articleData, .newArea .articleList li a .content .articleData, .plusArea .articleList li a .content .articleData, .categoryArea .articleList li a .content .articleData, .author .articleList li a .content .articleData, .qaArea .articleList li a .content .articleData {
+  overflow: hidden;
+  position: absolute;
+  width: calc(100% - 100px);
+  bottom: 10px;
+}
+.specialArea .articleList li a .content .articleData .name, .rankingArea .articleList li a .content .articleData .name, .newArea .articleList li a .content .articleData .name, .plusArea .articleList li a .content .articleData .name, .categoryArea .articleList li a .content .articleData .name, .author .articleList li a .content .articleData .name, .qaArea .articleList li a .content .articleData .name {
+  float: left;
+}
+.specialArea .articleList li a .content .articleData .pv, .specialArea .articleList li a .content .articleData .comment, .rankingArea .articleList li a .content .articleData .pv, .rankingArea .articleList li a .content .articleData .comment, .newArea .articleList li a .content .articleData .pv, .newArea .articleList li a .content .articleData .comment, .plusArea .articleList li a .content .articleData .pv, .plusArea .articleList li a .content .articleData .comment, .categoryArea .articleList li a .content .articleData .pv, .categoryArea .articleList li a .content .articleData .comment, .author .articleList li a .content .articleData .pv, .author .articleList li a .content .articleData .comment, .qaArea .articleList li a .content .articleData .pv, .qaArea .articleList li a .content .articleData .comment {
+  float: right;
+}
+.specialArea .articleList li a .content .articleData .pv i, .specialArea .articleList li a .content .articleData .comment i, .rankingArea .articleList li a .content .articleData .pv i, .rankingArea .articleList li a .content .articleData .comment i, .newArea .articleList li a .content .articleData .pv i, .newArea .articleList li a .content .articleData .comment i, .plusArea .articleList li a .content .articleData .pv i, .plusArea .articleList li a .content .articleData .comment i, .categoryArea .articleList li a .content .articleData .pv i, .categoryArea .articleList li a .content .articleData .comment i, .author .articleList li a .content .articleData .pv i, .author .articleList li a .content .articleData .comment i, .qaArea .articleList li a .content .articleData .pv i, .qaArea .articleList li a .content .articleData .comment i {
+  color: #fd97a0;
+  margin-right: 5px;
+}
+
+/*******
+特集
+*************************/
+/*******
+ランキング
+*************************/
+.rankingArea .heading {
+  margin-bottom: 20px;
+}
+.rankingArea #tabMenuList {
+  overflow: hidden;
+  padding: 5px 0 0;
+}
+.rankingArea #tabMenuList li {
+  position: relative;
+  float: left;
+  width: calc(100% / 3);
+  height: 35px;
+  line-height: 35px;
+  background: #fc8c96;
+  border-radius: 3px 3px 0 0;
+  text-align: center;
+  box-shadow: 1px -1px 1px rgba(199, 199, 199, 0.5), -1px 0 1px rgba(199, 199, 199, 0.5);
+  transition: none;
+  color: #ffffff;
+  border-radius: 3px 3px 0 0;
+}
+.rankingArea #tabMenuList li.active {
+  background: #ffffff;
+  color: #fc8c96;
+}
+.rankingArea #tabMenuList li.active:before {
+  content: "\f091";
+  color: #ecd35d;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 15px;
+  margin: 7px auto;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 2rem;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+.rankingArea .tabContentArea .rankingList li a {
+  position: relative;
+}
+.rankingArea .tabContentArea .rankingList li a .content .articleData:nth-child(1) {
+  overflow: hidden;
+  position: static;
+  width: auto;
+}
+.rankingArea .tabContentArea .rankingList li a .content .articleData:nth-child(1) .data, .rankingArea .tabContentArea .rankingList li a .content .articleData:nth-child(1) .cat {
+  float: left;
+}
+.rankingArea .tabContentArea .rankingList li a .content .articleData:nth-child(1) .data {
+  margin-right: 10px;
+}
+.rankingArea .tabContentArea .rankingList li a:before {
+  content: "1";
+  width: 25px;
+  height: 25px;
+  line-height: 26px;
+  text-align: center;
+  border-radius: 50%;
+  background: #e95383;
+  color: #ffffff;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+.rankingArea .tabContentArea .rankingList li a:after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  border: dashed 1px #ffffff;
+  box-sizing: border-box;
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(2) a:before {
+  content: "2";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(3) a:before {
+  content: "3";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(4) a:before {
+  content: "4";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(5) a:before {
+  content: "5";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(6) a:before {
+  content: "6";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(7) a:before {
+  content: "7";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(8) a:before {
+  content: "8";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(9) a:before {
+  content: "9";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(10) a:before {
+  content: "10";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(11) a:before {
+  content: "11";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(12) a:before {
+  content: "12";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(13) a:before {
+  content: "13";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(14) a:before {
+  content: "14";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(15) a:before {
+  content: "15";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(16) a:before {
+  content: "16";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(17) a:before {
+  content: "17";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(18) a:before {
+  content: "18";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(19) a:before {
+  content: "19";
+}
+.rankingArea .tabContentArea .rankingList li:nth-child(20) a:before {
+  content: "20";
+  letter-spacing: -1px;
+}
+.rankingArea .tabContentArea #content-tab-1, .rankingArea .tabContentArea #content-tab-3 {
+  display: none;
+}
+
+/*******
+新着
+*************************/
+.newArea .newList li a .content .articleData:nth-child(1) {
+  overflow: hidden;
+  position: static;
+  width: auto;
+}
+.newArea .newList li a .content .articleData:nth-child(1) .data, .newArea .newList li a .content .articleData:nth-child(1) .cat {
+  float: left;
+}
+.newArea .newList li a .content .articleData:nth-child(1) .data {
+  margin-right: 10px;
+}
+
+/*******
+合わせて読みたい
+*************************/
+.plusArea .plusList li a .content .articleData:nth-child(1) {
+  overflow: hidden;
+  position: static;
+  width: auto;
+}
+.plusArea .plusList li a .content .articleData:nth-child(1) .data, .plusArea .plusList li a .content .articleData:nth-child(1) .cat {
+  float: left;
+}
+.plusArea .plusList li a .content .articleData:nth-child(1) .data {
+  margin-right: 10px;
+}
+
+/*******
+カテゴリ一覧
+*************************/
+.categoryArea .categoryList li a .content .articleData:nth-child(1) {
+  overflow: hidden;
+  position: static;
+  width: auto;
+}
+.categoryArea .categoryList li a .content .articleData:nth-child(1) .data, .categoryArea .categoryList li a .content .articleData:nth-child(1) .cat {
+  float: left;
+}
+.categoryArea .categoryList li a .content .articleData:nth-child(1) .data {
+  margin-right: 10px;
+}
+
+/*******
+ライター一覧
+*************************/
+.authorArticleArea .authorArticleList li a .content .articleData:nth-child(1) {
+  overflow: hidden;
+  position: static;
+  width: auto;
+}
+.authorArticleArea .authorArticleList li a .content .articleData:nth-child(1) .data, .authorArticleArea .authorArticleList li a .content .articleData:nth-child(1) .cat {
+  float: left;
+}
+.authorArticleArea .authorArticleList li a .content .articleData:nth-child(1) .data {
+  margin-right: 10px;
+}
+
+/*******
+パンくず
+*************************/
+.breadcrumbList {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: solid 1px #c9c9c9;
+  margin-bottom: 20px;
+}
+.breadcrumbList li {
+  float: left;
+}
+.breadcrumbList li a, .breadcrumbList li i {
+  color: inherit;
+  min-height: 35px;
+  box-sizing: border-box;
+}
+.breadcrumbList li a {
+  padding: 10px;
+}
+.breadcrumbList li i {
+  padding: 12px 10px;
+}
+.breadcrumbList li:last-child {
+  padding: 10px;
+  min-height: 35px;
+  box-sizing: border-box;
+}
+
+/*******
+ページネーション
+*************************/
+.pagination {
+  width: 100%;
+  margin: 20px 0;
+}
+.pagination ul {
+  text-align: center;
+}
+.pagination ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+.pagination ul li a {
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  border: solid 1px #fc8c96;
+  box-sizing: border-box;
+  background: #ffffff;
+  color: #fc8c96;
+}
+.pagination ul li.active {
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  border: solid 1px #fc8c96;
+  box-sizing: border-box;
+  background: #fc8c96;
+  color: #ffffff;
+}
+.pagination ul li:last-child {
+  margin-right: 0;
+}
+
+/*******
+トップに戻るボタン
+*************************/
+#page-top {
+  position: fixed;
+  z-index: 100;
+  right: 10px;
+  bottom: 10px;
+  width: 30px;
+}
+#page-top a img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/*******
+もっと見るボタン
+*************************/
+.moreBtn {
+  width: 100%;
+}
+.moreBtn a {
+  width: 200px;
+  height: 35px;
+  line-height: 35px;
+  margin: 0 auto;
+  background: #fc8c96;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* -----------------------------------
+* Slidebars
+* Version 0..10
+* http://plugins.adchsm.me/slidebars/
+*
+* Written by Adam Smith
+* http://www.adchsm.me/
+*
+* Released under MIT License
+* http://plugins.adchsm.me/slidebars/license.txt
+*
+* -------------------
+* Slidebars CSS Index
+*
+* 001 - Box Model, Html & Body
+* 002 - Site
+* 003 - Slidebars
+* 004 - Animation
+* 005 - Helper Classes
+*
+* ----------------------------
+* 001 - Box Model, Html & Body
+*/
+html, body, #sb-site, .sb-site-container, .sb-slidebar {
+  /* Set box model to prevent any user added margins or paddings from altering the widths or heights. */
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  /* Stops horizontal scrolling. */
+}
+
+html {
+  height: 100%;
+  /* Site is as tall as device. */
+}
+
+body {
+  min-height: 100%;
+  height: auto;
+  position: relative;
+  /* Required for static Slidebars to function properly. */
+}
+
+html.sb-scroll-lock.sb-active:not(.sb-static) {
+  overflow: hidden;
+  /* Prevent site from scrolling when a Slidebar is open, except when static Slidebars are only available. */
+}
+
+/* ----------
+* 002 - Site
+*/
+#sb-site, .sb-site-container {
+  /* You may now use class .sb-site-container instead of #sb-site and use your own id. However please make sure you don't set any of the following styles any differently on your id. */
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  /* Site sits above Slidebars */
+  background-color: #ffffff;
+  /* Default background colour, overwrite this with your own css. I suggest moving your html or body background styling here. Making this transparent will allow the Slidebars beneath to be visible. */
+}
+
+/* ---------------
+* 003 - Slidebars
+*/
+.sb-slidebar {
+  height: 100%;
+  overflow-y: auto;
+  /* Enable vertical scrolling on Slidebars when needed. */
+  position: fixed;
+  top: 0;
+  z-index: 0;
+  /* Slidebars sit behind sb-site. */
+  display: none;
+  /* Initially hide the Slidebars. Changed from visibility to display to allow -webkit-overflow-scrolling. */
+  background-color: #f9f9f9;
+  /* Default Slidebars background colour, overwrite this with your own css. */
+}
+
+.sb-left {
+  left: 0;
+  /* Set Slidebar to the left. */
+}
+
+.sb-right {
+  right: 0;
+  /* Set Slidebar to the right. */
+}
+
+html.sb-static .sb-slidebar,
+.sb-slidebar.sb-static {
+  position: absolute;
+  /* Makes Slidebars scroll naturally with the site, and unfixes them for Android Browser < 3 and iOS < 5. */
+}
+
+.sb-slidebar.sb-active {
+  display: block;
+  /* Makes Slidebars visibile when open. Changed from visibility to display to allow -webkit-overflow-scrolling. */
+}
+
+.sb-style-overlay {
+  z-index: 9999;
+  /* Set z-index high to ensure it overlays any other site elements. */
+}
+
+.sb-momentum-scrolling {
+  -webkit-overflow-scrolling: touch;
+  /* Adds native momentum scrolling for iOS & Android devices. */
+}
+
+/* Slidebar widths for browsers/devices that don't support media queries. */
+.sb-slidebar {
+  width: 30%;
+}
+
+.sb-width-thin {
+  width: 15%;
+}
+
+.sb-width-wide {
+  width: 45%;
+}
+
+@media (max-width: 480px) {
+  /* Slidebar widths on extra small screens. */
+  .sb-slidebar {
+    width: 70%;
+  }
+
+  .sb-width-thin {
+    width: 55%;
+  }
+
+  .sb-width-wide {
+    width: 85%;
+  }
+}
+@media (min-width: 481px) {
+  /* Slidebar widths on small screens. */
+  .sb-slidebar {
+    width: 55%;
+  }
+
+  .sb-width-thin {
+    width: 40%;
+  }
+
+  .sb-width-wide {
+    width: 70%;
+  }
+}
+@media (min-width: 768px) {
+  /* Slidebar widths on medium screens. */
+  .sb-slidebar {
+    width: 40%;
+  }
+
+  .sb-width-thin {
+    width: 25%;
+  }
+
+  .sb-width-wide {
+    width: 55%;
+  }
+}
+@media (min-width: 992px) {
+  /* Slidebar widths on large screens. */
+  .sb-slidebar {
+    width: 30%;
+  }
+
+  .sb-width-thin {
+    width: 15%;
+  }
+
+  .sb-width-wide {
+    width: 45%;
+  }
+}
+@media (min-width: 1200px) {
+  /* Slidebar widths on extra large screens. */
+  .sb-slidebar {
+    width: 20%;
+  }
+
+  .sb-width-thin {
+    width: 5%;
+  }
+
+  .sb-width-wide {
+    width: 35%;
+  }
+}
+/* ---------------
+* 004 - Animation
+*/
+.sb-slide, #sb-site, .sb-site-container, .sb-slidebar {
+  -webkit-transition: -webkit-transform 400ms ease;
+  -moz-transition: -moz-transform 400ms ease;
+  -o-transition: -o-transform 400ms ease;
+  transition: transform 400ms ease;
+  -webkit-transition-property: -webkit-transform, left, right;
+  /* Add left/right for Android < 4.4. */
+  -webkit-backface-visibility: hidden;
+  /* Prevents flickering. This is non essential, and you may remove it if your having problems with fixed background images in Chrome. */
+}
+
+/* --------------------
+* 005 - Helper Classes
+*/
+.sb-hide {
+  display: none;
+  /* Optionally applied to control classes when Slidebars is disabled over a certain width. */
+}
+
+/* サイドバー */
+.sb-slidebar.sb-right {
+  -webkit-overflow-scrolling: touch;
+}
+
+.sb-right-inner {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Slider */
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.slick-list:focus {
+  outline: none;
+}
+
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+.slick-track:before,
+.slick-track:after {
+  display: table;
+  content: '';
+}
+
+.slick-track:after {
+  clear: both;
+}
+
+.slick-loading .slick-track {
+  visibility: hidden;
+}
+
+.slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 1px;
+}
+
+[dir='rtl'] .slick-slide {
+  float: right;
+}
+
+.slick-slide img {
+  display: block;
+}
+
+.slick-slide.slick-loading img {
+  display: none;
+}
+
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+
+.slick-initialized .slick-slide {
+  display: block;
+}
+
+.slick-loading .slick-slide {
+  visibility: hidden;
+}
+
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent;
+}
+
+.slick-arrow.slick-hidden {
+  display: none;
+}
+
+/*******
+スライド（ベースはslick.scss）
+*************************/
+.slideArea {
+  margin-bottom: 20px;
+}
+
+ul.slider {
+  width: 100%;
+}
+ul.slider .slick-list {
+  width: 100%;
+  padding: 0 !important;
+}
+ul.slider .slick-slide {
+  width: 100%;
+  max-height: 250px;
+}
+ul.slider .slick-slide a {
+  position: relative;
+  overflow: hidden;
+  max-height: 250px;
+}
+ul.slider .slick-slide a img {
+  width: 100%;
+  height: 100%;
+}
+ul.slider .slick-slide a .title {
+  overflow: hidden;
+  background-color: rgba(173, 167, 163, 0.5);
+  width: 100%;
+  height: 60px;
+  line-height: 40px;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 10px 5%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #ffffff;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+ul.slider .dot-class {
+  width: 60%;
+  margin: 10px auto;
+  text-align: center;
+}
+ul.slider .dot-class li {
+  display: inline-block;
+}
+ul.slider .dot-class li .icon-2 {
+  color: #b3b3b3;
+  display: inline-block;
+  transition: all .2s ease-in;
+}
+ul.slider .dot-class li .icon-2:before {
+  content: "\e907";
+  margin-right: 15px;
+  font-size: 1.8rem;
+}
+ul.slider .dot-class li.slick-active .icon-2 {
+  color: #a27043;
+  transform: rotate(-20deg);
+  -ms-transform: rotate(-20deg);
+  -moz-transform: rotate(-20deg);
+  -webkit-transform: rotate(-20deg);
+  -o-transform: rotate(-20deg);
+}
+ul.slider .dot-class li:last-child .icon-2:before {
+  margin-right: 0;
+}
+
+/*******
+カテゴリ・検索
+*************************/
+.topCat .childArea .bigCat, .topCat .mamaArea .bigCat, .topCat .ageArea .bigCat {
+  overflow: hidden;
+  position: relative;
+  color: #ffffff;
+  height: 45px;
+  line-height: 45px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.topCat .childArea .bigCat .icon, .topCat .mamaArea .bigCat .icon, .topCat .ageArea .bigCat .icon {
+  margin-right: 10px;
+  transition: all .1s ease-in;
+  float: left;
+  display: block;
+  height: 45px;
+  line-height: 45px;
+}
+.topCat .childArea .bigCat .icon:nth-child(2), .topCat .mamaArea .bigCat .icon:nth-child(2), .topCat .ageArea .bigCat .icon:nth-child(2) {
+  margin: 0;
+  float: right;
+  font-size: inherit;
+  transition: all 0.2s ease-in;
+}
+.topCat .childArea .bigCat.active .icon:nth-child(2), .topCat .mamaArea .bigCat.active .icon:nth-child(2), .topCat .ageArea .bigCat.active .icon:nth-child(2) {
+  transform: rotate(180deg);
+}
+.topCat .childArea .catList, .topCat .mamaArea .catList, .topCat .ageArea .catList {
+  display: none;
+}
+.topCat .childArea .catList li, .topCat .mamaArea .catList li, .topCat .ageArea .catList li {
+  position: relative;
+  padding: 4% 10px 4% 13%;
+  box-sizing: border-box;
+  background: url(../images/border.png) repeat-x left bottom;
+}
+.topCat .childArea .catList li:before, .topCat .mamaArea .catList li:before, .topCat .ageArea .catList li:before {
+  content: "\f078";
+  position: absolute;
+  top: 0;
+  right: 10px;
+  padding: 5% 0;
+  font: normal normal normal 14px/1 FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  transition: all .1s ease-in;
+}
+.topCat .childArea .catList li.active:before, .topCat .mamaArea .catList li.active:before, .topCat .ageArea .catList li.active:before {
+  transform: rotate(180deg);
+}
+.topCat .childArea .catList li:last-child, .topCat .mamaArea .catList li:last-child, .topCat .ageArea .catList li:last-child {
+  background: none;
+}
+.topCat .childArea .catList .grandsonCatList, .topCat .mamaArea .catList .grandsonCatList, .topCat .ageArea .catList .grandsonCatList {
+  display: none;
+  overflow: hidden;
+  padding-top: 10px;
+}
+.topCat .childArea .catList .grandsonCatList li, .topCat .mamaArea .catList .grandsonCatList li, .topCat .ageArea .catList .grandsonCatList li {
+  padding: 0;
+  float: left;
+  width: calc(100% / 2);
+  background: none;
+}
+.topCat .childArea .catList .grandsonCatList li a, .topCat .mamaArea .catList .grandsonCatList li a, .topCat .ageArea .catList .grandsonCatList li a {
+  box-sizing: border-box;
+  padding: 15px;
+}
+.topCat .childArea .catList .grandsonCatList li:before, .topCat .mamaArea .catList .grandsonCatList li:before, .topCat .ageArea .catList .grandsonCatList li:before {
+  display: none;
+}
+.topCat .childArea .bigCat {
+  background: #fcc68c;
+}
+.topCat .childArea .bigCat:before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: url(../images/borderChild.png) repeat-x left;
+}
+.topCat .childArea .bigCat:after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: url(../images/borderChild.png) repeat-x left;
+}
+.topCat .mamaArea .bigCat {
+  background: #fc8c96;
+}
+.topCat .mamaArea .bigCat .icon {
+  font-size: 1.7rem;
+}
+.topCat .mamaArea .bigCat:before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: url(../images/borderMam.png) repeat-x left;
+}
+.topCat .mamaArea .bigCat:after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: url(../images/borderMam.png) repeat-x left;
+}
+.topCat .ageArea .bigCat {
+  background: #7fb9ea;
+}
+.topCat .ageArea .bigCat:before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: url(../images/borderAge.png) repeat-x left;
+}
+.topCat .ageArea .bigCat:after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: url(../images/borderAge.png) repeat-x left;
+}
+
+.searchArea {
+  padding: 20px 0;
+}
+.searchArea form {
+  width: 90%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.searchArea form input {
+  width: 85%;
+  height: 35px;
+  line-height: 35px;
+  float: left;
+  background: #ffffff;
+  border: solid 1px #bbbbbb;
+  box-sizing: border-box;
+  border-radius: 3px 0 0 3px;
+}
+.searchArea form .searchIcon {
+  width: 15%;
+  height: 35px;
+  line-height: 35px;
+  float: left;
+  background: #848383;
+  border-radius: 0 3px 3px 0;
+}
+.searchArea form .searchIcon i {
+  color: #ffffff;
+  font-size: 2rem;
+  line-height: 35px;
+}
+
+.single .singleArea {
+  padding: 0 10px;
+  margin-bottom: 40px;
+}
+.single .singleArea .dataArea {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.single .singleArea .dataArea .data {
+  float: left;
+}
+.single .singleArea .dataArea .pv {
+  float: right;
+}
+.single .singleArea .dataArea .pv i {
+  color: #fd97a0;
+  margin-right: 5px;
+}
+.single .singleArea h1 {
+  margin-bottom: 10px;
+}
+.single .singleArea img {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.single .singleArea .snsArea {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.single .singleArea .snsArea .fb, .single .singleArea .snsArea .tw, .single .singleArea .snsArea .hb, .single .singleArea .snsArea .pk {
+  width: calc(100% / 4);
+  float: left;
+  text-align: center;
+  height: 44px;
+}
+.single .singleArea .snsArea .fb .icon, .single .singleArea .snsArea .tw .icon, .single .singleArea .snsArea .hb .icon, .single .singleArea .snsArea .pk .icon {
+  color: #ffffff;
+  line-height: 44px;
+}
+.single .singleArea .snsArea .fb {
+  background: #305097;
+}
+.single .singleArea .snsArea .tw {
+  background: #55acee;
+}
+.single .singleArea .snsArea .hb {
+  background: #008fde;
+}
+.single .singleArea .snsArea .pk {
+  background: #d3505a;
+}
+.single .singleArea .content {
+  margin-bottom: 20px;
+  /*******
+  記事デザイン
+  *************************/
+}
+.single .singleArea .content p {
+  margin-bottom: 10px;
+}
+.single .singleArea .content .heading, .single .singleArea .content .subhead, .single .singleArea .content .subhead2 {
+  margin: 20px 0 10px;
+}
+.single .singleArea .content .heading {
+  border-bottom: solid 5px #e95383;
+}
+.single .singleArea .content .subhead {
+  border-top: solid 1px #e95383;
+  border-bottom: solid 1px #e95383;
+  padding: 10px;
+}
+.single .singleArea .content .subhead2 {
+  border-left: solid 5px #e95383;
+  padding: 5px 10px;
+}
+.single .singleArea .content .bold {
+  font-weight: bold;
+}
+.single .singleArea .content .center {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+.single .singleArea .content .youtube {
+  width: 90%;
+  margin: 0 auto;
+}
+.single .singleArea .content .alignnone {
+  margin: 0 auto !important;
+  display: block !important;
+}
+.single .singleArea .content .alignleft {
+  margin: 0 auto !important;
+  display: block !important;
+  float: none;
+}
+.single .singleArea .content .alignright {
+  margin: 0 auto !important;
+  display: block !important;
+  float: none;
+}
+.single .singleArea .content .aligncenter {
+  margin: 0 auto !important;
+  display: block !important;
+}
+.single .singleArea .content .blockquote {
+  display: block;
+  background: #fff;
+  padding: 15px 20px 15px 55px;
+  margin: 0 0 20px;
+  position: relative;
+  /*Font*/
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #666;
+  text-align: justify;
+  /*Borders - (Optional)*/
+  /*
+  border-left: 15px solid #c76c0c;
+  border-right: 2px solid #c76c0c;
+  */
+  border: solid 1px #cccccc;
+  /*Box Shadow - (Optional)*/
+  -moz-box-shadow: 2px 2px 15px #ccc;
+  -webkit-box-shadow: 2px 2px 15px #ccc;
+  box-shadow: 2px 2px 15px #ccc;
+}
+.single .singleArea .content .blockquote::before {
+  content: "\201C";
+  /*Unicode for Left Double Quote*/
+  /*Font*/
+  font-family: Georgia, serif;
+  font-size: 60px;
+  font-weight: bold;
+  color: #999;
+  /*Positioning*/
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}
+.single .singleArea .content .blockquote::after {
+  /*Reset to make sure*/
+  content: "";
+}
+.single .singleArea .content .blockquote a {
+  text-decoration: none;
+  background: #eee;
+  cursor: pointer;
+  padding: 0 3px;
+  color: #c76c0c;
+}
+.single .singleArea .content .blockquote a:hover {
+  color: #666;
+}
+.single .singleArea .content .blockquote em {
+  font-style: italic;
+}
+.single .singleArea .content .strike {
+  text-decoration: line-through;
+  font-size: 1.4rem;
+}
+.single .singleArea .content .articleList li {
+  list-style-position: inside;
+}
+.single .singleArea .writerArea {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 2px -2px 5px rgba(199, 199, 199, 0.5), -2px 2px 5px rgba(199, 199, 199, 0.5);
+}
+.single .singleArea .writerArea img {
+  float: left;
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
+  margin-right: 10px;
+  box-sizing: border-box;
+  margin-bottom: 0;
+}
+.single .singleArea .writerArea img.mugyuu {
+  border: solid 2px #e95383;
+}
+.single .singleArea .writerArea img.special {
+  border: solid 2px #7fb9ea;
+}
+.single .singleArea .writerArea .dataArea {
+  float: left;
+  width: calc(100% - 90px);
+  box-sizing: border-box;
+  margin-bottom: 0;
+}
+.single .singleArea .writerArea .dataArea .name {
+  padding: 7px 5px 10px;
+  margin-bottom: 5px;
+  background: url(../images/border.png) repeat-x left bottom;
+}
+.single .singleArea .writerArea .dataArea .type, .single .singleArea .writerArea .dataArea .profile {
+  padding: 0 5px;
+  margin-bottom: 5px;
+}
+.single .singleArea .writerArea:before {
+  content: "\f054";
+  position: absolute;
+  top: 44px;
+  bottom: 0;
+  right: 2px;
+  color: #595757;
+  font: normal normal normal 11px/1 FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.category .categoryArea h1 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.category .categoryArea .detail {
+  padding: 0 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  line-height: 1.8;
+}
+.category .categoryArea .all {
+  position: relative;
+  background: #7fb9ea;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+.category .categoryArea .all:before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  background: url(../images/borderAge.png) repeat-x left top;
+  height: 2px;
+  width: 100%;
+}
+.category .categoryArea .all:after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  background: url(../images/borderAge.png) repeat-x left top;
+  height: 2px;
+  width: 100%;
+}
+
+.authorAll .authorArea h1 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.authorAll .authorArea .detail {
+  padding: 0 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 1.8;
+}
+.authorAll .authorArea h2 {
+  position: relative;
+  background: #595757;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+.authorAll .authorArea h2:before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  background: url(../images/border.png) repeat-x left top;
+  height: 2px;
+  width: 100%;
+}
+.authorAll .authorArea h2:after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  background: url(../images/border.png) repeat-x left top;
+  height: 2px;
+  width: 100%;
+}
+.authorAll .authorArea .writerType {
+  margin-bottom: 20px;
+}
+.authorAll .authorArea .writerType .mg, .authorAll .authorArea .writerType .sp {
+  position: relative;
+  padding: 0 10px 0 45px;
+}
+.authorAll .authorArea .writerType .mg:before, .authorAll .authorArea .writerType .sp:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  height: 5px;
+  width: 25px;
+}
+.authorAll .authorArea .writerType .mg:before {
+  background: #e95383;
+}
+.authorAll .authorArea .writerType .sp:before {
+  background: #7fb9ea;
+}
+.authorAll .authorArea .authorList {
+  overflow: hidden;
+  padding: 0 10px;
+}
+.authorAll .authorArea .authorList li {
+  float: left;
+  width: 50%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.authorAll .authorArea .authorList li a img {
+  width: 140px;
+  height: 140px;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+  border-radius: 100px;
+}
+.authorAll .authorArea .authorList li a img.mugyuu {
+  border: solid 2px #e95383;
+}
+.authorAll .authorArea .authorList li a img.special {
+  border: solid 2px #7fb9ea;
+}
+.authorAll .authorArea .authorList li a .name {
+  text-align: center;
+  color: #333333;
+  padding: 10px 0;
+}
+
+.author .authorProfileArea {
+  overflow: hidden;
+  padding: 0 10px;
+  margin-bottom: 30px;
+}
+.author .authorProfileArea img {
+  width: 140px;
+  height: 140px;
+  border-radius: 100px;
+  display: block;
+  margin: 0 auto 20px;
+}
+.author .authorProfileArea img.mugyuu {
+  border: solid 2px #e95383;
+}
+.author .authorProfileArea img.special {
+  border: solid 2px #7fb9ea;
+}
+.author .authorProfileArea .name {
+  background: url(../images/border.png) repeat-x left bottom;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.author .authorProfileArea .type, .author .authorProfileArea .profile {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.author .authorProfileArea .profile {
+  line-height: 1.6;
+}
+.author .authorProfileArea .authorSnsArea {
+  float: right;
+  overflow: hidden;
+}
+.author .authorProfileArea .authorSnsArea .sns {
+  margin-right: 10px;
+}
+.author .authorProfileArea .authorSnsArea .sns:last-child {
+  margin-right: 0;
+}
+.author .authorProfileArea .authorSnsArea .web, .author .authorProfileArea .authorSnsArea .fb, .author .authorProfileArea .authorSnsArea .tw, .author .authorProfileArea .authorSnsArea .inst {
+  color: #ffffff;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  text-align: center;
+  float: left;
+  margin-right: 10px;
+}
+.author .authorProfileArea .authorSnsArea .web i, .author .authorProfileArea .authorSnsArea .fb i, .author .authorProfileArea .authorSnsArea .tw i, .author .authorProfileArea .authorSnsArea .inst i {
+  line-height: 30px;
+  color: #ffffff;
+  font-size: 1.6rem;
+}
+.author .authorProfileArea .authorSnsArea .web {
+  background: #fc8c96;
+}
+.author .authorProfileArea .authorSnsArea .fb {
+  background: #305097;
+}
+.author .authorProfileArea .authorSnsArea .tw {
+  background: #55acee;
+}
+.author .authorProfileArea .authorSnsArea .inst {
+  background: #3f729b;
+}
+.author .authorProfileArea .authorSnsArea .inst i {
+  font-size: 1.8rem;
+}
+.author .authorArticleArea .all {
+  position: relative;
+  background: #7fb9ea;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+.author .authorArticleArea .all:before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  background: url(../images/borderAge.png) repeat-x left top;
+  height: 2px;
+  width: 100%;
+}
+.author .authorArticleArea .all:after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  background: url(../images/borderAge.png) repeat-x left top;
+  height: 2px;
+  width: 100%;
+}
+
+.info {
+  line-height: 1.6;
+}
+.info .infoArea {
+  position: relative;
+  margin-bottom: 40px;
+}
+.info .infoArea h1 {
+  border-bottom: solid 4px #fdafb6;
+  padding: 0 0 2px 10px;
+}
+.info .infoArea p {
+  padding: 20px 10px 40px;
+}
+.info .infoArea:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 51px;
+  height: 21px;
+  background: url(../images/hiyoko.png) no-repeat left center;
+  background-size: 51px 21px;
+}
+.info .infoArea:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 60px;
+  width: 100%;
+  height: 21px;
+  background: url(../images/border.png) repeat-x left 15px;
+}
+.info .specialArea, .info .qaArea {
+  overflow: hidden;
+}
+.info .specialArea p, .info .qaArea p {
+  padding-bottom: 20px;
+}
+.info .specialArea .btnArea, .info .qaArea .btnArea {
+  width: 100%;
+  overflow: hidden;
+  padding: 0 10px;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+}
+.info .specialArea .btnArea .infoLink, .info .qaArea .btnArea .infoLink {
+  float: left;
+  width: 49%;
+  margin-right: 2%;
+  padding: 0;
+}
+.info .specialArea .btnArea .infoLink a, .info .qaArea .btnArea .infoLink a {
+  color: #fc8c96;
+  border: solid 2px #fc8c96;
+  padding: 10px 0;
+  text-align: center;
+}
+.info .specialArea .btnArea .infoLink a:hover, .info .qaArea .btnArea .infoLink a:hover {
+  color: #ffffff;
+  background: #fc8c96;
+  transition: none;
+}
+.info .specialArea .btnArea .infoLink:nth-child(2), .info .qaArea .btnArea .infoLink:nth-child(2) {
+  margin-right: 0;
+}
+.info .privacyArea ol {
+  padding: 0 10px;
+}
+.info .privacyArea ol li {
+  list-style-type: decimal;
+  list-style-position: inside;
+  margin-bottom: 30px;
+}
+.info .privacyArea ol li h2 {
+  border-bottom: solid 1px #c9c9c9;
+  margin-bottom: 5px;
+}
+.info .privacyArea p:last-child {
+  padding-top: 0;
+}
+.info .privacyArea p:last-child a {
+  display: inline;
+}
+
+.job {
+  line-height: 1.6;
+}
+.job .jobArea h1.ttl {
+  position: relative;
+  padding: 25px 0 10px;
+  margin-bottom: 20px;
+}
+.job .jobArea h1.ttl img {
+  display: block;
+  width: 267px;
+  margin: 0 auto;
+}
+.job .jobArea h1.ttl:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url(../images/flag.png) repeat-x left top;
+  width: 100%;
+  height: 25px;
+  background-size: 320px 25px;
+}
+.job .jobArea h1.ttl:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: url(../images/borderJob.png) repeat-x left bottom;
+  width: 100%;
+  height: 6px;
+  background-size: 320px 6px;
+}
+.job .jobArea p, .job .jobArea .snsArea {
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+.job .jobArea .snsArea .web a, .job .jobArea .snsArea .fb a, .job .jobArea .snsArea .inst a {
+  color: #333333;
+}
+.job .jobArea .snsArea .web a i, .job .jobArea .snsArea .fb a i, .job .jobArea .snsArea .inst a i {
+  color: #333333;
+  margin-right: 10px;
+}
+.job .jobArea .snsArea .fb a i, .job .jobArea .snsArea .inst a i {
+  font-size: 1.6rem;
+}
+.job .jobArea .content {
+  margin: 0 10px 20px;
+  padding: 10px;
+  background: #f6f6f6;
+}
+.job .jobArea .content section {
+  margin-bottom: 30px;
+}
+.job .jobArea .content section h1 {
+  border-bottom: solid 1px #c9c9c9;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.job .jobArea .content section table {
+  background: #ffffff;
+  box-shadow: 0 0 5px rgba(199, 199, 199, 0.5);
+  margin-bottom: 20px;
+}
+.job .jobArea .content section table th, .job .jobArea .content section table td {
+  padding: 10px;
+  border-bottom: solid 1px #ffffff;
+}
+.job .jobArea .content section table th {
+  width: 35%;
+  background: #fdafb6;
+  color: #ffffff;
+}
+.job .jobArea .content section table td {
+  border-bottom: solid 1px #c9c9c9;
+}
+.job .jobArea .content section table tr:last-child th, .job .jobArea .content section table tr:last-child td {
+  border-bottom: none;
+}
+.job .jobArea .formArea {
+  padding: 0 10px;
+  margin-bottom: 40px;
+}
+.job .jobArea .formArea h1 {
+  font-weight: bold;
+}
+.job .jobArea .formArea p {
+  margin-bottom: 10px;
+}
+.job .jobArea .formArea p a {
+  display: inline;
+}
+.job .jobArea .formArea span {
+  color: #fe5858;
+}
+.job .jobArea .formArea form ul {
+  width: 100%;
+  border: solid 1px #c9c9c9;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.job .jobArea .formArea form ul li {
+  margin-bottom: 30px;
+}
+.job .jobArea .formArea form ul li label {
+  display: block;
+  width: 100%;
+}
+.job .jobArea .formArea form ul li label.radio {
+  margin-bottom: 5px;
+}
+.job .jobArea .formArea form ul li label.select {
+  position: relative;
+}
+.job .jobArea .formArea form ul li label.select:before {
+  content: "\f078";
+  position: absolute;
+  top: 40px;
+  right: 5px;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 1.2rem;
+  text-rendering: auto;
+}
+.job .jobArea .formArea form ul li input, .job .jobArea .formArea form ul li select, .job .jobArea .formArea form ul li textarea {
+  margin-top: 5px;
+  border: solid 1px #c9c9c9;
+  box-sizing: border-box;
+}
+.job .jobArea .formArea form ul li input[type="text"], .job .jobArea .formArea form ul li input[type="email"] {
+  border: solid 1px #c9c9c9;
+  padding: 10px;
+  width: 80%;
+}
+.job .jobArea .formArea form ul li input[type="radio"] {
+  -webkit-appearance: radio;
+  -moz-appearance: radio;
+  appearance: radio;
+  margin-right: 5px;
+}
+.job .jobArea .formArea form ul li select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 10px;
+  border: solid 1px #c9c9c9;
+  border-radius: 0;
+  background: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+}
+.job .jobArea .formArea form ul li select option:nth-child(1) {
+  color: #c9c9c9;
+}
+.job .jobArea .formArea form ul li textarea {
+  width: 100%;
+  resize: vertical;
+}
+.job .jobArea .formArea form ul li:nth-last-child(2) {
+  margin-bottom: 10px;
+}
+.job .jobArea .formArea form ul li:last-child {
+  margin-bottom: 20px;
+}
+.job .jobArea .formArea form ul li:last-child p {
+  margin-bottom: 20px;
+}
+.job .jobArea .formArea form button {
+  width: 100%;
+  background: #fc8c96;
+  color: #ffffff;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 5px;
+  font-size: inherit;
+}
+
+.contact .contactArea {
+  margin-bottom: 20px;
+}
+.contact .formArea {
+  padding: 0 10px;
+  margin-bottom: 40px;
+}
+.contact .formArea h1 {
+  font-weight: bold;
+  border: none;
+  padding: 0;
+  font-size: 100%;
+}
+.contact .formArea p {
+  margin-bottom: 10px;
+  padding: 0;
+}
+.contact .formArea p a {
+  display: inline;
+}
+.contact .formArea span {
+  color: #fe5858;
+}
+.contact .formArea form ul {
+  width: 100%;
+  border: solid 1px #c9c9c9;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.contact .formArea form ul li {
+  margin-bottom: 30px;
+}
+.contact .formArea form ul li label {
+  display: block;
+  width: 100%;
+}
+.contact .formArea form ul li label.radio {
+  margin-bottom: 5px;
+}
+.contact .formArea form ul li label.select {
+  position: relative;
+}
+.contact .formArea form ul li label.select:before {
+  content: "\f078";
+  position: absolute;
+  top: 40px;
+  right: 5px;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 1.2rem;
+  text-rendering: auto;
+}
+.contact .formArea form ul li input, .contact .formArea form ul li select, .contact .formArea form ul li textarea {
+  margin-top: 5px;
+  border: solid 1px #c9c9c9;
+  box-sizing: border-box;
+}
+.contact .formArea form ul li input[type="text"], .contact .formArea form ul li input[type="email"] {
+  border: solid 1px #c9c9c9;
+  padding: 10px;
+  width: 80%;
+}
+.contact .formArea form ul li input[type="radio"] {
+  -webkit-appearance: radio;
+  -moz-appearance: radio;
+  appearance: radio;
+  margin-right: 5px;
+}
+.contact .formArea form ul li select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 10px;
+  border: solid 1px #c9c9c9;
+  border-radius: 0;
+  background: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+}
+.contact .formArea form ul li select option:nth-child(1) {
+  color: #c9c9c9;
+}
+.contact .formArea form ul li textarea {
+  width: 100%;
+  resize: vertical;
+}
+.contact .formArea form ul li:nth-last-child(2) {
+  margin-bottom: 10px;
+}
+.contact .formArea form ul li:last-child {
+  margin-bottom: 20px;
+}
+.contact .formArea form ul li:last-child p {
+  margin-bottom: 20px;
+}
+.contact .formArea form button {
+  width: 100%;
+  background: #fc8c96;
+  color: #ffffff;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 5px;
+  font-size: inherit;
+}
+
+.company table {
+  margin: 10px;
+}
+.company table a {
+  display: inline;
+}
+.company table tr {
+  border-bottom: solid 1px #c9c9c9;
+}
+.company table tr:last-child {
+  border: none;
+}
+.company table th, .company table td {
+  padding: 10px;
+  vertical-align: middle;
+}
+.company table th {
+  width: 30%;
+  box-sizing: border-box;
+}
+
+.qa .qaArea h1 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.qa .qaArea .detail {
+  padding: 0 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  line-height: 1.8;
+}
+.qa .qaArea .all {
+  position: relative;
+  background: #fcc68c;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+.qa .qaArea .all:before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  background: url(../images/borderChild.png) repeat-x left top;
+  height: 2px;
+  width: 100%;
+}
+.qa .qaArea .all:after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  background: url(../images/borderChild.png) repeat-x left top;
+  height: 2px;
+  width: 100%;
+}
+.qa .qaArea .qaList li a .noImage .catChild {
+  width: 90%;
+  padding-top: 8px;
+}
+.qa .qaArea .qaList li a .noImage .catMama {
+  width: 83%;
+  padding-top: 5px;
+}
+.qa .qaArea .qaList li a .content .articleData .comment i {
+  font-size: 1.4rem;
+}
+.qa .qaArea .qaList li a .content .articleData:nth-child(1) {
+  overflow: hidden;
+  position: static;
+  width: auto;
+}
+.qa .qaArea .qaList li a .content .articleData:nth-child(1) .data, .qa .qaArea .qaList li a .content .articleData:nth-child(1) .cat {
+  float: left;
+}
+.qa .qaArea .qaList li a .content .articleData:nth-child(1) .data {
+  margin: 0 10px 10px 0;
+}
+
+.qaSingle .qaSingleArea {
+  overflow: hidden;
+  background: url(../images/border.png) repeat-x left bottom;
+  margin-bottom: 20px;
+}
+.qaSingle .qaSingleArea .top {
+  overflow: hidden;
+  padding: 0 10px;
+  margin-bottom: 5px;
+}
+.qaSingle .qaSingleArea .top .imgArea {
+  float: left;
+  width: 75px;
+  height: 75px;
+  margin-right: 5px;
+}
+.qaSingle .qaSingleArea .top .imgArea img {
+  width: 100%;
+}
+.qaSingle .qaSingleArea .top .noImage .catChild {
+  width: 90%;
+  padding-top: 8px;
+}
+.qaSingle .qaSingleArea .top .noImage .catMama {
+  width: 83%;
+  padding-top: 5px;
+}
+.qaSingle .qaSingleArea .top .articleData {
+  float: left;
+  width: calc(100% - 80px);
+  padding: 0;
+  margin: 0;
+}
+.qaSingle .qaSingleArea .top .articleData .dataArea {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.qaSingle .qaSingleArea .top .articleData .dataArea .data {
+  float: left;
+}
+.qaSingle .qaSingleArea .top .articleData .dataArea .pv {
+  float: right;
+}
+.qaSingle .qaSingleArea .top .articleData .dataArea .pv i {
+  color: #fd97a0;
+  margin-right: 5px;
+}
+.qaSingle .qaSingleArea .top .articleData h1 {
+  font-weight: bold;
+}
+.qaSingle .qaSingleArea .text {
+  padding: 0 10px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.qaSingle .qaSingleArea .articleData {
+  overflow: hidden;
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+.qaSingle .qaSingleArea .articleData .comment {
+  float: right;
+  margin-right: 5px;
+}
+.qaSingle .qaSingleArea .articleData .comment i {
+  color: #fd97a0;
+  margin-right: 5px;
+  font-size: 1.4rem;
+}
+.qaSingle .qaSingleArea .btnArea {
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+.qaSingle .qaSingleArea .btnArea a {
+  width: 80%;
+  text-align: center;
+  color: #ffffff;
+  background: #fc8c96;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 auto;
+}
+.qaSingle .commentArea {
+  overflow: hidden;
+}
+.qaSingle .commentArea .sortWrap {
+  position: relative;
+  float: right;
+  margin-right: 20px;
+}
+.qaSingle .commentArea .sortWrap .sort {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin-bottom: 10px;
+  padding: 5px 10px 5px 30px;
+  box-sizing: border-box;
+  border: solid 1px #c9c9c9;
+  text-align: right;
+}
+.qaSingle .commentArea .sortWrap:before {
+  content: "\f0ec";
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font: normal normal normal 14px/1 FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+.qaSingle .commentArea .commentList {
+  clear: both;
+  padding: 0 10px;
+}
+.qaSingle .commentArea .commentList li {
+  position: relative;
+  border: solid 1px #c9c9c9;
+  padding: 15px;
+  margin: 0 10px 15px 20px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.qaSingle .commentArea .commentList li .commentData {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.qaSingle .commentArea .commentList li .commentData .data {
+  float: left;
+}
+.qaSingle .commentArea .commentList li .commentData .report {
+  overflow: hidden;
+}
+.qaSingle .commentArea .commentList li .commentData .modal label {
+  color: #000;
+  cursor: pointer;
+  float: right;
+}
+.qaSingle .commentArea .commentList li .commentData .modal label i {
+  margin-right: 5px;
+}
+.qaSingle .commentArea .commentList li .commentData .modal input {
+  position: absolute;
+  z-index: -9999;
+  visibility: hidden;
+}
+.qaSingle .commentArea .commentList li .commentData .modal input:checked ~ .modal-overlay {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  z-index: 999;
+}
+.qaSingle .commentArea .commentList li .commentData .modal .modal-overlay {
+  background: rgba(201, 201, 201, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transition: all 0.75s cubic-bezier(0.65, -0.55, 0.265, 1.55);
+  -moz-transition: all 0.75s cubic-bezier(0.65, -0.55, 0.265, 1.55);
+  -ms-transition: all 0.75s cubic-bezier(0.65, -0.55, 0.265, 1.55);
+  -o-transition: all 0.75s cubic-bezier(0.65, -0.55, 0.265, 1.55);
+  transition: all 0.75s cubic-bezier(0.65, -0.55, 0.265, 1.55);
+  z-index: -999;
+}
+.qaSingle .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap {
+  position: absolute;
+  top: 35%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 20px;
+  width: 80%;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+.qaSingle .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap h3 {
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.qaSingle .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap label {
+  color: #c9c9c9;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 1.8rem;
+}
+.qaSingle .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.qaSingle .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap .btnArea .reportBtn, .qaSingle .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap .btnArea .cancelBtn {
+  height: 40px;
+  line-height: 40px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+.qaSingle .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap .btnArea .reportBtn {
+  color: #ffffff;
+  background: #fc8c96;
+  margin-bottom: 10px;
+}
+.qaSingle .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap .btnArea .cancelBtn {
+  color: #fc8c96;
+  background: #ffffff;
+  border: solid 2px #fc8c96;
+}
+.qaSingle .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap .btnArea .cancelBtn:hover {
+  color: #ffffff;
+  background: #fc8c96;
+}
+.qaSingle .commentArea .commentList li .comment {
+  padding-left: 15px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.qaSingle .commentArea .commentList li .actionArea {
+  overflow: hidden;
+  padding: 0 0 10px 10px;
+  margin-bottom: 10px;
+  border-bottom: solid 1px #c9c9c9;
+}
+.qaSingle .commentArea .commentList li .actionArea .good, .qaSingle .commentArea .commentList li .actionArea .reply {
+  float: left;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.qaSingle .commentArea .commentList li .actionArea .good {
+  margin-right: 15px;
+}
+.qaSingle .commentArea .commentList li .actionArea .good.on {
+  color: #fc8c96;
+}
+.qaSingle .commentArea .commentList li .countArea {
+  padding: 0 10px;
+}
+.qaSingle .commentArea .commentList li .countArea .icon {
+  color: #fc8c96;
+  margin-right: 5px;
+}
+.qaSingle .commentArea .commentList li:before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: -17px;
+  border-top: solid 8px transparent;
+  border-left: solid 8px transparent;
+  border-right: solid 8px #c9c9c9;
+  border-bottom: solid 8px transparent;
+}
+.qaSingle .commentArea .commentList li:after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: -16px;
+  border-top: solid 8px transparent;
+  border-left: solid 8px transparent;
+  border-right: solid 8px #ffffff;
+  border-bottom: solid 8px transparent;
+}
+.qaSingle .commentArea .commentList li.owner {
+  border: solid 1px #fc8c96;
+  margin: 0 20px 15px;
+}
+.qaSingle .commentArea .commentList li.owner:before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: auto;
+  right: -17px;
+  border-top: solid 8px transparent;
+  border-left: solid 8px #fc8c96;
+  border-right: solid 8px transparent;
+  border-bottom: solid 8px transparent;
+}
+.qaSingle .commentArea .commentList li.owner:after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: auto;
+  right: -16px;
+  border-top: solid 8px transparent;
+  border-left: solid 8px #ffffff;
+  border-right: solid 8px transparent;
+  border-bottom: solid 8px transparent;
+}
+.qaSingle .commentFormArea {
+  padding: 68px 10px 0;
+  margin-bottom: 40px;
+  margin-top: -48px;
+  position: relative;
+}
+.qaSingle .commentFormArea h1 {
+  margin-bottom: 20px;
+}
+.qaSingle .commentFormArea form ul li {
+  margin-bottom: 20px;
+}
+.qaSingle .commentFormArea form ul li p {
+  margin-bottom: 5px;
+}
+.qaSingle .commentFormArea form ul li input, .qaSingle .commentFormArea form ul li textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  border: solid 1px #c9c9c9;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+.qaSingle .commentFormArea form ul li .textArea {
+  border: solid 1px #c9c9c9;
+  padding-bottom: 35px;
+  position: relative;
+}
+.qaSingle .commentFormArea form ul li .textArea textarea {
+  min-height: 150px;
+  line-height: 1.6;
+  text-indent: auto;
+  resize: none;
+  padding: 5px 10px 20px;
+  border: none;
+}
+.qaSingle .commentFormArea form ul li .textArea .imgBtn {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  height: 35px;
+  line-height: 35px;
+}
+.qaSingle .commentFormArea form ul li .textArea .imgBtn i {
+  margin-right: 5px;
+}
+.qaSingle .commentFormArea form ul li .textArea .imgBtn input {
+  opacity: 0;
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  font-size: 100px;
+  cursor: pointer;
+  height: 35px;
+  line-height: 0;
+  box-sizing: border-box;
+  border: none;
+}
+.qaSingle .commentFormArea form ul li .sendBtn {
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  background: #fc8c96;
+  height: 40px;
+  line-height: 40px;
+  font-size: 100%;
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+.qaSingle .commentFormArea:before {
+  content: "";
+  position: absolute;
+  top: 48px;
+  left: 0;
+  border-top: solid 5px #fdafb6;
+  width: 100%;
+  height: 5px;
+}

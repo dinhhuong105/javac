@@ -1,0 +1,28 @@
+body{
+    height: auto;
+}
+h1{
+    margin: -10px 0 20px;
+}
+.breadcrumb{
+    margin-left: -20px;
+}
+.content{
+    width: 80%;
+    padding-bottom: 10px;
+}
+.regist-link{
+    font-weight: bold;
+}
+.form-groupid{
+    width: 150px;
+}
+.form-submit{
+    width: 100px;
+}
+.ui-link{
+    font-size: 1.3em;
+}
+.update-nag{
+    display: none;
+}

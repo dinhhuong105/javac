@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MUGYUU!【妊娠・出産・子育て・育児中のママ応援サイトむぎゅー】</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="妊娠・出産・育児ととても大変なママさんたちをちょっとでも応援する育児情報サイトです。">
+        <meta name="keywords" content="妊娠,出産,育児,子供,子育て">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <meta property="og:type" content="article"/>
+        <meta property="og:image" content="ページで見せたい画像URL" />
+        <meta property="og:title" content="MUGYUU!【妊娠・出産・子育て・育児中のママ応援サイトむぎゅー】" />
+        <meta property="og:description" content="妊娠・出産・育児ととても大変なママさんたちをちょっとでも応援する育児情報サイトです。" />
+        <meta property="og:url" content="https://mugyuu.jp" />
+        <meta property="og:site_name" content="MUGYUU!" />
+        <meta property="og:locale" content="ja_JP" />
+        <!--    <meta property="fb:admins" content="facebookのユーザーID fb:app_idで良い。" />-->
+        <!--    <meta property="fb:app_id" content="facebookのアプリID" />-->
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+        <link href="styles/style.css" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="js/slidebars.js"></script>
+        <script src="js/slick.min.js"></script>
+
+        <!-- menu -->
+        <script>
+            (function($) {
+                $(document).ready(function() {
+                    $.slidebars();
+                });SS
+            }) (jQuery);
+        </script>
+
+        <!-- slider -->
+        <script>
+            $(function() {
+                $('.slider').slick({
+                    accessibility: true, //左右ボタンで画像の切り替え
+                    autoplay: true, //自動再生
+                    autoplaySpeed: 3000, // 自動再生や左右の矢印でスライドするスピード
+                    speed: 400, // 自動再生や左右の矢印でスライドするスピード
+                    pauseOnHover: false, // 自動再生時にスライドのエリアにマウスオンで一時停止するかどうか
+                    cssEase: 'ease',// 切り替えのアニメーション。ease,linear,ease-in,ease-out,ease-in-out
+                    dots: true, // 画像下にページ送りを表示
+                    dotsClass: 'dot-class',　//ドットのclass名をつける
+                    draggable: true,　// ドラッグができるかどうか
+                    fade: false,　// 切り替え時のフェードイン設定。trueでon
+                    arrows: false,　// 左右の次へ、前へボタンを表示するかどうか
+                    infinite: true,  // 無限スクロールにするかどうか。最後の画像の次は最初の画像が表示される。
+                    initialSlide: 0, // 最初のスライダーの位置
+                    lazyLoad: 'ondemand', // 画像の遅延表示。‘ondemand’or'progressive'
+                    pauseOnHover: false, // スライドのエリアにマウスオーバーしている間、自動再生を止めるかどうか。
+                    slidesToShow: 1, // スライドのエリアに画像がいくつ表示されるかを指定
+                    slidesToScroll: 1, // 一度にスライドする数
+                    swipe: true, // タッチスワイプに対応するかどうか
+                    touchMove: true, //タッチでスライドの有/無
+                    vertical: false,// 縦方向へのスライド
+                    centerMode: true, // 表示中の画像を中央へ
+                    centerPadding: '60px',// 中央のpadding
+
+                });
+            });
+        </script>
+
+        <!-- tab -->
+        <script>
+            $(function(){
+                $("#tabMenuList li:eq(1)").addClass('active'); //1つ目のliはデフォルトでactive
+                $("#tabMenuList li").on("click", function() {
+                    $(".tabContentArea .tabContent").hide();
+                    console.log($(this).attr("id"));
+                    $("#content-" + $(this).attr("id")).fadeToggle();
+                    $("#tabMenuList li").removeClass("active");
+                    $(this).toggleClass("active");
+                });
+                return false;
+            });
+        </script>
+
+        <!-- topcat sidecat -->
+        <script>
+            $(function(){
+                $(".bigCat").on("click", function() {
+                    $(this).next().slideToggle();
+                    $(this).toggleClass("active");
+                });
+                $(".catList li").on("click", function() {
+                    $(this).children().slideToggle();
+                    $(this).toggleClass("active");
+                });
+            });
+        </script>
+
+        <!-- SCROLL TOP -->
+        <script>
+            $(function () {
+
+                var topBtn = $('#page-top');    
+                topBtn.hide();
+                //スクロールが100に達したらボタン表示
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 100) {
+                        topBtn.fadeIn();
+                    } else {
+                        topBtn.fadeOut();
+                    }
+                });
+                //スクロールしてトップ
+                topBtn.click(function () {
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 500);
+                    return false;
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+        <header>
+            <div class="sb-slide">
+                <div class="sb-toggle-left menuIcon"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                <h1><img src="images/logo.png" alt="MUGYUU!ロゴ"></h1>
+                <div class="sb-toggle-right shareIcon"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
+            </div>
+            <nav>
+                <div class="sb-slidebar sb-right">
+                    <ul>
+                        <li><a href="/" target="_blank"><i class="fa fa-facebook fb" aria-hidden="true"></i>Facebook</a></li>
+                        <li><a href="/" target="_blank"><i class="fa fa-twitter tw" aria-hidden="true"></i>Twitter</a></li>
+                        <li><a href="/" target="_blank"><i class="fa fa-instagram inst" aria-hidden="true"></i>Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="sb-slidebar sb-left">
+                    <div class="searchArea">
+                        <form method="get" id="searchform" action="#">
+                            <input type="search" name="search" value="" placeholder="検索するキーワードを入力" name="s" id="s">
+                            <button class="searchIcon"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                    <section class="catArea childArea">
+                        <h2 class="bigCat"><span class="icon icon-baby"></span>こどものこと</h2>
+                        <ul class="catList">
+                            <li>
+                                子カテ
+                                <ul class="grandsonCatList">
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                子カテ
+                                <ul class="grandsonCatList">
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                子カテ
+                                <ul class="grandsonCatList">
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="catArea mamaArea">
+                        <h2 class="bigCat"><span class="icon icon-mama"></span>ママのこと</h2>
+                        <ul class="catList">
+                            <li>
+                                子カテ
+                                <ul class="grandsonCatList">
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                子カテ
+                                <ul class="grandsonCatList">
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                子カテ
+                                <ul class="grandsonCatList">
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="catArea ageArea">
+                        <h2 class="bigCat"><i class="icon fa fa-heart-o" aria-hidden="true"></i>年齢のこと</h2>
+                        <ul class="catList">
+                            <li>
+                                子カテ
+                                <ul class="grandsonCatList">
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                子カテ
+                                <ul class="grandsonCatList">
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                子カテ
+                                <ul class="grandsonCatList">
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                    <li><a href="">孫カテ</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="catArea mugyuuArea">
+                        <h2><a href=""><span class="icon icon-mugyuu"></span>MUGYUU!とは</a></h2>
+                    </section>
+                    <section class="catArea infoArea">
+                        <h2><a href=""><span class="icon icon-bubbles2"></span>お問い合わせ</a></h2>
+                    </section>
+
+                    <section class="catArea recruitArea">
+                        <h2><a href=""><span class="icon icon-important_devices"></span>求人募集</a></h2>
+                    </section>
+
+                    <ul class="shareList">
+                        <li class="fd"><a href="/"><span class="icon icon-feedly"></span>feedly</a></li>
+                        <li class="rss"><a href="/"><i class="icon fa fa-rss" aria-hidden="true"></i>rss</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div id="sb-site" class="wrapper info company">
+            <ul class="breadcrumbList">
+                <li>
+                    <a href="/">
+                        トップ
+                    </a>
+                </li>
+                <li class="arrow">
+                    <i class="fa fa-chevron-right arrowIcon"></i>
+                </li>
+                <li>
+                    <a href="/">
+                        MUGYUU!について
+                    </a>
+                </li>
+            </ul>
+            <section class="infoArea companyArea">
+                <h1>会社概要</h1>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>会社名</th>
+                            <td>株式会社Kaze&amp;Co.(kaze&amp;Co.,inc.)</td>
+                        </tr>
+                        <tr>
+                            <th>設立</th>
+                            <td>2014年6月16日</td>
+                        </tr>
+                        <tr>
+                            <th>代表</th>
+                            <td>松本 一重</td>
+                        </tr>
+                        <tr>
+                            <th>連絡先</th>
+                            <td>
+                                TEL : 0986-36-7500（宮崎支社）<br>
+                                FAX : 0986-36-7878（宮崎支社）<br>
+                                E-mail : <a href="mailto:info@kaze-www.co.jp">info@kaze-www.co.jp</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="5">所在地</th>
+                            <td>
+                                鹿児島本社<br>
+                                〒899-8608<br>
+                                鹿児島県曽於市末吉町南之郷474番地4
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                宮崎支社<br>
+                                〒885-0077<br>
+                                宮崎県都城市松元町4-5<br>
+                                ガーデンヒルズ松元102号<br>
+                                シェアオフィスSHIPS内 <br>
+                            </td> 
+                        </tr>
+                        <tr>
+                            <td>
+                                熊本支社<br>
+                                〒860-0811<br>
+                                熊本県熊本市中央区本荘4-10-15
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                神奈川支社<br>
+                                〒211-0005<br>
+                                神奈川県川崎市中原区新丸子町737-2<br>
+                                グランドゥール新丸子501号
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                群馬支社<br>
+                                〒370-0883<br>
+                                群馬県高崎市剣崎町231-18<br>
+                                サンフィラネ101
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>事業内容</th>
+                            <td>
+                                イベント企画・実施 / 窓を使った広告サービス（窓ビジョン）/ WEBサイト・WEBメディア・企画制作 / WEB集客・プロモーション / SEO / SEM / システム開発 / 
+                                DTP制作 / その他IT・デザイン関連業務全般
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <footer>
+                <div class="writerBnr">
+                    <a href="/"><img src="images/bnr.png"></a>
+                </div>
+                <div class="fb">
+                    <p><i class="fa fa-facebook-official"></i>Facebook</p>
+                    <div class="fb-page" data-href="https://www.facebook.com/mugyuuuu/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/mugyuuuu/"><a href="https://www.facebook.com/mugyuuuu/">Mugyuu</a></blockquote></div></div>
+                </div>
+                <ul class="infoList">
+                    <li><a href="/">運営会社</a></li>
+                    <li><a href="/">プライバシーポリシー</a></li>
+                    <li><a href="/">利用規約</a></li>
+                    <li><a href="/">免責事項・知的財産権</a></li>
+                    <li><a href="/">個人情報の取り扱い</a></li>
+                    <li><a href="/">MUGYUU!について</a></li>
+                    <li><a href="/">お問い合わせ</a></li>
+                    <li><a href="/">求人募集</a></li>
+                </ul>
+                <div class="copy">
+                    <small>
+                        &copy;2016 MUGYUU!
+                    </small>
+                </div>
+            </footer>
+            <div id="page-top">
+                <a href="#sb-site">
+                    <img src="images/top.png" alt="TOPへ戻る">
+                </a>
+            </div>
+        </div>
+    </body>
+</html>

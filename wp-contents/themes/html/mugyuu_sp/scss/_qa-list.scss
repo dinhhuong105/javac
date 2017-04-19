@@ -1,0 +1,79 @@
+.qa {
+    .qaArea {
+        h1 {
+            width: 100%;
+            text-align: center;
+            @extend %font-m;
+            margin-bottom: 10px;
+        }
+        .detail {
+            padding: 0 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            line-height: 1.8;
+        }
+        .all {
+            position: relative;
+            background: #fcc68c;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+        .all:before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 0;
+            background: url(../images/borderChild.png) repeat-x left top;
+            height: 2px;
+            width: 100%;
+        }
+        .all:after {
+            content: "";
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            background: url(../images/borderChild.png) repeat-x left top;
+            height: 2px;
+            width: 100%;
+        }
+        .qaList {
+            li {
+                a {
+                    .noImage {
+                        .catChild {
+                            width: 90%;
+                            padding-top: 8px;
+                        }
+                        .catMama {
+                            width: 83%;
+                            padding-top: 5px;
+                        }
+                    }
+                    .content {
+                        .articleData {
+                            .comment {
+                                i {
+                                    font-size: 1.4rem;
+                                }
+                            }
+                        }
+                        .articleData:nth-child(1) {
+                            overflow: hidden;
+                            position: static;
+                            width: auto;
+                            .data , .cat {
+                                float: left;
+                            }
+                            .data {
+                                margin: 0 10px 10px 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

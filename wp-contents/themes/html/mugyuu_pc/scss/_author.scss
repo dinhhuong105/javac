@@ -1,0 +1,131 @@
+// main: style.scss
+.mainWrap.author {
+    padding-top: 2px;
+    .mainArea {
+        .profileArea {
+            margin-bottom: 50px;
+            .dataArea {
+                overflow: hidden;
+                position: relative;
+                width: 670px;
+                padding: 0 20px 30px;
+                .imgArea {
+                    float: left;
+                    width: 200px;
+                    height: 200px;
+                    overflow: hidden;
+                    border-radius: 50%;
+                    border: solid 5px #88beeb;
+                    box-sizing: border-box;
+                    margin-right: 20px;
+                }
+                .profile {
+                    overflow: hidden;
+                    width: 450px;
+                    float: left;
+                    .skill {
+                        position: relative;
+                        padding: 0 0 30px 25px;
+                        margin-bottom: 20px;
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            width: 66px;
+                            height: 26px;
+                            background: url(../images/hiyoko.png) no-repeat left bottom;
+                            background-size: 66px 26px;
+                        }
+                        &:after {
+                            position: absolute;
+                            content: '';
+                            width: 100%;
+                            height: 1px;
+                            background: url("../images/border.png") repeat-x left bottom;
+                            left: 70px;
+                            bottom: 8px;
+                        }
+                    }
+                    .profileText {
+                        padding: 0 0 0 25px;
+//                        margin-bottom: 20px;
+                        line-height: 1.6;
+                    }
+                    .snsArea {
+                        overflow: hidden;
+                        position: absolute;
+                        right: 30px;
+                        bottom: 0;
+                        .iconArea {
+                            float: left;
+                            margin-right: 10px;
+                            &:last-child {
+                                margin-right: 0;
+                            }
+                            a {
+                                color: #727272;
+                                height: 27px;
+                                line-height: 27px;
+                                font-size: 2.6rem;
+//                                &:hover {
+//                                    transform: rotateY(180deg);
+//                                }
+                            }
+                            &.pc {
+                                a {
+                                    font-size: 2.4rem;
+                                    i {
+                                        vertical-align: bottom;
+                                    }
+                                    &:hover {
+                                        color: #fc8c96;
+                                    }
+                                }
+                            }
+                            &.fb {
+                                a {
+                                    &:hover {
+                                        color: #315096;
+                                    }
+                                }
+                            }
+                            &.tw {
+                                a {
+                                    &:hover {
+                                        color: #55acee;
+                                    }
+                                }
+                            }
+                            &.inst {
+                                a {
+                                    &:hover {
+                                        color: #3f729b;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .articleListArea {
+            .ttl {
+                text-align: center;
+                padding: 20px;
+                border-top: solid 1px #fc8c96;
+                border-bottom: solid 1px #fc8c96;
+                margin-bottom: 50px;
+            }
+            .articleList {
+                padding: 0 25px;
+                li {
+                    margin-right: 20px;
+                    &:nth-child(2n) {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}

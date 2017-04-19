@@ -1,0 +1,97 @@
+.authorAll {
+    .authorArea {
+        h1 {
+            width: 100%;
+            text-align: center;
+            @extend %font-m;
+            margin-bottom: 10px;
+        }
+        .detail {
+            padding: 0 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.8;
+        }
+        h2 {
+            position: relative;
+            background: #595757;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        h2:before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 0;
+            background: url(../images/border.png) repeat-x left top;
+            height: 2px;
+            width: 100%;
+        }
+        h2:after {
+            content: "";
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            background: url(../images/border.png) repeat-x left top;
+            height: 2px;
+            width: 100%;
+        }
+        .writerType {
+            margin-bottom: 20px;
+            .mg , .sp {
+                position: relative;
+                padding: 0 10px 0 45px;
+            }
+            .mg:before , .sp:before {
+                content: "";
+                position: absolute;
+                top: 5px;
+                left: 10px;
+                height: 5px;
+                width: 25px;
+            }
+            .mg:before {
+                background: #e95383;
+            }
+            .sp:before {
+                background: #7fb9ea;
+            }
+        }
+        .authorList {
+            overflow: hidden;
+            padding: 0 10px;
+            li {
+                float: left;
+                width: 50%;
+                text-align: center;
+                margin-bottom: 30px;
+                a {
+                    img {
+                        width: 140px;
+                        height: 140px;
+                        box-sizing: border-box;
+                        margin-bottom: 5px;
+                        border-radius: 100px;
+                    }
+                    img.mugyuu {
+                        border: solid 2px #e95383;
+                    }
+                    img.special {
+                        border: solid 2px #7fb9ea;
+                    }
+                    .name {
+                        text-align: center;
+                        color: #333333;
+                        padding: 10px 0;
+                    }
+                }
+            }
+//            li:nth-child(2n+1) {
+//                margin-right: 10px;
+//            }
+        }
+    }
+}

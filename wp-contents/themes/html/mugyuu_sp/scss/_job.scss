@@ -1,0 +1,193 @@
+.job {
+    line-height: 1.6;
+    .jobArea {
+        h1.ttl {
+            position: relative;
+            padding: 25px 0 10px;
+            margin-bottom: 20px;
+            img {
+                display: block;
+                width: 267px;
+                margin: 0 auto;
+            }
+        }
+        h1.ttl:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: url(../images/flag.png) repeat-x left top;
+            width: 100%;
+            height: 25px;
+            background-size: 320px 25px;
+        }
+        h1.ttl:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: url(../images/borderJob.png) repeat-x left bottom;
+            width: 100%;
+            height: 6px;
+            background-size: 320px 6px;
+        }
+        p , .snsArea {
+            padding: 0 10px;
+            margin-bottom: 20px;
+        }
+        .snsArea {
+            .web , .fb , .inst {
+                a {
+                    color: #333333;
+                    i {
+                        color: #333333;
+                        margin-right: 10px;
+                    }
+                }
+            }
+            .fb , .inst {
+                a {
+                    i {
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+        }
+        .content {
+            margin: 0 10px 20px;
+            padding: 10px;
+            background: #f6f6f6;
+            section {
+                margin-bottom: 30px;
+                h1 {
+                    border-bottom: solid 1px #c9c9c9;
+                    margin-bottom: 10px;
+                    font-weight: bold;
+                }
+                table {
+                    background: #ffffff;
+                    box-shadow: 0 0  5px rgba(199, 199, 199, 0.5);
+                    margin-bottom: 20px;
+                    th , td {
+                        padding: 10px;
+                        border-bottom: solid 1px #ffffff;
+                    }
+                    th {
+                        width: 35%;
+                        background: #fdafb6;
+                        color: #ffffff;
+                    }
+                    td {
+                        border-bottom: solid 1px #c9c9c9;
+                    }
+                    tr:last-child {
+                        th , td {
+                            border-bottom: none;
+                        }
+                    }
+                }
+            }
+        }
+        .formArea {
+            padding: 0 10px;
+            margin-bottom: 40px;
+            h1 {
+                font-weight: bold;
+            }
+            p {
+                @extend %font-s;
+                margin-bottom: 10px;
+                a {
+                    display: inline;
+                }
+            }
+            span {
+                color: #fe5858;
+            }
+            form {
+                ul {
+                    width: 100%;
+                    border: solid 1px #c9c9c9;
+                    padding: 10px;
+                    box-sizing: border-box;
+                    li {
+                        margin-bottom: 30px;
+                        label {
+                            display: block;
+                            width: 100%;
+                        }
+                        label.radio {
+                            margin-bottom: 5px;
+                        }
+                        label.select {
+                            position: relative;
+                        }
+                        label.select:before {
+                            content: "\f078";
+                            position: absolute;
+                            top: 40px;
+                            right: 5px;
+                            font: normal normal normal 14px/1 FontAwesome;
+                            font-size: 1.2rem;
+                            text-rendering: auto;
+                        }
+                        input , select , textarea {
+                            margin-top: 5px;
+                            border: solid 1px #c9c9c9;
+                            box-sizing: border-box;
+                        }
+                        input[type="text"] , input[type="email"]{
+                            border: solid 1px #c9c9c9;
+                            padding: 10px;
+                            width: 80%;
+                        }
+                        input[type="radio"] {
+                            -webkit-appearance: radio;
+                            -moz-appearance: radio;
+                            appearance: radio;
+                            margin-right: 5px;
+                        }
+                        select {
+//                            display: block;
+//                            position: relative;
+                            -webkit-appearance: none;
+                            -moz-appearance: none;
+                            appearance: none;
+                            padding: 10px;
+                            border: solid 1px #c9c9c9;
+                            border-radius: 0;
+                            background: #ffffff;
+                            width: 100%;
+                            box-sizing: border-box;
+                            option:nth-child(1) {
+                                color: #c9c9c9;
+                            }
+                        }
+                        textarea {
+                            width: 100%;
+                            resize: vertical;
+                        }
+                    }
+                    li:nth-last-child(2) {
+                        margin-bottom: 10px;
+                    } 
+                    li:last-child {
+                        margin-bottom: 20px;
+                        p {
+                            margin-bottom: 20px;
+                        }
+                    }
+                }
+                button {
+                    width: 100%;
+                    background: #fc8c96;
+                    color: #ffffff;
+                    height: 40px;
+                    line-height: 40px;
+                    border-radius: 5px;
+                    font-size: inherit;
+                }
+            } 
+        }
+    }
+}

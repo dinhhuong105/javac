@@ -1,0 +1,116 @@
+// main: style.scss
+.mainWrap.error {
+    padding-top: 2px;
+    .mainArea {
+        .errorArea {
+            position: relative;
+            text-align: center;
+            padding-bottom: 105px;
+            h1 {
+                font-family: 'arial black',sans-serif;
+                line-height: 0.9;
+                margin-bottom: 30px;
+                span {
+                    display: block;
+                    font-weight: bold;
+                    &:nth-child(1) {
+                        font-size: 200px;
+                        color: #fd97a0;
+                    }
+                    &:nth-child(2) {
+                        font-size: 65px;
+                        color: #ffffff;
+                        //                    text-shadow: 2px 2px 0 #fd97a0 , -2px -2px 0 #fd97a0 , 2px -2px 0 #fd97a0 , -2px 2px 0 #fd97a0;
+                        -webkit-text-stroke-color: #fd97a0;
+                        -webkit-text-stroke-width: 3px;
+                    }
+                }
+            }
+            p {
+                position: relative;
+                &:before {
+                    content: 'Sorry!';
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    bottom: -75px;
+                    right: 125px;
+                    font-size: 2rem;
+                    color: #fd97a0;
+                    font-weight: bold;
+                }
+            }
+            &:before , &:after {
+                content: '';
+                position: absolute;
+                background-size: 40px;
+                font-family: 'icomoon';
+                font-size: 9rem;
+                color: #fd97a0;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+            }
+            &:before {
+                content: "\e909";
+                top: -19px;
+                left: 20px;
+                transform: rotate(-20deg);
+                -ms-transform: rotate(-20deg);
+                -moz-transform: rotate(-20deg);
+                -webkit-transform: rotate(-20deg);
+            }
+            &:after {
+                content: "\e908";
+                bottom: 0;
+                right: 25px;
+                transform: rotate(20deg);
+                -ms-transform: rotate(20deg);
+                -moz-transform: rotate(20deg);
+                -webkit-transform: rotate(20deg);
+            }
+        }
+    }
+}
+//firefox
+@-moz-document url-prefix() {
+    .mainWrap.error {
+        .mainArea {
+            .errorArea {
+                h1 {
+                    span:nth-child(2) {
+                        color: #fd97a0;
+                    }
+                }
+            }
+        }
+    }
+}
+//IE
+@media all and (-ms-high-contrast:none){
+    .mainWrap.error {
+        .mainArea {
+            .errorArea {
+                h1 {
+                    span:nth-child(2) {
+                        color: #fd97a0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//IE Edeg
+@supports (-ms-accelerator:true) {
+    .mainWrap.error {
+        .mainArea {
+            .errorArea {
+                h1 {
+                    span:nth-child(2) {
+                        color: #fd97a0;
+                    }
+                }
+            }
+        }
+    }
+}

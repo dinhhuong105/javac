@@ -1,0 +1,143 @@
+/*******
+フォントサイズ
+*************************/
+%font-s {
+    font-size: 1.1rem;
+}
+%font-m {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+/*******
+文字数制限
+*************************/
+%oneLine {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+%towLine {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+
+/*******
+webfont カテゴリアイコン
+*************************/
+@font-face {
+    font-family: 'mugyuu';
+    src:    url('../fonts/icomoon.eot?h9vdbr');
+    src:    url('../fonts/icomoon.eot?h9vdbr#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?h9vdbr') format('truetype'),
+        url('../fonts/icomoon.woff?h9vdbr') format('woff'),
+        url('../fonts/icomoon.svg?h9vdbr#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'mugyuu' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+//こども
+.icon-baby:before {
+    content: "\e904";
+}
+//ママ
+.icon-mama:before {
+    content: "\e905";
+}
+//年齢
+.icon-heart-o:before {
+    content: "\f08a";
+}
+//mugyuu
+.icon-mugyuu:before {
+    content: "\e900";
+}
+//問い合わせ
+.icon-bubbles2:before {
+    content: "\e902";
+}
+//求人
+.icon-important_devices:before {
+    content: "\e912";
+}
+//feedly
+.icon-feedly:before {
+    content: "\e906";
+}
+
+//hatebu
+.icon-hatebu:before {
+    content: "\e901";
+}
+
+//hatebu
+.icon-pocket:before {
+    content: "\e903";
+}
+
+/*******
+タイトル
+*************************/
+%h1 {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 2px 2px #ffffff;
+    position: relative;
+    z-index: 2;
+}
+%color1 {
+    background: #e95383;
+}
+%color2 {
+    background: #7fb9ea;
+}
+%color3 {
+    background: #ecd35d;
+}
+%color4 {
+    background: #6fd74b;
+}
+%ttl1 {
+    transform:rotate(-10deg);
+    -ms-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    margin-right: 4px;
+}
+
+/*******
+角丸
+*************************/
+
+%radius {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+}

@@ -1,0 +1,17 @@
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon
+Icon
+
+# Thumbnails
+._*
+
+# AFP
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk

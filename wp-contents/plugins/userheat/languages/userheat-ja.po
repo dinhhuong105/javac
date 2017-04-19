@@ -1,0 +1,110 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: UserHeat\n"
+"POT-Creation-Date: 2016-07-04 15:38+0900\n"
+"PO-Revision-Date: 2016-07-04 15:42+0900\n"
+"Last-Translator: Yusuke Harada <harada@userlocal.jp>\n"
+"Language-Team: UserLocal, inc\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: D:\\project\\UserHeat\\wordpress\\\n"
+"X-Poedit-SearchPath-0: wp-content\\plugins\\userheat\n"
+
+#: wp-content\plugins\userheat/admin.php:2
+msgid "Admin"
+msgstr "解析画面"
+
+#: wp-content\plugins\userheat/admin.php:3
+msgid "Help"
+msgstr "ヘルプ"
+
+#: wp-content\plugins\userheat/admin.php:4
+msgid "Website"
+msgstr "UserHeat紹介サイト"
+
+#: wp-content\plugins\userheat/admin.php:5
+msgid "About us"
+msgstr "運営会社について"
+
+#: wp-content\plugins\userheat/admin.php:12
+msgid "Check report"
+msgstr "解析結果を見る"
+
+#: wp-content\plugins\userheat/admin.php:16
+msgid "You can check your site heatmap data by free"
+msgstr ""
+"無料ヒートマップツールのUserHeatを利用して、サイト利用者のヒートマップ分析が"
+"可能です。"
+
+#: wp-content\plugins\userheat/admin.php:21
+msgid "Pelese, set your Site ID."
+msgstr ""
+"まだ、サイトIDの設定が行われていないため計測が開始されていません。下記「導入"
+"手順」を参考に導入作業を行ってください。"
+
+#: wp-content\plugins\userheat/admin.php:34
+msgid "Installation"
+msgstr "導入手順"
+
+#: wp-content\plugins\userheat/admin.php:38
+msgid "1. Free registration from"
+msgstr "1. UserHeat登録画面より無料登録を行います。"
+
+#: wp-content\plugins\userheat/admin.php:38
+msgid "here."
+msgstr "UserHeat登録画面はこちら"
+
+#: wp-content\plugins\userheat/admin.php:39
+msgid "2. Get site ID from `Create HTML Tag` page after log in"
+msgstr "2. ログイン後、HTMLタグ発行画面より、サイトIDを取得します。"
+
+#: wp-content\plugins\userheat/admin.php:40
+msgid "3. Register site ID in below form."
+msgstr "3. サイトIDを下記フォームに登録します。"
+
+#: wp-content\plugins\userheat/admin.php:41
+msgid "4. Complete your registration."
+msgstr "4. 設定完了です。"
+
+#: wp-content\plugins\userheat/admin.php:44
+msgid "You can check the heatmap report when access data is accumulated."
+msgstr ""
+"これでしばらく置いておき、ユーザーからのアクセスログが一定以上に溜まると、解"
+"析結果が閲覧できます。"
+
+#: wp-content\plugins\userheat/admin.php:50
+msgid "ID registration"
+msgstr "ID登録"
+
+#: wp-content\plugins\userheat/admin.php:54
+#: wp-content\plugins\userheat/admin.php:55
+msgid "Site ID"
+msgstr "サイトID"
+
+#: wp-content\plugins\userheat/admin.php:56
+msgid "* If you set invalid ID, UserHeat does not work."
+msgstr "※間違えたIDを設定していると計測が行われませんのでご注意ください。"
+
+#: wp-content\plugins\userheat/admin.php:57
+msgid "registration"
+msgstr "登録"
+
+#: wp-content\plugins\userheat/admin.php:58
+msgid "http://en.userheat.com/groups/show_id"
+msgstr "http://userheat.com/groups/show_id"
+
+#: wp-content\plugins\userheat/admin.php:58
+msgid "Show your Site ID."
+msgstr "サイトIDの確認はこちら"
+
+#: wp-content\plugins\userheat/userheat.php:65
+msgid "UserHeat"
+msgstr "UserHeat設定"
+
+#: wp-content\plugins\userheat/userheat.php:102
+msgid "complete your ID"
+msgstr "サイトIDを登録しました。"

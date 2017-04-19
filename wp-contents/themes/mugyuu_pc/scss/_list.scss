@@ -1,0 +1,314 @@
+// main: style.scss
+.mainWrap.list {
+    padding-top: 2px;
+    .mainArea {
+        .articleListArea {
+            .heading {
+                margin-bottom: 0;
+                font-size: 18px;
+            }
+            .ttl {
+                overflow: hidden;
+                position: relative;
+                padding: 30px 20px;
+                margin-bottom: 40px;
+                line-height: 1.6;
+                &:before {
+                    position: absolute;
+                    content: '';
+                    bottom: 0;
+                    left: 0;
+                    width: 66px;
+                    height: 26px;
+                    background: url('../images/hiyoko.png') no-repeat left bottom;
+                    background-size: 66px 26px;
+                }
+                &:after {
+                    position: absolute;
+                    content: '';
+                    width: 100%;
+                    height: 1px;
+                    background: url('../images/border.png') repeat-x left bottom;
+                    left: 70px;
+                    bottom: 8px;
+                }
+            }
+            .articleList {
+                li {
+                    margin-right: 20px;
+                    &:nth-child(2n) {
+                        margin-right: 0;
+                    }
+                    .imgArea {
+                        width: 325px;
+                        height: 200px;
+                    }
+                }
+            }
+        }
+        .categoryArea {
+            .heading:before {
+                background: #fdafb6;
+            }
+        }
+    }
+    &.ranking {
+        .mainArea {
+            .rankingListArea {
+                .tabContentArea {
+                    padding: 0;
+                    .rankingList {
+                        padding: 20px 20px 50px;
+                        li {
+                            width: auto;
+                            height: auto;
+                            background: none;
+                            padding-top: 0;
+                            float: none;
+                            position: relative;
+                            margin-right: 0;
+                            a {
+                                overflow: hidden;
+                                width: auto;
+                                height: auto;
+                            }
+                            .imgArea {
+                                float: left;
+                                margin: 0 10px 0 0;
+                                width: 200px;
+                                height: 150px;
+                            }
+                            .content {
+                                float: left;
+                                width: 420px;
+                                height: 150px;
+                                h2 {
+                                    max-height: 50px;
+                                    font-size: 1.8rem;
+                                    line-height: 1.6;
+                                }
+                                .articleData:last-child {
+                                    position: absolute;
+                                    bottom: 0;
+                                    width: 420px;
+                                }
+                            }
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                            &:before {
+                                content: '';
+                                position: absolute;
+                                top: -10px;
+                                left: -10px;
+                                width: 40px;
+                                height: 40px;
+                                line-height: 40px;
+                                text-align: center;
+                                background: #eb648f;
+                                color: #ffffff;
+                                border-radius: 50%;
+                                z-index: 1;
+                                font-size: 1.8rem;
+                            }
+                            &:nth-child(1):before {
+                                content: '1';
+                            }
+                            &:nth-child(2):before {
+                                content: '2';
+                            }
+                            &:nth-child(3):before {
+                                content: '3';
+                            }
+                            &:nth-child(4):before {
+                                content: '4';
+                            }
+                            &:nth-child(5):before {
+                                content: '5';
+                            }
+                            &:nth-child(6):before {
+                                content: '6';
+                            }
+                            &:nth-child(7):before {
+                                content: '7';
+                            }
+                            &:nth-child(8):before {
+                                content: '8';
+                            }
+                            &:nth-child(9):before {
+                                content: '9';
+                            }
+                            &:nth-child(10):before {
+                                content: '10';
+                            }
+                            &:nth-child(11):before {
+                                content: '11';
+                            }
+                            &:nth-child(12):before {
+                                content: '12';
+                            }
+                            &:nth-child(13):before {
+                                content: '13';
+                            }
+                            &:nth-child(14):before {
+                                content: '14';
+                            }
+                            &:nth-child(15):before {
+                                content: '15';
+                            }
+                            &:nth-child(16):before {
+                                content: '16';
+                            }
+                            &:nth-child(17):before {
+                                content: '17';
+                            }
+                            &:nth-child(18):before {
+                                content: '18';
+                            }
+                            &:nth-child(19):before {
+                                content: '19';
+                            }
+                            &:nth-child(20):before {
+                                content: '20';
+                            }
+                            &:after {
+                                content: '';
+                                position: absolute;
+                                top: -9px;
+                                left: -9px;
+                                width: 38px;
+                                height: 38px;
+                                border: dashed 1px #ffffff;
+                                border-radius: 50%;
+                                z-index: 2;
+                                box-sizing: border-box;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.authorListWrap {
+        .authorTypeArea {
+            margin-bottom: 30px;
+            p {
+                position: relative;
+                padding-left: 60px;
+                height: 20px;
+                line-height: 20px;
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 5px;
+                    left: 10px;
+                    width: 40px;
+                    height: 10px;
+                }
+                &.author:before {
+                    background: #e95383;
+                }
+                &.special:before {
+                    background: #7fb9ea;
+                }
+            }
+        }
+        .articleListArea.author {
+            .authorList {
+                overflow: hidden;
+                li {
+                    width: calc(710px / 3);
+                    float: left;
+                    margin-bottom: 40px;
+                    -webkit-transition: transform 0.2s ease-in;
+                    -moz-transition: transform 0.2s ease-in;
+                    -ms-transition: transform 0.2s ease-in;
+                    transition: transform 0.2s ease-in;
+                    padding: 20px;
+                    box-sizing: border-box;
+                    a {
+                        color: #333333;
+                        .imgArea {
+                            width: 125px;
+                            height: 125px;
+                            border: solid 3px #7fb9ea;
+                            border-radius: 50%;
+                            overflow: hidden;
+                            margin: 0 auto 20px;
+                        }
+                        .name {
+                            text-align: center;
+                        }
+                        &:hover {
+                            -webkit-transform: scale(1.2);
+                            -moz-transform: scale(1.2);
+                            -ms-transform: scale(1.2);
+                            transform: scale(1.2);
+                            .name {
+                                opacity: 0.7;
+                            }
+                        }
+                    }
+                    &.author {
+                        a {
+                            .imgArea {
+                                border: solid 3px #e95383;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.search {
+        .mainArea {
+            .articleListArea {
+                .heading {
+                    margin-bottom: 30px;
+                }
+            }
+        }
+    }
+}
+/* Firefoxのみ */
+@-moz-document url-prefix() {
+    .mainWrap.list {
+        &.ranking {
+            .mainArea {
+                .rankingListArea {
+                    .tabContentArea {
+                        .rankingList {
+                            li {
+                                &:before {
+                                    line-height: 43px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//IE
+@media all and (-ms-high-contrast:none) {
+    .mainWrap.list {
+        &.ranking {
+            .mainArea {
+                .rankingListArea {
+                    .tabContentArea {
+                        .rankingList {
+                            li {
+                                &:before {
+                                    line-height: 45px;
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

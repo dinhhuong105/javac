@@ -1,0 +1,60 @@
+// main: style.scss
+.mainWrap.qa {
+    .mainArea {
+        .qaList {
+            padding: 20px 20px 50px;
+            li {
+                width: auto;
+                background: none;
+                padding-top: 0;
+                float: none;
+                position: relative;
+                margin-right: 0;
+                a {
+                    overflow: hidden;
+                }
+                .imgArea {
+                    overflow: hidden;
+                    float: left;
+                    margin: 0 10px 0 0;
+                    width: 200px;
+                    height: 150px;
+                    .overlay {
+                        .ovWrap {
+                            width: auto;
+                            top: 25px;
+                            left: 20px;
+                            right: 20px;
+                            padding: 24px 0;
+                            i {
+                                font-size: 2.3rem;
+                            }
+                        }
+                    }
+                }
+                .content {
+                    float: left;
+                    width: 420px;
+                    height: 150px;
+                    h2 {
+                        font-size: 1.8rem;
+                        line-height: 1.6;
+                    }
+                    .articleData:last-child {
+                        position: absolute;
+                        bottom: 0;
+                        width: 420px;
+                    }
+                    .pv {
+                        i {
+                            font-size: 1.6rem;
+                        }
+                    }
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

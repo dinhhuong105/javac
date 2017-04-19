@@ -1,0 +1,22 @@
+.company {
+    table {
+        margin: 10px;
+        a {
+            display: inline;
+        }
+        tr {
+            border-bottom: solid 1px #c9c9c9;
+        }
+        tr:last-child {
+            border: none;
+        }
+        th , td {
+            padding: 10px;
+            vertical-align: middle;
+        }
+        th {
+            width: 30%;
+            box-sizing: border-box;
+        }
+    }
+}

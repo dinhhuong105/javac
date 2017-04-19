@@ -1,0 +1,102 @@
+.author {
+    .authorProfileArea {
+        overflow: hidden;
+        padding: 0 10px;
+        margin-bottom: 30px;
+        img {
+            width: 140px;
+            height: 140px;
+            border-radius: 100px;
+            display: block;
+            margin: 0 auto 20px;
+        }
+        img.mugyuu {
+            border: solid 2px #e95383;
+        }
+        img.special {
+            border: solid 2px #7fb9ea;
+        }
+        .name {
+            @extend %font-m;
+            background: url(../images/border.png) repeat-x left bottom;
+            padding-bottom: 10px; 
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .type , .profile {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .profile {
+            line-height: 1.6;
+        }
+        .authorSnsArea {
+            float: right;
+            overflow: hidden;
+            .sns {
+                margin-right: 10px;
+            }
+            .sns:last-child {
+                margin-right: 0;
+            }
+            .web , .fb , .tw , .inst {
+                color: #ffffff;
+                height: 30px;
+                width: 30px;
+                border-radius: 50px;
+                text-align: center;
+                float: left;
+                margin-right: 10px;
+                i {
+                    line-height: 30px;
+                    color: #ffffff;
+                    font-size: 1.6rem;
+                }
+            }
+            .web {
+                background: #fc8c96;
+            }
+            .fb {
+                background: #305097;
+            }
+            .tw {
+                background: #55acee;
+            }
+            .inst {
+                background: #3f729b;
+                i {
+                    font-size: 1.8rem;
+                }
+            }
+        }
+    }
+    .authorArticleArea {
+        .all {
+            position: relative;
+            background: #7fb9ea;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+        .all:before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 0;
+            background: url(../images/borderAge.png) repeat-x left top;
+            height: 2px;
+            width: 100%;
+        }
+        .all:after {
+            content: "";
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            background: url(../images/borderAge.png) repeat-x left top;
+            height: 2px;
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,253 @@
+// main: style.scss
+.mainWrap.itemPost {
+    padding-top: 2px;
+    .itemData {
+        overflow: hidden;
+        margin-bottom: 50px;
+        .imgArea {
+            float: left;
+            width: 300px;
+            height: 300px;
+            margin-right: 20px;
+            img {
+                width: 100%;
+            }
+        }
+        .itemDetail {
+            float: left;
+            width: 390px;
+            h1 {
+                font-size: 2rem;
+                line-height: 1.4;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            .starArea {
+                margin-bottom: 10px;
+                i {
+                    color: #d4d3d3;
+                    font-size: 1.8rem;
+                    &.on {
+                        color: #fcc68c;
+                    }
+                }
+            }
+            .price {
+                margin-bottom: 20px;
+            }
+            h2 {
+                border-bottom: solid 1px #c9c9c9;
+                margin-bottom: 20px;
+            }
+            .itemText {
+                padding: 0 20px 20px;
+                line-height: 1.4;
+            }
+            .officialBtn {
+                a {
+                    width: 350px;
+                    height: 50px;
+                    line-height: 50px;
+                    margin: 0 auto;
+                    color: #fcc68c;
+                    text-align: center;
+                    border: solid 2px #fcc68c;
+                    box-sizing: border-box;
+                    &:hover {
+                        background: #fcc68c;
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+    .reviewsArea {
+        margin-bottom: 50px;
+        h1 {
+            position: relative;
+            overflow: hidden;
+            padding: 20px 20px 25px 20px;
+            margin-bottom: 20px;
+            border-top: solid 1px #9e9e9e;
+            font-size: 1.8rem;
+            &:before {
+                position: absolute;
+                content: '';
+                bottom: 0;
+                left: 0;
+                width: 66px;
+                height: 26px;
+                background: url("../images/hiyoko.png") no-repeat left bottom;
+                background-size: 66px 26px;
+            }
+            &:after {
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 1px;
+                background: url("../images/border.png") repeat-x left bottom;
+                left: 70px;
+                bottom: 8px;
+            }
+        }
+        .reviewList {
+            margin: 0 20px 50px;
+            li {
+                padding: 20px 10px;
+                border-bottom: solid 1px #9e9e9e;
+                &:nth-child(1) {
+                    padding-top: 0;
+                }
+                .dataArea {
+                    overflow: hidden;
+                    margin-bottom: 5px;
+                    p {
+                        float: left;
+                        &.date {
+                            margin-right: 20px;
+                        }
+                        &.name {
+                            i {
+                                margin-right: 5px;
+                                color: #505050;
+                            }
+                        }
+                    }
+                }
+                .starArea {
+                    margin-bottom: 20px;
+                }
+                .contentArea {
+                    line-height: 1.4;
+                    .title {
+                        font-weight: bold;
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+        }
+    }
+    .reviewPostingArea {
+        position: relative;
+        background: #ffffff;
+        padding: 20px 20px 50px;
+        box-shadow: 1px 1px 1px rgba(199, 199, 199, 0.5), -1px -1px 1px rgba(199, 199, 199, 0.5);
+        margin: 0 2px 80px;
+        &:before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            border-top: solid 5px #fc8c96;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .formArea {
+            dl {
+                overflow: hidden;
+                margin-bottom: 20px;
+                &:nth-child(4) {
+                    margin-bottom: 50px;
+                }
+                dt , dd {
+                    float: left;
+                }
+                dt {
+                    width: 190px;
+                    height: 30px;
+                    line-height: 30px;
+                    span {
+                        font-size: 1.2rem;
+                        color: #fe5858;
+                    }
+                }
+                dd {
+                    width: 470px;
+                    input[type="text"] {
+                        width: 470px;
+                        height: 30px;
+                        border: solid 1px #c9c9c9;
+                        padding: 5px;
+                        box-sizing: border-box;
+                    }
+                    .starArea {
+                        height: 30px;
+                        line-height: 30px;
+                        i {
+                            &.star-on {
+                                color: #fcc68c;
+                            }
+                        }
+                    }
+                    textarea {
+                        width: 470px;
+                        border: solid 1px #c9c9c9;
+                        box-sizing: border-box;
+                        resize: vertical;
+                    }
+                }
+            }
+            p {
+                text-align: center;
+                margin-bottom: 20px;
+                a {
+                    display: inline-block;
+                    &:hover {
+                        opacity: 0.6;
+                    }
+                }
+            }
+            button {
+                display: block;
+                width: 300px;
+                height: 50px;
+                line-height: 50px;
+                border: solid 2px #fc8c96;
+                color: #fc8c96;
+                font-size: inherit;
+                margin: 0 auto;
+                background: none;
+                box-sizing: border-box;
+                @extend %transition;
+                &:hover {
+                    background: #fc8c96;
+                    color: #ffffff;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .pulsArea {
+        h1 {
+            position: relative;
+            overflow: hidden;
+            padding: 20px 20px 25px 20px;
+            margin-bottom: 20px;
+            border-top: solid 1px #9e9e9e;
+            font-size: 1.8rem;
+            &:before {
+                position: absolute;
+                content: '';
+                top: auto;
+                bottom: 0;
+                left: 0;
+                width: 66px;
+                height: 26px;
+                background: url("../images/hiyoko.png") no-repeat left bottom;
+                background-size: 66px 26px;
+            }
+            &:after {
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 1px;
+                background: url("../images/border.png") repeat-x left bottom;
+                left: 70px;
+                bottom: 8px;
+            }
+        }
+    }
+}

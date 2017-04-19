@@ -1,0 +1,234 @@
+// main: style.scss
+.mainWrap.author {
+    padding-top: 2px;
+    .mainArea {
+        .profileArea {
+            margin-bottom: 50px;
+            .dataArea {
+                overflow: hidden;
+                position: relative;
+                width: 670px;
+                padding: 0 20px 30px;
+                .imgArea {
+                    float: left;
+                    width: 200px;
+                    height: 200px;
+                    overflow: hidden;
+                    border-radius: 50%;
+                    border: solid 5px #e95383;
+                    box-sizing: border-box;
+                    margin-right: 20px;
+                    img {
+                        min-width: 100%;
+                        max-width: 100%;
+                        height: auto;
+                    }
+                }
+                .profile {
+                    overflow: hidden;
+                    width: 450px;
+                    float: left;
+                    min-height: 200px;
+                    margin-bottom: 30px;
+                    .heading {
+                        padding: 0 0 5px 25px;
+                        margin-bottom: 40px;
+                        .icon-mugyuu {
+                            color: inherit;
+                            -webkit-transform: none;
+                            -moz-transform: none;
+                            -ms-transform: none;
+                            transform: none;
+                            background: none;
+                            box-shadow: none;
+                            width: auto;
+                            height: auto;
+                            font-size: small;
+                            font-weight: normal;
+                            line-height: inherit;
+                        }
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            width: 66px;
+                            height: 26px;
+                            background: url(../images/hiyoko.png) no-repeat left bottom;
+                            background-size: 66px 26px;
+                        }
+                        &:after {
+                            position: absolute;
+                            content: '';
+                            width: 100%;
+                            height: 1px;
+                            background: url("../images/border.png") repeat-x left bottom;
+                            left: 70px;
+                            top: 40px;
+                            bottom: 0;
+                        }
+                    }
+                    .skill {
+                        position: relative;
+                        // padding: 0 0 30px 25px;
+                        padding: 0 0 0 25px;
+                        margin-bottom: 20px;
+                        line-height: 1.6;
+                    }
+                    .profileText {
+                        // padding: 0 0 0 25px;
+                        line-height: 1.6;
+                        width: 395px;
+                        margin: 0 auto;
+                        clear: both;
+                    }
+                }
+                .profileText {
+                    // padding: 0 0 0 25px;
+                    line-height: 1.6;
+                    // width: 395px;
+                    margin: 0 auto;
+                    clear: both;
+                }
+                .snsArea {
+                    overflow: hidden;
+                    position: absolute;
+                    right: 30px;
+                    bottom: 0;
+                    .iconArea {
+                        float: left;
+                        margin-right: 10px;
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                        a {
+                            color: #727272;
+                            height: 27px;
+                            line-height: 27px;
+                            font-size: 2.6rem;
+                        }
+                        &.pc {
+                            a {
+                                font-size: 2.4rem;
+                                i {
+                                    vertical-align: bottom;
+                                }
+                                &:hover {
+                                    color: #fc8c96;
+                                }
+                            }
+                        }
+                        &.fb {
+                            a {
+                                &:hover {
+                                    color: #315096;
+                                }
+                            }
+                        }
+                        &.tw {
+                            a {
+                                &:hover {
+                                    color: #55acee;
+                                }
+                                i {
+                                    font-size: 2.9rem;
+                                }
+                            }
+                        }
+                        &.inst {
+                            a {
+                                &:hover {
+                                    color: #3f729b;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .articleListArea {
+            .ttl {
+                text-align: center;
+                padding: 20px;
+                border-top: solid 1px #fc8c96;
+                border-bottom: solid 1px #fc8c96;
+                margin-bottom: 50px;
+            }
+            .postTypeList {
+                overflow: hidden;
+                margin-bottom: 50px;
+                padding: 0 20px;
+                text-align: left;
+                li {
+                    display: inline-block;
+                    position: relative;
+                    margin-right: 10px;
+                    color: #fc8c96;
+                    border: solid 1px #fc8c96;
+                    font-weight: bold;
+                    border-radius: 50px;
+                    font-size: 1.8rem;
+                    height: 45px;
+                    width: 60px;
+                    box-sizing: border-box;
+                    @extend %transition;
+                    cursor: pointer;
+                    a {
+                        color: #fc8c96;
+                    }
+                    .icon {
+                        position: absolute;
+                        top: 11px;
+                        left: -1px;
+                        right: 0;
+                        bottom: 0;
+                        margin: 0 auto;
+                        width: 23px;
+                        height: 23px;
+                        font-size: 2rem;
+                        @extend %transition;
+                        &.icon-recipe {
+                            font-size: 2rem;
+                        }
+                        &.camera {
+                            font-size: 2rem;
+                            left: 3px;
+                        }
+                    }
+                    &.active {
+                        background: #fc8c96;
+                        color: #ffffff;
+                        a {
+                            color: #ffffff;
+                        }
+                    }
+                    &:hover {
+                        color: #ffffff;
+                        background: #fc8c96;
+
+                        .icon {
+                            color: #ffffff;
+                        }
+                    }
+                }
+            }
+            .tabContentArea {
+                .postContent {
+                    display: none;
+                    &.selected {
+                        display: block;
+                    }
+                }
+            }
+            .articleList {
+                padding: 0 20px;
+                li {
+                    margin-right: 20px;
+                    &:nth-child(2n) {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}

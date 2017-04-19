@@ -1,0 +1,272 @@
+// main: style.scss
+.mainWrap.itemSearchList {
+    padding-top: 2px;
+    .mainArea {
+        .heading {
+            margin-bottom: 0;
+            font-size: 18px;
+            &:before {
+                background: #fba2aa;
+            }
+        }
+        .ttl {
+            overflow: hidden;
+            position: relative;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            &:before {
+                position: absolute;
+                content: '';
+                bottom: 0;
+                left: 0;
+                width: 66px;
+                height: 26px;
+                background: url("../images/hiyoko.png") no-repeat left bottom;
+                background-size: 66px 26px;
+            }
+            &:after {
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 1px;
+                background: url("../images/border.png") repeat-x left bottom;
+                left: 70px;
+                bottom: 8px;
+            }
+        }
+        .searchArea {
+            position: relative;
+            margin: 0 20px 50px;
+            padding-bottom: 50px;
+            &:before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: -20px;
+                width: 710px;
+                height: 2px;
+                background: url(../images/border.png) repeat-x bottom left;
+            }
+            h2 {
+                margin-bottom: 30px;
+            }
+            .searchWrap {
+                padding: 30px 20px 40px;
+                background: #ffffff;
+                box-shadow: 1px 1px 1px rgba(199, 199, 199, 0.5), -1px -1px 1px rgba(199, 199, 199, 0.5);
+                dt {
+                    margin-bottom: 20px;
+                    i {
+                        margin-right: 10px;
+                    }
+                }
+                .catArea {
+                    margin-bottom: 30px;
+                    .select {
+                        position: relative;
+                        width: 340px;
+                        border: solid 1px #c9c9c9;
+                        overflow: hidden;
+                        &:before {
+                            content: "\f107";
+                            position: absolute;
+                            top: 10px;
+                            right: 10px;
+                            font: normal normal normal 14px/1 FontAwesome;
+                            font-size: 2rem;
+                            text-rendering: auto;
+                            z-index: 1;
+                        }
+                        select {
+                            -webkit-appearance: none;
+                            -moz-appearance: none;
+                            appearance: none;
+                            width: 360px;
+                            height: 40px;
+                            padding-left: 10px;
+                            // border: solid 1px #c9c9c9;
+                            border: none;
+                            border-radius: 0;
+                            background: #ffffff;
+                            box-sizing: border-box;
+                        }
+                    }
+                }
+                .tagArea {
+                    margin-bottom: 30px;
+                    .detail {
+                        label {
+                            overflow: hidden;
+                            display: inline-block;
+                            margin-right: 20px;
+                            padding: 5px;
+                            height: 20px;
+                            line-height: 20px;
+                            input[type="checkbox"] {
+                                -webkit-appearance: checkbox;
+                                -moz-appearance: checkbox;
+                                appearance: checkbox;
+                                margin: 4px 5px 0 0;
+                            }
+                            input , p {
+                                float: left;
+                            }
+                        }
+                    }
+                }
+                button {
+                    display: block;
+                    width: 300px;
+                    height: 50px;
+                    line-height: 50px;
+                    border: solid 2px #fc8c96;
+                    color: #fc8c96;
+                    font-size: inherit;
+                    margin: 0 auto;
+                    background: none;
+                    box-sizing: border-box;
+                    @extend %transition;
+                    &:hover {
+                        background: #fc8c96;
+                        color: #ffffff;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .searchResultsArea {
+            overflow: hidden;
+            .termsArea {
+                overflow: hidden;
+                margin-bottom: 20px;
+                .balloonArea {
+                    float: right;
+                    position: relative;
+                    margin: 5px 20px 5px 5px;
+                    background: #ffffff;
+                    box-shadow: 1px 1px 5px rgba(199, 199, 199, 0.5), -1px -1px 5px rgba(199, 199, 199, 0.5);
+                    border-radius: 5px;
+                    padding: 10px 20px 0;
+                    max-width: 585px;
+                    box-sizing: border-box;
+                    &:before, &:after {
+                        content: '';
+                        position: absolute;
+                        top: 20px;
+                        right: -4px;
+                        width: 10px;
+                        height: 10px;
+                        -webkit-transform: rotate(45deg);
+                        -ms-transform: rotate(45deg);
+                        transform: rotate(45deg);
+                    }
+                    &:before {
+                        background: #ffffff;
+                        z-index: 1;
+                    }
+                    &:after {
+                        box-shadow: 1px 1px 5px rgba(199, 199, 199, 0.5), -1px -1px 5px rgba(199, 199, 199, 0.5);
+                        z-index: -1;
+                    }
+                    h1 {
+                        margin-bottom: 15px;
+                        i {
+                            margin-right: 10px;
+                        }
+                    }
+                    .cat {
+                        overflow: hidden;
+                        p {
+                            float: left;
+                            margin: 0 20px 10px 0;
+                        }
+                    }
+                }
+                .babyIcon {
+                    position: relative;
+                    display: block;
+                    float: right;
+                    width: 100px;
+                    height: 90px;
+                    &:before {
+                        content: '\e904';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100px;
+                        height: 90px;
+                        font-family: 'icomoon';
+                        font-size: 7rem;
+                        -webkit-transform: rotate(20deg);
+                        -ms-transform: rotate(20deg);
+                        transform: rotate(20deg);
+                        color: #fcc68d;
+                    }
+                }
+            }
+            .resultsSort {
+                position: relative;
+                float: right;
+                margin: 0 5px 20px 0;
+                width: 130px;
+                overflow: hidden;
+                border: solid 1px #c9c9c9;
+                box-sizing: border-box;
+                // padding: 10px 10px 10px 30px;
+                height: 40px;
+                &:before {
+                    content: "\f0dc";
+                    position: absolute;
+                    top: 14px;
+                    left: 12px;
+                    font: normal normal normal 14px/1 FontAwesome;
+                    font-size: 1.4rem;
+                    text-rendering: auto;
+                    z-index: 1;
+                }
+                select {
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    height: 40px;
+                    padding: 10px 10px 10px 30px;
+                    border: none;
+                    border-radius: 0;
+                    box-sizing: border-box;
+                    width: 160px;
+                    background: transparent;
+                }
+            }
+        }
+    }
+}
+
+//IE
+@media all and (-ms-high-contrast:none) {
+    .mainWrap.itemSearchList {
+        .mainArea {
+            .searchResultsArea {
+                .resultsSort {
+                    &:before {
+                        top: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+//IE Edge
+@supports (-ms-accelerator:true) {
+    .mainWrap.itemSearchList {
+        .mainArea {
+            .searchResultsArea {
+                .resultsSort {
+                    &:before {
+                        top: 12px;
+                    }
+                }
+            }
+        }
+    }
+}

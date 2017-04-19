@@ -1,0 +1,242 @@
+.single {
+    .singleArea {
+        padding: 0 10px;
+        margin-bottom: 40px;
+        .dataArea {
+            overflow: hidden;
+            margin-bottom: 10px;
+            .data , .pv {
+                @extend %font-s;
+            }
+            .data {
+                float: left;
+            }
+            .pv {
+                float: right;
+                i {
+                    color: #fd97a0;
+                    margin-right: 5px;
+                }
+            }
+        }
+        h1 {
+            @extend %font-m;
+            margin-bottom: 10px;
+        }
+        img {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .snsArea {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 20px;
+            .fb , .tw , .hb , .pk {
+                width: calc(100% / 4);
+                float: left;
+                text-align: center;
+                height: 44px;
+                
+                .icon {
+                    color: #ffffff;
+                    @extend %font-m;
+                    line-height: 44px;
+                }
+            }
+            .fb {
+                background: #305097;
+            }
+            .tw {
+                background: #55acee;
+            }
+            .hb {
+                background: #008fde;
+            }
+            .pk {
+                background: #d3505a;
+            }
+        }
+        .content {
+            margin-bottom: 20px;
+            
+            /*******
+            記事デザイン
+            *************************/
+            p {
+                margin-bottom: 10px;
+            }
+            .heading , .subhead , .subhead2 {
+                @extend  %font-m;
+                margin: 20px 0 10px;
+            }
+            .heading {
+                border-bottom: solid 5px #e95383;
+            }
+
+            .subhead {
+                border-top: solid 1px #e95383;
+                border-bottom: solid 1px #e95383;
+                padding: 10px;
+            }
+            .subhead2 {
+                border-left: solid 5px #e95383;
+                padding: 5px 10px;
+            }
+            .bold {
+                font-weight: bold;
+            }
+            .center {
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .youtube {
+                width:90%;
+                margin: 0 auto;
+            }
+            .alignnone {
+                margin: 0 auto!important;
+                display: block!important;
+            }
+            .alignleft {
+                margin: 0 auto!important;
+                display: block!important;
+                float: none;
+            }
+            .alignright {
+                margin: 0 auto!important;
+                display: block!important;
+                float: none;
+            }
+            .aligncenter {
+                margin: 0 auto!important;
+                display: block!important;
+            }
+
+            .blockquote{
+                display:block;
+                background: #fff;
+                padding: 15px 20px 15px 55px;
+                margin: 0 0 20px;
+                position: relative;
+
+                /*Font*/
+                font-family: Georgia, serif;
+                font-size: 16px;
+                line-height: 1.2;
+                color: #666;
+                text-align: justify;
+
+                /*Borders - (Optional)*/
+                /*
+                border-left: 15px solid #c76c0c;
+                border-right: 2px solid #c76c0c;
+                */
+                border: solid 1px #cccccc;
+
+                /*Box Shadow - (Optional)*/
+                -moz-box-shadow: 2px 2px 15px #ccc;
+                -webkit-box-shadow: 2px 2px 15px #ccc;
+                box-shadow: 2px 2px 15px #ccc;
+            }
+
+            .blockquote::before{
+                content: "\201C"; /*Unicode for Left Double Quote*/
+
+                /*Font*/
+                font-family: Georgia, serif;
+                font-size: 60px;
+                font-weight: bold;
+                color: #999;
+
+                /*Positioning*/
+                position: absolute;
+                left: 10px;
+                top:5px;
+            }
+
+            .blockquote::after{
+                /*Reset to make sure*/
+                content: "";
+            }
+
+            .blockquote a{
+                text-decoration: none;
+                background: #eee;
+                cursor: pointer;
+                padding: 0 3px;
+                color: #c76c0c;
+            }
+
+            .blockquote a:hover{
+                color: #666;
+            }
+
+            .blockquote em{
+                font-style: italic;
+            }
+            .strike {
+                text-decoration: line-through;
+                font-size: 1.4rem;
+            }
+
+            .articleList li {
+                list-style-position: inside;
+            }
+        }
+        .writerArea {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            box-shadow: 2px -2px 5px rgba(199,199,199,0.5), -2px 2px 5px rgba(199,199,199,0.5);
+            img {
+                float: left;
+                width: 75px;
+                height: 75px;
+                border-radius: 50px;
+                margin-right: 10px;
+                box-sizing: border-box;
+                margin-bottom: 0;
+            }
+            img.mugyuu {
+                border: solid 2px #e95383;
+            }
+            img.special {
+                border: solid 2px #7fb9ea;
+            }
+            .dataArea {
+                float: left;
+                width: calc(100% - 90px);
+//                padding: 10px;
+                box-sizing: border-box;
+                margin-bottom: 0;
+                .name {
+                    padding: 7px 5px 10px;
+                    margin-bottom: 5px;
+                    background: url(../images/border.png) repeat-x left bottom;
+                }
+                .type , .profile {
+                    padding: 0 5px;
+                    margin-bottom: 5px;
+                    @extend %font-s;
+                }
+                .profile {
+                    @extend %oneLine;
+                }
+            }
+        }
+        .writerArea:before {
+            content: "\f054";
+            position: absolute;
+            top: 44px;
+            bottom: 0;
+            right: 2px;
+            color: #595757;
+            font: normal normal normal 11px/1 FontAwesome;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+        }
+    }
+}

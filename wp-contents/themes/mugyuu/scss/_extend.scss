@@ -1,0 +1,217 @@
+// main: style.scss
+/*******
+webfont カテゴリアイコン
+*************************/
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?ies58p');
+  src:  url('../fonts/icomoon.eot?ies58p#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?ies58p') format('truetype'),
+    url('../fonts/icomoon.woff?ies58p') format('woff'),
+    url('../fonts/icomoon.svg?ies58p#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shoes:before {
+  content: "\e90d";
+}
+.icon-book2:before {
+  content: "\e900";
+}
+.icon-hatebu:before {
+  content: "\e90c";
+}
+.icon-uma:before {
+  content: "\e901";
+}
+.icon-pocket:before {
+  content: "\e902";
+}
+.icon-feedly:before {
+  content: "\e903";
+}
+.icon-book:before {
+  content: "\e904";
+}
+.icon-baby:before {
+  content: "\e905";
+}
+.icon-baby404:before {
+  content: "\e906";
+}
+.icon-fashion3:before {
+  content: "\e907";
+}
+.icon-mama:before {
+  content: "\e908";
+}
+.icon-mama404:before {
+  content: "\e909";
+}
+.icon-mugyuu:before {
+  content: "\e90a";
+}
+.icon-recipe:before {
+  content: "\e90b";
+}
+
+
+
+
+/*******
+アニメーション系
+*************************/
+%transition {
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+// レシピ
+@keyframes animation-recipe {
+    from{
+        -ms-transform:rotate(0deg);
+        -webkit-transform:rotate(0deg);
+        transform:rotate(0deg);
+    }
+    to{
+        -ms-transform:rotate(360deg);
+        -webkit-transform:rotate(360deg);
+        transform:rotate(360deg);
+    }
+}
+
+
+// 関連アイコン
+@keyframes bounce {
+    0% {
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        transform:translateY(0);
+    }
+    5% {
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        transform:translateY(0);
+    }
+    10% {
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        transform:translateY(0);
+    }
+    20% {
+        -webkit-transform:translateY(-5px);
+        -moz-transform:translateY(-5px);
+        transform:translateY(-5px);
+    }
+    25% {
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        transform:translateY(0);
+    }
+    30% {
+        -webkit-transform:translateY(-5px);
+        -moz-transform:translateY(-5px);
+        transform:translateY(-5px);
+    }
+    50% {
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        transform:translateY(0);
+    }
+    100% {
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        transform:translateY(0);
+    }
+}
+
+/*******
+文字数制限
+*************************/
+%oneLine {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+%towLine {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+/*******
+タイトル
+*************************/
+%h1 {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 2px 2px #ffffff;
+    position: relative;
+    z-index: 2;
+    font-size: 2rem;
+    will-change: transform;
+}
+%color1 {
+    background: #e95383;
+}
+%color2 {
+    background: #7fb9ea;
+}
+%color3 {
+    background: #ecd35d;
+}
+%color4 {
+    background: #6fd74b;
+}
+%ttl1 {
+    transform:rotate(-10deg);
+    -ms-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    margin-right: 4px;
+}
+
+/*******
+角丸
+*************************/
+
+%radius {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+}
+
+/*******
+フォント
+*************************/
+%red {
+    color: #fe5858;
+}

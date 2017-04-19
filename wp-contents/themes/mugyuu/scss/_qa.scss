@@ -1,0 +1,67 @@
+// main: style.scss
+.mainWrap.qa {
+    .mainArea {
+        .qaListArea {
+            .qaList {
+                padding: 20px 20px 50px;
+                li {
+                    width: auto;
+                    height: auto;
+                    background: none;
+                    padding-top: 0;
+                    float: none;
+                    position: relative;
+                    margin-right: 0;
+                    a {
+                        overflow: hidden;
+                        width: auto;
+                        height: auto;
+                    }
+                    .imgArea {
+                        overflow: hidden;
+                        float: left;
+                        margin: 0 10px 0 0;
+                        width: 200px;
+                        height: 150px;
+                        .overlay {
+                            .ovWrap {
+                                width: auto;
+                                top: 25px;
+                                left: 20px;
+                                right: 20px;
+                                padding: 24px 0;
+                                i {
+                                    font-size: 2.3rem;
+                                }
+                            }
+                        }
+                    }
+                    .content {
+                        float: left;
+                        width: 420px;
+                        height: 150px;
+                        h2 {
+                            font-size: 1.8rem;
+                            line-height: 1.6;
+                            min-height: 45px;
+                            max-height: 55px;
+                        }
+                        .articleData:last-child {
+                            position: absolute;
+                            bottom: 0;
+                            width: 420px;
+                        }
+                        .pv {
+                            i {
+                                font-size: 1.6rem;
+                            }
+                        }
+                    }
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

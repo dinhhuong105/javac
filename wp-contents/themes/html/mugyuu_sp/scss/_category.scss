@@ -1,0 +1,43 @@
+.category {
+    .categoryArea {
+        h1 {
+            width: 100%;
+            text-align: center;
+            @extend %font-m;
+            margin-bottom: 10px;
+        }
+        .detail {
+            padding: 0 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            line-height: 1.8;
+        }
+        .all {
+            position: relative;
+            background: #7fb9ea;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+        .all:before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 0;
+            background: url(../images/borderAge.png) repeat-x left top;
+            height: 2px;
+            width: 100%;
+        }
+        .all:after {
+            content: "";
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            background: url(../images/borderAge.png) repeat-x left top;
+            height: 2px;
+            width: 100%;
+        }
+    }
+}

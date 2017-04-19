@@ -1,0 +1,160 @@
+// main: style.scss
+/*******
+webfont カテゴリアイコン
+*************************/
+@font-face {
+    font-family: 'icomoon';
+    src:    url('../fonts/icomoon.eot?a7h6hm');
+    src:    url('../fonts/icomoon.eot?a7h6hm#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?a7h6hm') format('truetype'),
+        url('../fonts/icomoon.woff?a7h6hm') format('woff'),
+        url('../fonts/icomoon.svg?a7h6hm#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-book:before {
+    content: "\e90c";
+}
+.icon-mama:before {
+    content: "\e905";
+}
+.icon-mama404:before {
+    content: "\e908";
+}
+.icon-baby404:before {
+    content: "\e909";
+}
+.icon-feedly:before {
+    content: "\e906";
+}
+.icon-heart:before {
+    content: "\e90d";
+}
+.icon-2:before {
+    content: "\e907";
+}
+.icon-mugyuu:before {
+    content: "\e900";
+}
+.icon-baby:before {
+    content: "\e904";
+}
+.icon-hatebu:before {
+    content: "\e901";
+}
+.icon-pocket:before {
+    content: "\e903";
+}
+.icon-play:before {
+    content: "\e90b";
+}
+.icon-video-camera:before {
+    content: "\e90a";
+}
+.icon-bubbles2:before {
+    content: "\e902";
+}
+.icon-important_devices:before {
+    content: "\e912";
+}
+
+
+
+
+
+/*******
+アニメーション系
+*************************/
+%transition {
+    transition: all 0.2s ease-in;
+}
+
+
+/*******
+文字数制限
+*************************/
+%oneLine {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+%towLine {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+/*******
+タイトル
+*************************/
+%h1 {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 2px 2px #ffffff;
+    position: relative;
+    z-index: 2;
+    font-size: 2rem;
+}
+%color1 {
+    background: #e95383;
+}
+%color2 {
+    background: #7fb9ea;
+}
+%color3 {
+    background: #ecd35d;
+}
+%color4 {
+    background: #6fd74b;
+}
+%ttl1 {
+    transform:rotate(-10deg);
+    -ms-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    margin-right: 4px;
+}
+
+/*******
+角丸
+*************************/
+
+%radius {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+}
+
+/*******
+フォント
+*************************/
+%red {
+    color: #fe5858;
+}
