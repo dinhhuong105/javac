@@ -2715,3 +2715,14 @@ function comment_comparator($a, $b)
     }
     return $compared;
 }
+
+/**
+ * Detect is tablet
+ * @author Hung Nguyen
+ */
+function cf_is_tablet() {
+    if (preg_match('/(tablet|ipad|playbook)|(android(?!.*(mobi|opera mini)))/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
+        return true;
+    }
+    return false;
+}

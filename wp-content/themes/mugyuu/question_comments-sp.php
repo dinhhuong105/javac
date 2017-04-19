@@ -69,7 +69,7 @@
                 usort($comment_arr, 'comment_comparator');
                 $resource = $comment_arr;
             }
-            wp_list_comments($args,$resource); 
+            ($resource == null)?wp_list_comments($args):wp_list_comments($args,$resource); 
         ?>
 	</ul>
 	 <?php endif; ?>
@@ -105,7 +105,7 @@
                                     <?php foreach ($question['answer'] as $anskey => $ansval) {
                                         ?>
                                     <label>
-                                        <input value="<?=$anskey?>" name="answer[<?=$qkey?>][]" type="checkbox" id="<?=$anskey?>" required="required"><?=$ansval?>
+                                        <input value="<?=$anskey?>" name="answer[<?=$qkey?>][]" type="checkbox" id="option-<?=$anskey?>" required ><?=$ansval?>
                                     </label>
                                         <?php
                                     } ?>
@@ -119,7 +119,7 @@
                                 <?php foreach ($question['answer'] as $anskey => $ansval) {
                                     ?>
                                     <label >
-                                        <input value="<?=$anskey?>" name="answer[<?=$qkey?>][]" type="radio" required="required"><?=$ansval?>
+                                        <input value="<?=$anskey?>" name="answer[<?=$qkey?>][]" type="radio" required><?=$ansval?>
                                     </label>
                                 <?php
                                 } ?>
@@ -130,7 +130,7 @@
                             <li class="editFrom">
                                 <h3><?=$question['question']?><span class="red">※</span></h3>
                                 <label for="select" class="selectArea">
-                                    <select name="answer[<?=$qkey?>][]" id="select" required="required" class="selectArea">
+                                    <select name="answer[<?=$qkey?>][]" id="select" required class="selectArea">
                                     <?php foreach ($question['answer'] as $anskey => $ansval) {
                                         ?>
                                         <option value="<?=$anskey?>"><?=$ansval?></option>
@@ -144,14 +144,14 @@
                             ?>
                             <li>
                                 <h3><?=$question['question']?><span class="red">※</span></h3>
-                                <input name="answer[<?=$qkey?>][textbox]" type="text" placeholder="回答を入力してください" required="required">
+                                <input name="answer[<?=$qkey?>][textbox]" type="text" placeholder="回答を入力してください" required>
                             </li>
                             <?php
                         }elseif($question['type'] == 'textarea'){
                             ?>
                             <li>
                                 <h3><?=$question['question']?><span class="red">※</span></h3>
-                                <textarea name="answer[<?=$qkey?>][textarea]" placeholder="回答を入力してください" required="required"></textarea>
+                                <textarea name="answer[<?=$qkey?>][textarea]" placeholder="回答を入力してください" required></textarea>
                             </li>
                             <?php
                         }
@@ -161,7 +161,7 @@
                     <h3>コメント<span class="red">※</span></h3>
                     <p>参考になるような意見を書いてね！誹謗中傷コメントは消しちゃうよ！的な注意コメント入れる</p>
                     <div class="textArea">
-                        <textarea name="comment" required cols="30" rows="10" required="required"></textarea>
+                        <textarea name="comment" required cols="30" rows="10" required></textarea>
                     </div>
                 </li>
                 <li>
@@ -171,4 +171,21 @@
             </ul>
         </form>
 </section>
+<script type="text/javascript">
+    // Sort list comment
+    $('#qaSort').on("change", function(e){
+        var target = $(this);
+        var current_link = window.location.origin + window.location.pathname;
+        window.location = current_link + '?comment_order_by=' + target.val();
+    });
+
+    $('button[type=submit]').on('click',function(){
+        $cbx_group = $("input:checkbox[id^='option-']"); // name is not always helpful ;)
+        $cbx_group.prop('required', true);
+        if($cbx_group.is(":checked")){
+          $cbx_group.prop('required', false);
+        }
+    });
+    
+</script>
 <?php add_comment_on_notice(get_the_ID()) ?>
