@@ -3249,3 +3249,38 @@ header .sb-slide h1.is_add_button {
     border-radius: 5px
 }
 /* Image of comment */
+/* Pagination comment list */
+.notice_pagination .page-numbers {
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    border: solid 1px #fc8c96;
+    box-sizing: border-box;
+    background: #fff;
+    color: #fc8c96;
+    display: inline-block;
+    margin-right: 10px;
+
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+}
+.notice_pagination span.current {
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    border: solid 1px #fc8c96;
+    box-sizing: border-box;
+    background: #fc8c96;
+    color: #fff;
+}
+.qaSingle .commentFormArea:before{
+    top: 0!important;
+}
+.qaSingle .commentFormArea{
+    margin-top: 10px;
+    padding-top: 20px;
+}
+/* Pagination comment list */

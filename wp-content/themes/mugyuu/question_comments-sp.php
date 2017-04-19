@@ -2,32 +2,6 @@
     .answerList label.check:before{
         content: "✓";
     }
-    .pagination .page-numbers {
-        width: 26px;
-        height: 26px;
-        line-height: 26px;
-        border: solid 1px #fc8c96;
-        box-sizing: border-box;
-        background: #fff;
-        color: #fc8c96;
-        display: inline-block;
-        margin-right: 10px;
-
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        -ms-border-radius: 3px;
-        -o-border-radius: 3px;
-        border-radius: 3px;
-    }
-    .pagination span.current {
-        width: 26px;
-        height: 26px;
-        line-height: 26px;
-        border: solid 1px #fc8c96;
-        box-sizing: border-box;
-        background: #fc8c96;
-        color: #fff;
-    }
     .qaSingle .commentFormArea:before{
         top: 0!important;
     }
@@ -75,7 +49,7 @@
 	 <?php endif; ?>
 	 <?php
 	     if(get_comment_pages_count() > 1){
-	         echo '<div style="margin-top:20px; text-align:center;" class="pagination">';
+	         echo '<div style="margin-top:20px; text-align:center;" class="notice_pagination">';
 	         //ページナビゲーションの表示
 	         paginate_comments_links([
                 'next_text'    => __('›'),

@@ -40,9 +40,12 @@
 	 <?php endif; ?>
 	 <?php
 	     if(get_comment_pages_count() > 1){
-	         echo '<div style="margin-top:15px; text-align:center;">';
+	         echo '<div style="margin-top:15px; text-align:center;" class="notice_pagination">';
 	         //ページナビゲーションの表示
-	         paginate_comments_links();
+	         paginate_comments_links([
+                'next_text'    => __('›'),
+                'prev_text'    => __('‹')
+                ]);
 	         echo '</div>';
 	     }
      ?>

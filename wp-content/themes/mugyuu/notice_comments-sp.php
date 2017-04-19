@@ -1,8 +1,8 @@
 <section class="commentArea">
 	<label for="qaSort" class="sortWrap">
 		<select id="qaSort" name="qaSort" class="sort">
-			<option value="new" <?php if($_GET['comment_order_by'] == 'new') echo 'selected' ?>>古い順</option>
-			<option value="old" <?php if($_GET['comment_order_by'] == 'old') echo 'selected' ?>>新着順</option>
+			<option value="new" <?php if($_GET['comment_order_by'] == 'new') echo 'selected' ?>>新着順</option>
+			<option value="old" <?php if($_GET['comment_order_by'] == 'old') echo 'selected' ?>>古い順</option>
 			<option value="like_count" <?php if($_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
 		</select>
 	</label>
@@ -40,45 +40,42 @@
 	 <?php endif; ?>
 	 <?php
 	     if(get_comment_pages_count() > 1){
-	         echo '<div style="margin-top:15px; text-align:center;">';
+	         echo '<div style="margin-top:15px; text-align:center;" class="notice_pagination">';
 	         //ページナビゲーションの表示
-	         paginate_comments_links();
+	         paginate_comments_links([
+                'next_text'    => __('›'),
+                'prev_text'    => __('‹')
+                ]);
 	         echo '</div>';
 	     }
      ?>
 </section>
 <section class="commentFormArea" id="send">
-	<div class="commentFormWrap">
-    	<div class="ttlArea">
-            <h2>コメントを投稿する</h2>
-            <p>
-                <span class="red">※</span>は必須項目になります。
-            </p>
-        </div>
-    	<form action="" id="formComment" method="POST">
-            <ul>
-                <li>
-                    <h3>ニックネーム<span class="red">※</span></h3>
-                    <input type="text" name="name" required placeholder="ニックネームを入力してください">
-                </li>
-                <li>
-                    <h3>コメント<span class="red">※</span></h3>
-                    <p>参考になるような意見を書いてね！誹謗中傷コメントは消しちゃうよ！的な注意コメント入れる</p>
-                    <div class="textArea" id="contentArea">
-                        <textarea name="comment" id="thread_content" required cols="30" rows="10"></textarea>
-                        <label class="imgBtn">
-                            <i class="fa fa-camera" aria-hidden="true"></i>画像を選択する
-                            <input type="file" id="content_image" name="content_image">
-                        </label>
-                    </div>
-                </li>
-                <li>
-                	<input type="hidden" name="submitted" id="submitted" value="true" />
-                    <button type="submit" name="action" value="send" class="sendBtn">コメントを投稿</button>
-                </li>
-            </ul>
-        </form>
-	</div>
+    <h1>コメントを投稿する</h1>
+    <p class="notes"><sup class="red">※</sup>は必須項目になります。</p>
+	<form action="" id="formComment" method="POST">
+        <ul>
+            <li>
+                <h3>ニックネーム<span class="red">※</span></h3>
+                <input type="text" name="name" required placeholder="ニックネームを入力してください">
+            </li>
+            <li>
+                <h3>コメント<span class="red">※</span></h3>
+                <p class="notes">参考になるような意見を書いてね！誹謗中傷コメントは消しちゃうよ！的な注意コメント入れる</p>
+                <div class="textArea" id="contentArea">
+                    <textarea name="comment" id="thread_content" required cols="30" rows="10"></textarea>
+                    <label class="imgBtn">
+                        <i class="fa fa-camera" aria-hidden="true"></i>画像を選択する
+                        <input type="file" id="content_image" name="content_image">
+                    </label>
+                </div>
+            </li>
+            <li>
+            	<input type="hidden" name="submitted" id="submitted" value="true" />
+                <button type="submit" name="action" value="send" class="sendBtn">コメントを投稿</button>
+            </li>
+        </ul>
+    </form>
 </section>
 <script>
 	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
