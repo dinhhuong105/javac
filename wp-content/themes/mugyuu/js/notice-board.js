@@ -14,8 +14,15 @@ $("#thread_thumb").change(function(){
     readURL(this);
 });
 
+var image_nums = 0;
+$('#thread_content').bind('input propertychange', function() {
+	var content_html = $("<div></div>");
+	content_html.html($(this).val());
+	image_nums = content_html.find('img').length;
+});
+
 $(".imgBtn").click(function(e){
-	if(count_upload > max_upload_picture){
+	if(image_nums >= max_upload_picture){
 		alert("写真の添付可能枚数は○枚です。");
 		e.preventDefault();
 		return false;
@@ -24,7 +31,7 @@ $(".imgBtn").click(function(e){
 
 $("#content_image").change(function(e){
 	e.preventDefault();
-	if(count_upload > max_upload_picture){
+	if(image_nums >= max_upload_picture){
 		alert("写真の添付可能枚数は○枚です。");
 		return false;
 	}
@@ -49,6 +56,7 @@ $("#content_image").change(function(e){
             	var html_image = '<img src="'+response['image_link']+'" alt="'+response['image_title']+'" width="960" height="1280" class="alignnone size-full wp-image-'+response['id']+'" />';
             	//$('#thread_content').append(html_image);
             	$('#thread_content').val( $('#thread_content').val() + " " + html_image );
+            	$('#contentArea').trigger('input');
             	count_upload ++;
             }
         }
@@ -67,7 +75,7 @@ $(function () {
         drop: function(e) {
             e.stopPropagation();
             e.preventDefault();
-            if(count_upload > max_upload_picture){
+            if(image_nums >= max_upload_picture){
     			alert("写真の添付可能枚数は○枚です。");
     			return false;
         	}
