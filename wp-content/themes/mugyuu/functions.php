@@ -2636,6 +2636,9 @@ function add_comment_on_questions($post_id) {
         $comment_id = wp_insert_comment($data);
         
         add_comment_meta( $comment_id, '_question_comment', $_POST['answer'] );
+        
+        wp_redirect( get_post_permalink($post_id) );
+        exit;
     }
 }
 
