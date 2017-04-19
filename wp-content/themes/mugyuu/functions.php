@@ -2531,7 +2531,7 @@ function add_comment_on_notice($post_id) {
 
 function upload_image_thread() {
     $file = 'content_image';
-    $attach_id = media_handle_upload( $file, $_POST['next_post_id'] );
+    $attach_id = media_handle_upload( $file );
     $post_image = get_post($attach_id);
     $image_link = $post_image->guid;
     $image_title = $post_image->post_title;
