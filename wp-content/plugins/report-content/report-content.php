@@ -170,7 +170,7 @@ function wprc_add_report_button_filter($content)
 	return $form_html . $content;
 }
 
-add_filter('the_content', 'wprc_add_report_button_filter', 99);
+//add_filter('the_content', 'wprc_add_report_button_filter', 99);
 
 function wprc_report_submission_form()
 {
