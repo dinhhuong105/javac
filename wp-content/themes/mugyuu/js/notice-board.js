@@ -1,5 +1,5 @@
 // Check max upload image
-var count_upload = 1;
+//var count_upload = 1;
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -57,7 +57,7 @@ $("#content_image").change(function(e){
             	//$('#thread_content').append(html_image);
             	$('#thread_content').val( $('#thread_content').val() + " " + html_image );
             	$('#thread_content').trigger('input');
-            	count_upload ++;
+            	//count_upload ++;
             }
         }
     });
