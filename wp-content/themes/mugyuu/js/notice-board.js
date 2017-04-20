@@ -23,7 +23,7 @@ $('#thread_content').bind('input propertychange', function() {
 
 $(".imgBtn").click(function(e){
 	if(image_nums >= max_upload_picture){
-		alert("写真の添付可能枚数は○枚です。");
+		alert("写真の添付可能枚数は"+max_upload_picture+"枚です。");
 		e.preventDefault();
 		return false;
 	}
@@ -32,7 +32,7 @@ $(".imgBtn").click(function(e){
 $("#content_image").change(function(e){
 	e.preventDefault();
 	if(image_nums >= max_upload_picture){
-		alert("写真の添付可能枚数は○枚です。");
+		alert("写真の添付可能枚数は"+max_upload_picture+"枚です。");
 		return false;
 	}
     var target = this;
@@ -76,7 +76,7 @@ $(function () {
             e.stopPropagation();
             e.preventDefault();
             if(image_nums >= max_upload_picture){
-    			alert("写真の添付可能枚数は○枚です。");
+    			alert("写真の添付可能枚数は"+max_upload_picture+"枚です。");
     			return false;
         	}
             $("#content_image").prop("files", e.originalEvent.dataTransfer.files);
