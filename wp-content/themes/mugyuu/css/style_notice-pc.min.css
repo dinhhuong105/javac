@@ -882,7 +882,7 @@ header:before {
 }
 .rankingListArea .tabContentArea .rankingList li a {
     width: auto;
-    height: auto
+    /*height: auto*/
 }
 .rankingListArea .tabContentArea .rankingList li .imgArea {
     overflow: hidden;
