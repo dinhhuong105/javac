@@ -94,7 +94,8 @@
 }
 
 #the-comment-list td.comment img {
-	max-width: 100%;
+	max-width: 90%;
+	height: auto;
 }
 
 /* Welcome Panel */

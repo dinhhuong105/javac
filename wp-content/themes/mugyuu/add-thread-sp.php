@@ -30,7 +30,7 @@
                         </div>
                     </li>
                 </ul>
-                <ul class="answerInpotList">
+                <!--<ul class="answerInpotList">
                 	<li>
                 		<div class="checkArea">
                             <label for="anonymous">
@@ -41,12 +41,12 @@
                             </label>
                         </div>
                 	</li>
-                </ul>
+                </ul>-->
                 <ul class="categoryArea">
                 	<li>
                     	<label for="select" class="selectArea">
                     	<select name="parent_cat" id="parent_cat"> 
-                            <option value="0"><?php echo esc_attr_e( 'The parent category', 'textdomain' ); ?></option> 
+                            <option value="0">親カテゴリー</option> 
                             <?php 
                             $categories = get_categories( array( 'parent' => 0, 'hide_empty'=>false ) );
                             foreach ( $categories as $category ) {
@@ -58,10 +58,10 @@
                             ?>
                         </select>
                     	<select name="child_cat" id="child_cat">
-                    		<option value="0"><?php echo esc_attr_e( 'Child category', 'textdomain' ); ?></option>
+                    		<option value="0">子カテゴリー</option>
                     	</select>
                     	<select name="grandchild_cat" id="grandchild_cat" class="cd-select">
-                    		<option value="0"><?php echo esc_attr_e( 'Grandchild category', 'textdomain' ); ?></option>
+                    		<option value="0">孫カテゴリー</option>
                     	</select>
                     	</label>
                 	</li>
@@ -72,37 +72,6 @@
         </section>
     </div>
 <?php get_footer(); ?>
-<style>
-li .selectArea select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    padding: 5px 30px 5px 10px;
-    border: solid 1px #c9c9c9;
-    border-radius: 5px;
-}
-.categoryArea {
-    margin-bottom: 5%;
-    text-align: center;
-    margin-left: 2%;
-}
-.answerInpotList {
-    margin-bottom: 5%;
-    text-align: center;
-}
-.categoryArea li select {
-    width: 30%;
-    margin-right: 2%;
-    background-color: #DCDCDC;
-}
-.answerInpotList li div label{
-    width: 40%;
-    margin-right: 5%;
-}
-.answerInpotList li div label input{
-    margin-right: 5px;
-}
-</style>
 <script>
 	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
 	var max_upload_picture = "<?php echo get_option('spc_options')['thread_img_no']; ?>";

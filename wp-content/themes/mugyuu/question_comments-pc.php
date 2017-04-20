@@ -2,28 +2,6 @@
     .answerList label.check:before{
         content: "✓";
     }
-    .pagination .page-numbers {
-        display: inline-block;  
-        border: solid 1px #fc8c96;
-        border-radius: 3px;
-        min-width: 42px;
-        min-height: 42px;
-        box-sizing: border-box;
-        margin-right: 10px;
-        vertical-align: middle;
-        line-height: 40px;
-        display: inline-block;
-        margin-right: 10px;
-        color: #fc8c96;
-    }
-    .pagination span.current {
-        background: #fc8c96;
-        color: #fff;
-    }
-    .pagination a.page-numbers:hover {
-        background: #fc8c96;
-        color: #fff;
-    }
     .qaSingle .commentFormArea:before{
         top: 0!important;
     }
@@ -68,7 +46,7 @@
 	 <?php endif; ?>
 	 <?php
 	     if(get_comment_pages_count() > 1){
-	         echo '<div style="margin-top:20px; text-align:center;" class="pagination">';
+	         echo '<div style="margin-top:20px; text-align:center;" class="notice_pagination">';
 	         //ページナビゲーションの表示
 	         paginate_comments_links([
                 'next_text'    => __('›'),
@@ -93,7 +71,6 @@
                     <input required type="text" name="name" placeholder="ニックネームを入力してください">
                 </li>
                 <?php 
-                    var_dump($questions);
                     foreach ($questions[$post->ID] as $qkey => $question) {
                         if($question['type'] == 'checkbox'){
                             ?>
@@ -160,11 +137,11 @@
                     <p class="notes">
                         参考になるような意見を書いてね！誹謗中傷コメントは消しちゃうよ！的な注意コメント入れる
                     </p>
-                    <div class="textArea">
-                        <textarea required cols="30" rows="10" name="comment"></textarea>
+                    <div class="textArea" id="contentArea">
+                        <textarea name="comment" id="thread_content" required cols="30" rows="10" name="comment"></textarea>
                         <label class="imgBtn">
                             <i class="fa fa-camera" aria-hidden="true"></i>画像を選択する
-                            <input type="file">
+                            <input type="file" id="content_image" name="content_image">
                         </label>
                     </div>
                 </li>
@@ -180,21 +157,16 @@
     </div>
 </section>
 <script type="text/javascript">
-    // Sort list comment
-    $('#qaSort').on("change", function(e){
-        var target = $(this);
-        var current_link = window.location.origin + window.location.pathname;
-        window.location = current_link + '?comment_order_by=' + target.val();
-    });
+	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+	var max_upload_picture = "<?php echo get_option('spc_options')['a_img_no']; ?>";
 
-    $('button[type=submit]').on('click',function(){
+	$('button[type=submit]').on('click',function(){
         $cbx_group = $("input:checkbox[id^='option-']"); // name is not always helpful ;)
         $cbx_group.prop('required', true);
         if($cbx_group.is(":checked")){
           $cbx_group.prop('required', false);
         }
     });
-    
 </script>
-
+<script src="<?php bloginfo('template_directory'); ?>/js/notice-board.js"></script>
 <?php add_comment_on_questions(get_the_ID()) ?>

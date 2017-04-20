@@ -2531,7 +2531,7 @@ function add_comment_on_notice($post_id) {
 
 function upload_image_thread() {
     $file = 'content_image';
-    $attach_id = media_handle_upload( $file, $_POST['next_post_id'] );
+    $attach_id = media_handle_upload( $file );
     $post_image = get_post($attach_id);
     $image_link = $post_image->guid;
     $image_title = $post_image->post_title;
@@ -2636,6 +2636,9 @@ function add_comment_on_questions($post_id) {
         $comment_id = wp_insert_comment($data);
         
         add_comment_meta( $comment_id, '_question_comment', $_POST['answer'] );
+        
+        wp_redirect( get_post_permalink($post_id) );
+        exit;
     }
 }
 
@@ -2711,7 +2714,7 @@ function comment_comparator($a, $b)
     $b_count = get_comment_meta( $b->comment_ID, 'cld_like_count', true );
     if($a_count != $b_count)
     {
-        $compared = $a_count < $b_count ? 1:-1;
+        $compared = $a_count > $b_count ? 1:-1;
     }
     return $compared;
 }

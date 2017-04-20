@@ -1,5 +1,5 @@
 // Check max upload image
-var count_upload = 1;
+//var count_upload = 1;
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -14,9 +14,16 @@ $("#thread_thumb").change(function(){
     readURL(this);
 });
 
+var image_nums = 0;
+$('#thread_content').bind('input propertychange', function() {
+	var content_html = $("<div></div>");
+	content_html.html($(this).val());
+	image_nums = content_html.find('img').length;
+});
+
 $(".imgBtn").click(function(e){
-	if(count_upload > max_upload_picture){
-		alert("写真の添付可能枚数は○枚です。");
+	if(image_nums >= max_upload_picture){
+		alert("写真の添付可能枚数は"+max_upload_picture+"枚です。");
 		e.preventDefault();
 		return false;
 	}
@@ -24,8 +31,8 @@ $(".imgBtn").click(function(e){
 
 $("#content_image").change(function(e){
 	e.preventDefault();
-	if(count_upload > max_upload_picture){
-		alert("写真の添付可能枚数は○枚です。");
+	if(image_nums >= max_upload_picture){
+		alert("写真の添付可能枚数は"+max_upload_picture+"枚です。");
 		return false;
 	}
     var target = this;
@@ -49,7 +56,8 @@ $("#content_image").change(function(e){
             	var html_image = '<img src="'+response['image_link']+'" alt="'+response['image_title']+'" width="960" height="1280" class="alignnone size-full wp-image-'+response['id']+'" />';
             	//$('#thread_content').append(html_image);
             	$('#thread_content').val( $('#thread_content').val() + " " + html_image );
-            	count_upload ++;
+            	$('#thread_content').trigger('input');
+            	//count_upload ++;
             }
         }
     });
@@ -67,8 +75,8 @@ $(function () {
         drop: function(e) {
             e.stopPropagation();
             e.preventDefault();
-            if(count_upload > max_upload_picture){
-    			alert("写真の添付可能枚数は○枚です。");
+            if(image_nums >= max_upload_picture){
+    			alert("写真の添付可能枚数は"+max_upload_picture+"枚です。");
     			return false;
         	}
             $("#content_image").prop("files", e.originalEvent.dataTransfer.files);

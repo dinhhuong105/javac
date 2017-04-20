@@ -8,7 +8,7 @@ function wprc_add_menu_items()
 {
 	$permission_options = get_option('wprc_permissions_settings');
 	$menu_page_permission = (isset($permission_options['minimum_role_view'])) ? $permission_options['minimum_role_view'] : 'activate_plugins';
-	add_menu_page('Reports', 'Reports', $menu_page_permission, 'wprc_reports_page', 'wprc_render_list_page');
+	add_menu_page('Reports', '通報一覧', $menu_page_permission, 'wprc_reports_page', 'wprc_render_list_page');
 }
 
 add_action('admin_menu', 'wprc_add_menu_items');
@@ -37,7 +37,7 @@ function wprc_render_list_page()
 	?>
 	<div class="wrap">
 		<div id="icon-users" class="icon32"><br/></div>
-		<h2>Reports</h2>
+		<h2>通報一覧</h2>
 		<style type="text/css">
 			.fixed .column-status {
 				text-align: center;

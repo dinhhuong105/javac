@@ -325,7 +325,16 @@ function wprc_add_report()
 	//$details = $_POST['details'];
 	//$reporter_name = (isset($_POST['reporter_name'])) ? $_POST['reporter_name'] : '';
 	//$reporter_email = (isset($_POST['reporter_email'])) ? $_POST['reporter_email'] : '';
-	$report_type = ($_POST['comment_id'] > 0 ) ? 'comment' : get_post_type($_POST['id']);
+    $post_type = get_post_type($_POST['id']);
+	if($post_type == 'question_post'){
+	    $report_type = 'question_post';
+	}else{
+	    if($_POST['comment_id'] > 0 ){
+	        $report_type = 'comment';
+	    }else{
+	        $report_type = $post_type;
+	    }
+	}
 
 	$new_report = array(
 		//'reason'         => sanitize_text_field($_POST['reason']),

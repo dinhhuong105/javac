@@ -4276,3 +4276,57 @@ textarea {
     border-radius: 5px
 }
 /* Image of comment */
+/* Pagination comment list */
+.notice_pagination .page-numbers {
+    display: inline-block;  
+    border: solid 1px #fc8c96;
+    border-radius: 3px;
+    min-width: 42px;
+    min-height: 42px;
+    box-sizing: border-box;
+    margin-right: 10px;
+    vertical-align: middle;
+    line-height: 40px;
+    display: inline-block;
+    margin-right: 10px;
+    color: #fc8c96;
+}
+.notice_pagination span.current {
+    background: #fc8c96;
+    color: #fff;
+}
+.notice_pagination a.page-numbers:hover {
+    background: #fc8c96;
+    color: #fff;
+}
+/* Pagination comment list */
+/* Form add Thread */
+#threadAddForm li .selectArea select {
+    -moz-appearance: none;
+    appearance: none;
+    padding: 5px 30px 5px 10px;
+    border: solid 1px #c9c9c9;
+    border-radius: 5px;
+    height: 32px;
+}
+#threadAddForm .categoryArea {
+    margin-bottom: 5%;
+    text-align: center;
+    margin-left: 2%;
+}
+#threadAddForm .answerInpotList {
+    margin-bottom: 5%;
+    text-align: center;
+}
+#threadAddForm .categoryArea li select {
+    width: 30%;
+    margin-right: 2%;
+}
+#threadAddForm .answerInpotList li div label{
+    width: 40%;
+    margin-right: 5%;
+}
+#threadAddForm .answerInpotList li div label input{
+    margin-right: 5px;
+}
+/* Form add Thread */
