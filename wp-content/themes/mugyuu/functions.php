@@ -2049,7 +2049,7 @@ function thread_post_type() {
     register_post_type( 'thread_post', //カスタム投稿タイプ名を指定
             array(
                     'labels' => array(
-                            'name' => __( 'スレッド投稿' ),
+                           'name' => __( 'スレッド投稿' ),
                            'singular_name' => __( 'スレッド投稿' ),
                            'add_new' => '新規追加',
                            'add_new_item' => 'スレッドを新規追加',
@@ -2596,7 +2596,7 @@ function spc_setting_options() {
  * Change status of report when unpublish thread
  * @author Hung Nguyen
  */
- 
+add_action( 'transition_post_status', 'post_unpublished', 10, 3 );
 function post_unpublished( $new_status, $old_status, $post ) {
     if($post->post_type == 'thread_post' || $post->post_type == 'question_post')
         if ( $old_status == 'publish'  &&  $new_status != 'publish' ) {
@@ -2609,7 +2609,6 @@ function post_unpublished( $new_status, $old_status, $post ) {
         }
     }
 }
-add_action( 'transition_post_status', 'post_unpublished', 10, 3 );
 
 /**
 * Save questionnaire, Comment post 
@@ -2728,4 +2727,21 @@ function cf_is_tablet() {
         return true;
     }
     return false;
+}
+
+/**
+ * Change report status when unapprove comment
+ * @author Hung Nguyen
+ */
+add_action('transition_comment_status', 'unapprove_comment_callback', 10, 3);
+function unapprove_comment_callback($new_status, $old_status, $comment) {
+    if ( $old_status == 'approved'  &&  $new_status != 'approved' ) {
+        if ( function_exists ( 'wprc_table_name' ) ){
+            global $wpdb;
+            $table_name = wprc_table_name();
+            $query = "UPDATE $table_name SET status='processed' WHERE comment_id = $comment->comment_ID";
+            
+            $wpdb->query($query);
+        }
+    }
 }
