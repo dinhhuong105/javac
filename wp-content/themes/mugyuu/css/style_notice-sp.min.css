@@ -401,8 +401,7 @@ a:hover {
     transition: all 1s ease-in
 }
 .wrapper {
-    top: 0px;
-    padding-top: 0px !important;
+    top: 0px
 }
 header .sb-slide {
     width: 100%;
