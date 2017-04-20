@@ -93,15 +93,17 @@ function questionaire_attr( $post )
  Lưu dữ liệu meta box khi nhập vào
  @param post_id là ID của post hiện tại
 **/
-function questionaire_attr_save( $post_id )
-{
-     // $question = sanitize_text_field( json_encode( $_POST['question'] ) );
-     $question =   $_POST['question']  ;
-     update_post_meta( $post_id, '_question_type', $question );
-     $limited_answer =   $_POST['limited_answer']  ;
-     update_post_meta( $post_id, '_limited_answer', $limited_answer );
+if(isset($_POST)){
+  function questionaire_attr_save( $post_id )
+  {
+       $question =   $_POST['question']  ;
+      update_post_meta( $post_id, '_question_type', $question );
+       $limited_answer =   $_POST['limited_answer']  ;
+       update_post_meta( $post_id, '_limited_answer', $limited_answer );
+  }
+  add_action( 'save_post', 'questionaire_attr_save' );
 }
-add_action( 'save_post', 'questionaire_attr_save' );
+
 
 /**
  Khai báo meta box Answer list
@@ -132,3 +134,25 @@ function update_status_comment(){
     wp_send_json(['success'=>$result]);
 }
 add_action('wp_ajax_update_comment', 'update_status_comment');
+
+
+
+/**
+ Khai báo meta box
+**/
+function exportcsv() {
+    include_once('templates/exportcsv.php'); 
+}
+function report_meta_box()
+{
+ add_meta_box( 'answer-report', 'レポート', 'exportcsv', 'question_post' );
+}
+add_action( 'add_meta_boxes', 'report_meta_box' );
+
+/**
+* export to file
+*/
+add_action( 'admin_post_exportcsv', 'csv_file' );
+function csv_file() {
+    include_once('templates/csv.php'); 
+}
