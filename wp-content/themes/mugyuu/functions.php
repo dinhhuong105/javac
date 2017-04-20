@@ -211,7 +211,7 @@ function breadcrumb(){
         elseif(is_category()) {
             $cat = get_queried_object();
             $parent = get_category($cat->category_parent);
-            $str.='<li class="cat"><i class="fa fa-angle-right arrowIcon"></i><span>' . $cat->name . '</span></li>';
+            $str.='<li><i class="fa fa-angle-right arrowIcon"></i><span>' . $cat->name . '</span></li>';
         }
 
         /* タグページ */
