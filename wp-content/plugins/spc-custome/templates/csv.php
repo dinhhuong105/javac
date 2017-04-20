@@ -72,7 +72,7 @@ foreach ($question as $key => $value) {
 $post_metas = get_post_meta($_GET['post'],'_question_type', TRUE);
 $csv = array();
  foreach ($post_metas[$_GET['post']] as $key => $value){
-	$csv[$key]['設問 '.$key.'.'] = $value['question'];
+	$csv[$key]['設問 '.($key+1).'.'] = $value['question'];
 	if(isset($value['answer'])){ 
 		foreach ($value['answer'] as $k_ques => $ans){
 			$csv[$key][$ans] = $report_ans[$key][$k_ques];
@@ -84,8 +84,6 @@ $csv = array();
 	}
 }
 
-
-
 download_send_headers("data_export_" . date("Y-m-d") . ".csv");
 $a = array ();
 
@@ -95,9 +93,4 @@ foreach ($csv as $value) {
 	}
 }
 echo array2csv($a);
-
-		// print_r($a);
 die();
-
-
-

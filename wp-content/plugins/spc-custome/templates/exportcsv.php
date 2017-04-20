@@ -1,5 +1,5 @@
 <?php
-
+global $post;
 $param = array(
     'post_id'=>$post->ID
 );
@@ -50,12 +50,15 @@ $csv = array();
 		list-style-type: decimal;
 	}
 </style>
+<?php if($post_metas): ?>
 <div class="row">
 	<ul>
 		<li class="report">
 			<label>回答数</label><br/><b><?=$number_answer?></b>件
 		</li>
-		<?php foreach ($post_metas[get_the_ID()] as $key => $value): 
+		<?php 
+		
+		foreach ($post_metas[get_the_ID()] as $key => $value): 
 			$csv[$key]['question'] = $value['question'];
 		?>
 			<li class="report">
@@ -81,17 +84,13 @@ $csv = array();
 				?>
 				</ul>
 			</li>
-		<?php endforeach ?>
+		<?php endforeach; ?>
 	</ul>
 </div>
-<div class="exportCSV">
+<div class="exportCSV"> 
 	<a class="page-title-action" href="/wp-admin/admin-post.php?action=exportcsv&post=<?=$post->ID?>"> CSV出力 </a>
 </div>
-<?php
-function export_file(){
-	download_send_headers("data_export_" . date("Y-m-d") . ".csv");
-	echo array2csv($array);
-	die();
-}
+<?php endif;
+?>
 
 

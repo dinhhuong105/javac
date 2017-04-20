@@ -216,19 +216,5 @@ jQuery(document).ready(function($){
 			}
 		});
 	});
-	/*$('#btn-csv').on('click',function(e){
-		e.preventDefault();
-		$.ajax({
-			type: 'POST',
-			url : ajaxurl,
-			data:{
-				'action' : 'exportcsv',
-			},
-			success:function(res){
-				console.log(res);
-				console.log(ajaxurl);
-			}
-		});
-	})*/
 });
 </script>

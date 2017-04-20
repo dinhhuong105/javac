@@ -13,7 +13,16 @@ function spc_questionaire() {
      */
     $label = array(
         'name' => 'アンケート管理', //Tên post type dạng số nhiều
-        'singular_name' => 'Questionaire' //Tên post type dạng số ít
+        'singular_name' => 'アンケート管理', //Tên post type dạng số ít
+        'add_new' => '新規追加',
+        'add_new_item' => '新規アンケートの作成',
+         'edit_item' => 'アンケートを編集する',
+         'new_item' => '新規サイト',
+         'all_items' => 'アンケート一覧',
+         'view_item' => 'アンケートの説明を見る',
+         'search_items' => '検索する',
+         'not_found' => 'アンケートが見つかりませんでした。',
+         'not_found_in_trash' => 'ゴミ箱内にアンケートが見つかりませんでした。'
     );
  
     /*
@@ -36,20 +45,19 @@ function spc_questionaire() {
         'show_in_menu' => true, //Hiển thị trên Admin Menu (tay trái)
         'show_in_nav_menus' => true, //Hiển thị trong Appearance -> Menus
         'show_in_admin_bar' => true, //Hiển thị trên thanh Admin bar màu đen.
-        'menu_position' => 5, //Thứ tự vị trí hiển thị trong menu (tay trái)
+        'menu_position' => 10, //Thứ tự vị trí hiển thị trong menu (tay trái)
         'menu_icon' => 'dashicons-testimonial', //Đường dẫn tới icon sẽ hiển thị
         'can_export' => true, //Có thể export nội dung bằng Tools -> Export
         'has_archive' => true, //Cho phép lưu trữ (month, date, year)
         'exclude_from_search' => false, //Loại bỏ khỏi kết quả tìm kiếm
         'publicly_queryable' => true, //Hiển thị các tham số trong query, phải đặt true
-        'capability_type' => 'post' //
+        'capability_type' => 'post'
     );
  
     register_post_type('question_post', $args); //Tạo post type với slug tên là questionaire và các tham số trong biến $args ở trên
 }
 
 add_action( 'init', 'spc_questionaire' );
-
 /**
 * Change label menu, submenu
 */
@@ -82,11 +90,7 @@ add_action( 'add_meta_boxes', 'questionaire_meta_box' );
 
 function questionaire_attr( $post )
 {
- // Tạo trường Link Download
- /*echo ( '<label for="link_download">Link Download: </label>' );
- echo ('<input type="text" id="link_download" name="link_download" value="'.esc_attr( $link_download ).'" />');*/
  include_once('templates/questionaire-attr.php');
-
 }
 
 /**
@@ -110,9 +114,11 @@ if(isset($_POST)){
 **/
 function answer_meta_box()
 {
-    add_meta_box( 'answers', '回答一覧', 'answer_attr', 'question_post' );
+  add_meta_box( 'answers', '回答一覧', 'answer_attr', 'question_post' );
 }
-add_action( 'add_meta_boxes', 'answer_meta_box' );
+if(isset($_GET['action']) == 'edit')
+  add_action( 'add_meta_boxes', 'answer_meta_box' );
+
 
 /**
 * 
@@ -147,7 +153,8 @@ function report_meta_box()
 {
  add_meta_box( 'answer-report', 'レポート', 'exportcsv', 'question_post' );
 }
-add_action( 'add_meta_boxes', 'report_meta_box' );
+if(isset($_GET['action']) == 'edit')
+  add_action( 'add_meta_boxes', 'report_meta_box' );
 
 /**
 * export to file
