@@ -13,6 +13,11 @@
 		border-bottom: 1px solid #ccc;
 	}
 	.pagination-links{
+	    text-align: right;
+		margin: 20px;
+
+	}
+	.exportCSV{
 		text-align: right;
 		margin: 20px;
 	}
@@ -95,6 +100,8 @@
 	'type'         => 'plain');
 
 	$question_meta = get_post_meta($post->ID, '_question_type', TRUE);
+	
+	
 ?>
 <div class="wp_comment_list">
 <table cellpadding="0" cellspacing="0">
@@ -135,7 +142,7 @@
 					?>
 					<td>
 						<?php 
-							if(count($comment_metas[$i]) != 0){
+							if($comment_metas && count($comment_metas[$i]) != 0){
 								foreach ($comment_metas[$i] as $id_answer => $val_answer) {
 									echo ($question_meta[$post->ID][$i]['answer'][$val_answer])?$question_meta[$post->ID][$i]['answer'][$val_answer]:$val_answer;
 									if(count($question_meta[$post->ID][$i]['answer']) > 2) echo ", ";
@@ -166,6 +173,7 @@
 	</tbody>
 </table>
 </div>
+
 <div class="pagination-links">
 	<?=paginate_links( $args )?>
 </div>
@@ -208,5 +216,19 @@ jQuery(document).ready(function($){
 			}
 		});
 	});
+	/*$('#btn-csv').on('click',function(e){
+		e.preventDefault();
+		$.ajax({
+			type: 'POST',
+			url : ajaxurl,
+			data:{
+				'action' : 'exportcsv',
+			},
+			success:function(res){
+				console.log(res);
+				console.log(ajaxurl);
+			}
+		});
+	})*/
 });
 </script>

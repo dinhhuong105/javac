@@ -18,9 +18,10 @@
 	}
 </style>
 <div id="frm_question">
-	<?php
+	<?php 
 		$_limited_answer = get_metadata('post', $post->ID, '_limited_answer');
 		$post_metas = get_metadata('post', $post->ID, '_question_type');
+		$GLOBALS['post_metas'] = $post_metas[0];
 		if($post_metas[0]){
 			foreach ($post_metas[0] as $key => $post_meta) {
 				foreach ($post_meta as $id => $meta) {
@@ -29,7 +30,7 @@
 						echo '<div class="box-question"><a class="btn_remove">x</a>';
 						echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目 </label>';
-						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'"><br/>';
+						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
 						$i=0;
 						foreach ($meta['answer'] as $answer) {
 							echo '<input type="checkbox" name="posid_'. $key .'_answer_'. $id .'_' . $i . '"> 
@@ -41,7 +42,7 @@
 						echo '<div class="box-question"><a class="btn_remove">x</a>';
 						echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
-						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'"><br/>';
+						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
 						$i=0;
 						foreach ($meta['answer'] as $answer) {
 							echo '<input type="radio" name="posid_'. $key .'_answer_'. $id .'"> 
@@ -53,7 +54,7 @@
 						echo '<div class="box-question"><a class="btn_remove">x</a>';
 						echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
-						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'"><br/>';
+						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
 						$i=0;
 						foreach ($meta['answer'] as $answer) {
 							echo '<input type="text" name="question['. $key .']['. $id .'][answer]['.$i.']" value="'.$answer.'"><br/>';
@@ -64,13 +65,13 @@
 						echo '<div class="box-question"><a class="btn_remove">x</a>';
 						echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
-						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'"><br/>';
+						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
 						echo '</div>';
 					}elseif($meta['type'] == 'textarea'){
 						echo '<div class="box-question"><a class="btn_remove">x</a>';
 						echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
-						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'"><br/>';
+						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
 						echo '</div>';
 					}
 					
@@ -164,7 +165,7 @@ function question_input($id,$multi = 1){
 	var $str = '';
 	//posid_'+ post_id +'_question_' + $id + '
 	for(var i=0; i<$multi; i++){
-		$str += '<label for="posid_'+ post_id +'_question_' + $id + '">アンケート項目 </label><input id="posid_'+ post_id +'_question_' + $id + '" type="text" name="question['+ post_id +']['+ $id +'][question]">';
+		$str += '<label for="posid_'+ post_id +'_question_' + $id + '">アンケート項目 </label><input id="posid_'+ post_id +'_question_' + $id + '" type="text" name="question['+ post_id +']['+ $id +'][question]" required>';
 	}
 	return $str;
 }
