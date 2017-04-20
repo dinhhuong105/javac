@@ -114,7 +114,7 @@ function breadcrumb(){
         $str.= '<li><a href="' . home_url('/') .'">トップ</a></li>';
 
         /* 投稿のページ */
-        if(is_single() || $post->post_type === "thread_post"){
+        if(is_single() || $post->post_type === "thread_post" || $post->post_type === "question_post"){
                 if( $post->post_type === "movingimage_post" || $post->post_type === "movie_post"){//動画、レシピ
 					 if($post->post_type === "movingimage_post") {
                          $str.='<li><i class="fa fa-angle-right arrowIcon"></i><a href="'. home_url('/') .'recipe-list"><span>レシピ</span></a></li>';
