@@ -2694,12 +2694,16 @@ function question_comment($comment, $args, $depth) {
 }
 
 /**
- * Do not show category submenu in Thread menu
+ * Do not show category submenu in Thread menu/ Remove menu Comment
  * @author Hung Nguyen
  */
 add_action( 'admin_menu', 'remove_thread_category_menu', 999 );
 function remove_thread_category_menu(){
     remove_submenu_page( 'edit.php?post_type=thread_post', 'edit-tags.php?taxonomy=category&amp;post_type=thread_post' );
+}
+add_action( 'admin_menu', 'remove_comment_menu', 999 );
+function remove_comment_menu(){
+    remove_menu_page( 'edit-comments.php' );
 }
 
 /**
