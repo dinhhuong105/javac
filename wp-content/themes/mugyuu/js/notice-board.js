@@ -56,7 +56,7 @@ $("#content_image").change(function(e){
             	var html_image = '<img src="'+response['image_link']+'" alt="'+response['image_title']+'" width="960" height="1280" class="alignnone size-full wp-image-'+response['id']+'" />';
             	//$('#thread_content').append(html_image);
             	$('#thread_content').val( $('#thread_content').val() + " " + html_image );
-            	$('#contentArea').trigger('input');
+            	$('#thread_content').trigger('input');
             	count_upload ++;
             }
         }
