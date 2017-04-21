@@ -169,7 +169,7 @@ function csv_file() {
 
 function report_link($actions, $page_object){
   $actions['report_page'] = '<a href="'.admin_url( 'edit.php?post_type=question_post&page=review&post=' . $page_object->ID ).'">Report</a>';
-
+  unset($actions['inline hide-if-no-js']);
 
   return $actions;
 }
