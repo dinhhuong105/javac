@@ -7,7 +7,7 @@
 	}
 	.wp_comment_list tbody tr td{ padding: 5px 10px }
 	.wp_comment_list thead th{
-		min-width: 130px;
+		width: 130px;
 		padding: 11px 0 0 3px;
 		border-top: 1px solid #ccc;
 		border-bottom: 1px solid #ccc;
@@ -41,9 +41,11 @@
 	.big {
 	    height: auto;
 	}
-	.the-list .wrapper img{
-		width: 60px;
-		float: left;
+	#the-list .wrapper img{
+	    width: 80px;
+	    height: auto;
+	    float: left;
+	    margin-right: 5px;
 	}
 </style>
 <?php 
@@ -138,7 +140,7 @@
 	</thead>
 	<tbody id="the-list">
 		<?php foreach ($comments as $comment): ?>
-		<tr>
+		<tr id="comment_<?=$comment->comment_ID?>">
 			<td><?=$comment->comment_date?></td>
 			<td><?=$comment->comment_author?></td>
 			<?php

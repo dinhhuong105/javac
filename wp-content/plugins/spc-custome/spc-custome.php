@@ -74,7 +74,7 @@ add_action( 'admin_menu', 'change_post_menu_label' );
 add_action( 'admin_menu', 'remove_wp_menu', 999 );
 function remove_wp_menu(){
     remove_submenu_page( 'edit.php?post_type=question_post', 'edit-tags.php?taxonomy=category&amp;post_type=question_post' );
-    // remove_submenu_page( 'edit.php?post_type=question_post','review' );
+    remove_submenu_page( 'edit.php?post_type=question_post','review' );
 }
 /**
  Khai báo meta box
@@ -183,7 +183,7 @@ function report_question(){
 add_action('admin_menu', 'test_plugin_setup_menu');
  
 function test_plugin_setup_menu(){
-  add_submenu_page( 'edit.php?post_type=question_post','Test Plugin Page', 'Test Plugin', 'manage_options', 'review', 'test_init' );
+  add_submenu_page( 'edit.php?post_type=question_post','アンケート詳細', 'アンケート詳細', 'manage_options', 'review', 'test_init' );
 }
 
 function test_init(){
@@ -219,3 +219,4 @@ function update_status_post(){
   }
 }
 add_action('wp_ajax_post_status', 'update_status_post');
+

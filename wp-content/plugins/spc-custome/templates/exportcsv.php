@@ -4,6 +4,7 @@ $id = isset($post->ID)?$post->ID:$_GET['post'];
 $param = array(
     'post_id'=> $id
 );
+
 $comments = get_comments($param);
 $answer = array();
 $comment_metas = array();
@@ -224,6 +225,7 @@ jQuery(document).ready(function($){
 		});
 	});
 	$('.btn-public').on('click',function(e){
+		return;
 		e.preventDefault();
 		var post_id = $(this).attr('data-post');
 		var status = $(this).attr('data-status');
