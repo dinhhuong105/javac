@@ -190,3 +190,32 @@ function test_init(){
   include_once('templates/exportcsv.php'); 
   include_once('templates/answer-attr.php'); 
 }
+
+/**
+* update limited comment
+*/
+function update_status_limited_comment(){
+  if(isset($_POST['post_ID'])){
+    $post_id = $_POST['post_ID'];
+    $status = $_POST['status']*-1;
+    $result = update_post_meta( $post_id,'_limited_answer',$status );
+    wp_send_json(['success'=>$result,'status'=>$status]);
+  }
+}
+add_action('wp_ajax_limited_comment', 'update_status_limited_comment');
+
+/**
+* update status post
+*/
+function update_status_post(){
+  if(isset($_POST['post_ID'])){
+    $post_id = $_POST['post_ID'];
+    $status = $_POST['status']=='publish'?'private':'publish';
+    $result = wp_update_post(array(
+        'ID'    =>  $post_id,
+        'post_status'   =>  $status
+        ));
+    wp_send_json(['success'=>$result,'status'=>$status]);
+  }
+}
+add_action('wp_ajax_post_status', 'update_status_post');
