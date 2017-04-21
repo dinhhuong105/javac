@@ -3236,7 +3236,7 @@ header .sb-slide h1.is_add_button {
 .catArea.pb_threadAdd{
 	padding-bottom: 20px;
 }
-.searchArea{
+.border_none .searchArea{
 	background: none !important;
 }
 .threadAddSP a{
