@@ -1,7 +1,8 @@
 <?php
 global $post;
+$id = isset($post->ID)?$post->ID:$_GET['post'];
 $param = array(
-    'post_id'=>$post->ID
+    'post_id'=> $id
 );
 $comments = get_comments($param);
 $answer = array();
@@ -37,7 +38,9 @@ foreach ($question as $key => $value) {
 	}
 	$report_ans[$key] = array_count_values($_ans);
 }
-global $post_metas;
+// global $post_metas;
+$post_metas = get_post_meta($id, '_question_type', TRUE);
+// echo "<pre>";print_r($post_metas);echo "</pre>";
 $csv = array();
 ?>
 <style type="text/css">
@@ -49,16 +52,43 @@ $csv = array();
 		padding-left: 20px;
 		list-style-type: decimal;
 	}
+	.page-title-action{
+	    margin-left: 4px;
+	    padding: 4px 8px;
+	    position: relative;
+	    top: -3px;
+	    text-decoration: none;
+	    border: none;
+	    border: 1px solid #ccc;
+	    -webkit-border-radius: 2px;
+	    border-radius: 2px;
+	    background: #f7f7f7;
+	    text-shadow: none;
+	    font-weight: 600;
+	    font-size: 13px;
+	}
+	.page-title-action:hover {
+	    border-color: #008EC2;
+	    background: #00a0d2;
+	    color: #fff;
+	}
+	.postbox{
+		padding: 20px;
+		margin-top: 20px;
+	}
 </style>
 <?php if($post_metas): ?>
-<div class="row">
+<div class="row postbox" id="revisionsdiv">
+<button>Limit Answer</button>
+<button>Publishing</button>
+<h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>
 	<ul>
 		<li class="report">
 			<label>回答数</label><br/><b><?=$number_answer?></b>件
 		</li>
 		<?php 
 		
-		foreach ($post_metas[get_the_ID()] as $key => $value): 
+		foreach ($post_metas[$id] as $key => $value): 
 			$csv[$key]['question'] = $value['question'];
 		?>
 			<li class="report">
@@ -88,7 +118,7 @@ $csv = array();
 	</ul>
 </div>
 <div class="exportCSV"> 
-	<a class="page-title-action" href="/wp-admin/admin-post.php?action=exportcsv&post=<?=$post->ID?>"> CSV出力 </a>
+	<a class="page-title-action" href="/wp-admin/admin-post.php?action=exportcsv&post=<?=$id?>"> CSV出力 </a>
 </div>
 <?php endif;
 ?>

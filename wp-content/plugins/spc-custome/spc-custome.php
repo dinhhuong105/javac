@@ -4,7 +4,7 @@
 * Author: Unotrung
 * Description: Create questionaire follow post
 */
-
+global $post;
 
 function spc_questionaire() {
 
@@ -74,6 +74,7 @@ add_action( 'admin_menu', 'change_post_menu_label' );
 add_action( 'admin_menu', 'remove_wp_menu', 999 );
 function remove_wp_menu(){
     remove_submenu_page( 'edit.php?post_type=question_post', 'edit-tags.php?taxonomy=category&amp;post_type=question_post' );
+    // remove_submenu_page( 'edit.php?post_type=question_post','review' );
 }
 /**
  Khai báo meta box
@@ -112,12 +113,12 @@ if(isset($_POST)){
 /**
  Khai báo meta box Answer list
 **/
-function answer_meta_box()
+/*function answer_meta_box()
 {
   add_meta_box( 'answers', '回答一覧', 'answer_attr', 'question_post' );
 }
 if(isset($_GET['action']) == 'edit')
-  add_action( 'add_meta_boxes', 'answer_meta_box' );
+  add_action( 'add_meta_boxes', 'answer_meta_box' );*/
 
 
 /**
@@ -146,6 +147,7 @@ add_action('wp_ajax_update_comment', 'update_status_comment');
 /**
  Khai báo meta box
 **/
+/*add_action( 'admin_post_report_question', 'exportcsv' );
 function exportcsv() {
     include_once('templates/exportcsv.php'); 
 }
@@ -154,7 +156,7 @@ function report_meta_box()
  add_meta_box( 'answer-report', 'レポート', 'exportcsv', 'question_post' );
 }
 if(isset($_GET['action']) == 'edit')
-  add_action( 'add_meta_boxes', 'report_meta_box' );
+  add_action( 'add_meta_boxes', 'report_meta_box' );*/
 
 /**
 * export to file
@@ -162,4 +164,29 @@ if(isset($_GET['action']) == 'edit')
 add_action( 'admin_post_exportcsv', 'csv_file' );
 function csv_file() {
     include_once('templates/csv.php'); 
+}
+
+
+function report_link($actions, $page_object){
+  $actions['report_page'] = '<a href="'.admin_url( 'edit.php?post_type=question_post&page=review&post=' . $page_object->ID ).'">Report</a>';
+
+
+  return $actions;
+}
+add_filter('post_row_actions', 'report_link', 10, 2);
+
+add_action( 'admin_post_review', 'report_question' );
+function report_question(){
+  include_once('templates/exportcsv.php'); 
+}
+
+add_action('admin_menu', 'test_plugin_setup_menu');
+ 
+function test_plugin_setup_menu(){
+  add_submenu_page( 'edit.php?post_type=question_post','Test Plugin Page', 'Test Plugin', 'manage_options', 'review', 'test_init' );
+}
+
+function test_init(){
+  include_once('templates/exportcsv.php'); 
+  include_once('templates/answer-attr.php'); 
 }

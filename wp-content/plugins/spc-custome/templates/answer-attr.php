@@ -11,6 +11,7 @@
 		padding: 11px 0 0 3px;
 		border-top: 1px solid #ccc;
 		border-bottom: 1px solid #ccc;
+		text-align: left;
 	}
 	.pagination-links{
 	    text-align: right;
@@ -40,10 +41,14 @@
 	.big {
 	    height: auto;
 	}
+	.the-list .wrapper img{
+		width: 60px;
+		float: left;
+	}
 </style>
 <?php 
 	define('DEFAULT_COMMENTS_PER_PAGE',5);
-	$id=$post->ID;
+	$id=isset($post->ID)?$post->ID:$_GET['post'];
 
 	$page = isset($_GET['paged']) ? $_GET['paged'] : 1; 
 	// $page=2;
@@ -99,11 +104,12 @@
 
 	'type'         => 'plain');
 
-	$question_meta = get_post_meta($post->ID, '_question_type', TRUE);
+	$question_meta = get_post_meta($id, '_question_type', TRUE);
 	
 	
 ?>
-<div class="wp_comment_list">
+<div class="wp_comment_list postbox">
+<h2 class="hndle ui-sortable-handle"><span>回答一覧</span></h2>
 <table cellpadding="0" cellspacing="0">
 	<thead>
 		<tr>
@@ -114,7 +120,7 @@
 				ニックネーム
 			</th>
 			<?php
-				for ($i=1; $i <= count($question_meta[$post->ID]); $i++) { 
+				for ($i=1; $i <= count($question_meta[$id]); $i++) { 
 					?>
 					<th>
 						設問<?=$i?>の回答 
@@ -138,14 +144,14 @@
 			<?php
 				$comment_metas = get_comment_meta($comment->comment_ID,'_question_comment',TRUE);
 				
-				for ($i=0; $i < count($question_meta[$post->ID]); $i++) { 					
+				for ($i=0; $i < count($question_meta[$id]); $i++) { 					
 					?>
 					<td>
 						<?php 
 							if($comment_metas && count($comment_metas[$i]) != 0){
 								foreach ($comment_metas[$i] as $id_answer => $val_answer) {
-									echo ($question_meta[$post->ID][$i]['answer'][$val_answer])?$question_meta[$post->ID][$i]['answer'][$val_answer]:$val_answer;
-									if(count($question_meta[$post->ID][$i]['answer']) > 2) echo ", ";
+									echo ($question_meta[$id][$i]['answer'][$val_answer])?$question_meta[$id][$i]['answer'][$val_answer]:$val_answer;
+									if(count($question_meta[$id][$i]['answer']) > 2) echo ", ";
 								}
 							}else{
 								echo "---";
@@ -165,7 +171,7 @@
 					<?php endif?>
 				</div>
 			</td>
-			<td><button class="btn-public" data-status="<?=$comment->comment_approved?>" data-comment="<?=$comment->comment_ID?>"><?=($comment->comment_approved)?'公開停止':'公開中'?></button><span class="loading"></span></td>
+			<td><button class="btn-public page-title-action" data-status="<?=$comment->comment_approved?>" data-comment="<?=$comment->comment_ID?>"><?=($comment->comment_approved)?'公開停止':'公開中'?></button><span class="loading"></span></td>
 		</tr>
 		<?php endforeach ?>
 		
