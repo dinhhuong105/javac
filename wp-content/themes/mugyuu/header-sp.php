@@ -124,7 +124,7 @@
                 <div class="sb-slidebar sb-left">
                     <?php get_search_form(); ?>
                     <?php if( $spc_option['allowpost'] && !cf_is_tablet() ) :?>
-                        <section class="catArea childArea">
+                        <section class="catArea childArea pb_threadAdd">
                         	<div class="threadAddSP"><a href="<?php echo home_url(); ?>/add-thread">＋トピックを投稿する</a></div>
                         </section>
                     <?php endif; ?>
