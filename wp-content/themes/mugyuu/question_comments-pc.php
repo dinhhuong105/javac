@@ -14,7 +14,8 @@
     $limited = get_post_meta( $post->ID, '_limited_answer', true );
     $questions = get_post_meta( $post->ID, '_question_type', true );
     $GLOBALS['questions'] = $questions; 
-    global $answers;
+    $count_comment = wp_count_comments($post->ID);
+
 
 ?>
 <section class="commentArea">
@@ -55,8 +56,10 @@
 	         echo '</div>';
 	     }
      ?>
+
 </section>
 <section id="send" class="commentFormArea">
+<?php if($count_comment->approved >= $limited): ?>
     <div class="commentFormWrap">
         <div class="ttlArea">
             <h1>アンケートに答える</h1>
@@ -146,15 +149,14 @@
                     </div>
                 </li>
                 <li>
-                    <?php 
-                        if(count($answers) < $limited){
-                         ?>
                         <button type="submit" name="submitted" value="send" class="sendBtn">アンケートに回答する</button>
-                    <?php } ?>
                 </li>
             </ul>
         </form>
     </div>
+<?php else: ?>
+    <div style="text-align: center">This survey is pause!</div>
+<?php endif ?>
 </section>
 <script type="text/javascript">
 	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
