@@ -2749,3 +2749,10 @@ function unapprove_comment_callback($new_status, $old_status, $comment) {
         }
     }
 }
+
+add_action( 'edit_form_after_title', 'add_content_before_editor' );
+function add_content_before_editor() {
+    if(isset($_GET['comment_id_scroll'])){
+        echo "<input class='comment_id_scroll' type='hidden' value=".$_GET['comment_id_scroll'].">";
+    }
+}
