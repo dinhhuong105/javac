@@ -163,3 +163,17 @@ add_action( 'admin_post_exportcsv', 'csv_file' );
 function csv_file() {
     include_once('templates/csv.php'); 
 }
+
+add_action('init', 'function_check_action');
+function function_check_action(){
+    if(isset($_GET['action']) and $_GET['action']=='edit'){
+        $post_id=$_GET['post'];
+        $post=get_post($post_id);
+        $comments_no=get_comments_number($post_id);
+        if($comments_no>0) {
+            remove_post_type_support('question_post', 'title');
+            remove_post_type_support('question_post', 'editor');
+            add_action( 'add_meta_boxes', 'answer_meta_box' );
+        }
+    }
+}
