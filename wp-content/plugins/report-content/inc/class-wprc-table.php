@@ -37,8 +37,13 @@ class WPRC_Table extends WPRC_List_Table
 		$comment = ($item['comment_id']>0)?'&comment_id_scroll='.$item['comment_id']:'';
 	    $post = get_post($item['post_id']);
 
-		if (is_a($post, 'WP_Post'))
-			return '<a href="' . get_edit_post_link($post->ID) . $comment . '">確認する</a>';
+		if (is_a($post, 'WP_Post')){
+			if(get_post_type($post->ID) == 'question_post'){
+			    return '<a href="' . get_admin_url(). 'edit.php?post_type=question_post&page=review&post='. $post->ID . $comment . '">確認する</a>';
+			}else{
+		        return '<a href="' . get_edit_post_link($post->ID) . $comment . '">確認する</a>';
+			}
+		}
 
 		return 'Post Not Found';
 	}
