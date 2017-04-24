@@ -4,6 +4,7 @@ $id = isset($post->ID)?$post->ID:$_GET['post'];
 $param = array(
     'post_id'=> $id
 );
+
 $comments = get_comments($param);
 $answer = array();
 $comment_metas = array();
@@ -224,6 +225,7 @@ jQuery(document).ready(function($){
 		});
 	});
 	$('.btn-public').on('click',function(e){
+		return;
 		e.preventDefault();
 		var post_id = $(this).attr('data-post');
 		var status = $(this).attr('data-status');
@@ -251,6 +253,14 @@ jQuery(document).ready(function($){
 			}
 		});
 	});
+
+	// Scroll to comment
+	var comment_id_scroll = <?php if(isset($_GET['comment_id_scroll'])) echo $_GET['comment_id_scroll']; else echo 0?>;
+	if(comment_id_scroll > 0){
+		$('html, body').animate({
+		        scrollTop: $("#comment_"+comment_id_scroll).offset().top - 32
+		    }, 2000);
+	}
 });
 </script>
 

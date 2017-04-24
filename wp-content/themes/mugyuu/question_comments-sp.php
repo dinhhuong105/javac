@@ -18,19 +18,19 @@
     $limited = get_post_meta( $post->ID, '_limited_answer', true );
     $questions = get_post_meta( $post->ID, '_question_type', true );
     $GLOBALS['questions'] = $questions; 
-    global $answers;
+    $count_comment = wp_count_comments($post->ID);
 ?>
 <section class="commentArea">
-	<label for="qaSort" class="sortWrap">
+    <label for="qaSort" class="sortWrap">
        <select id="qaSort" name="qaSort" class="sort">
            <option value="new" <?php if($_GET['comment_order_by'] == 'new') echo 'selected' ?>>新着順</option>
             <option value="old" <?php if($_GET['comment_order_by'] == 'old') echo 'selected' ?>>古い順</option>
             <option value="like_count" <?php if($_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
        </select>
    </label>
-	<?php if(have_comments()): ?>
+    <?php if(have_comments()): ?>
    　<ul class="commentList">
-	   <?php 
+       <?php 
             $args = array('type' =>'comment','callback' => 'question_comment');
             $resource = null;
             if (isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'new' )
@@ -45,24 +45,26 @@
             }
             ($resource == null)?wp_list_comments($args):wp_list_comments($args,$resource); 
         ?>
-	</ul>
-	 <?php endif; ?>
-	 <?php
-	     if(get_comment_pages_count() > 1){
-	         echo '<div style="margin-top:20px; text-align:center;" class="notice_pagination">';
-	         //ページナビゲーションの表示
-	         paginate_comments_links([
+    </ul>
+     <?php endif; ?>
+     <?php
+         if(get_comment_pages_count() > 1){
+             echo '<div style="margin-top:20px; text-align:center;" class="notice_pagination">';
+             //ページナビゲーションの表示
+             paginate_comments_links([
                 'next_text'    => __('›'),
                 'prev_text'    => __('‹')
                 ]);
-	         echo '</div>';
-	     }
+             echo '</div>';
+         }
      ?>
 </section>
 <section class="commentFormArea" id="send">
-    	<h1>アンケートに答える</h1>
+<?php
+ if($count_comment->approved >= $limited): ?>
+        <h1>アンケートに答える</h1>
         <p class="notes"><sup class="red">※</sup>は必須項目になります。</p>
-    	<form action="" id="formComment" method="POST">
+        <form action="" id="formComment" method="POST">
             <ul class="answerList">
                 <li>
                     <h3>ニックネーム<span class="red">※</span></h3>
@@ -142,17 +144,20 @@
                     </div>
                 </li>
                 <li>
-                	<input type="hidden" name="submitted" id="submitted" value="true" />
+                    <input type="hidden" name="submitted" id="submitted" value="true" />
                     <button type="submit" name="action" value="send" class="sendBtn">コメントを投稿</button>
                 </li>
             </ul>
         </form>
+<?php else: ?>
+    <div style="text-align: center">This survey is pause!</div>
+<?php endif ?>           
 </section>
 <script type="text/javascript">
-	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
-	var max_upload_picture = "<?php echo get_option('spc_options')['a_img_no']; ?>";
+    var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+    var max_upload_picture = "<?php echo get_option('spc_options')['a_img_no']; ?>";
 
-	$('button[type=submit]').on('click',function(){
+    $('button[type=submit]').on('click',function(){
         $cbx_group = $("input:checkbox[id^='option-']"); // name is not always helpful ;)
         $cbx_group.prop('required', true);
         if($cbx_group.is(":checked")){
