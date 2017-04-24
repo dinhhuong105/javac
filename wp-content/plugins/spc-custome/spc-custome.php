@@ -245,7 +245,7 @@ function stoppostedition_filter( $capauser, $capask, $param){
 
   $post = get_post( $param[2] );
   $num_comment =  wp_count_comments( $param[2] );
-  if( $post->post_status == 'publish' ){
+  if( $post->post_status == 'publish' && $post->post_type == 'question_post'){
 
       // Disable post edit only for authore role
       if( $capauser['administrator'] == 1 ){
@@ -261,25 +261,6 @@ function stoppostedition_filter( $capauser, $capask, $param){
                 }
               }
           }
-
-          /*// How much time have passed since post publication
-          $post_time_unix = strtotime( str_replace('-', ':', $post->post_date ) );
-          $current_time_unix = time();
-          $diff = $current_time_unix - $post_time_unix; 
-          $hours_after_publication = floor( $diff / 60 / 60 );
-
-          // If 24 hours have passed since the publication than remove capability to edit and delete post
-          if( $hours_after_publication >= 24 ){
-
-            foreach( (array) $capask as $capasuppr) {
-
-              if ( array_key_exists($capasuppr, $capauser) ) {
-
-                $capauser[$capasuppr] = 0;
-
-              }
-            }
-          }*/
         }
       }
   }

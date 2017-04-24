@@ -61,7 +61,7 @@
 </section>
 <section class="commentFormArea" id="send">
 <?php
- if($count_comment->approved >= $limited): ?>
+ if( ($count_comment->approved <= $limited && $limited > 0) || empty($limited) ): ?>
         <h1>アンケートに答える</h1>
         <p class="notes"><sup class="red">※</sup>は必須項目になります。</p>
         <form action="" id="formComment" method="POST">

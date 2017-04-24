@@ -16,7 +16,6 @@
     $GLOBALS['questions'] = $questions; 
     $count_comment = wp_count_comments($post->ID);
 
-
 ?>
 <section class="commentArea">
 	<label for="qaSort" class="sortWrap">
@@ -56,10 +55,11 @@
 	         echo '</div>';
 	     }
      ?>
-
 </section>
 <section id="send" class="commentFormArea">
-<?php if($count_comment->approved >= $limited): ?>
+
+<?php
+ if( ($count_comment->approved <= $limited && $limited > 0) || empty($limited) ): ?>
     <div class="commentFormWrap">
         <div class="ttlArea">
             <h1>アンケートに答える</h1>
@@ -156,7 +156,7 @@
     </div>
 <?php else: ?>
     <div style="text-align: center">This survey is pause!</div>
-<?php endif ?>
+<?php endif ?>    
 </section>
 <script type="text/javascript">
 	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
