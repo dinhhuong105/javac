@@ -170,6 +170,7 @@ function csv_file() {
 function report_link($actions, $page_object){
   $actions['report_page'] = '<a href="'.admin_url( 'edit.php?post_type=question_post&page=review&post=' . $page_object->ID ).'">Report</a>';
   unset($actions['inline hide-if-no-js']);
+  // print_r($actions);exit;
 
   return $actions;
 }
@@ -220,3 +221,53 @@ function update_status_post(){
 }
 add_action('wp_ajax_post_status', 'update_status_post');
 
+/**
+* disable edit post after has comment
+**/
+function stoppostedition_filter( $capauser, $capask, $param){
+
+  global $wpdb;   
+
+  $post = get_post( $param[2] );
+  $num_comment =  wp_count_comments( $param[2] );
+  if( $post->post_status == 'publish' ){
+
+      // Disable post edit only for authore role
+      if( $capauser['administrator'] == 1 ){
+
+        if( ( $param[0] == "edit_post") || ( $param[0] == "delete_post" ) ) {
+          if($num_comment->approved > 0){
+            foreach( (array) $capask as $capasuppr) {
+
+                if ( array_key_exists($capasuppr, $capauser) ) {
+
+                  $capauser[$capasuppr] = 0;
+
+                }
+              }
+          }
+
+          /*// How much time have passed since post publication
+          $post_time_unix = strtotime( str_replace('-', ':', $post->post_date ) );
+          $current_time_unix = time();
+          $diff = $current_time_unix - $post_time_unix; 
+          $hours_after_publication = floor( $diff / 60 / 60 );
+
+          // If 24 hours have passed since the publication than remove capability to edit and delete post
+          if( $hours_after_publication >= 24 ){
+
+            foreach( (array) $capask as $capasuppr) {
+
+              if ( array_key_exists($capasuppr, $capauser) ) {
+
+                $capauser[$capasuppr] = 0;
+
+              }
+            }
+          }*/
+        }
+      }
+  }
+  return $capauser;
+}
+add_filter('user_has_cap', 'stoppostedition_filter', 100, 3 );
