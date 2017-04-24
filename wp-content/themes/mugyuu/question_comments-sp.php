@@ -5,10 +5,6 @@
     .qaSingle .commentFormArea:before{
         top: 0!important;
     }
-    .qaSingle .commentFormArea{
-        margin-top:0px;
-        padding-top: 20px;
-    }
     .editFrom input{
         width: auto!important; 
         height: auto!important;
