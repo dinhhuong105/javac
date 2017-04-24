@@ -112,15 +112,15 @@ $csv = array();
 						?>
 						<li><?=$ans?> ... <?=$report_ans[$key][$k_ques]?></li>
 				<?php endforeach;
-				else:
-					?>
-					<?php foreach ($report_ans[$key] as $answer => $count): 
+				else: 
+					if($report_ans[$key]):
+					 foreach ($report_ans[$key] as $answer => $count): 
 						$csv[$key][$answer] = $count;
 					?>
 						<li><?=$answer?> ... <?=$count?></li>
-					<?php endforeach ?>
-				<?php
-				endif
+					<?php endforeach; 
+					endif;
+				endif;
 				?>
 				</ul>
 			</li>
