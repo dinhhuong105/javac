@@ -85,75 +85,14 @@ $csv = array();
 	}
 </style>
 <?php if($post_metas): ?>
+
 <div class="row postbox" id="revisionsdiv">
-<div class="btn">
-<span id="loading"></span>
-	<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?=$_limited_answer[0]?>"><?=($_limited_answer[0] > 0)?'回答受付中':'停止中'?></button>
-	<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" >Publishing</button>
-</div>
+	<div class="btn">
+		<span id="loading"></span>
+		<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?=$_limited_answer[0]?>"><?=($_limited_answer[0] > 0)?'回答受付中':'停止中'?></button>
+		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" >Publishing</button>
+	</div>
 <h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>
-	<div id="frm_question">
-	<?php 
-		foreach ($post_metas[$id] as $key => $meta) {
-	echo "<pre>"; print_r($post_meta); echo "</pre>";
-
-				if($meta['type'] == 'checkbox'){
-					echo '<div class="box-question"><a class="btn_remove">x</a>';
-					echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
-					echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目 </label>';
-					echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
-					$i=0;
-					foreach ($meta['answer'] as $answer) {
-						echo '<input type="checkbox" name="posid_'. $key .'_answer_'. $id .'_' . $i . '"> 
-						<input type="text" name="question['. $key .']['. $id .'][answer]['.$i.']" value="'.$answer.'"><br/>';
-						$i++;
-					}
-					echo '</div>';
-				}elseif($meta['type'] == 'radio'){
-					echo '<div class="box-question"><a class="btn_remove">x</a>';
-					echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
-					echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
-					echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
-					$i=0;
-					foreach ($meta['answer'] as $answer) {
-						echo '<input type="radio" name="posid_'. $key .'_answer_'. $id .'"> 
-						<input type="text" name="question['. $key .']['. $id .'][answer]['.$i.']" value="'.$answer.'"><br/>';
-						$i++;
-					}
-					echo '</div>';
-				}elseif($meta['type'] == 'pulldown'){
-					echo '<div class="box-question"><a class="btn_remove">x</a>';
-					echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
-					echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
-					echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
-					$i=0;
-					foreach ($meta['answer'] as $answer) {
-						echo '<input type="text" name="question['. $key .']['. $id .'][answer]['.$i.']" value="'.$answer.'"><br/>';
-						$i++;
-					}
-					echo '</div>';
-				}elseif($meta['type'] == 'textbox'){
-					echo '<div class="box-question"><a class="btn_remove">x</a>';
-					echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
-					echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
-					echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
-					echo '</div>';
-				}elseif($meta['type'] == 'textarea'){
-					echo '<div class="box-question"><a class="btn_remove">x</a>';
-					echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
-					echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
-					echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
-					echo '</div>';
-				}
-				
-		}
-	?>
-
-	
-</div>
-</div>
-<div class="row postbox" id="revisionsdiv">
-
 	<ul>
 		<li class="report">
 			<label>回答数</label><br/><b><?=$number_answer?></b>件
@@ -245,7 +184,7 @@ jQuery(document).ready(function($){
 				if(res['status'] == 'publish'){
 					$button.html('publish');
 				}else{
-					$button.html('private');
+					$button.html('auto-draft');
 				}
 				$button.attr('data-status',res['status']);
 				$button.attr("disabled", false);
