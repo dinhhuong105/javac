@@ -1020,7 +1020,7 @@ footer .copy {
 .breadcrumbList li a,
 .breadcrumbList li i {
     color: inherit;
-    min-height: 35px;
+    /*min-height: 35px;*/
     box-sizing: border-box
 }
 .breadcrumbList li a {
