@@ -27,19 +27,19 @@
     <?php if(have_comments()): ?>
    　<ul class="commentList">
        <?php 
-            $args = array('type' =>'comment','callback' => 'question_comment');
-            $resource = null;
-            if (isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'new' )
-                { $args['reverse_top_level'] = true; }
-            elseif (isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'old' )
-               { $args['reverse_top_level'] = false; }
-            else {
-                global $wp_query;
-                $comment_arr = $wp_query->comments;
-                usort($comment_arr, 'comment_comparator');
-                $resource = $comment_arr;
-            }
-            ($resource == null)?wp_list_comments($args):wp_list_comments($args,$resource); 
+        $args = array('type' =>'comment','callback' => 'question_comment');
+        $resource = null;
+        if (isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'new' )
+            { $args['reverse_top_level'] = true; }
+        elseif (isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'old' )
+           { $args['reverse_top_level'] = false; }
+        elseif (isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'like_count' ) {
+            global $wp_query;
+            $comment_arr = $wp_query->comments;
+            usort($comment_arr, 'comment_comparator');
+            $resource = $comment_arr;
+        }
+        ($resource == null)?wp_list_comments($args):wp_list_comments($args,$resource); 
         ?>
     </ul>
      <?php endif; ?>
