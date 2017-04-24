@@ -127,7 +127,7 @@ function update_status_comment(){
     $commentarr['comment_approved'] = $_POST['status']?0:1;
     $result = wp_update_comment( $commentarr );
     if($_POST['status'] == '1'){
-        update_report_status($_POST['comment_ID']);
+        update_report_status_comment($_POST['comment_ID']);
     }
     wp_send_json(['success'=>$result]);
 }
@@ -137,7 +137,7 @@ add_action('wp_ajax_update_comment', 'update_status_comment');
  * Change report status when unapprove comment
  * @author Hung Nguyen
  */
-function update_report_status($comment_id){
+function update_report_status_comment($comment_id){
     if ( function_exists ( 'wprc_table_name' ) ){
         global $wpdb;
         $table_name = wprc_table_name();
@@ -146,7 +146,6 @@ function update_report_status($comment_id){
         $wpdb->query($query);
     }
 }
-
 
 /**
 * export to file
@@ -207,10 +206,27 @@ function update_status_post(){
         'ID'    =>  $post_id,
         'post_status'   =>  $status
         ));
+    if($_POST['status']=='publish'){
+        update_report_status_post($post_id);
+    }
     wp_send_json(['success'=>$result,'status'=>$status]);
   }
 }
 add_action('wp_ajax_post_status', 'update_status_post');
+
+/**
+ * Change report status when unpublish post
+ * @author Hung Nguyen
+ */
+function update_report_status_post($post_id){
+    if ( function_exists ( 'wprc_table_name' ) ){
+        global $wpdb;
+        $table_name = wprc_table_name();
+        $query = "UPDATE $table_name SET status='processed' WHERE post_id = $post_id";
+
+        $wpdb->query($query);
+    }
+}
 
 /**
 * disable edit post after has comment
