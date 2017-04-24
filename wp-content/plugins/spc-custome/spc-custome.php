@@ -137,12 +137,27 @@ function update_status_comment(){
     $commentarr = array();
     $commentarr['comment_ID'] = $_POST['comment_ID'];
     $commentarr['comment_approved'] = $_POST['status']?0:1;
-   $result = wp_update_comment( $commentarr );
+    $result = wp_update_comment( $commentarr );
+    if($_POST['status'] == '1'){
+        update_report_status($_POST['comment_ID']);
+    }
     wp_send_json(['success'=>$result]);
 }
 add_action('wp_ajax_update_comment', 'update_status_comment');
 
-
+/**
+ * Change report status when unapprove comment
+ * @author Hung Nguyen
+ */
+function update_report_status($comment_id){
+    if ( function_exists ( 'wprc_table_name' ) ){
+        global $wpdb;
+        $table_name = wprc_table_name();
+        $query = "UPDATE $table_name SET status='processed' WHERE comment_id = $comment_id";
+    
+        $wpdb->query($query);
+    }
+}
 
 /**
  Khai báo meta box
