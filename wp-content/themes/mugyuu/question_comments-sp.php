@@ -140,8 +140,7 @@
                     </div>
                 </li>
                 <li>
-                    <input type="hidden" name="submitted" id="submitted" value="true" />
-                    <button type="submit" name="action" value="send" class="sendBtn">コメントを投稿</button>
+                    <button type="submit" name="submitted" value="send" class="sendBtn">コメントを投稿</button>
                 </li>
             </ul>
         </form>
