@@ -109,18 +109,6 @@ if(isset($_POST)){
   add_action( 'save_post', 'questionaire_attr_save' );
 }
 
-
-/**
- Khai báo meta box Answer list
-**/
-/*function answer_meta_box()
-{
-  add_meta_box( 'answers', '回答一覧', 'answer_attr', 'question_post' );
-}
-if(isset($_GET['action']) == 'edit')
-  add_action( 'add_meta_boxes', 'answer_meta_box' );*/
-
-
 /**
 * 
 */
@@ -159,19 +147,6 @@ function update_report_status($comment_id){
     }
 }
 
-/**
- Khai báo meta box
-**/
-/*add_action( 'admin_post_report_question', 'exportcsv' );
-function exportcsv() {
-    include_once('templates/exportcsv.php'); 
-}
-function report_meta_box()
-{
- add_meta_box( 'answer-report', 'レポート', 'exportcsv', 'question_post' );
-}
-if(isset($_GET['action']) == 'edit')
-  add_action( 'add_meta_boxes', 'report_meta_box' );*/
 
 /**
 * export to file
@@ -183,10 +158,11 @@ function csv_file() {
 
 
 function report_link($actions, $page_object){
-  $actions['report_page'] = '<a href="'.admin_url( 'edit.php?post_type=question_post&page=review&post=' . $page_object->ID ).'">Report</a>';
-  unset($actions['inline hide-if-no-js']);
-  // print_r($actions);exit;
-
+  if($page_object->post_type == 'question_post'){
+    $actions['report_page'] = '<a href="'.admin_url( 'edit.php?post_type=question_post&page=review&post=' . $page_object->ID ).'">Report</a>';
+    unset($actions['inline hide-if-no-js']);
+    // print_r($actions);exit;
+  }
   return $actions;
 }
 add_filter('post_row_actions', 'report_link', 10, 2);
@@ -227,10 +203,11 @@ function update_status_post(){
   if(isset($_POST['post_ID'])){
     $post_id = $_POST['post_ID'];
     $status = $_POST['status']=='publish'?'private':'publish';
-    $result = wp_update_post(array(
-        'ID'    =>  $post_id,
-        'post_status'   =>  $status
-        ));
+    $close = $_POST['status']=='publish'?'open':'close';
+    global $wpdb;
+    $query = "UPDATE ".$wpdb->prefix."posts SET post_status='".$status."',comment_status='".$close."', ping_status='".$close."', post_modified= '".date("Y-m-d H:i:s")
+."'  WHERE ID = '".$post_id."'";
+    $result = $wpdb->query($query);
     wp_send_json(['success'=>$result,'status'=>$status]);
   }
 }

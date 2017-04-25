@@ -111,7 +111,7 @@ jQuery(document).ready(function($){
 
 		var str = '';
 			str += '<div class="box-question">';
-			str += '<a class="btn_remove">remove</a>';
+			str += '<a class="btn_remove">x</a>';
 			str += hidden($('select[name=question_type] :selected').val(),id);
 			str += question_input(id,1);
 			str += "<br/><br/>"
@@ -132,32 +132,10 @@ jQuery(document).ready(function($){
 		$('#frm_question').append(str);
 
 	});
-
-	/* button remove */
-	$('.box-question').on('click','.btn_remove', function(){
-		var res = confirm('あなたはそれを削除したいですか？');
-		if(res) $(this).parent('div').remove();
-	});
-	
 });
 jQuery(document).on('click', '.btn_remove', function($){
-	/*jQuery.confirm({
-	    title: 'Confirm!',
-	    content: 'Simple confirm!',
-	    buttons: {
-	        ok: function () {
-	            
-	        },
-	        cancel: function () {
-	            
-	        }
-	        
-	    }
-	});*/
-	/*jConfirm('Continue?', 'Current Maximum Instances', function (ans) {
-                if (!ans)
-                    return;
-            });*/
+	var res = confirm('あなたはそれを削除したいですか？');
+		if(res) jQuery(this).parent('div').remove();
 		
 });
 
