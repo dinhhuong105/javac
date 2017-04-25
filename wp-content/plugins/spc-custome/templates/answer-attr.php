@@ -173,7 +173,7 @@
 					<?php endif?>
 				</div>
 			</td>
-			<td><button class="btn-public page-title-action" data-status="<?=$comment->comment_approved?>" data-comment="<?=$comment->comment_ID?>"><?=($comment->comment_approved)?'公開停止':'公開中'?></button><span class="loading"></span></td>
+			<td><button class="btn-public-comment page-title-action" data-status="<?=$comment->comment_approved?>" data-comment="<?=$comment->comment_ID?>"><?=($comment->comment_approved)?'公開停止':'公開中'?></button><span class="loading"></span></td>
 		</tr>
 		<?php endforeach ?>
 		
@@ -196,7 +196,7 @@ jQuery(document).ready(function($){
 	    return false;
 	});
 
-	$('#the-list').on('click','.btn-public',function(e){
+	$('#the-list').on('click','.btn-public-comment',function(e){
 		e.preventDefault();
 		var comment_ID = $(this).attr('data-comment');
 		var status = $(this).attr('data-status');
