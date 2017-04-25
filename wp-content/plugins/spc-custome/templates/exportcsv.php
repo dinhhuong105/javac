@@ -89,7 +89,7 @@ $csv = array();
 	<div class="btn">
 		<span id="loading"></span>
 		<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?=$_limited_answer[0]?>"><?=($_limited_answer[0] > 0)?'回答受付中':'停止中'?></button>
-		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" ><?=get_post_status($id) == 'publish'?'publish':'private'?>Publishing</button>
+		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" ><?=(get_post_status($id) == 'publish')?'publish':'private'?></button>
 	</div>
 <h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>
 	<ul>
@@ -97,12 +97,12 @@ $csv = array();
 			<label>回答数</label><br/><b><?=$number_answer?></b>件
 		</li>
 		<?php 
-		
+		$stt=1;
 		foreach ($post_metas[$id] as $key => $value): 
 			$csv[$key]['question'] = $value['question'];
 		?>
 			<li class="report">
-				<label>設問 <?=$key+1?></label><br/>
+				<label>設問 <?=$stt++?></label><br/>
 				<h2 class="hndle ui-sortable-handle"><?=$value['question']?></h2><br/>
 				<ul>
 				<?php 
