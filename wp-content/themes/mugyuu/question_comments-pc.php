@@ -9,6 +9,17 @@
         margin-top:0px;
         padding-top: 20px;
     }
+    .btnDisable:hover{ 
+        background-color: #ccc!important;
+        color:#fff!important;
+    }
+    .btnDisable{
+        color:#ccc!important;
+        border-color: #ccc!important;
+    }
+    .mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea .imgBtn input{
+        font-size: inherit!important;
+    }
 </style>
 <?php 
     $limited = get_post_meta( $post->ID, '_limited_answer', true );
@@ -58,8 +69,7 @@
 </section>
 <section id="send" class="commentFormArea">
 
-<?php
- if( ($count_comment->approved <= $limited && $limited > 0) || empty($limited) ): ?>
+
     <div class="commentFormWrap">
         <div class="ttlArea">
             <h1>アンケートに答える</h1>
@@ -149,14 +159,18 @@
                     </div>
                 </li>
                 <li>
+                    <?php
+                    if( ($count_comment->approved <= $limited && $limited > 0) || empty($limited) ): ?>
                         <button type="submit" name="submitted" value="send" class="sendBtn">アンケートに回答する</button>
+                    <?php else: ?>
+                        <button type="submit" name="submitted" value="send" class="sendBtn btnDisable" disabled="disabled">回答締め切りました。</button>
+                        <!-- <div style="text-align: center">This survey is pause!</div> -->
+                    <?php endif; ?> 
                 </li>
             </ul>
         </form>
     </div>
-<?php else: ?>
-    <div style="text-align: center">This survey is pause!</div>
-<?php endif ?>    
+   
 </section>
 <script type="text/javascript">
 	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
@@ -168,6 +182,13 @@
         if($cbx_group.is(":checked")){
           $cbx_group.prop('required', false);
         }
+    });
+
+    $('#qaFilter').on('change',function(){
+        var target = $(this);
+        var current_link = window.location.origin + window.location.pathname;
+        console.log(current_link);
+        // window.location = current_link + '?comment_order_by=' + target.val();
     });
 </script>
 <script src="<?php bloginfo('template_directory'); ?>/js/notice-board.js"></script>
