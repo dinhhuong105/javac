@@ -2631,8 +2631,11 @@ function add_comment_on_questions($post_id) {
             'comment_date' => $time,
             'comment_approved' => 1
         );
-        
-        $comment_id = wp_insert_comment($data);
+        $count_comment =  wp_count_comments( $post_id );
+        $limited = get_post_meta( $post_id, '_limited_answer', true );
+        if(($count_comment->approved < $limited && $limited > 0) || empty($limited)){
+            $comment_id = wp_insert_comment($data);
+        }
         
         add_comment_meta( $comment_id, '_question_comment', $_POST['answer'] );
         
