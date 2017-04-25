@@ -13,7 +13,7 @@
                         ]);
                         $query = new WP_Query([
                             'cat' =>array(-1, -281),
-                            'post_type' => 'post',
+                            'post_type' => array('post', 'thread_post', 'question_post'),
                             'posts_per_page' => $posts_per_page,
                             'paged' => ($paged > $val->max_num_pages) ? $val->max_num_pages : $paged,
                         ]);
