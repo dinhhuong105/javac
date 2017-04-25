@@ -112,16 +112,7 @@
                         <li class="inst"><a href="https://www.instagram.com/mugyuu1/" target="_blank"><i class="icon fa fa-instagram inst" aria-hidden="true"></i></a></li>
                         <li class="fd"><a href="http://cloud.feedly.com/#subscription%2Ffeed%2F<?php rawurlencode( bloginfo('atom_url') ); ?>" target="_blank"><span class="icon icon-feedly fd"></span></a></li>
                         <li class="rss"><a href="<?php bloginfo('atom_url'); ?>" target="_blank"><i class="icon fa fa-rss rss" aria-hidden="true"></i></a></li>
-                        <?php $spc_option = get_option('spc_options'); ?>
-						<?php if( $spc_option['allowpost']) :?>
-                        	<li class="threadAdd"><a href="<?php echo home_url(); ?>/add-thread">＋トピックを投稿する</a></li>
-                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
         </header>
-        <style>
-            .snsList{
-                overflow: inherit !important;
-            }
-        </style>

@@ -4256,12 +4256,12 @@ textarea {
      background-color: #fc8c96;
      color:#fff;
      border-radius: 5px;
-     margin-top: -28px;
      font-size: 1.2em !important;
-     padding: 0px 60px;
+     padding: 10px 10px;
+     text-align: center;
      font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
      font-weight: 900;
-     line-height: 50px !important;
+     margin-bottom: 20px;
 }
 .threadAdd a{
     color: inherit;
