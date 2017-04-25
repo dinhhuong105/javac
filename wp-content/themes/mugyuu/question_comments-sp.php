@@ -9,6 +9,14 @@
         width: auto!important; 
         height: auto!important;
     }
+    .btnDisable{
+        color:#fff!important;
+        border-color: #ccc!important;
+        background-color: #ccc!important;
+    }
+    .qaSingle .commentFormArea form ul li .textArea .imgBtn input{
+        font-size: inherit!important;
+    }
 </style>
 <?php 
     $limited = get_post_meta( $post->ID, '_limited_answer', true );
@@ -56,8 +64,6 @@
      ?>
 </section>
 <section class="commentFormArea" id="send">
-<?php
- if( ($count_comment->approved <= $limited && $limited > 0) || empty($limited) ): ?>
         <h1>アンケートに答える</h1>
         <p class="notes"><sup class="red">※</sup>は必須項目になります。</p>
         <form action="" id="formComment" method="POST">
@@ -140,13 +146,15 @@
                     </div>
                 </li>
                 <li>
-                    <button type="submit" name="submitted" value="send" class="sendBtn">コメントを投稿</button>
+                    <?php
+                    if( ($count_comment->approved <= $limited && $limited > 0) || empty($limited) ): ?>
+                        <button type="submit" name="submitted" value="send" class="sendBtn">アンケートに回答する</button>
+                    <?php else: ?>
+                        <button type="submit" name="submitted" value="send" class="sendBtn btnDisable" disabled="disabled">回答締め切りました。</button>
+                    <?php endif; ?> 
                 </li>
             </ul>
-        </form>
-<?php else: ?>
-    <div style="text-align: center">This survey is pause!</div>
-<?php endif ?>           
+        </form>      
 </section>
 <script type="text/javascript">
     var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
