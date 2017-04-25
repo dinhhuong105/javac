@@ -161,4 +161,4 @@
     });
 </script>
 <script src="<?php bloginfo('template_directory'); ?>/js/notice-board.js"></script>
-<?php add_comment_on_notice(get_the_ID()) ?>
+<?php add_comment_on_questions(get_the_ID()) ?>
