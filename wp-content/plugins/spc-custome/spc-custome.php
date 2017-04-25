@@ -127,7 +127,7 @@ function update_status_comment(){
     $commentarr['comment_approved'] = $_POST['status']?0:1;
     $result = wp_update_comment( $commentarr );
     if($_POST['status'] == '1'){
-        update_report_status_comment($_POST['comment_ID']);
+        update_report_status($_POST['comment_ID']);
     }
     wp_send_json(['success'=>$result]);
 }
@@ -137,7 +137,7 @@ add_action('wp_ajax_update_comment', 'update_status_comment');
  * Change report status when unapprove comment
  * @author Hung Nguyen
  */
-function update_report_status_comment($comment_id){
+function update_report_status($comment_id){
     if ( function_exists ( 'wprc_table_name' ) ){
         global $wpdb;
         $table_name = wprc_table_name();
@@ -146,6 +146,7 @@ function update_report_status_comment($comment_id){
         $wpdb->query($query);
     }
 }
+
 
 /**
 * export to file
@@ -201,32 +202,16 @@ add_action('wp_ajax_limited_comment', 'update_status_limited_comment');
 function update_status_post(){
   if(isset($_POST['post_ID'])){
     $post_id = $_POST['post_ID'];
-    $status = $_POST['status']=='publish'?'auto-draft':'publish';
-    $result = wp_update_post(array(
-        'ID'    =>  $post_id,
-        'post_status'   =>  $status
-        ));
-    if($_POST['status']=='publish'){
-        update_report_status_post($post_id);
-    }
+    $status = $_POST['status']=='publish'?'private':'publish';
+    $close = $_POST['status']=='publish'?'open':'close';
+    global $wpdb;
+    $query = "UPDATE ".$wpdb->prefix."posts SET post_status='".$status."',comment_status='".$close."', ping_status='".$close."', post_modified= '".date("Y-m-d H:i:s")
+."'  WHERE ID = '".$post_id."'";
+    $result = $wpdb->query($query);
     wp_send_json(['success'=>$result,'status'=>$status]);
   }
 }
 add_action('wp_ajax_post_status', 'update_status_post');
-
-/**
- * Change report status when unpublish post
- * @author Hung Nguyen
- */
-function update_report_status_post($post_id){
-    if ( function_exists ( 'wprc_table_name' ) ){
-        global $wpdb;
-        $table_name = wprc_table_name();
-        $query = "UPDATE $table_name SET status='processed' WHERE post_id = $post_id";
-
-        $wpdb->query($query);
-    }
-}
 
 /**
 * disable edit post after has comment

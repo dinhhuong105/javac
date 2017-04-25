@@ -85,12 +85,11 @@ $csv = array();
 	}
 </style>
 <?php if($post_metas): ?>
-
 <div class="row postbox" id="revisionsdiv">
 	<div class="btn">
 		<span id="loading"></span>
 		<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?=$_limited_answer[0]?>"><?=($_limited_answer[0] > 0)?'回答受付中':'停止中'?></button>
-		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" >Publishing</button>
+		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" ><?=get_post_status($id) == 'publish'?'publish':'private'?>Publishing</button>
 	</div>
 <h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>
 	<ul>
@@ -113,15 +112,15 @@ $csv = array();
 						?>
 						<li><?=$ans?> ... <?=$report_ans[$key][$k_ques]?></li>
 				<?php endforeach;
-				else:
-					?>
-					<?php foreach ($report_ans[$key] as $answer => $count): 
+				else: 
+					if($report_ans[$key]):
+					 foreach ($report_ans[$key] as $answer => $count): 
 						$csv[$key][$answer] = $count;
 					?>
 						<li><?=$answer?> ... <?=$count?></li>
-					<?php endforeach ?>
-				<?php
-				endif
+					<?php endforeach; 
+					endif;
+				endif;
 				?>
 				</ul>
 			</li>
@@ -164,7 +163,7 @@ jQuery(document).ready(function($){
 		});
 	});
 	$('.btn-public').on('click',function(e){
-		return;
+		// return;
 		e.preventDefault();
 		var post_id = $(this).attr('data-post');
 		var status = $(this).attr('data-status');
@@ -184,7 +183,7 @@ jQuery(document).ready(function($){
 				if(res['status'] == 'publish'){
 					$button.html('publish');
 				}else{
-					$button.html('auto-draft');
+					$button.html('private');
 				}
 				$button.attr('data-status',res['status']);
 				$button.attr("disabled", false);
