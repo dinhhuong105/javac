@@ -2126,7 +2126,7 @@ function noticetheme_comment($comment, $args, $depth) {
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
     <div id="comment-<?php comment_ID(); ?>" class="commentData">
         <p class="data">
-            <?php echo get_comment_date(('Y/m/d')) ?>
+            <?php echo get_comment_date(('Y/m/d H:i:s')) ?>
             <?php printf(__('%s'), get_comment_author_link()) ?>
         </p>
         <div class="report modal">
@@ -2648,7 +2648,7 @@ function question_comment($comment, $args, $depth) {
         <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
             <div id="comment-<?php comment_ID(); ?>" class="commentData">
                 <p class="data">
-                    <?php echo get_comment_date(('Y/m/d')) ?>
+                    <?php echo get_comment_date(('Y/m/d H:i:s')) ?>
                     <?php printf(__('%s'), get_comment_author_link()) ?>
                 </p>
                 <div class="report modal">

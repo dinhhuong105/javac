@@ -3200,52 +3200,6 @@ textarea {
     background: #fc8c96
 }
 /* Button report */
-/* Button add thread */
-	/* - Tablet */
-.threadAdd{
-     width: 26%;
-     background-color: #fc8c96;
-     color:#fff;
-     border-radius: 5px;
-     font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-     font-weight: 900;
-     float: left;
-     line-height: 33px;
-     margin-top: 5px;
-}
-.threadAdd a{
-    color: inherit;
-    padding: 0px 10px;
-    text-align: center;
-}
-header .sb-slide h1.is_add_button {
-	width: 60%;
-}
-	/* Tablet */
-	/* - SP */
-.threadAddSP{
-     width: 90%;
-     background-color: #fc8c96;
-     color:#fff;
-     border-radius: 5px;
-     font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-     font-weight: 900;
-     line-height: 30px;
-     margin: 0px auto;
-}
-.catArea.pb_threadAdd{
-	padding-bottom: 20px;
-}
-.border_none .searchArea{
-	background: none !important;
-}
-.threadAddSP a{
-    color: inherit;
-    padding: 0px 10px;
-    text-align: center;
-}
-	/* SP */
-/* Button add thread */
 /* Image of comment */
 .wrapper.single .commentArea .commentList li p img {
 	display: block !important;
