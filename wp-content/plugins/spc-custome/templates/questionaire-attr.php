@@ -132,6 +132,14 @@ jQuery(document).ready(function($){
 		$('#frm_question').append(str);
 
 	});
+
+	$('select[name=question_type]').on('change',function(){
+		if($(this).val() == 'textbox' || $(this).val() == 'textarea'){
+			$('input[type=number]').attr('disabled','disabled');
+		}else{
+			$('input[type=number]').removeAttr('disabled');
+		}
+	});
 });
 jQuery(document).on('click', '.btn_remove', function($){
 	var res = confirm('あなたはそれを削除したいですか？');
