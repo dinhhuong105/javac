@@ -5,12 +5,12 @@
                 <h1>質問掲示板</h1>
                 <p class="detail">子育て奮闘中のママさん達が感じた疑問質問やお役立ち情報まで自由に語り合おう♪</p>
                 <div class="btnArea">
-                    <a href="">新規スレッドを立てる</a>
+                    <a href="<?php echo home_url(); ?>/add-thread">新規スレッドを立てる</a>
                 </div>
                 <p class="all">スレッド一覧</p>
                 <ul class="articleList newList">
                     <?php
-                        $posts_per_page = 10;
+                        $posts_per_page = 5;
                         $val = new WP_Query([
                             'posts_per_page' => $posts_per_page,
                         ]);
@@ -20,6 +20,7 @@
                             'posts_per_page' => $posts_per_page,
                             'paged' => ($paged > $val->max_num_pages) ? $val->max_num_pages : $paged,
                         ]);
+                        $total_pages = ceil($query->found_posts/$posts_per_page);
                     ?>
                     <?php
                         if ($query -> have_posts()) :
@@ -78,7 +79,7 @@
                 </ul>
                 <?php
                     if(function_exists("pagination")) {
-                        pagination($val->max_num_pages);
+                        pagination($total_pages);
                     }
                 ?>
                 <?php wp_reset_postdata(); ?>
