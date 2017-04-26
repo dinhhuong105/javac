@@ -115,7 +115,7 @@ $count_comment =  count($comments);
 		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" ><?=(get_post_status($id) == 'publish')?'publish':'private'?></button>
 	</div>
 <h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>
-<h3 class="header-box">（アンケートタイトル）</h3>
+<h3 class="header-box"><?=get_the_title( $id );?></h3>
 	<ul class="info-box">
 		<li class="report">
 			<label>回答数</label><br/><b><?=$number_answer?></b>件
