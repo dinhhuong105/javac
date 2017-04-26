@@ -2065,7 +2065,7 @@ function thread_post_type() {
                     'public' => true,
                     'has_archive' => true, /* アーカイブページを持つ */
                     'menu_position' =>5, //管理画面のメニュー順位　投稿の下
-                    'supports' => array( 'title', 'editor', 'thumbnail', 'comments' ),
+                    'supports' => array( 'title', 'editor', 'thumbnail', 'comments', 'author' ),
             )
             );
     flush_rewrite_rules(false);
