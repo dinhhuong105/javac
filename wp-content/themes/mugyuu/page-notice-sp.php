@@ -4,9 +4,12 @@
             <section class="newArea qaArea">
                 <h1>質問掲示板</h1>
                 <p class="detail">子育て奮闘中のママさん達が感じた疑問質問やお役立ち情報まで自由に語り合おう♪</p>
-                <div class="btnArea">
-                    <a href="<?php echo home_url(); ?>/add-thread">新規スレッドを立てる</a>
-                </div>
+                <?php $spc_option = get_option('spc_options'); ?>
+				<?php if( $spc_option['allowpost']) :?>
+                    <div class="btnArea">
+                        <a href="<?php echo home_url(); ?>/add-thread">新規スレッドを立てる</a>
+                    </div>
+                <?php endif; ?>
                 <p class="all">スレッド一覧</p>
                 <ul class="articleList newList">
                     <?php
