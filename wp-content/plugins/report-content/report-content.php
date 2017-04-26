@@ -245,13 +245,19 @@ function wprc_mail($report)
 	$comment_id = $report['comment_id'];
 	
 	$post_url = get_post_permalink($post_id);
-	$post_edit_url = admin_url("post.php?post=$post_id&action=edit");
 	$reports_url = admin_url('admin.php?page=wprc_reports_page');
 	$spc_option = get_option('spc_options');
 	
+	$url_confirm = '';
+	$comment = ($comment_id>0)?'&comment_id_scroll='.$comment_id:'';
+	if(get_post_type($post_id) == 'question_post'){
+	    $url_confirm = get_admin_url(). 'edit.php?post_type=question_post&page=review&post='. $post_id . $comment;
+	}else{
+	    $url_confirm = get_edit_post_link($post_id) . $comment;
+	}
 	$title_post = get_the_title( $post_id );
 	$subject = $title_post . 'が通報されました。';
-	$content = '新しく'.$title_post.'が通報されました。\n('.$post_url.')をチェックしてください。';
+	$content = '新しく'.$title_post.'が通報されました。\n('.$url_confirm.')をチェックしてください。';
     $email_to = $spc_option['report_email'];
 	
 	$headers[] = 'From: Guest';
