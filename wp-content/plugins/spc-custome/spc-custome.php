@@ -1,8 +1,8 @@
 <?php
 /**
-* Plugin Name: SPc-Questionnaire
+* Plugin Name: Questionnaire
 * Author: Unotrung
-* Description: Create questionaire follow post
+* Description: Create questionnaire follow post
 */
 global $post;
 
