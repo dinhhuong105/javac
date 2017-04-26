@@ -85,16 +85,38 @@ $count_comment =  count($comments);
 		position: absolute;
 		right: 20px;
 	}
+	h3.header-box{
+		
+	    padding: 15px 10px;
+	    background-color: #0073aa;
+	    margin-bottom: 0px;
+	    color: #fff;
+
+	}
+	ul.info-box{
+	    border: 1px solid #0073aa;
+    	padding: 15px;
+    	margin-top: 0px;
+	}
 </style>
 <?php if($post_metas): ?>
 <div class="row postbox" id="revisionsdiv">
 	<div class="btn">
 		<span id="loading"></span>
-		<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?=$_limited_answer[0]?>" <?=($count_comment>=$_limited_answer[0])?'disabled="disabled"':''?>><?=($_limited_answer[0] > 0)?'回答受付中':'停止中'?></button>
-		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" ><?=(get_post_status($id) == 'publish')?'publish':'private'?></button>
+		<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?=$_limited_answer[0]?>" 
+		<?php
+		$m = ($_limited_answer[0] < 0 )?$_limited_answer[0]*-1:$_limited_answer[0];
+		if($count_comment < $m || empty($_limited_answer[0])) {
+			//show
+		}else{
+			echo 'disabled="disabled"';
+		} ?>
+		><?=($_limited_answer[0] > 0)?'回答受付中':'停止中'?></button>
+		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" ><?=(get_post_status($id) == '公開中')?'公開中':'公開停止'?></button>
 	</div>
 <h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>
-	<ul>
+<h3 class="header-box"><?=get_the_title( $id );?></h3>
+	<ul class="info-box">
 		<li class="report">
 			<label>回答数</label><br/><b><?=$number_answer?></b>件
 		</li>
@@ -183,9 +205,9 @@ jQuery(document).ready(function($){
 			success:function(res){
 				console.log(res);
 				if(res['status'] == 'publish'){
-					$button.html('publish');
+					$button.html('公開中');
 				}else{
-					$button.html('private');
+					$button.html('公開停止');
 				}
 				$button.attr('data-status',res['status']);
 				$button.attr("disabled", false);
