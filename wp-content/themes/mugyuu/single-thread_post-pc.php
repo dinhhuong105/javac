@@ -75,8 +75,8 @@
                             <div class="modal-overlay">
                                 <div class="modal-wrap">
                                     <label for="modal-trigger-thread">✖</label>
-                                    <h3>これスレッドを通報</h3>
-                                    <p>これスレッドを削除すべき不適切なスレッドとして通報しますか？</p>
+                                    <h3>このスレッドを通報</h3>
+                                    <p>このスレッドを不適切な内容として通報しますか？</p>
                                     <div class="btnArea">
                                         <button type="button" class="reportBtn">通報
                                         </button>

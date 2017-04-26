@@ -29,7 +29,7 @@
 
 ?>
 <section class="commentArea">
-    <label for="qaFilter" class="sortWrap">
+    <!-- <label for="qaFilter" class="sortWrap">
         <select id="qaFilter" name="qaFilter" class="sort">
         <?php foreach ($questions[$post->ID] as $qkey => $question) { 
                 foreach ($question['answer'] as $anskey => $ansval) {
@@ -38,7 +38,7 @@
         <?php } 
         } ?>
         </select>
-    </label>
+    </label> -->
 	<label for="qaSort" class="sortWrap">
 		<select id="qaSort" name="qaSort" class="sort">
             <option value="new" <?php if($_GET['comment_order_by'] == 'new') echo 'selected' ?>>新着順</option>
@@ -170,10 +170,10 @@
                 </li>
                 <li>
                     <?php
-                    if( ($count_comment->approved < $limited && $limited > 0) || empty($limited) ): ?>
-                        <button type="submit" name="submitted" value="send" class="sendBtn">アンケートに回答する-<?=$count_comment->approved?></button>
-                    <?php else: ?>
+                    if( $limited < 0 || $count_comment->approved >= $limited ): ?>
                         <button type="submit" name="submitted" value="send" class="sendBtn btnDisable" disabled="disabled">回答締め切りました。</button>
+                    <?php else: ?>
+                        <button type="submit" name="submitted" value="send" class="sendBtn">アンケートに回答する</button>
                     <?php endif; ?> 
                 </li>
             </ul>
