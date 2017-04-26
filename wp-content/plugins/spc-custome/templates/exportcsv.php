@@ -174,7 +174,6 @@ jQuery(document).ready(function($){
 				'status' : status
 			},
 			success:function(res){
-				console.log(res);
 				if(res['status'] < 0){
 					$button.html('停止中');
 				}else{
@@ -203,7 +202,6 @@ jQuery(document).ready(function($){
 				'status' : status
 			},
 			success:function(res){
-				console.log(res);
 				if(res['status'] == 'publish'){
 					$button.html('公開中');
 				}else{
