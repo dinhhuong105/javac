@@ -28,7 +28,7 @@
     <label for="qaSort" class="sortWrap">
        <select id="qaSort" name="qaSort" class="sort">
            <option value="new" <?php if($_GET['comment_order_by'] == 'new') echo 'selected' ?>>新着順</option>
-            <option value="old" <?php if($_GET['comment_order_by'] == 'old' || (!isset($_GET['comment_order_by']) && get_option('comment_order') != 'desc')) echo 'selected' ?>>古い順</option>
+            <option value="old" <?php if($_GET['comment_order_by'] == 'old') echo 'selected' ?>>古い順</option>
             <option value="like_count" <?php if($_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
        </select>
    </label>
@@ -138,7 +138,7 @@
                     <h3>コメント<span class="red">※</span></h3>
                     <p>参考になるような意見を書いてね！誹謗中傷コメントは消しちゃうよ！的な注意コメント入れる</p>
                     <div class="textArea" id="contentArea">
-                        <textarea name="comment" id="thread_content" required cols="30" rows="10" required></textarea>
+                        <textarea name="comment" required cols="30" rows="10" required></textarea>
                         <label class="imgBtn">
                             <i class="fa fa-camera" aria-hidden="true"></i>画像を選択する
                             <input type="file" id="content_image" name="content_image">
@@ -147,7 +147,7 @@
                 </li>
                 <li>
                     <?php
-                    if( ($count_comment->approved <= $limited && $limited > 0) || empty($limited) ): ?>
+                    if( ($count_comment->approved < $limited && $limited > 0) || empty($limited) ): ?>
                         <button type="submit" name="submitted" value="send" class="sendBtn">アンケートに回答する</button>
                     <?php else: ?>
                         <button type="submit" name="submitted" value="send" class="sendBtn btnDisable" disabled="disabled">回答締め切りました。</button>

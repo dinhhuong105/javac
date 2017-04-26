@@ -21,6 +21,7 @@
     					   'posts_per_page' => 10,
     					   'paged' => $paged,
                            'cat' => $catId,
+				           'post_type' => array('post', 'thread_post', 'question_post'),
     				   );
     				   $query = new WP_Query($args);
     			   ?>

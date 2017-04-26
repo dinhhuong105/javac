@@ -43,6 +43,8 @@ foreach ($question as $key => $value) {
 $post_metas = get_post_meta($id, '_question_type', TRUE);
 $_limited_answer = get_metadata('post', $id, '_limited_answer');
 $csv = array();
+
+$count_comment =  count($comments);
 ?>
 <style type="text/css">
 	.report{
@@ -88,7 +90,7 @@ $csv = array();
 <div class="row postbox" id="revisionsdiv">
 	<div class="btn">
 		<span id="loading"></span>
-		<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?=$_limited_answer[0]?>"><?=($_limited_answer[0] > 0)?'回答受付中':'停止中'?></button>
+		<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?=$_limited_answer[0]?>" <?=($count_comment>=$_limited_answer[0])?'disabled="disabled"':''?>><?=($_limited_answer[0] > 0)?'回答受付中':'停止中'?></button>
 		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" ><?=(get_post_status($id) == 'publish')?'publish':'private'?></button>
 	</div>
 <h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>

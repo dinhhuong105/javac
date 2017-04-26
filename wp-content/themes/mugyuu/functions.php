@@ -2450,7 +2450,7 @@ function myplg_save_meta_box( $post_id ) {
  * @author Hung Nguyen
  */
 
-function addThreadFront(){
+function add_thread_front(){
     if (isset( $_POST['submitted'] )) {
         $user_guest = get_user_by( 'login', 'guest' );
         $post_information = array(
@@ -2631,11 +2631,13 @@ function add_comment_on_questions($post_id) {
             'comment_date' => $time,
             'comment_approved' => 1
         );
-        
-        $comment_id = wp_insert_comment($data);
-        
-        add_comment_meta( $comment_id, '_question_comment', $_POST['answer'] );
-        
+        $count_comment =  wp_count_comments( $post_id );
+        $limited = get_post_meta( $post_id, '_limited_answer', true );
+
+        if(($count_comment->approved < $limited && $limited > 0) || empty($limited)){
+            $comment_id = wp_insert_comment($data);
+            add_comment_meta( $comment_id, '_question_comment', $_POST['answer'] );
+        }
         wp_redirect( get_post_permalink($post_id) );
         exit;
     }
@@ -2717,7 +2719,7 @@ function comment_comparator($a, $b)
     $b_count = get_comment_meta( $b->comment_ID, 'cld_like_count', true );
     if($a_count != $b_count)
     {
-        $compared = $a_count > $b_count ? -1:1;
+        $compared = $a_count > $b_count ? 1:-1;
     }
     return $compared;
 }

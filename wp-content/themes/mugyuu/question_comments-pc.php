@@ -29,10 +29,20 @@
 
 ?>
 <section class="commentArea">
+    <label for="qaFilter" class="sortWrap">
+        <select id="qaFilter" name="qaFilter" class="sort">
+        <?php foreach ($questions[$post->ID] as $qkey => $question) { 
+                foreach ($question['answer'] as $anskey => $ansval) {
+            ?>
+            <option value="filter[<?=$qkey?>][<?=$anskey?>]" ><?=$ansval?></option>
+        <?php } 
+        } ?>
+        </select>
+    </label>
 	<label for="qaSort" class="sortWrap">
 		<select id="qaSort" name="qaSort" class="sort">
             <option value="new" <?php if($_GET['comment_order_by'] == 'new') echo 'selected' ?>>新着順</option>
-            <option value="old" <?php if($_GET['comment_order_by'] == 'old' || (!isset($_GET['comment_order_by']) && get_option('comment_order') != 'desc')) echo 'selected' ?>>古い順</option>
+            <option value="old" <?php if($_GET['comment_order_by'] == 'old') echo 'selected' ?>>古い順</option>
             <option value="like_count" <?php if($_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
         </select>
 	</label>
@@ -160,11 +170,10 @@
                 </li>
                 <li>
                     <?php
-                    if( ($count_comment->approved <= $limited && $limited > 0) || empty($limited) ): ?>
-                        <button type="submit" name="submitted" value="send" class="sendBtn">アンケートに回答する</button>
+                    if( ($count_comment->approved < $limited && $limited > 0) || empty($limited) ): ?>
+                        <button type="submit" name="submitted" value="send" class="sendBtn">アンケートに回答する-<?=$count_comment->approved?></button>
                     <?php else: ?>
                         <button type="submit" name="submitted" value="send" class="sendBtn btnDisable" disabled="disabled">回答締め切りました。</button>
-                        <!-- <div style="text-align: center">This survey is pause!</div> -->
                     <?php endif; ?> 
                 </li>
             </ul>
@@ -187,7 +196,7 @@
     $('#qaFilter').on('change',function(){
         var target = $(this);
         var current_link = window.location.origin + window.location.pathname;
-        console.log(current_link);
+        console.log(target.val());
         // window.location = current_link + '?comment_order_by=' + target.val();
     });
 </script>

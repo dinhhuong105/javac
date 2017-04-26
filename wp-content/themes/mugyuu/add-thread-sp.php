@@ -1,5 +1,5 @@
 <?php get_header();?>
-<?php addThreadFront();?>
+<?php add_thread_front();?>
     <div id="sb-site" class="mainWrap single addthread wrapper">
         <?php breadcrumb(); ?>
     	<section class="threadFormArea">
