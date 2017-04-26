@@ -90,7 +90,13 @@ $count_comment =  count($comments);
 <div class="row postbox" id="revisionsdiv">
 	<div class="btn">
 		<span id="loading"></span>
-		<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?=$_limited_answer[0]?>" <?=($count_comment>=$_limited_answer[0])?'disabled="disabled"':''?>><?=($_limited_answer[0] > 0)?'回答受付中':'停止中'?></button>
+		<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?=$_limited_answer[0]?>" <?php 
+		if($count_comment < $_limited_answer[0] && $_limited_answer[0] > 0 || empty($_limited_answer[0])) {
+			//show
+		}else{
+			echo 'disabled="disabled"';
+		} ?>
+		><?=($_limited_answer[0] > 0)?'回答受付中':'停止中'?></button>
 		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" ><?=(get_post_status($id) == 'publish')?'publish':'private'?></button>
 	</div>
 <h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>
