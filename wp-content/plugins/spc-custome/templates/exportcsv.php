@@ -85,6 +85,19 @@ $count_comment =  count($comments);
 		position: absolute;
 		right: 20px;
 	}
+	h3.header-box{
+		
+	    padding: 15px 10px;
+	    background-color: #0073aa;
+	    margin-bottom: 0px;
+	    color: #fff;
+
+	}
+	ul.info-box{
+	    border: 1px solid #0073aa;
+    	padding: 15px;
+    	margin-top: 0px;
+	}
 </style>
 <?php if($post_metas): ?>
 <div class="row postbox" id="revisionsdiv">
@@ -102,7 +115,8 @@ $count_comment =  count($comments);
 		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" ><?=(get_post_status($id) == 'publish')?'publish':'private'?></button>
 	</div>
 <h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>
-	<ul>
+<h3 class="header-box">（アンケートタイトル）</h3>
+	<ul class="info-box">
 		<li class="report">
 			<label>回答数</label><br/><b><?=$number_answer?></b>件
 		</li>
