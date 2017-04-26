@@ -2441,7 +2441,7 @@ ul.slider .dot-class li:last-child .icon-2:before {
 }
 .qa .qaArea .detail {
     padding: 0 20px;
-    margin-bottom: 30px;
+    margin-bottom: -10px;
     text-align: center;
     line-height: 1.8
 }
@@ -2962,10 +2962,10 @@ ul.slider .dot-class li:last-child .icon-2:before {
     -moz-osx-font-smoothing: grayscale
 }
 .qaArea .btnArea {
-    margin: 40px 0
+    margin: 20px 0
 }
 .qaArea .btnArea a {
-    width: 80%;
+    width: 70%;
     text-align: center;
     color: #fff;
     background: #fc8c96;
