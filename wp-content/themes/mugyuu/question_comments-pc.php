@@ -29,7 +29,7 @@
 
 ?>
 <section class="commentArea">
-    <label for="qaFilter" class="sortWrap">
+    <!-- <label for="qaFilter" class="sortWrap">
         <select id="qaFilter" name="qaFilter" class="sort">
         <?php foreach ($questions[$post->ID] as $qkey => $question) { 
                 foreach ($question['answer'] as $anskey => $ansval) {
@@ -38,7 +38,7 @@
         <?php } 
         } ?>
         </select>
-    </label>
+    </label> -->
 	<label for="qaSort" class="sortWrap">
 		<select id="qaSort" name="qaSort" class="sort">
             <option value="new" <?php if($_GET['comment_order_by'] == 'new') echo 'selected' ?>>新着順</option>
