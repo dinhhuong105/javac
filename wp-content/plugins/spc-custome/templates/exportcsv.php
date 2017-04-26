@@ -112,7 +112,7 @@ $count_comment =  count($comments);
 			echo 'disabled="disabled"';
 		} ?>
 		><?=($_limited_answer[0] > 0)?'回答受付中':'停止中'?></button>
-		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" ><?=(get_post_status($id) == 'publish')?'publish':'private'?></button>
+		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" ><?=(get_post_status($id) == '公開中')?'公開中':'公開停止'?></button>
 	</div>
 <h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>
 <h3 class="header-box"><?=get_the_title( $id );?></h3>
@@ -205,9 +205,9 @@ jQuery(document).ready(function($){
 			success:function(res){
 				console.log(res);
 				if(res['status'] == 'publish'){
-					$button.html('publish');
+					$button.html('公開中');
 				}else{
-					$button.html('private');
+					$button.html('公開停止');
 				}
 				$button.attr('data-status',res['status']);
 				$button.attr("disabled", false);
