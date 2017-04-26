@@ -2719,7 +2719,7 @@ function comment_comparator($a, $b)
     $b_count = get_comment_meta( $b->comment_ID, 'cld_like_count', true );
     if($a_count != $b_count)
     {
-        $compared = $a_count > $b_count ? -1:1;
+        $compared = $a_count > $b_count ? 1:-1;
     }
     return $compared;
 }
