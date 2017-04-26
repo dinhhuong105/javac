@@ -135,9 +135,9 @@ jQuery(document).ready(function($){
 
 	$('select[name=question_type]').on('change',function(){
 		if($(this).val() == 'textbox' || $(this).val() == 'textarea'){
-			$('input[type=number]').attr('disabled','disabled');
+			$('input[name=no_of_item]').attr('disabled','disabled');
 		}else{
-			$('input[type=number]').removeAttr('disabled');
+			$('input[name=no_of_item]').removeAttr('disabled');
 		}
 	});
 });
