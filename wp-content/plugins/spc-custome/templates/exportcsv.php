@@ -91,7 +91,7 @@ $count_comment =  count($comments);
 	<div class="btn">
 		<span id="loading"></span>
 		<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?=$_limited_answer[0]?>" <?php 
-		if($count_comment < $_limited_answer[0] && $_limited_answer[0] > 0 || empty($_limited_answer[0])) {
+		if(($count_comment < $_limited_answer[0] && $_limited_answer[0] > 0) || empty($_limited_answer[0])) {
 			//show
 		}else{
 			echo 'disabled="disabled"';
