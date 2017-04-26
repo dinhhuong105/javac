@@ -171,7 +171,7 @@
                 <li>
                     <?php
                     if( ($count_comment->approved < $limited && $limited > 0) || empty($limited) ): ?>
-                        <button type="submit" name="submitted" value="send" class="sendBtn">アンケートに回答する-<?=$count_comment->approved?></button>
+                        <button type="submit" name="submitted" value="send" class="sendBtn">アンケートに回答する</button>
                     <?php else: ?>
                         <button type="submit" name="submitted" value="send" class="sendBtn btnDisable" disabled="disabled">回答締め切りました。</button>
                     <?php endif; ?> 
