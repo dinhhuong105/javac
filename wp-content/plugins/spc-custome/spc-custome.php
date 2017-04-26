@@ -1,6 +1,6 @@
 <?php
 /**
-* Plugin Name: SPc-Questionnaire
+* Plugin Name: Questionnaire
 * Author: Unotrung
 * Description: Create questionaire follow post
 */
