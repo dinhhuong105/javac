@@ -2450,7 +2450,7 @@ function myplg_save_meta_box( $post_id ) {
  * @author Hung Nguyen
  */
 
-function addThreadFront(){
+function add_thread_front(){
     if (isset( $_POST['submitted'] )) {
         $user_guest = get_user_by( 'login', 'guest' );
         $post_information = array(
