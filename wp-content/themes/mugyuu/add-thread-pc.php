@@ -1,5 +1,5 @@
 <?php get_header();?>
-<?php addThreadFront();?>
+<?php add_thread_front();?>
 <?php breadcrumb(); ?>
     <div class="mainWrap single addthread">
         <div class="mainArea">

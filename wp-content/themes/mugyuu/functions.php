@@ -2065,7 +2065,7 @@ function thread_post_type() {
                     'public' => true,
                     'has_archive' => true, /* アーカイブページを持つ */
                     'menu_position' =>5, //管理画面のメニュー順位　投稿の下
-                    'supports' => array( 'title', 'editor', 'thumbnail', 'comments' ),
+                    'supports' => array( 'title', 'editor', 'thumbnail', 'comments', 'author' ),
             )
             );
     flush_rewrite_rules(false);
@@ -2135,8 +2135,8 @@ function noticetheme_comment($comment, $args, $depth) {
             <div class="modal-overlay">
                 <div class="modal-wrap">
                     <label for="modal-trigger-<?php comment_ID() ?>">✖</label>
-                    <h3>これコメントを通報</h3>
-                    <p>これコメントを削除すべき不適切なコメントとして通報しますか？</p>
+                    <h3>このコメントを通報</h3>
+                    <p>このコメントを削除すべき不適切なコメントとして通報しますか？</p>
                     <div class="btnArea">
                         <button type="button" class="reportBtn">通報
                         </button>
@@ -2450,7 +2450,7 @@ function myplg_save_meta_box( $post_id ) {
  * @author Hung Nguyen
  */
 
-function addThreadFront(){
+function add_thread_front(){
     if (isset( $_POST['submitted'] )) {
         $user_guest = get_user_by( 'login', 'guest' );
         $post_information = array(
@@ -2659,8 +2659,8 @@ function question_comment($comment, $args, $depth) {
                     <div class="modal-overlay">
                         <div class="modal-wrap">
                             <label for="modal-trigger-1">✖</label>
-                            <h3>これコメントを通報</h3>
-                            <p>これコメントを削除すべき不適切なコメントとして通報しますか？</p>
+                            <h3>このコメントを通報</h3>
+                            <p>このコメントを削除すべき不適切なコメントとして通報しますか？</p>
                             <div class="btnArea">
                                 <button type="button" class="reportBtn">通報
                                 </button>
@@ -2719,7 +2719,7 @@ function comment_comparator($a, $b)
     $b_count = get_comment_meta( $b->comment_ID, 'cld_like_count', true );
     if($a_count != $b_count)
     {
-        $compared = $a_count > $b_count ? 1:-1;
+        $compared = $a_count > $b_count ? -1:1;
     }
     return $compared;
 }
