@@ -301,9 +301,9 @@
                             <?php } ?>
                         </ul>
                     </section>
-                    <!-- <section class="catArea qaArea">
-                        <h2><a href="<?php //echo home_url('/'); ?>questionary/public/"><i class="icon fa fa-pencil-square-o" aria-hidden="true"></i>質問掲示板</a></h2>
-                    </section> -->
+                    <section class="catArea qaArea">
+                        <h2><a href="<?php echo home_url('/'); ?>notice/"><i class="icon fa fa-pencil-square-o" aria-hidden="true"></i>質問掲示板</a></h2>
+                    </section>
                     <section class="catArea itemArea">
                         <h2><a href="<?php echo home_url('/'); ?>item-search"><i class="icon fa fa-shopping-cart" aria-hidden="true"></i>商品を探す</a></h2>
                     </section>
