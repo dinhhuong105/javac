@@ -53,7 +53,7 @@
             set_query_var( 'cpage', $page );
         }
         
-        $comments_per_page = 2;
+        $comments_per_page = get_option( 'comments_per_page' );
         $comment_arr = get_comments( array( 'status' => 'approve', 'post_id' => $post->ID ) );
 
         if(isset($_GET['comment_filter_by'])){
@@ -95,7 +95,9 @@
     </ul>
      <?php endif; ?>
      <?php
-         if(get_comment_pages_count() > 1){
+         global $wp_query;
+        $wp_query->comments = $comment_arr;
+         if(get_comment_pages_count($comment_arr,$comments_per_page, true) > 1){
              echo '<div style="margin-top:20px; text-align:center;" class="notice_pagination">';
              //ページナビゲーションの表示
              paginate_comments_links([
@@ -219,7 +221,13 @@
 		var get_sort = 'comment_order_by=' + sort;
 		var get_filter = 'comment_filter_by=' + target.val();
         
-        var current_link = window.location.origin + window.location.pathname;
+        var listParam = window.location.pathname.split('/');
+        var lastParam = listParam[listParam.length-1];
+        var path = window.location.pathname;
+        if(/^comment-page-[0-9]/g.test(lastParam)){
+            path = window.location.pathname.replace('/'+lastParam,'');
+        }
+        var current_link = window.location.origin + path;
         
         if(sort.length>0) {
         	current_link += '?';

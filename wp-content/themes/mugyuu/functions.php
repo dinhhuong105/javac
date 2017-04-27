@@ -2715,8 +2715,8 @@ function remove_comment_menu(){
 function comment_compare_like_count($a, $b)
 {
     $compared = 0;
-    $a_count = get_comment_meta( $a->comment_ID, 'cld_like_count', true );
-    $b_count = get_comment_meta( $b->comment_ID, 'cld_like_count', true );
+    $a_count = (get_comment_meta( $a->comment_ID, 'cld_like_count', true ))?get_comment_meta( $a->comment_ID, 'cld_like_count', true ):0;
+    $b_count = (get_comment_meta( $b->comment_ID, 'cld_like_count', true ))?get_comment_meta( $b->comment_ID, 'cld_like_count', true ):0;
     if($a_count != $b_count)
     {
         $compared = $a_count > $b_count ? -1:1;
