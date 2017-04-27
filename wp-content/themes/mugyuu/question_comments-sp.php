@@ -215,7 +215,7 @@
 
     $('#qaFilter').on('change',function(){
     	var target = $(this);
-
+        var cpage = <?=get_query_var( 'cpage' )?>;
 		var sort = "<?php echo $_GET['comment_order_by']; ?>";
 
 		var get_sort = 'comment_order_by=' + sort;
@@ -224,6 +224,9 @@
         var listParam = window.location.pathname.split('/');
         var lastParam = listParam[listParam.length-1];
         var path = window.location.pathname;
+
+        console.log(cpage);
+
         if(/^comment-page-[0-9]/g.test(lastParam)){
             path = window.location.pathname.replace('/'+lastParam,'');
         }
@@ -245,7 +248,7 @@
 			}
     	}
 
-    	window.location = current_link;
+    	// window.location = current_link;
     });
 
     $('#qaSort').on('change',function(){
