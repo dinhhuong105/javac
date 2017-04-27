@@ -157,11 +157,12 @@ $count_comment =  count($comments);
 				</ul>
 			</li>
 		<?php endforeach; ?>
+		<div class="exportCSV"> 
+			<a class="page-title-action" href="/wp-admin/admin-post.php?action=exportcsv&post=<?=$id?>"> CSV出力 </a>
+		</div>
 	</ul>
 </div>
-<div class="exportCSV"> 
-	<a class="page-title-action" href="/wp-admin/admin-post.php?action=exportcsv&post=<?=$id?>"> CSV出力 </a>
-</div>
+
 <?php endif;
 ?>
 <script type="text/javascript">

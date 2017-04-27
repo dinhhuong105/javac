@@ -82,6 +82,12 @@
 <script>
 	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
 	var max_upload_picture = "<?php echo get_option('spc_options')['less_img_no']; ?>";
+
+	$('#qaSort').on("change", function(e){
+		var target = $(this);
+		var current_link = window.location.origin + window.location.pathname;
+		window.location = current_link + '?comment_order_by=' + target.val();
+    });
 </script>
 <script src="<?php bloginfo('template_directory'); ?>/js/notice-board.js"></script>
 <?php add_comment_on_notice(get_the_ID()) ?>

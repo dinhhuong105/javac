@@ -2735,7 +2735,7 @@ function comment_compare_old($a, $b)
     $b_date = $b->comment_date_gmt;
     if($a_date != $b_date)
     {
-        $compared = $a_date > $b_date ? -1:1;
+        $compared = $a_date > $b_date ? 1:-1;
     }
     return $compared;
 }
