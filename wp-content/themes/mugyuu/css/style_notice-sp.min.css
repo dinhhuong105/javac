@@ -3278,13 +3278,12 @@ textarea {
 /* Question Filter */
 .question_filter{
 	background-color: #FFF2F2;
-	padding: 6px;
-	text-align: center;
-	width: 35%;
-	display: block;
+	padding: 6px 10px;
+	display: inline-block;
 	border-radius: 5px;
-	margin-left: 61%;
+	margin-right: 20px;
     margin-bottom: 10px;
+    float: right;
 }
 .question_filter .sortWrap{
 	position: initial !important;
@@ -3295,8 +3294,10 @@ textarea {
 	-webkit-appearance: initial !important;
 }
 .question_filter .icon_search{
-	float: left;
-    margin-left: 15px;
     padding-bottom: 5px;
+    text-align: left;
+}
+.clear_both{
+	clear:both;
 }
 /* Question Filter */
