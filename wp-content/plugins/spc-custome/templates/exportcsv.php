@@ -4,7 +4,7 @@ $id = isset($post->ID)?$post->ID:$_GET['post'];
 $param = array(
     'post_id'=> $id
 );
-
+$post = get_post($id);
 $comments = get_comments($param);
 $answer = array();
 $comment_metas = array();
@@ -117,6 +117,9 @@ $count_comment =  count($comments);
 <h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>
 <h3 class="header-box"><?=get_the_title( $id );?></h3>
 	<ul class="info-box">
+		<li class="report">
+			<label>アンケートの内容</label><br/><b><?=$post->post_content;?></b>
+		</li>
 		<li class="report">
 			<label>回答数</label><br/><b><?=$number_answer?></b>件
 		</li>
