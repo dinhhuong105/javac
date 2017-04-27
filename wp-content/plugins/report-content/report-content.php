@@ -323,10 +323,10 @@ function wprc_add_report()
         'comment_id'     => intval($_POST['comment_id']),
         'report_type'    => sanitize_text_field($report_type),
 	);
-	if (wprc_is_spam($new_report)) {
+	/*if (wprc_is_spam($new_report)) {
 		$message['message'] = 'Your submission has been marked as spam by our filters';
 		die(json_encode($message));
-	}
+	}*/
 
 	if (!wprc_insert_data($new_report)) {
 		$message['message'] = 'An unexpected error occured. Please try again later';
