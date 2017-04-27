@@ -14,7 +14,7 @@
             set_query_var( 'cpage', $page );
         }
         
-        $comments_per_page = 5;
+        $comments_per_page = get_option( 'comments_per_page' );
         $comment_arr = get_comments( array( 'status' => 'approve', 'post_id' => $post->ID ) );
     ?>
    　<ul class="commentList">
