@@ -44,7 +44,7 @@
     <label for="qaSort" class="sortWrap">
         <select id="qaSort" name="qaSort" class="sort">
             <option value="old" <?php if($_GET['comment_order_by'] == 'old' || (!isset($_GET['comment_order_by']) && get_option('comment_order') != 'desc')) echo 'selected' ?>>古い順</option>
-			<option value="new" <?php if($_GET['comment_order_by'] == 'new' || (!isset($_GET['comment_order_by']) && get_option('comment_order') == 'desc')) echo 'selected' ?>>新着順</option>
+            <option value="new" <?php if($_GET['comment_order_by'] == 'new' || (!isset($_GET['comment_order_by']) && get_option('comment_order') == 'desc')) echo 'selected' ?>>新着順</option>
             <option value="like_count" <?php if($_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
         </select>
     </label>
@@ -99,7 +99,9 @@
     </ul>
      <?php endif; ?>
      <?php
-         if(get_comment_pages_count() >= 1){
+     global $wp_query;
+        $wp_query->comments = $comment_arr;
+         if(get_comment_pages_count($comment_arr,$comments_per_page, true) > 1){
              echo '<div style="margin-top:20px; text-align:center;" class="notice_pagination">';
              //ページナビゲーションの表示
              paginate_comments_links([
@@ -215,10 +217,10 @@
    
 </section>
 <script type="text/javascript">
-	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
-	var max_upload_picture = "<?php echo get_option('spc_options')['a_img_no']; ?>";
+    var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+    var max_upload_picture = "<?php echo get_option('spc_options')['a_img_no']; ?>";
 
-	$('button[type=submit]').on('click',function(){
+    $('button[type=submit]').on('click',function(){
         $cbx_group = $("input:checkbox[id^='option-']"); // name is not always helpful ;)
         $cbx_group.prop('required', true);
         if($cbx_group.is(":checked")){
@@ -227,61 +229,67 @@
     });
 
     $('#qaFilter').on('change',function(){
-    	var target = $(this);
+        <?php set_query_var( 'cpage', 0 );?>
+        var target = $(this);
 
-		var sort = "<?php echo $_GET['comment_order_by']; ?>";
+        var sort = "<?php echo $_GET['comment_order_by']; ?>";
 
-		var get_sort = 'comment_order_by=' + sort;
-		var get_filter = 'comment_filter_by=' + target.val();
+        var get_sort = 'comment_order_by=' + sort;
+        var get_filter = 'comment_filter_by=' + target.val();
         
-        var current_link = window.location.origin + window.location.pathname;
-        
+        var listParam = window.location.pathname.split('/');
+        var lastParam = listParam[listParam.length-1];
+        var path = window.location.pathname;
+        if(/^comment-page-[0-9]/g.test(lastParam)){
+            path = window.location.pathname.replace('/'+lastParam,'');
+        }
+        var current_link = window.location.origin + path;
         if(sort.length>0) {
-        	current_link += '?';
-			if(target.val().length>0){
-    			current_link += get_filter;
-    			current_link += '&' 
-				current_link +=	get_sort;
-			}else{
-				current_link += get_sort;
-			}
-    	}else{
-    		if(target.val().length>0){
-    			current_link += '?';
-    			current_link += get_filter;
-			}
-    	}
+            current_link += '?';
+            if(target.val().length>0){
+                current_link += get_filter;
+                current_link += '&' 
+                current_link += get_sort;
+            }else{
+                current_link += get_sort;
+            }
+        }else{
+            if(target.val().length>0){
+                current_link += '?';
+                current_link += get_filter;
+            }
+        }
 
-    	window.location = current_link;
+        window.location = current_link;
     });
 
     $('#qaSort').on('change',function(){
-    	var target = $(this);
+        var target = $(this);
 
-		var filter = "<?php echo $_GET['comment_filter_by']; ?>";
+        var filter = "<?php echo $_GET['comment_filter_by']; ?>";
 
-		var get_filter = 'comment_filter_by=' + filter;
-		var get_sort = 'comment_order_by=' + target.val();
+        var get_filter = 'comment_filter_by=' + filter;
+        var get_sort = 'comment_order_by=' + target.val();
         
         var current_link = window.location.origin + window.location.pathname;
         
         if(filter.length>0) {
-        	current_link += '?';
-			if(target.val().length>0){
-    			current_link += get_sort;
-    			current_link += '&' 
-				current_link +=	get_filter;
-			}else{
-				current_link += get_filter;
-			}
-    	}else{
-    		if(target.val().length>0){
-    			current_link += '?';
-    			current_link += get_sort;
-			}
-    	}
+            current_link += '?';
+            if(target.val().length>0){
+                current_link += get_sort;
+                current_link += '&' 
+                current_link += get_filter;
+            }else{
+                current_link += get_filter;
+            }
+        }else{
+            if(target.val().length>0){
+                current_link += '?';
+                current_link += get_sort;
+            }
+        }
 
-    	window.location = current_link;
+        window.location = current_link;
     });
 </script>
 <script src="<?php bloginfo('template_directory'); ?>/js/notice-board.js"></script>
