@@ -3292,6 +3292,7 @@ textarea {
 }
 .question_filter .sortWrap .sort{
 	-webkit-appearance: initial !important;
+	background: #fff;
 }
 .question_filter .icon_search{
     padding-bottom: 5px;
