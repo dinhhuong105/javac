@@ -122,7 +122,7 @@ $count_comment =  count($comments);
 <h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>
 <h3 class="header-box"><?=get_the_title( $id );?></h3>
 	<ul class="info-box">
-		<li class="content-post">
+		<li class="report content-post">
 			<label>アンケートの内容</label><br/><b><?=$post->post_content;?></b>
 		</li>
 		<li class="report">
