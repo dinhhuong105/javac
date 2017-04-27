@@ -98,6 +98,11 @@ $count_comment =  count($comments);
     	padding: 15px;
     	margin-top: 0px;
 	}
+	li.content-post img{
+		width: 90%;
+		height: auto;
+		margin: 10px auto;
+	}
 </style>
 <?php if($post_metas): ?>
 <div class="row postbox" id="revisionsdiv">
@@ -117,7 +122,7 @@ $count_comment =  count($comments);
 <h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>
 <h3 class="header-box"><?=get_the_title( $id );?></h3>
 	<ul class="info-box">
-		<li class="report">
+		<li class="content-post">
 			<label>アンケートの内容</label><br/><b><?=$post->post_content;?></b>
 		</li>
 		<li class="report">
