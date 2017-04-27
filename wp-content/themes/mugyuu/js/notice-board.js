@@ -130,11 +130,4 @@ $(function () {
             }
         });
     });
-    
-    // Sort list comment
-    $('#qaSort').on("change", function(e){
-		var target = $(this);
-		var current_link = window.location.origin + window.location.pathname;
-		window.location = current_link + '?comment_order_by=' + target.val();
-    });
 })
