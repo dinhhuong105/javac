@@ -82,6 +82,35 @@
 <script>
 	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
 	var max_upload_picture = "<?php echo get_option('spc_options')['less_img_no']; ?>";
+
+	$('#qaSort').on('change',function(){
+    	var target = $(this);
+
+		var filter = "<?php echo $_GET['comment_filter_by']; ?>";
+
+		var get_filter = 'comment_filter_by=' + filter;
+		var get_sort = 'comment_order_by=' + target.val();
+        
+        var current_link = window.location.origin + window.location.pathname;
+        
+        if(filter.length>0) {
+        	current_link += '?';
+			if(target.val().length>0){
+    			current_link += get_sort;
+    			current_link += '&' 
+				current_link +=	get_filter;
+			}else{
+				current_link += get_filter;
+			}
+    	}else{
+    		if(target.val().length>0){
+    			current_link += '?';
+    			current_link += get_sort;
+			}
+    	}
+
+    	window.location = current_link;
+    });
 </script>
 <script src="<?php bloginfo('template_directory'); ?>/js/notice-board.js"></script>
 <?php add_comment_on_notice(get_the_ID()) ?>

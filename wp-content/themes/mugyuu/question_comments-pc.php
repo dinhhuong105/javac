@@ -43,8 +43,8 @@
     </label>
     <label for="qaSort" class="sortWrap">
         <select id="qaSort" name="qaSort" class="sort">
-            <option value="new" <?php if($_GET['comment_order_by'] == 'new') echo 'selected' ?>>新着順</option>
-            <option value="old" <?php if($_GET['comment_order_by'] == 'old') echo 'selected' ?>>古い順</option>
+            <option value="old" <?php if($_GET['comment_order_by'] == 'old' || (!isset($_GET['comment_order_by']) && get_option('comment_order') != 'desc')) echo 'selected' ?>>古い順</option>
+			<option value="new" <?php if($_GET['comment_order_by'] == 'new' || (!isset($_GET['comment_order_by']) && get_option('comment_order') == 'desc')) echo 'selected' ?>>新着順</option>
             <option value="like_count" <?php if($_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
         </select>
     </label>
@@ -57,7 +57,7 @@
             set_query_var( 'cpage', $page );
         }
         
-        $comments_per_page = 5;
+        $comments_per_page = 2;
         $comment_arr = get_comments( array( 'status' => 'approve', 'post_id' => $post->ID ) );
 
         if(isset($_GET['comment_filter_by'])){
@@ -69,9 +69,10 @@
                     if(in_array($param[1],$comment_meta[$param[0]])){
                         array_push($comment_filter,$comment);
                     }
-                    
                 }
             }
+//             echo "<pre>";
+//             print_r($comment_filter);
             $comment_arr = $comment_filter;
             // wp_list_comments($args,$comment_filter);
         }
@@ -98,7 +99,6 @@
     </ul>
      <?php endif; ?>
      <?php
-     echo get_comment_pages_count();
          if(get_comment_pages_count() >= 1){
              echo '<div style="margin-top:20px; text-align:center;" class="notice_pagination">';
              //ページナビゲーションの表示
@@ -227,10 +227,61 @@
     });
 
     $('#qaFilter').on('change',function(){
-        var target = $(this);
+    	var target = $(this);
+
+		var sort = "<?php echo $_GET['comment_order_by']; ?>";
+
+		var get_sort = 'comment_order_by=' + sort;
+		var get_filter = 'comment_filter_by=' + target.val();
+        
         var current_link = window.location.origin + window.location.pathname;
-        console.log(target.val());
-        // window.location = current_link + '?comment_order_by=' + target.val();
+        
+        if(sort.length>0) {
+        	current_link += '?';
+			if(target.val().length>0){
+    			current_link += get_filter;
+    			current_link += '&' 
+				current_link +=	get_sort;
+			}else{
+				current_link += get_sort;
+			}
+    	}else{
+    		if(target.val().length>0){
+    			current_link += '?';
+    			current_link += get_filter;
+			}
+    	}
+
+    	window.location = current_link;
+    });
+
+    $('#qaSort').on('change',function(){
+    	var target = $(this);
+
+		var filter = "<?php echo $_GET['comment_filter_by']; ?>";
+
+		var get_filter = 'comment_filter_by=' + filter;
+		var get_sort = 'comment_order_by=' + target.val();
+        
+        var current_link = window.location.origin + window.location.pathname;
+        
+        if(filter.length>0) {
+        	current_link += '?';
+			if(target.val().length>0){
+    			current_link += get_sort;
+    			current_link += '&' 
+				current_link +=	get_filter;
+			}else{
+				current_link += get_filter;
+			}
+    	}else{
+    		if(target.val().length>0){
+    			current_link += '?';
+    			current_link += get_sort;
+			}
+    	}
+
+    	window.location = current_link;
     });
 </script>
 <script src="<?php bloginfo('template_directory'); ?>/js/notice-board.js"></script>
