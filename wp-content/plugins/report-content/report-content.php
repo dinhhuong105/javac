@@ -242,51 +242,27 @@ add_action('delete_post', 'wprc_on_post_delete');
 function wprc_mail($report)
 {
 	$post_id = $report['post_id'];
+	$comment_id = $report['comment_id'];
+	
 	$post_url = get_post_permalink($post_id);
-	$post_edit_url = admin_url("post.php?post=$post_id&action=edit");
 	$reports_url = admin_url('admin.php?page=wprc_reports_page');
-	$email_options = get_option('wprc_email_settings');
-	// update 2017.04.10 Hung Nguyen start
-	// Change setting email
 	$spc_option = get_option('spc_options');
-	if(isset($spc_option['report_email']) && $spc_option['report_email'] != ''){
-	    $email_options[''] = $spc_option['report_email'];
-	}
 	
-	$headers[] = 'From: ' . $email_options['sender_name'] . ' <' . $email_options['sender_address'] . '>';
-	$report_string = "\n\nReport:\n\n" . $report['reason'] . "\n\n" . $report['details'];
+	$url_confirm = '';
+	$comment = ($comment_id>0)?'&comment_id_scroll='.$comment_id:'';
+	if(get_post_type($post_id) == 'question_post'){
+	    $url_confirm = get_admin_url(). 'edit.php?post_type=question_post&page=review&post='. $post_id . $comment;
+	}else{
+	    $url_confirm = get_edit_post_link($post_id) . $comment;
+	}
+	$title_post = get_the_title( $post_id );
+	$subject = $title_post . 'が通報されました。';
+	$content = '新しく'.$title_post.'が通報されました。\n('.$url_confirm.')をチェックしてください。';
+    $email_to = $spc_option['report_email'];
 	
-	$emails_sent = wp_mail($spc_option['report_email'], $email_options['author_email_subject'], $email_options['author_email_content'] . $report_string, $headers);
-	/*$admin_emails_sent = true;
-	$author_emails_sent = true;
-	$headers = array();
-	if (!$email_options || $email_options['email_recipients'] == 'none')
-		return true;
-
-	if ($email_options['sender_name'] && $email_options['sender_address'])
-		$headers[] = 'From: ' . $email_options['sender_name'] . ' <' . $email_options['sender_address'] . '>';
-	$report_string = "\n\nReport:\n\n" . $report['reason'] . "\n\n" . $report['details'];
-
-	if ('admin' == $email_options['email_recipients'] || 'author_admin' == $email_options['email_recipients']) {
-		$to_admin = get_option('admin_email');
-		$email_options['admin_email_content'] = str_replace('%POSTURL%', $post_url, $email_options['admin_email_content']);
-		$email_options['admin_email_content'] = str_replace('%EDITURL%', $post_edit_url, $email_options['admin_email_content']);
-		$email_options['admin_email_content'] = str_replace('%REPORTSURL%', $reports_url, $email_options['admin_email_content']);
-		$admin_emails_sent = wp_mail($to_admin, $email_options['admin_email_subject'], $email_options['admin_email_content'] . $report_string, $headers);
-	}
-
-	if ('author' == $email_options['email_recipients'] || 'author_admin' == $email_options['email_recipients']) {
-		$post = get_post($post_id);
-		$author = get_user_by('id', $post->post_author);
-		$email_options['author_email_content'] = str_replace('%AUTHOR%', $author->display_name, $email_options['author_email_content']);
-		$email_options['author_email_content'] = str_replace('%POSTURL%', $post_url, $email_options['author_email_content']);
-		$email_options['author_email_content'] = str_replace('%EDITURL%', $post_edit_url, $email_options['author_email_content']);
-		if ($author->user_email != $to_admin)
-			$author_emails_sent = wp_mail($author->user_email, $email_options['author_email_subject'], $email_options['author_email_content'] . $report_string, $headers);
-	}
-
-	return ($author_emails_sent && $admin_emails_sent);
-	*/
+	$headers[] = 'From: Guest';
+	
+	$emails_sent = wp_mail($email_to, $subject, $content, $headers);
 	return ($emails_sent);
 }
 
@@ -347,10 +323,10 @@ function wprc_add_report()
         'comment_id'     => intval($_POST['comment_id']),
         'report_type'    => sanitize_text_field($report_type),
 	);
-	if (wprc_is_spam($new_report)) {
+	/*if (wprc_is_spam($new_report)) {
 		$message['message'] = 'Your submission has been marked as spam by our filters';
 		die(json_encode($message));
-	}
+	}*/
 
 	if (!wprc_insert_data($new_report)) {
 		$message['message'] = 'An unexpected error occured. Please try again later';

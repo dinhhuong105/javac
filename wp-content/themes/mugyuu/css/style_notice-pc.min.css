@@ -4243,12 +4243,12 @@ textarea {
     font-size: 1.4rem;
 }
 .mainWrap.single.qa .mainArea .contentArea .buttonReport .modal .modal-overlay .modal-wrap .btnArea .reportBtn {
-    margin-right: 10px;
+    margin-right: 20px;
 }
-.mainWrap.single.qa .mainArea .commentArea .buttonReport .modal .modal-overlay .modal-wrap .btnArea .reportBtn:hover,
-.mainWrap.single.qa .mainArea .commentArea .buttonReport .modal .modal-overlay .modal-wrap .btnArea .cancelBtn:hover {
-    color: #fff;
-    background: #fc8c96
+.btnArea .reportBtn:hover,
+.btnArea .cancelBtn:hover {
+    color: #fff !important;
+    background: #fc8c96 !important;
 }
 /* Button report*/
 /* Button add thread */
