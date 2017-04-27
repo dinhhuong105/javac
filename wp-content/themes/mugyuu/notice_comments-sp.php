@@ -7,34 +7,36 @@
 		</select>
 	</label>
 	<?php if(have_comments()): ?>
+	<?php 
+    	$page = intval( get_query_var( 'cpage' ) );
+        if ( 0 == $page ) {
+            $page = 1;
+            set_query_var( 'cpage', $page );
+        }
+        
+        $comments_per_page = 5;
+        $comment_arr = get_comments( array( 'status' => 'approve', 'post_id' => $post->ID ) );
+    ?>
    　<ul class="commentList">
 	   <?php
             if(isset($_GET['comment_order_by'])){
 	           if($_GET['comment_order_by'] == 'like_count'){
-	               global $wp_query;
-                   $comment_arr = $wp_query->comments;
-                   usort($comment_arr, 'comment_comparator');
-                   wp_list_comments('callback=noticetheme_comment', $comment_arr);
+                   usort($comment_arr, 'comment_compare_like_count');
 	           }else{
 	               if($_GET['comment_order_by'] == 'old'){
-	                   $order = false;
+	                   usort($comment_arr, 'comment_compare_old');
     	           }else{
-    	               $order = true;
+    	               usort($comment_arr, 'comment_compare_new');
         	       }
-        	       $arg = array(
-        	               'type' => 'comment',
-        	               'callback' => 'noticetheme_comment',
-        	               'reverse_top_level' => $order,
-        	       );
-        	       wp_list_comments($arg);
 	           }
-	       }else{
-	           $arg = array(
-	                   'type' => 'comment',
-	                   'callback' => 'noticetheme_comment',
-	           );
-	           wp_list_comments($arg);
 	       }
+	       
+	       wp_list_comments( array (
+	               'per_page'      => $comments_per_page,
+	               'page'          => $page,
+	               'reverse_top_level' => false,
+	               'callback'      => 'noticetheme_comment'
+	       ), $comment_arr );
 	   ?>
 	</ul>
 	 <?php endif; ?>

@@ -2712,7 +2712,7 @@ function remove_comment_menu(){
  * Sort list comment by like count
  * @author Hung Nguyen
  */
-function comment_comparator($a, $b)
+function comment_compare_like_count($a, $b)
 {
     $compared = 0;
     $a_count = get_comment_meta( $a->comment_ID, 'cld_like_count', true );
@@ -2720,6 +2720,38 @@ function comment_comparator($a, $b)
     if($a_count != $b_count)
     {
         $compared = $a_count > $b_count ? 1:-1;
+    }
+    return $compared;
+}
+
+/**
+ * Sort list comment by old date
+ * @author Hung Nguyen
+ */
+function comment_compare_old($a, $b)
+{
+    $compared = 0;
+    $a_date = $a->comment_date_gmt;
+    $b_date = $b->comment_date_gmt;
+    if($a_date != $b_date)
+    {
+        $compared = $a_date > $b_date ? -1:1;
+    }
+    return $compared;
+}
+
+/**
+ * Sort list comment by new date
+ * @author Hung Nguyen
+ */
+function comment_compare_new($a, $b)
+{
+    $compared = 0;
+    $a_date = $a->comment_date_gmt;
+    $b_date = $b->comment_date_gmt;
+    if($a_date != $b_date)
+    {
+        $compared = $a_date > $b_date ? 1:-1;
     }
     return $compared;
 }
