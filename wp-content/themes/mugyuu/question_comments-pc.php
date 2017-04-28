@@ -38,14 +38,16 @@
             <select id="qaFilter" name="qaFilter" class="sort">
                 <option value="" >口コミ時のアンケート項目の内容</option>
             <?php foreach ($questions[$post->ID] as $qkey => $question) { 
-                $str = strlen($question['question'])<13?$question['question']:mb_substr($question['question'],0,13)."...";
-                echo '<optgroup label="'.$str.'">';
+                if($question['type'] != 'textarea' && $question['type'] != 'textbox'){
+                    $str = strlen($question['question'])<16?$question['question']:mb_substr($question['question'],0,12)."...";
+                    echo '<optgroup label="'.$str.'">';
                     foreach ($question['answer'] as $anskey => $ansval) {
                         $ansKeys = $qkey.','.$anskey;
                 ?>
-                <option value="<?=$ansKeys?>" <?=($_GET['comment_filter_by'] == $ansKeys)?'selected':''?> >┗ <?=strlen($ansval)<10?$ansval:mb_substr($ansval,0,10)."..."?></option>
+                    <option value="<?=$ansKeys?>" <?=($_GET['comment_filter_by'] == $ansKeys)?'selected':''?> >┗ <?=strlen($ansval)<10?$ansval:mb_substr($ansval,0,10)."..."?></option>
             <?php } 
             echo '</optgroup>';
+                }
             } ?>
             </select>
         </label>
@@ -138,6 +140,7 @@
                     <input required type="text" name="name" placeholder="ニックネームを入力してください">
                 </li>
                 <?php 
+                if($questions[$post->ID]){
                     foreach ($questions[$post->ID] as $qkey => $question) {
                         if($question['type'] == 'checkbox'){
                             ?>
@@ -198,7 +201,7 @@
                             <?php
                         }
                     }
-                 ?>
+                } ?>
                 <li>
                     <h3>コメント<span class="red">※</span></h3>
                     <p class="notes">
