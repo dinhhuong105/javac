@@ -169,7 +169,7 @@
 						<?=$comment->comment_content?> 
 					</div>
 					<?php if(strlen($comment->comment_content) > 65): ?>
-					<a href="#">...Click to read more</a>
+					<a href="#" style="line-height: 25px;">Show more</a>
 					<?php endif?>
 				</div>
 			</td>
@@ -192,6 +192,11 @@
 jQuery(document).ready(function($){
 	$('.wrapper').on('click','a[href=#]', function (e) {
 	    e.preventDefault();
+	    if($(this).closest('.wrapper').find('.small').hasClass('big')){
+	    	$(this).html('Show more');
+	    }else{
+	    	$(this).html('Show less');
+	    }
 	    $(this).closest('.wrapper').find('.small').toggleClass('big');
 	    return false;
 	});
