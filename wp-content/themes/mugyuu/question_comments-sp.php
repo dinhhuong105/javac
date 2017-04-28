@@ -227,8 +227,6 @@
         var lastParam = listParam[listParam.length-1];
         var path = window.location.pathname;
 
-        console.log(cpage);
-
         if(/^comment-page-[0-9]/g.test(lastParam)){
             path = window.location.pathname.replace('/'+lastParam,'');
         }
@@ -250,7 +248,7 @@
 			}
     	}
 
-    	// window.location = current_link;
+    	window.location = current_link;
     });
 
     $('#qaSort').on('change',function(){
