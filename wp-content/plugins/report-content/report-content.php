@@ -274,7 +274,7 @@ function wprc_mail($report)
 	}
 	$title_post = get_the_title( $post_id );
 	$subject = $title_post . 'が通報されました。';
-	$content = "新しく$title_post が通報されました。<br>(<a href=$url_confirm>URL</a>)をチェックしてください。";
+	$content = "新しく$title_post が通報されました。<br><a href=$url_confirm>こちら</a>をチェックしてください。";
     $email_to = $spc_option['report_email'];
     $email_from = 'noreply@mugyuu.jp';
 	$headers[] = "From: $email_from";
