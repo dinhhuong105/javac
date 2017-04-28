@@ -7,7 +7,7 @@
         <?php
             $args = array(
                 'posts_per_page' => 8,
-                'post_type' => 'movingimage_post',
+                'post_type' => array('movingimage_post', 'thread_post', 'question_post'),
             );
         ?>
         <?php $movie = new WP_Query($args); ?>
@@ -15,9 +15,9 @@
             if ($movie->have_posts()) :
             while($movie->have_posts()) : $movie->the_post(); ?>
         <?php
-            $post_cat = get_the_terms($post->ID, 'movingimage_cat');
-            usort( $post_cat , '_usort_terms_by_ID');
-            $catName = $post_cat[1]->name;
+            //$post_cat = get_the_terms($post->ID, 'movingimage_cat');
+            //usort( $post_cat , '_usort_terms_by_ID');
+            //$catName = $post_cat[1]->name;
             $thumbnail_id = get_post_thumbnail_id();
             $image = wp_get_attachment_image_src( $thumbnail_id, '320_thumbnail' );
         ?>

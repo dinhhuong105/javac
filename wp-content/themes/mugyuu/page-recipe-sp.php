@@ -9,7 +9,7 @@
             <?php
                 $args = array(
                     'posts_per_page' => 10,
-                    'post_type' => 'movingimage_post',
+                    'post_type' => array('movingimage_post', 'thread_post', 'question_post'),
                     'paged' => $paged,
                 );
             ?>
@@ -18,7 +18,7 @@
                 if ($query->have_posts()) :
                 while($query->have_posts()) : $query->the_post(); ?>
             <?php
-                $post_cat = get_the_terms($post->ID, 'movingimage_cat');
+                //$post_cat = get_the_terms($post->ID, 'movingimage_cat');
     			$thumbnail_id = get_post_thumbnail_id();
                 $image = wp_get_attachment_image_src( $thumbnail_id, '300_thumbnail' );
             ?>

@@ -16,7 +16,7 @@ function wprc_menu_item()
 	);
 }
 
-add_action('admin_menu', 'wprc_menu_item');
+//add_action('admin_menu', 'wprc_menu_item');
 
 function wprc_scripts_styles($hook)
 {

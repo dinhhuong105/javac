@@ -194,7 +194,7 @@ function breadcrumb(){
         elseif( is_page('author-more') ) {
             $author_id = $_GET['uID'];
             $author = get_userdata($author_id);
-            $str.= '<li class="fixPage"><i class="fa fa-angle-right arrowIcon"></i><span>'. $author->display_name .'</span></li>';
+            $str.= '<li class=""><i class="fa fa-angle-right arrowIcon"></i><span>'. $author->display_name .'</span></li>';
         }
         /* 固定ページ */
         elseif(is_page()){
@@ -280,7 +280,7 @@ function breadcrumb(){
 
         /* 投稿者ページ */
         elseif(is_author()){
-            $str .='<li class="fixPage"><i class="fa fa-angle-right arrowIcon"></i><span>'. get_the_author_meta('display_name', get_query_var('author')).'</span></li>';
+            $str .='<li class=""><i class="fa fa-angle-right arrowIcon"></i><span>'. get_the_author_meta('display_name', get_query_var('author')).'</span></li>';
         }
 
         /* 添付ファイルページ */
@@ -293,12 +293,12 @@ function breadcrumb(){
 
         /* 検索結果ページ */
         elseif(is_search()){
-            $str.='<li class="fixPage"><i class="fa fa-angle-right arrowIcon"></i><span>「'. get_search_query() .'」の検索結果</span></li>';
+            $str.='<li class=""><i class="fa fa-angle-right arrowIcon"></i><span>「'. get_search_query() .'」の検索結果</span></li>';
         }
 
         /* 404 Not Found ページ */
         elseif(is_404()){
-            $str.='<li class="fixPage"><i class="fa fa-angle-right arrowIcon"></i><span>お探しのページが見つかりません</span></li>';
+            $str.='<li class=""><i class="fa fa-angle-right arrowIcon"></i><span>お探しのページが見つかりません</span></li>';
         }
 
         /* その他のページ */
@@ -2065,7 +2065,7 @@ function thread_post_type() {
                     'public' => true,
                     'has_archive' => true, /* アーカイブページを持つ */
                     'menu_position' =>5, //管理画面のメニュー順位　投稿の下
-                    'supports' => array( 'title', 'editor', 'thumbnail', 'comments' ),
+                    'supports' => array( 'title', 'editor', 'thumbnail', 'comments', 'author' ),
             )
             );
     flush_rewrite_rules(false);
@@ -2126,7 +2126,7 @@ function noticetheme_comment($comment, $args, $depth) {
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
     <div id="comment-<?php comment_ID(); ?>" class="commentData">
         <p class="data">
-            <?php echo get_comment_date(('Y/m/d')) ?>
+            <?php echo get_comment_date(('Y/m/d H:i:s')) ?>
             <?php printf(__('%s'), get_comment_author_link()) ?>
         </p>
         <div class="report modal">
@@ -2135,8 +2135,8 @@ function noticetheme_comment($comment, $args, $depth) {
             <div class="modal-overlay">
                 <div class="modal-wrap">
                     <label for="modal-trigger-<?php comment_ID() ?>">✖</label>
-                    <h3>これコメントを通報</h3>
-                    <p>これコメントを削除すべき不適切なコメントとして通報しますか？</p>
+                    <h3>このコメントを通報</h3>
+                    <p>このコメントを削除すべき不適切なコメントとして通報しますか？</p>
                     <div class="btnArea">
                         <button type="button" class="reportBtn">通報
                         </button>
@@ -2450,7 +2450,7 @@ function myplg_save_meta_box( $post_id ) {
  * @author Hung Nguyen
  */
 
-function addThreadFront(){
+function add_thread_front(){
     if (isset( $_POST['submitted'] )) {
         $user_guest = get_user_by( 'login', 'guest' );
         $post_information = array(
@@ -2631,11 +2631,13 @@ function add_comment_on_questions($post_id) {
             'comment_date' => $time,
             'comment_approved' => 1
         );
-        
-        $comment_id = wp_insert_comment($data);
-        
-        add_comment_meta( $comment_id, '_question_comment', $_POST['answer'] );
-        
+        $count_comment =  wp_count_comments( $post_id );
+        $limited = get_post_meta( $post_id, '_limited_answer', true );
+
+        if(($count_comment->approved < $limited && $limited > 0) || empty($limited)){
+            $comment_id = wp_insert_comment($data);
+            add_comment_meta( $comment_id, '_question_comment', $_POST['answer'] );
+        }
         wp_redirect( get_post_permalink($post_id) );
         exit;
     }
@@ -2648,7 +2650,7 @@ function question_comment($comment, $args, $depth) {
         <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
             <div id="comment-<?php comment_ID(); ?>" class="commentData">
                 <p class="data">
-                    <?php echo get_comment_date(('Y/m/d')) ?>
+                    <?php echo get_comment_date(('Y/m/d H:i:s')) ?>
                     <?php printf(__('%s'), get_comment_author_link()) ?>
                 </p>
                 <div class="report modal">
@@ -2657,8 +2659,8 @@ function question_comment($comment, $args, $depth) {
                     <div class="modal-overlay">
                         <div class="modal-wrap">
                             <label for="modal-trigger-1">✖</label>
-                            <h3>これコメントを通報</h3>
-                            <p>これコメントを削除すべき不適切なコメントとして通報しますか？</p>
+                            <h3>このコメントを通報</h3>
+                            <p>このコメントを削除すべき不適切なコメントとして通報しますか？</p>
                             <div class="btnArea">
                                 <button type="button" class="reportBtn">通報
                                 </button>
@@ -2710,14 +2712,46 @@ function remove_comment_menu(){
  * Sort list comment by like count
  * @author Hung Nguyen
  */
-function comment_comparator($a, $b)
+function comment_compare_like_count($a, $b)
 {
     $compared = 0;
-    $a_count = get_comment_meta( $a->comment_ID, 'cld_like_count', true );
-    $b_count = get_comment_meta( $b->comment_ID, 'cld_like_count', true );
+    $a_count = (get_comment_meta( $a->comment_ID, 'cld_like_count', true ))?get_comment_meta( $a->comment_ID, 'cld_like_count', true ):0;
+    $b_count = (get_comment_meta( $b->comment_ID, 'cld_like_count', true ))?get_comment_meta( $b->comment_ID, 'cld_like_count', true ):0;
     if($a_count != $b_count)
     {
-        $compared = $a_count > $b_count ? 1:-1;
+        $compared = $a_count > $b_count ? -1:1;
+    }
+    return $compared;
+}
+
+/**
+ * Sort list comment by old date
+ * @author Hung Nguyen
+ */
+function comment_compare_old($a, $b)
+{
+    $compared = 0;
+    $a_date = $a->comment_date_gmt;
+    $b_date = $b->comment_date_gmt;
+    if($a_date != $b_date)
+    {
+        $compared = $a_date > $b_date ? 1:-1;
+    }
+    return $compared;
+}
+
+/**
+ * Sort list comment by new date
+ * @author Hung Nguyen
+ */
+function comment_compare_new($a, $b)
+{
+    $compared = 0;
+    $a_date = $a->comment_date_gmt;
+    $b_date = $b->comment_date_gmt;
+    if($a_date != $b_date)
+    {
+        $compared = $a_date > $b_date ? -1:1;
     }
     return $compared;
 }

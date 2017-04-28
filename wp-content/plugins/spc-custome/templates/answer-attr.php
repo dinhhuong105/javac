@@ -49,7 +49,7 @@
 	}
 </style>
 <?php 
-	define('DEFAULT_COMMENTS_PER_PAGE',5);
+	define('DEFAULT_COMMENTS_PER_PAGE',get_option( 'comments_per_page' ));
 	$id=isset($post->ID)?$post->ID:$_GET['post'];
 
 	$page = isset($_GET['paged']) ? $_GET['paged'] : 1; 
@@ -169,11 +169,11 @@
 						<?=$comment->comment_content?> 
 					</div>
 					<?php if(strlen($comment->comment_content) > 65): ?>
-					<a href="#">...Click to read more</a>
+					<a href="#" style="line-height: 25px;">Show more</a>
 					<?php endif?>
 				</div>
 			</td>
-			<td><button class="btn-public page-title-action" data-status="<?=$comment->comment_approved?>" data-comment="<?=$comment->comment_ID?>"><?=($comment->comment_approved)?'公開停止':'公開中'?></button><span class="loading"></span></td>
+			<td><button class="btn-public-comment page-title-action" data-status="<?=$comment->comment_approved?>" data-comment="<?=$comment->comment_ID?>"><?=($comment->comment_approved)?'公開停止':'公開中'?></button><span class="loading"></span></td>
 		</tr>
 		<?php endforeach ?>
 		
@@ -192,11 +192,16 @@
 jQuery(document).ready(function($){
 	$('.wrapper').on('click','a[href=#]', function (e) {
 	    e.preventDefault();
+	    if($(this).closest('.wrapper').find('.small').hasClass('big')){
+	    	$(this).html('Show more');
+	    }else{
+	    	$(this).html('Show less');
+	    }
 	    $(this).closest('.wrapper').find('.small').toggleClass('big');
 	    return false;
 	});
 
-	$('#the-list').on('click','.btn-public',function(e){
+	$('#the-list').on('click','.btn-public-comment',function(e){
 		e.preventDefault();
 		var comment_ID = $(this).attr('data-comment');
 		var status = $(this).attr('data-status');

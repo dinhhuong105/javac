@@ -1,40 +1,42 @@
 <section class="commentArea">
 	<label for="qaSort" class="sortWrap">
 		<select id="qaSort" name="qaSort" class="sort">
-			<option value="new" <?php if($_GET['comment_order_by'] == 'new') echo 'selected' ?>>新着順</option>
-			<option value="old" <?php if($_GET['comment_order_by'] == 'old') echo 'selected' ?>>古い順</option>
+			<option value="old" <?php if($_GET['comment_order_by'] == 'old' || (!isset($_GET['comment_order_by']) && get_option('comment_order') != 'desc')) echo 'selected' ?>>古い順</option>
+			<option value="new" <?php if($_GET['comment_order_by'] == 'new' || (!isset($_GET['comment_order_by']) && get_option('comment_order') == 'desc')) echo 'selected' ?>>新着順</option>
 			<option value="like_count" <?php if($_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
 		</select>
 	</label>
 	<?php if(have_comments()): ?>
+	<?php 
+    	$page = intval( get_query_var( 'cpage' ) );
+        if ( 0 == $page ) {
+            $page = 1;
+            set_query_var( 'cpage', $page );
+        }
+        
+        $comments_per_page = get_option( 'comments_per_page' );
+        $comment_arr = get_comments( array( 'status' => 'approve', 'post_id' => $post->ID ) );
+    ?>
    　<ul class="commentList">
 	   <?php
             if(isset($_GET['comment_order_by'])){
 	           if($_GET['comment_order_by'] == 'like_count'){
-	               global $wp_query;
-                   $comment_arr = $wp_query->comments;
-                   usort($comment_arr, 'comment_comparator');
-                   wp_list_comments('callback=noticetheme_comment', $comment_arr);
+                   usort($comment_arr, 'comment_compare_like_count');
 	           }else{
 	               if($_GET['comment_order_by'] == 'old'){
-	                   $order = false;
+	                   usort($comment_arr, 'comment_compare_old');
     	           }else{
-    	               $order = true;
+    	               usort($comment_arr, 'comment_compare_new');
         	       }
-        	       $arg = array(
-        	               'type' => 'comment',
-        	               'callback' => 'noticetheme_comment',
-        	               'reverse_top_level' => $order,
-        	       );
-        	       wp_list_comments($arg);
 	           }
-	       }else{
-	           $arg = array(
-	                   'type' => 'comment',
-	                   'callback' => 'noticetheme_comment',
-	           );
-	           wp_list_comments($arg);
 	       }
+	       
+	       wp_list_comments( array (
+	               'per_page'      => $comments_per_page,
+	               'page'          => $page,
+	               'reverse_top_level' => false,
+	               'callback'      => 'noticetheme_comment'
+	       ), $comment_arr );
 	   ?>
 	</ul>
 	 <?php endif; ?>
@@ -80,6 +82,12 @@
 <script>
 	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
 	var max_upload_picture = "<?php echo get_option('spc_options')['less_img_no']; ?>";
+
+	$('#qaSort').on("change", function(e){
+		var target = $(this);
+		var current_link = window.location.origin + window.location.pathname;
+		window.location = current_link + '?comment_order_by=' + target.val();
+    });
 </script>
 <script src="<?php bloginfo('template_directory'); ?>/js/notice-board.js"></script>
 <?php add_comment_on_notice(get_the_ID()) ?>

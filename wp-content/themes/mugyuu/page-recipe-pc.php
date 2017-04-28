@@ -12,7 +12,7 @@
                     <ul class="recipeList">
 						<?php
 			                $args = array(
-			                    'post_type' => 'movingimage_post',
+			                    'post_type' => array('movingimage_post', 'thread_post', 'question_post'),
 			                    'paged' => $paged,
                                 'posts_per_page' => 10,
 			                );
@@ -22,9 +22,9 @@
 			                if ($query -> have_posts()) :
 			                while($query -> have_posts()) : $query -> the_post(); ?>
 						<?php
-							$post_cat = get_the_terms($post->ID, 'movingimage_cat');
-							usort( $post_cat , '_usort_terms_by_ID');
-							$catName = $post_cat[1]->name;
+							//$post_cat = get_the_terms($post->ID, 'movingimage_cat');
+							//usort( $post_cat , '_usort_terms_by_ID');
+							//$catName = $post_cat[1]->name;
 							$thumbnail_id = get_post_thumbnail_id();
 				            $image = wp_get_attachment_image_src( $thumbnail_id, '320_thumbnail' );
 						?>

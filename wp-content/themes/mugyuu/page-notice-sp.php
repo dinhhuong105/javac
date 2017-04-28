@@ -1,22 +1,29 @@
        <?php get_header(); ?>
-        <div id="sb-site" class="wrapper new">
+        <div id="sb-site" class="qa wrapper new">
             <?php breadcrumb(); ?>
-            <section class="newArea">
-                <h1 class="heading">
-                    <span>N</span><span>E</span><span>W</span>
-                </h1>
+            <section class="newArea qaArea">
+                <h1>質問掲示板</h1>
+                <p class="detail">子育て奮闘中のママさん達が感じた疑問質問やお役立ち情報まで自由に語り合おう♪</p>
+                <?php $spc_option = get_option('spc_options'); ?>
+				<?php if( $spc_option['allowpost']) :?>
+                    <div class="btnArea">
+                        <a href="<?php echo home_url(); ?>/add-thread">新規スレッドを立てる</a>
+                    </div>
+                <?php endif; ?>
+                <p class="all">スレッド一覧</p>
                 <ul class="articleList newList">
                     <?php
-                        $posts_per_page = 5;
+                        $posts_per_page = 10;
                         $val = new WP_Query([
                             'posts_per_page' => $posts_per_page,
                         ]);
                         $query = new WP_Query([
                             'cat' =>array(-1, -281),
-                            'post_type' => array('post', 'thread_post', 'question_post'),
+                            'post_type' => array('thread_post', 'question_post'),
                             'posts_per_page' => $posts_per_page,
                             'paged' => ($paged > $val->max_num_pages) ? $val->max_num_pages : $paged,
                         ]);
+                        $total_pages = ceil($query->found_posts/$posts_per_page);
                     ?>
                     <?php
                         if ($query -> have_posts()) :
@@ -61,13 +68,10 @@
                                             <?php the_author(); ?>
                                         </p>
                                     <?php } ?>
-                                    <p class="pv">
-                                        <i class="fa fa-heart" aria-hidden="true"></i>
-                                        <?php
-                                            if ( function_exists ( 'wpp_get_views' ) ) {
-                                                echo wpp_get_views ( get_the_ID() ); }
-                                        ?>
-                                    </p>
+                                    <div class="pv">
+                                        <i class="fa fa-comments" aria-hidden="true"></i>
+                                        <?php echo wp_count_comments( get_the_ID() )->total_comments; ?>
+                                    </div>
                                 </div>
                             </div>
                         </a>
@@ -78,7 +82,7 @@
                 </ul>
                 <?php
                     if(function_exists("pagination")) {
-                        pagination($val->max_num_pages);
+                        pagination($total_pages);
                     }
                 ?>
                 <?php wp_reset_postdata(); ?>

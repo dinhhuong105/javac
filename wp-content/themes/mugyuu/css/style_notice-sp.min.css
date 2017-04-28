@@ -1020,7 +1020,7 @@ footer .copy {
 .breadcrumbList li a,
 .breadcrumbList li i {
     color: inherit;
-    min-height: 35px;
+    /*min-height: 35px;*/
     box-sizing: border-box
 }
 .breadcrumbList li a {
@@ -2441,7 +2441,7 @@ ul.slider .dot-class li:last-child .icon-2:before {
 }
 .qa .qaArea .detail {
     padding: 0 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
     line-height: 1.8
 }
@@ -2962,10 +2962,11 @@ ul.slider .dot-class li:last-child .icon-2:before {
     -moz-osx-font-smoothing: grayscale
 }
 .qaArea .btnArea {
-    margin: 40px 0
+    margin: 20px 0;
+    margin-top: -10px;
 }
 .qaArea .btnArea a {
-    width: 80%;
+    width: 70%;
     text-align: center;
     color: #fff;
     background: #fc8c96;
@@ -3200,52 +3201,6 @@ textarea {
     background: #fc8c96
 }
 /* Button report */
-/* Button add thread */
-	/* - Tablet */
-.threadAdd{
-     width: 26%;
-     background-color: #fc8c96;
-     color:#fff;
-     border-radius: 5px;
-     font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-     font-weight: 900;
-     float: left;
-     line-height: 33px;
-     margin-top: 5px;
-}
-.threadAdd a{
-    color: inherit;
-    padding: 0px 10px;
-    text-align: center;
-}
-header .sb-slide h1.is_add_button {
-	width: 60%;
-}
-	/* Tablet */
-	/* - SP */
-.threadAddSP{
-     width: 90%;
-     background-color: #fc8c96;
-     color:#fff;
-     border-radius: 5px;
-     font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-     font-weight: 900;
-     line-height: 30px;
-     margin: 0px auto;
-}
-.catArea.pb_threadAdd{
-	padding-bottom: 20px;
-}
-.border_none .searchArea{
-	background: none !important;
-}
-.threadAddSP a{
-    color: inherit;
-    padding: 0px 10px;
-    text-align: center;
-}
-	/* SP */
-/* Button add thread */
 /* Image of comment */
 .wrapper.single .commentArea .commentList li p img {
 	display: block !important;
@@ -3286,7 +3241,7 @@ header .sb-slide h1.is_add_button {
     top: 0!important;
 }
 .qaSingle .commentFormArea{
-    margin-top: 10px;
+    margin-top: 15px;
     padding-top: 20px;
 }
 /* Pagination comment list */
@@ -3320,3 +3275,49 @@ header .sb-slide h1.is_add_button {
     margin-right: 5px;
 }
 /* Form add Thread */
+/* Question Filter */
+.question_filter{
+	background-color: #FFF2F2;
+	padding: 6px 10px;
+	display: inline-block;
+	border-radius: 5px;
+	margin-right: 20px;
+    margin-bottom: 10px;
+    float: right;
+}
+.question_filter .sortWrap{
+    position: relative !important;
+    float:  none !important;
+    margin: 0px 0px !important;
+}
+.question_filter .sortWrap .sort{
+	-webkit-appearance: initial !important;
+	background: #fff;
+}
+.question_filter .icon_search{
+    padding-bottom: 5px;
+    text-align: left;
+}
+.clear_both{
+	clear:both;
+}
+.qaSingle .commentArea .sortWrap .sort{
+    padding: 5px 25px 5px 10px!important;
+}
+.qaSingle .commentArea .sortWrap:before{
+    content: ""!important;
+}
+.qaSingle .commentArea .sortWrap:after{
+    content: "\f107"!important;
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 2rem;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased
+}
+.qaSingle .commentArea .sortWrap.lbFilter:after{
+    top: 0!important;
+}
+/* Question Filter */

@@ -4,7 +4,7 @@ $id = isset($post->ID)?$post->ID:$_GET['post'];
 $param = array(
     'post_id'=> $id
 );
-
+$post = get_post($id);
 $comments = get_comments($param);
 $answer = array();
 $comment_metas = array();
@@ -43,6 +43,8 @@ foreach ($question as $key => $value) {
 $post_metas = get_post_meta($id, '_question_type', TRUE);
 $_limited_answer = get_metadata('post', $id, '_limited_answer');
 $csv = array();
+
+$count_comment =  count($comments);
 ?>
 <style type="text/css">
 	.report{
@@ -83,88 +85,56 @@ $csv = array();
 		position: absolute;
 		right: 20px;
 	}
+	h3.header-box{
+		
+	    padding: 15px 10px;
+	    background-color: #0073aa;
+	    margin-bottom: 0px;
+	    color: #fff;
+
+	}
+	ul.info-box{
+	    border: 1px solid #0073aa;
+    	padding: 15px;
+    	margin-top: 0px;
+	}
+	li.content-post img{
+		width: 90%;
+		height: auto;
+		margin: 10px auto;
+	}
 </style>
 <?php if($post_metas): ?>
 <div class="row postbox" id="revisionsdiv">
-<div class="btn">
-<span id="loading"></span>
-	<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?=$_limited_answer[0]?>"><?=($_limited_answer[0] > 0)?'回答受付中':'停止中'?></button>
-	<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" >Publishing</button>
-</div>
+	<div class="btn">
+		<span id="loading"></span>
+		<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?=$_limited_answer[0]?>" 
+		<?php
+		$m = ($_limited_answer[0] < 0 )?$_limited_answer[0]*-1:$_limited_answer[0];
+		if($count_comment < $m || empty($_limited_answer[0])) {
+			//show
+		}else{
+			echo 'disabled="disabled"';
+		} ?>
+		><?=($_limited_answer[0] > 0)?'回答受付中':'停止中'?></button>
+		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" ><?=(get_post_status($id) == '公開中')?'公開中':'公開停止'?></button>
+	</div>
 <h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>
-	<div id="frm_question">
-	<?php 
-		foreach ($post_metas[$id] as $key => $meta) {
-	echo "<pre>"; print_r($post_meta); echo "</pre>";
-
-				if($meta['type'] == 'checkbox'){
-					echo '<div class="box-question"><a class="btn_remove">x</a>';
-					echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
-					echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目 </label>';
-					echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
-					$i=0;
-					foreach ($meta['answer'] as $answer) {
-						echo '<input type="checkbox" name="posid_'. $key .'_answer_'. $id .'_' . $i . '"> 
-						<input type="text" name="question['. $key .']['. $id .'][answer]['.$i.']" value="'.$answer.'"><br/>';
-						$i++;
-					}
-					echo '</div>';
-				}elseif($meta['type'] == 'radio'){
-					echo '<div class="box-question"><a class="btn_remove">x</a>';
-					echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
-					echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
-					echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
-					$i=0;
-					foreach ($meta['answer'] as $answer) {
-						echo '<input type="radio" name="posid_'. $key .'_answer_'. $id .'"> 
-						<input type="text" name="question['. $key .']['. $id .'][answer]['.$i.']" value="'.$answer.'"><br/>';
-						$i++;
-					}
-					echo '</div>';
-				}elseif($meta['type'] == 'pulldown'){
-					echo '<div class="box-question"><a class="btn_remove">x</a>';
-					echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
-					echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
-					echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
-					$i=0;
-					foreach ($meta['answer'] as $answer) {
-						echo '<input type="text" name="question['. $key .']['. $id .'][answer]['.$i.']" value="'.$answer.'"><br/>';
-						$i++;
-					}
-					echo '</div>';
-				}elseif($meta['type'] == 'textbox'){
-					echo '<div class="box-question"><a class="btn_remove">x</a>';
-					echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
-					echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
-					echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
-					echo '</div>';
-				}elseif($meta['type'] == 'textarea'){
-					echo '<div class="box-question"><a class="btn_remove">x</a>';
-					echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
-					echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
-					echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
-					echo '</div>';
-				}
-				
-		}
-	?>
-
-	
-</div>
-</div>
-<div class="row postbox" id="revisionsdiv">
-
-	<ul>
+<h3 class="header-box"><?=get_the_title( $id );?></h3>
+	<ul class="info-box">
+		<li class="report content-post">
+			<label>アンケートの内容</label><br/><b><?=$post->post_content;?></b>
+		</li>
 		<li class="report">
 			<label>回答数</label><br/><b><?=$number_answer?></b>件
 		</li>
 		<?php 
-		
+		$stt=1;
 		foreach ($post_metas[$id] as $key => $value): 
 			$csv[$key]['question'] = $value['question'];
 		?>
 			<li class="report">
-				<label>設問 <?=$key+1?></label><br/>
+				<label>設問 <?=$stt++?></label><br/>
 				<h2 class="hndle ui-sortable-handle"><?=$value['question']?></h2><br/>
 				<ul>
 				<?php 
@@ -174,24 +144,25 @@ $csv = array();
 						?>
 						<li><?=$ans?> ... <?=$report_ans[$key][$k_ques]?></li>
 				<?php endforeach;
-				else:
-					?>
-					<?php foreach ($report_ans[$key] as $answer => $count): 
+				else: 
+					if($report_ans[$key]):
+					 foreach ($report_ans[$key] as $answer => $count): 
 						$csv[$key][$answer] = $count;
 					?>
 						<li><?=$answer?> ... <?=$count?></li>
-					<?php endforeach ?>
-				<?php
-				endif
+					<?php endforeach; 
+					endif;
+				endif;
 				?>
 				</ul>
 			</li>
 		<?php endforeach; ?>
+		<div class="exportCSV"> 
+			<a class="page-title-action" href="/wp-admin/admin-post.php?action=exportcsv&post=<?=$id?>"> CSV出力 </a>
+		</div>
 	</ul>
 </div>
-<div class="exportCSV"> 
-	<a class="page-title-action" href="/wp-admin/admin-post.php?action=exportcsv&post=<?=$id?>"> CSV出力 </a>
-</div>
+
 <?php endif;
 ?>
 <script type="text/javascript">
@@ -212,7 +183,6 @@ jQuery(document).ready(function($){
 				'status' : status
 			},
 			success:function(res){
-				console.log(res);
 				if(res['status'] < 0){
 					$button.html('停止中');
 				}else{
@@ -225,7 +195,7 @@ jQuery(document).ready(function($){
 		});
 	});
 	$('.btn-public').on('click',function(e){
-		return;
+		// return;
 		e.preventDefault();
 		var post_id = $(this).attr('data-post');
 		var status = $(this).attr('data-status');
@@ -241,11 +211,10 @@ jQuery(document).ready(function($){
 				'status' : status
 			},
 			success:function(res){
-				console.log(res);
 				if(res['status'] == 'publish'){
-					$button.html('publish');
+					$button.html('公開中');
 				}else{
-					$button.html('private');
+					$button.html('公開停止');
 				}
 				$button.attr('data-status',res['status']);
 				$button.attr("disabled", false);
@@ -253,6 +222,16 @@ jQuery(document).ready(function($){
 			}
 		});
 	});
+
+	// Scroll to comment
+	var comment_id_scroll = <?php if(isset($_GET['comment_id_scroll'])) echo $_GET['comment_id_scroll']; else echo 0?>;
+	if(comment_id_scroll > 0){
+		if($("#comment_"+comment_id_scroll).offset()){
+    		$('html, body').animate({
+    		        scrollTop: $("#comment_"+comment_id_scroll).offset().top - 32
+    		    }, 2000);
+		}
+	}
 });
 </script>
 

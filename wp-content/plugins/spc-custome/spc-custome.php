@@ -1,8 +1,8 @@
 <?php
 /**
-* Plugin Name: SPc-Questionnaire
+* Plugin Name: Questionnaire
 * Author: Unotrung
-* Description: Create questionaire follow post
+* Description: Create questionnaire follow post
 */
 global $post;
 
@@ -109,18 +109,6 @@ if(isset($_POST)){
   add_action( 'save_post', 'questionaire_attr_save' );
 }
 
-
-/**
- Khai báo meta box Answer list
-**/
-/*function answer_meta_box()
-{
-  add_meta_box( 'answers', '回答一覧', 'answer_attr', 'question_post' );
-}
-if(isset($_GET['action']) == 'edit')
-  add_action( 'add_meta_boxes', 'answer_meta_box' );*/
-
-
 /**
 * 
 */
@@ -137,26 +125,28 @@ function update_status_comment(){
     $commentarr = array();
     $commentarr['comment_ID'] = $_POST['comment_ID'];
     $commentarr['comment_approved'] = $_POST['status']?0:1;
-   $result = wp_update_comment( $commentarr );
+    $result = wp_update_comment( $commentarr );
+    if($_POST['status'] == '1'){
+        update_report_status_comment($_POST['comment_ID']);
+    }
     wp_send_json(['success'=>$result]);
 }
 add_action('wp_ajax_update_comment', 'update_status_comment');
 
-
-
 /**
- Khai báo meta box
-**/
-/*add_action( 'admin_post_report_question', 'exportcsv' );
-function exportcsv() {
-    include_once('templates/exportcsv.php'); 
+ * Change report status when unapprove comment
+ * @author Hung Nguyen
+ */
+function update_report_status_comment($comment_id){
+    if ( function_exists ( 'wprc_table_name' ) ){
+        global $wpdb;
+        $table_name = wprc_table_name();
+        $query = "UPDATE $table_name SET status='processed' WHERE comment_id = $comment_id";
+    
+        $wpdb->query($query);
+    }
 }
-function report_meta_box()
-{
- add_meta_box( 'answer-report', 'レポート', 'exportcsv', 'question_post' );
-}
-if(isset($_GET['action']) == 'edit')
-  add_action( 'add_meta_boxes', 'report_meta_box' );*/
+
 
 /**
 * export to file
@@ -168,16 +158,18 @@ function csv_file() {
 
 
 function report_link($actions, $page_object){
-  $actions['report_page'] = '<a href="'.admin_url( 'edit.php?post_type=question_post&page=review&post=' . $page_object->ID ).'">Report</a>';
-  unset($actions['inline hide-if-no-js']);
-
+  if($page_object->post_type == 'question_post'){
+    $actions['report_page'] = '<a href="'.admin_url( 'edit.php?post_type=question_post&page=review&post=' . $page_object->ID ).'">Report</a>';
+    unset($actions['inline hide-if-no-js']);
+    // print_r($actions);exit;
+  }
   return $actions;
 }
 add_filter('post_row_actions', 'report_link', 10, 2);
 
 add_action( 'admin_post_review', 'report_question' );
 function report_question(){
-  include_once('templates/exportcsv.php');
+  include_once('templates/exportcsv.php'); 
 }
 
 add_action('admin_menu', 'test_plugin_setup_menu');
@@ -187,8 +179,8 @@ function test_plugin_setup_menu(){
 }
 
 function test_init(){
-  include_once('templates/exportcsv.php');
-  include_once('templates/answer-attr.php');
+  include_once('templates/exportcsv.php'); 
+  include_once('templates/answer-attr.php'); 
 }
 
 /**
@@ -211,11 +203,61 @@ function update_status_post(){
   if(isset($_POST['post_ID'])){
     $post_id = $_POST['post_ID'];
     $status = $_POST['status']=='publish'?'private':'publish';
-    $result = wp_update_post(array(
-        'ID'    =>  $post_id,
-        'post_status'   =>  $status
-        ));
+    $close = $_POST['status']=='publish'?'open':'close';
+    global $wpdb;
+    $query = "UPDATE ".$wpdb->prefix."posts SET post_status='".$status."',comment_status='".$close."', ping_status='".$close."', post_modified= '".date("Y-m-d H:i:s")
+."'  WHERE ID = '".$post_id."'";
+    $result = $wpdb->query($query);
+    if($_POST['status']=='publish'){
+        update_report_status_post($_POST['post_ID']);
+    }
     wp_send_json(['success'=>$result,'status'=>$status]);
   }
 }
 add_action('wp_ajax_post_status', 'update_status_post');
+
+/**
+ * Change status of report when unpublish questionnaire
+ * @author Hung Nguyen
+ */
+function update_report_status_post( $post_id ) {
+    if ( function_exists ( 'wprc_table_name' ) ){
+        global $wpdb;
+        $table_name = wprc_table_name();
+        $query = "UPDATE $table_name SET status='processed' WHERE post_id = $post_id";
+
+        $wpdb->query($query);
+    }
+}
+
+/**
+* disable edit post after has comment
+**/
+function stoppostedition_filter( $capauser, $capask, $param){
+
+  global $wpdb;   
+
+  $post = get_post( $param[2] );
+  $num_comment =  wp_count_comments( $param[2] );
+  if( $post->post_status == 'publish' && $post->post_type == 'question_post'){
+
+      // Disable post edit only for authore role
+      if( $capauser['administrator'] == 1 ){
+
+        if( ( $param[0] == "edit_post") || ( $param[0] == "delete_post" ) ) {
+          if($num_comment->approved > 0){
+            foreach( (array) $capask as $capasuppr) {
+
+                if ( array_key_exists($capasuppr, $capauser) ) {
+
+                  $capauser[$capasuppr] = 0;
+
+                }
+              }
+          }
+        }
+      }
+  }
+  return $capauser;
+}
+add_filter('user_has_cap', 'stoppostedition_filter', 100, 3 );

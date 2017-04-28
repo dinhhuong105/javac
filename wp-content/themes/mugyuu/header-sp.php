@@ -105,12 +105,7 @@
         <header>
             <div class="sb-slide">
                 <div class="sb-toggle-left menuIcon"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                <?php $spc_option = get_option('spc_options'); ?>
-                <?php $tablet_allow = ( $spc_option['allowpost'] && cf_is_tablet()); ?>
-                <h1 <?php if( $tablet_allow ) echo "class='is_add_button'"; ?>><a href="<?php echo home_url('/'); ?>"><img src="<?php echo bloginfo('template_directory'); ?>/images/logo.png" alt="MUGYUU!ロゴ" width="175" height="40"></a></h1>
-				<?php if( $tablet_allow ) :?>
-                	<div class="threadAdd"><a href="<?php echo home_url(); ?>/add-thread">＋トピックを投稿する</a></div>
-                <?php endif; ?>
+                <h1><a href="<?php echo home_url('/'); ?>"><img src="<?php echo bloginfo('template_directory'); ?>/images/logo.png" alt="MUGYUU!ロゴ" width="175" height="40"></a></h1>
                 <div class="sb-toggle-right shareIcon"><i class="fa fa-share-alt" aria-hidden="true"></i></div>
             </div>
             <nav>
@@ -122,16 +117,7 @@
                     </ul>
                 </div>
                 <div class="sb-slidebar sb-left">
-                    <?php if( $spc_option['allowpost'] && !cf_is_tablet() ) :?>
-                        <div class="border_none">
-                        	<?php get_search_form(); ?>
-                        </div>
-                        <section class="catArea childArea pb_threadAdd">
-                        	<div class="threadAddSP"><a href="<?php echo home_url(); ?>/add-thread">＋トピックを投稿する</a></div>
-                        </section>
-                    <?php else: ?>
-                    	<?php get_search_form(); ?>
-                    <?php endif; ?>
+                    <?php get_search_form(); ?>
                     <section class="catArea childArea">
                         <h2 class="bigCat"><span class="icon icon-baby"></span>こどものこと</h2>
                         <ul class="catList">
@@ -315,9 +301,9 @@
                             <?php } ?>
                         </ul>
                     </section>
-                    <!-- <section class="catArea qaArea">
-                        <h2><a href="<?php //echo home_url('/'); ?>questionary/public/"><i class="icon fa fa-pencil-square-o" aria-hidden="true"></i>質問掲示板</a></h2>
-                    </section> -->
+                    <section class="catArea qaArea">
+                        <h2><a href="<?php echo home_url('/'); ?>notice/"><i class="icon fa fa-pencil-square-o" aria-hidden="true"></i>質問掲示板</a></h2>
+                    </section>
                     <section class="catArea itemArea">
                         <h2><a href="<?php echo home_url('/'); ?>item-search"><i class="icon fa fa-shopping-cart" aria-hidden="true"></i>商品を探す</a></h2>
                     </section>

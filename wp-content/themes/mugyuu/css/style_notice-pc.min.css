@@ -1,4 +1,4 @@
-﻿html,
+﻿﻿html,
 body,
 div,
 span,
@@ -3073,7 +3073,7 @@ footer .copy small {
 .mainWrap.single.qa .mainArea .commentArea {}.mainWrap.single.qa .mainArea .commentArea .sortWrap {
     position: relative;
     float: right;
-    margin: 0 20px 20px 0
+    margin: 0 15px 20px 0
 }
 .mainWrap.single.qa .mainArea .commentArea .sortWrap .sort {
     -webkit-appearance: none;
@@ -4243,12 +4243,12 @@ textarea {
     font-size: 1.4rem;
 }
 .mainWrap.single.qa .mainArea .contentArea .buttonReport .modal .modal-overlay .modal-wrap .btnArea .reportBtn {
-    margin-right: 10px;
+    margin-right: 20px;
 }
-.mainWrap.single.qa .mainArea .commentArea .buttonReport .modal .modal-overlay .modal-wrap .btnArea .reportBtn:hover,
-.mainWrap.single.qa .mainArea .commentArea .buttonReport .modal .modal-overlay .modal-wrap .btnArea .cancelBtn:hover {
-    color: #fff;
-    background: #fc8c96
+.btnArea .reportBtn:hover,
+.btnArea .cancelBtn:hover {
+    color: #fff !important;
+    background: #fc8c96 !important;
 }
 /* Button report*/
 /* Button add thread */
@@ -4256,12 +4256,12 @@ textarea {
      background-color: #fc8c96;
      color:#fff;
      border-radius: 5px;
-     margin-top: -28px;
      font-size: 1.2em !important;
-     padding: 0px 60px;
+     padding: 10px 10px;
+     text-align: center;
      font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
      font-weight: 900;
-     line-height: 50px !important;
+     margin-bottom: 20px;
 }
 .threadAdd a{
     color: inherit;
@@ -4330,3 +4330,50 @@ textarea {
     margin-right: 5px;
 }
 /* Form add Thread */
+/* Question Filter */
+.question_filter{
+	background-color: #FFF2F2;
+	padding: 6px;
+	text-align: center;
+	width: 35%;
+	display: inline-block;
+	border-radius: 5px;
+	float: right;
+    margin-bottom: 10px;
+}
+.question_filter .sortWrap{
+	position: relative !important;
+	float:  none !important;
+	margin: 0px 0px !important;
+}
+.question_filter .sortWrap .sort{
+	-webkit-appearance: initial !important;
+}
+
+
+.mainWrap.single.qa .mainArea .commentArea .sortWrap .sort{
+    padding: 5px 25px 5px 10px!important;
+}
+.mainWrap.single.qa .mainArea .commentArea .sortWrap:before{
+    content: ""!important;
+}
+.mainWrap.single.qa .mainArea .commentArea .sortWrap:after{
+    content: "\f107"!important;
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 2rem;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased
+}
+.question_filter .icon_search{
+	float: left;
+    margin-left: 10px;
+    padding-bottom: 5px;
+}
+.commentArea .row{
+    width: 100%;
+    display: inline-block;
+}
+/* Question Filter */
