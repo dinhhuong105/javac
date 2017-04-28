@@ -34,7 +34,7 @@
         <div class="icon_search">
         	<i class="fa fa-search" aria-hidden="true"></i> 絞り込む
         </div>
-        <label for="qaFilter" class="sortWrap">
+        <label for="qaFilter" class="sortWrap lbFilter">
             <select id="qaFilter" name="qaFilter" class="sort">
                 <option value="" >口コミ時のアンケート項目の内容</option>
             <?php foreach ($questions[$post->ID] as $qkey => $question) { 
