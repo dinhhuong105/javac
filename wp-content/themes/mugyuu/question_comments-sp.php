@@ -29,7 +29,7 @@
         <div class="icon_search">
         	<i class="fa fa-search" aria-hidden="true"></i> 絞り込む
         </div>
-        <label for="qaFilter" class="sortWrap">
+        <label for="qaFilter" class="sortWrap lbFilter">
             <select id="qaFilter" name="qaFilter" class="sort">
                 <option value="" >口コミ時のアンケート項目の内容</option>
             <?php foreach ($questions[$post->ID] as $qkey => $question) { 
@@ -66,7 +66,7 @@
             $comment_filter = array();
             foreach ($comment_arr as $comment) {
                 $comment_meta = get_comment_meta($comment->comment_ID,'_question_comment',true);
-                if(array_key_exists($param[0],$comment_meta)){
+                if(@array_key_exists($param[0],$comment_meta)){
                     if(in_array($param[1],$comment_meta[$param[0]])){
                         array_push($comment_filter,$comment);
                     }
@@ -217,7 +217,7 @@
 
     $('#qaFilter').on('change',function(){
     	var target = $(this);
-
+        var cpage = <?=get_query_var( 'cpage' )?>;
 		var sort = "<?php echo $_GET['comment_order_by']; ?>";
 
 		var get_sort = 'comment_order_by=' + sort;
@@ -226,6 +226,9 @@
         var listParam = window.location.pathname.split('/');
         var lastParam = listParam[listParam.length-1];
         var path = window.location.pathname;
+
+        console.log(cpage);
+
         if(/^comment-page-[0-9]/g.test(lastParam)){
             path = window.location.pathname.replace('/'+lastParam,'');
         }
@@ -247,7 +250,7 @@
 			}
     	}
 
-    	window.location = current_link;
+    	// window.location = current_link;
     });
 
     $('#qaSort').on('change',function(){
