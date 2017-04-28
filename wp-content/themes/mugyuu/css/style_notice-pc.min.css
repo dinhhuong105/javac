@@ -4367,6 +4367,13 @@ textarea {
     text-rendering: auto;
     -webkit-font-smoothing: antialiased
 }
+.mainWrap.single.qa .mainArea .commentArea .sortWrap.lbFilter{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mainWrap.single.qa .mainArea .commentArea .sortWrap.lbFilter:after{
+    top: 2px;
+}
 .question_filter .icon_search{
 	float: left;
     margin-left: 10px;
