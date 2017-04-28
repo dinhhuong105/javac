@@ -41,7 +41,7 @@ class WPRC_Table extends WPRC_List_Table
 			if(get_post_type($post->ID) == 'question_post'){
 			    $total_comments = get_comments(
 		            array(
-	                    'orderby' => 'post_date' ,
+	                    'orderby' => 'comment_date_gmt',
 			            'order' => 'ASC',
 			            'post_id'=>$post->ID,
 			            'parent'=>0

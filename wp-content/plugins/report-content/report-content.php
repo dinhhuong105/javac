@@ -253,12 +253,12 @@ function wprc_mail($report)
 	if(get_post_type($post_id) == 'question_post'){
         $total_comments = get_comments(
                 array(
-                        'orderby' => 'post_date' ,
+                        'orderby' => 'comment_date_gmt',
                         'order' => 'ASC',
                         'post_id'=>$post_id,
                         'parent'=>0
                 )
-                );
+            );
         $per_page = get_option( 'comments_per_page' );
         $position = 0;
         foreach($total_comments as $comments){
