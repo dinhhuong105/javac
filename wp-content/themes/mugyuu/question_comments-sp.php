@@ -33,11 +33,16 @@
             <select id="qaFilter" name="qaFilter" class="sort">
                 <option value="" >口コミ時のアンケート項目の内容</option>
             <?php foreach ($questions[$post->ID] as $qkey => $question) { 
+                if($question['type'] != 'textarea' && $question['type'] != 'textbox'){
+                    $str = strlen($question['question'])<16?$question['question']:mb_substr($question['question'],0,12)."...";
+                    echo '<optgroup label="'.$str.'">';
                     foreach ($question['answer'] as $anskey => $ansval) {
                         $ansKeys = $qkey.','.$anskey;
                 ?>
-                <option value="<?=$ansKeys?>" <?=($_GET['comment_filter_by'] == $ansKeys)?'selected':''?> ><?=$ansval?></option>
+                    <option value="<?=$ansKeys?>" <?=($_GET['comment_filter_by'] == $ansKeys)?'selected':''?> >┗ <?=strlen($ansval)<10?$ansval:mb_substr($ansval,0,10)."..."?></option>
             <?php } 
+            echo '</optgroup>';
+                }
             } ?>
             </select>
         </label>
@@ -120,6 +125,7 @@
                     <input type="text" name="name" required placeholder="ニックネームを入力してください">
                 </li>
                 <?php 
+                if($questions[$post->ID]){
                     foreach ($questions[$post->ID] as $qkey => $question) {
                         if($question['type'] == 'checkbox'){
                             ?>
@@ -180,7 +186,7 @@
                             <?php
                         }
                     }
-                 ?>
+                } ?>
                 <li>
                     <h3>コメント<span class="red">※</span></h3>
                     <p>参考になるような意見を書いてね！誹謗中傷コメントは消しちゃうよ！的な注意コメント入れる</p>
@@ -217,7 +223,6 @@
 
     $('#qaFilter').on('change',function(){
     	var target = $(this);
-        var cpage = <?=get_query_var( 'cpage' )?>;
 		var sort = "<?php echo $_GET['comment_order_by']; ?>";
 
 		var get_sort = 'comment_order_by=' + sort;
