@@ -39,7 +39,25 @@ class WPRC_Table extends WPRC_List_Table
 
 		if (is_a($post, 'WP_Post')){
 			if(get_post_type($post->ID) == 'question_post'){
-			    return '<a href="' . get_admin_url(). 'edit.php?post_type=question_post&page=review&post='. $post->ID . $comment . '">確認する</a>';
+			    $total_comments = get_comments(
+		            array(
+	                    'orderby' => 'post_date' ,
+			            'order' => 'DESC',
+			            'post_id'=>$post->ID,
+			            'parent'=>0
+		            )
+	            );
+			    $per_page = get_option( 'comments_per_page' );
+		        $position = 0;
+		        foreach($total_comments as $comments){
+		            $position ++;
+		            if($comments->comment_ID == $item['comment_id']){
+		                break;
+		            }
+		        }
+		        $page_scroll = ($position>$per_page)?'&paged='.ceil($position/$per_page):'';
+		        
+			    return '<a href="' . get_admin_url(). 'edit.php?post_type=question_post&page=review&post='. $post->ID . $comment . $page_scroll .'">確認する</a>';
 			}else{
 		        return '<a href="' . get_edit_post_link($post->ID) . $comment . '">確認する</a>';
 			}
