@@ -71,7 +71,7 @@
 	);
 	$total_comments = get_comments(array('orderby' => 'post_date' ,
 
-	            'order' => 'DESC',
+	            'order' => 'ASC',
 
 	            'post_id'=>$id,
 
