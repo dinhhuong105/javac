@@ -35,13 +35,13 @@ define('FS_METHOD', 'direct');
 
 // ** MySQL 設定 - この情報はホスティング先から入手してください。 ** //
 /* WordPress のためのデータベース名 */
-define('DB_NAME', 'mugyuu');
+define('DB_NAME', 'spc_labo_kaze');
 
 /* MySQL データベースのユーザー名 */
 define('DB_USER', 'root');
 
 /* MySQL データベースのパスワード */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'root');
 
 /* MySQL のホスト名 */
 define('DB_HOST', '127.0.0.1');
