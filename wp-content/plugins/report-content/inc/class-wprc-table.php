@@ -34,7 +34,7 @@ class WPRC_Table extends WPRC_List_Table
 
 	function column_post($item)
 	{
-		$comment = ($item['comment_id']>0)?/*'#comment-'.$item['comment_id']*/'#commentsdiv':'';
+		$comment = ($item['comment_id']>0)?'&comment_id_scroll='.$item['comment_id']:'';
 	    $post = get_post($item['post_id']);
 
 		if (is_a($post, 'WP_Post'))

@@ -47,7 +47,13 @@ commentsBox = {
 						$('#show-comments').hide();
 					else
 						$('#show-comments').show().children('a').html(postL10n.showcomm);
-
+					
+					if($("input.comment_id_scroll").length > 0){
+						var comment_id_scroll = $("input.comment_id_scroll").val();
+						$('html, body').animate({
+						        scrollTop: $("#comment-"+comment_id_scroll).offset().top - 32
+						    }, 2000);
+					}
 					return;
 				} else if ( 1 == r ) {
 					$('#show-comments').html(postL10n.endcomm);

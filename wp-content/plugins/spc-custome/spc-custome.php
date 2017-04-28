@@ -4,7 +4,7 @@
 * Author: Unotrung
 * Description: Create questionaire follow post
 */
-
+global $post;
 
 function spc_questionaire() {
 
@@ -74,6 +74,7 @@ add_action( 'admin_menu', 'change_post_menu_label' );
 add_action( 'admin_menu', 'remove_wp_menu', 999 );
 function remove_wp_menu(){
     remove_submenu_page( 'edit.php?post_type=question_post', 'edit-tags.php?taxonomy=category&amp;post_type=question_post' );
+    remove_submenu_page( 'edit.php?post_type=question_post','review' );
 }
 /**
  Khai báo meta box
@@ -112,12 +113,12 @@ if(isset($_POST)){
 /**
  Khai báo meta box Answer list
 **/
-function answer_meta_box()
+/*function answer_meta_box()
 {
   add_meta_box( 'answers', '回答一覧', 'answer_attr', 'question_post' );
 }
 if(isset($_GET['action']) == 'edit')
-  add_action( 'add_meta_boxes', 'answer_meta_box' );
+  add_action( 'add_meta_boxes', 'answer_meta_box' );*/
 
 
 /**
@@ -146,6 +147,7 @@ add_action('wp_ajax_update_comment', 'update_status_comment');
 /**
  Khai báo meta box
 **/
+/*add_action( 'admin_post_report_question', 'exportcsv' );
 function exportcsv() {
     include_once('templates/exportcsv.php'); 
 }
@@ -154,7 +156,7 @@ function report_meta_box()
  add_meta_box( 'answer-report', 'レポート', 'exportcsv', 'question_post' );
 }
 if(isset($_GET['action']) == 'edit')
-  add_action( 'add_meta_boxes', 'report_meta_box' );
+  add_action( 'add_meta_boxes', 'report_meta_box' );*/
 
 /**
 * export to file
@@ -164,16 +166,56 @@ function csv_file() {
     include_once('templates/csv.php'); 
 }
 
-add_action('init', 'function_check_action');
-function function_check_action(){
-    if(isset($_GET['action']) and $_GET['action']=='edit'){
-        $post_id=$_GET['post'];
-        $post=get_post($post_id);
-        $comments_no=get_comments_number($post_id);
-        if($comments_no>0) {
-            remove_post_type_support('question_post', 'title');
-            remove_post_type_support('question_post', 'editor');
-            add_action( 'add_meta_boxes', 'answer_meta_box' );
-        }
-    }
+
+function report_link($actions, $page_object){
+  $actions['report_page'] = '<a href="'.admin_url( 'edit.php?post_type=question_post&page=review&post=' . $page_object->ID ).'">Report</a>';
+  unset($actions['inline hide-if-no-js']);
+
+  return $actions;
 }
+add_filter('post_row_actions', 'report_link', 10, 2);
+
+add_action( 'admin_post_review', 'report_question' );
+function report_question(){
+  include_once('templates/exportcsv.php');
+}
+
+add_action('admin_menu', 'test_plugin_setup_menu');
+ 
+function test_plugin_setup_menu(){
+  add_submenu_page( 'edit.php?post_type=question_post','アンケート詳細', 'アンケート詳細', 'manage_options', 'review', 'test_init' );
+}
+
+function test_init(){
+  include_once('templates/exportcsv.php');
+  include_once('templates/answer-attr.php');
+}
+
+/**
+* update limited comment
+*/
+function update_status_limited_comment(){
+  if(isset($_POST['post_ID'])){
+    $post_id = $_POST['post_ID'];
+    $status = $_POST['status']*-1;
+    $result = update_post_meta( $post_id,'_limited_answer',$status );
+    wp_send_json(['success'=>$result,'status'=>$status]);
+  }
+}
+add_action('wp_ajax_limited_comment', 'update_status_limited_comment');
+
+/**
+* update status post
+*/
+function update_status_post(){
+  if(isset($_POST['post_ID'])){
+    $post_id = $_POST['post_ID'];
+    $status = $_POST['status']=='publish'?'private':'publish';
+    $result = wp_update_post(array(
+        'ID'    =>  $post_id,
+        'post_status'   =>  $status
+        ));
+    wp_send_json(['success'=>$result,'status'=>$status]);
+  }
+}
+add_action('wp_ajax_post_status', 'update_status_post');
