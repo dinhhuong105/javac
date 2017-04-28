@@ -3073,7 +3073,7 @@ footer .copy small {
 .mainWrap.single.qa .mainArea .commentArea {}.mainWrap.single.qa .mainArea .commentArea .sortWrap {
     position: relative;
     float: right;
-    margin: 0 20px 20px 0
+    margin: 0 15px 20px 0
 }
 .mainWrap.single.qa .mainArea .commentArea .sortWrap .sort {
     -webkit-appearance: none;
@@ -4336,21 +4336,43 @@ textarea {
 	padding: 6px;
 	text-align: center;
 	width: 35%;
-	display: block;
+	display: inline-block;
 	border-radius: 5px;
-	margin-left: 60%;
+	float: right;
 }
 .question_filter .sortWrap{
-	position: initial !important;
+	position: relative !important;
 	float:  none !important;
 	margin: 0px 0px !important;
 }
 .question_filter .sortWrap .sort{
 	-webkit-appearance: initial !important;
 }
+
+
+.mainWrap.single.qa .mainArea .commentArea .sortWrap .sort{
+    padding: 5px 25px 5px 10px!important;
+}
+.mainWrap.single.qa .mainArea .commentArea .sortWrap:before{
+    content: ""!important;
+}
+.mainWrap.single.qa .mainArea .commentArea .sortWrap:after{
+    content: "\f107"!important;
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 2rem;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased
+}
 .question_filter .icon_search{
 	float: left;
     margin-left: 10px;
     padding-bottom: 5px;
+}
+.commentArea .row{
+    width: 100%;
+    display: inline-block;
 }
 /* Question Filter */

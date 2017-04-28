@@ -20,6 +20,7 @@
     .mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea .imgBtn input{
         font-size: inherit!important;
     }
+    
 </style>
 <?php 
     $limited = get_post_meta( $post->ID, '_limited_answer', true );
@@ -46,14 +47,16 @@
             </select>
         </label>
     </div>
-    <br>
-    <label for="qaSort" class="sortWrap">
-        <select id="qaSort" name="qaSort" class="sort">
-            <option value="old" <?php if($_GET['comment_order_by'] == 'old' || (!isset($_GET['comment_order_by']) && get_option('comment_order') != 'desc')) echo 'selected' ?>>古い順</option>
-            <option value="new" <?php if($_GET['comment_order_by'] == 'new' || (!isset($_GET['comment_order_by']) && get_option('comment_order') == 'desc')) echo 'selected' ?>>新着順</option>
-            <option value="like_count" <?php if($_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
-        </select>
-    </label>
+    <div class="row">
+        <label for="qaSort" class="sortWrap">
+            <select id="qaSort" name="qaSort" class="sort">
+                <option value="old" <?php if($_GET['comment_order_by'] == 'old' || (!isset($_GET['comment_order_by']) && get_option('comment_order') != 'desc')) echo 'selected' ?>>古い順</option>
+                <option value="new" <?php if($_GET['comment_order_by'] == 'new' || (!isset($_GET['comment_order_by']) && get_option('comment_order') == 'desc')) echo 'selected' ?>>新着順</option>
+                <option value="like_count" <?php if($_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
+            </select>
+        </label>
+
+    </div>
     <?php if(have_comments()): ?>
    　<ul class="commentList">
        <?php 
@@ -71,7 +74,7 @@
             $comment_filter = array();
             foreach ($comment_arr as $comment) {
                 $comment_meta = get_comment_meta($comment->comment_ID,'_question_comment',true);
-                if(array_key_exists($param[0],$comment_meta)){
+                if(@array_key_exists($param[0],$comment_meta)){
                     if(in_array($param[1],$comment_meta[$param[0]])){
                         array_push($comment_filter,$comment);
                     }
