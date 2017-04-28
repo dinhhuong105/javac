@@ -25,19 +25,24 @@
     $count_comment = wp_count_comments($post->ID);
 ?>
 <section class="commentArea">
-    <label for="qaFilter" class="sortWrap">
-        <select id="qaFilter" name="qaFilter" class="sort">
-            <option value="" >Select to filter answer...</option>
-        <?php foreach ($questions[$post->ID] as $qkey => $question) { 
-                foreach ($question['answer'] as $anskey => $ansval) {
-                    $ansKeys = $qkey.','.$anskey;
-            ?>
-            <option value="<?=$ansKeys?>" <?=($_GET['comment_filter_by'] == $ansKeys)?'selected':''?> ><?=$ansval?></option>
-        <?php } 
-        } ?>
-        </select>
-    </label>
-    <label for="qaSort" class="sortWrap">
+    <div class="question_filter">
+        <div class="icon_search">
+        	<i class="fa fa-search" aria-hidden="true"></i> 絞り込む
+        </div>
+        <label for="qaFilter" class="sortWrap">
+            <select id="qaFilter" name="qaFilter" class="sort">
+                <option value="" >口コミ時のアンケート項目の内容</option>
+            <?php foreach ($questions[$post->ID] as $qkey => $question) { 
+                    foreach ($question['answer'] as $anskey => $ansval) {
+                        $ansKeys = $qkey.','.$anskey;
+                ?>
+                <option value="<?=$ansKeys?>" <?=($_GET['comment_filter_by'] == $ansKeys)?'selected':''?> ><?=$ansval?></option>
+            <?php } 
+            } ?>
+            </select>
+        </label>
+    </div>
+    <label for="qaSort" class="sortWrap clear_both">
        <select id="qaSort" name="qaSort" class="sort">
             <option value="old" <?php if($_GET['comment_order_by'] == 'old' || (!isset($_GET['comment_order_by']) && get_option('comment_order') != 'desc')) echo 'selected' ?>>古い順</option>
 			<option value="new" <?php if($_GET['comment_order_by'] == 'new' || (!isset($_GET['comment_order_by']) && get_option('comment_order') == 'desc')) echo 'selected' ?>>新着順</option>
@@ -67,10 +72,7 @@
                     }
                 }
             }
-//             echo "<pre>";
-//             print_r($comment_filter);
             $comment_arr = $comment_filter;
-            // wp_list_comments($args,$comment_filter);
         }
 
         if(isset($_GET['comment_order_by'])){
@@ -85,13 +87,13 @@
            }
        }
            
-           wp_list_comments( array (
-                   'per_page'      => $comments_per_page,
-                   'page'          => $page,
-                   'reverse_top_level' => false,
-                   'callback'      => 'question_comment'
-           ), $comment_arr ); 
-        ?>
+       wp_list_comments( array (
+               'per_page'      => $comments_per_page,
+               'page'          => $page,
+               'reverse_top_level' => false,
+               'callback'      => 'question_comment'
+       ), $comment_arr ); 
+       ?>
     </ul>
      <?php endif; ?>
      <?php

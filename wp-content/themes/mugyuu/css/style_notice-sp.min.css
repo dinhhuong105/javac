@@ -3275,3 +3275,30 @@ textarea {
     margin-right: 5px;
 }
 /* Form add Thread */
+/* Question Filter */
+.question_filter{
+	background-color: #FFF2F2;
+	padding: 6px 10px;
+	display: inline-block;
+	border-radius: 5px;
+	margin-right: 20px;
+    margin-bottom: 10px;
+    float: right;
+}
+.question_filter .sortWrap{
+	position: initial !important;
+	float:  none !important;
+	margin: 0px 0px !important;
+}
+.question_filter .sortWrap .sort{
+	-webkit-appearance: initial !important;
+	background: #fff;
+}
+.question_filter .icon_search{
+    padding-bottom: 5px;
+    text-align: left;
+}
+.clear_both{
+	clear:both;
+}
+/* Question Filter */
