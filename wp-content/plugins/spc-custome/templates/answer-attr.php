@@ -59,25 +59,21 @@
 	$offset = ($page * $limit) - $limit;
 
 	$param = array(
-
-	    /*'status'=>'approve',*/
-
-	    'offset'=>$offset,
-
+        'orderby' => 'comment_date_gmt',
+        'order' => 'ASC',
+        'offset'=>$offset,
 	    'post_id'=>$id,
-
 	    'number'=>$limit,
 
 	);
-	$total_comments = get_comments(array('orderby' => 'post_date' ,
-
+	$total_comments = get_comments(
+	        array(
+                'orderby' => 'comment_date_gmt',
 	            'order' => 'ASC',
-
 	            'post_id'=>$id,
-
-	           /*'status' => 'all',*/
-
-	            'parent'=>0));
+	            'parent'=>0
+        	)
+        );
 
 	$pages = ceil(count($total_comments)/DEFAULT_COMMENTS_PER_PAGE);
 	$comments = get_comments($param );
