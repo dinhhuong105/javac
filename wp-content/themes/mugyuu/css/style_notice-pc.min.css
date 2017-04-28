@@ -4339,6 +4339,7 @@ textarea {
 	display: inline-block;
 	border-radius: 5px;
 	float: right;
+    margin-bottom: 10px;
 }
 .question_filter .sortWrap{
 	position: relative !important;
