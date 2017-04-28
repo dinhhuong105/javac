@@ -35,7 +35,7 @@
 	    text-decoration: none;
 	}
 	.small {
-	    height: 36px;
+	    height: 26px;
 	    overflow:hidden;
 	}
 	.big {
