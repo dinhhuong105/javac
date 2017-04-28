@@ -38,11 +38,14 @@
             <select id="qaFilter" name="qaFilter" class="sort">
                 <option value="" >口コミ時のアンケート項目の内容</option>
             <?php foreach ($questions[$post->ID] as $qkey => $question) { 
+                $str = strlen($question['question'])<13?$question['question']:mb_substr($question['question'],0,13)."...";
+                echo '<optgroup label="'.$str.'">';
                     foreach ($question['answer'] as $anskey => $ansval) {
                         $ansKeys = $qkey.','.$anskey;
                 ?>
-                <option value="<?=$ansKeys?>" <?=($_GET['comment_filter_by'] == $ansKeys)?'selected':''?> ><?=$ansval?></option>
+                <option value="<?=$ansKeys?>" <?=($_GET['comment_filter_by'] == $ansKeys)?'selected':''?> >┗ <?=strlen($ansval)<10?$ansval:mb_substr($ansval,0,10)."..."?></option>
             <?php } 
+            echo '</optgroup>';
             } ?>
             </select>
         </label>
