@@ -42,7 +42,7 @@ class WPRC_Table extends WPRC_List_Table
 			    $total_comments = get_comments(
 		            array(
 	                    'orderby' => 'post_date' ,
-			            'order' => 'DESC',
+			            'order' => 'ASC',
 			            'post_id'=>$post->ID,
 			            'parent'=>0
 		            )
