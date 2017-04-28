@@ -2676,7 +2676,7 @@ function question_comment($comment, $args, $depth) {
                     <?php 
                         $answers = get_comment_meta($comment->comment_ID,'_question_comment',true);
                         $GLOBALS['answers'] = $answers; 
-                        if($answer){
+                        if($answers){
                             foreach ($answers as $queskey => $answer) {
                                 echo "<li>".($queskey+1).'. ';
                                 foreach ($answer as $las_ans) {

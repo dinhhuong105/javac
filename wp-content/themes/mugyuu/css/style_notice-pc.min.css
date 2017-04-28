@@ -4334,12 +4334,13 @@ textarea {
 .question_filter{
 	background-color: #FFF2F2;
 	padding: 6px;
-	text-align: center;
-	width: 35%;
+	/* text-align: center;
+    width: 35%; */
 	display: inline-block;
 	border-radius: 5px;
 	float: right;
     margin-bottom: 10px;
+    padding: 10px 15px 20px 15px;
 }
 .question_filter .sortWrap{
 	position: relative !important;
@@ -4353,6 +4354,7 @@ textarea {
 
 .mainWrap.single.qa .mainArea .commentArea .sortWrap .sort{
     padding: 5px 25px 5px 10px!important;
+    width: 100%
 }
 .mainWrap.single.qa .mainArea .commentArea .sortWrap:before{
     content: ""!important;
@@ -4376,7 +4378,7 @@ textarea {
 }
 .question_filter .icon_search{
 	float: left;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     padding-bottom: 5px;
 }
 .commentArea .row{

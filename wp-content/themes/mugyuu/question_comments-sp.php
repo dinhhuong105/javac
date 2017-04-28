@@ -34,12 +34,12 @@
                 <option value="" >口コミ時のアンケート項目の内容</option>
             <?php foreach ($questions[$post->ID] as $qkey => $question) { 
                 if($question['type'] != 'textarea' && $question['type'] != 'textbox'){
-                    $str = strlen($question['question'])<16?$question['question']:mb_substr($question['question'],0,12)."...";
+                    $str = mb_strlen($question['question'])<16?$question['question']:mb_substr($question['question'],0,12)."...";
                     echo '<optgroup label="'.$str.'">';
                     foreach ($question['answer'] as $anskey => $ansval) {
                         $ansKeys = $qkey.','.$anskey;
                 ?>
-                    <option value="<?=$ansKeys?>" <?=($_GET['comment_filter_by'] == $ansKeys)?'selected':''?> >┗ <?=strlen($ansval)<10?$ansval:mb_substr($ansval,0,10)."..."?></option>
+                    <option value="<?=$ansKeys?>" <?=($_GET['comment_filter_by'] == $ansKeys)?'selected':''?> >┗ <?=mb_strlen($ansval)<10?$ansval:mb_substr($ansval,0,10)."..."?></option>
             <?php } 
             echo '</optgroup>';
                 }
