@@ -251,16 +251,34 @@ function wprc_mail($report)
 	$url_confirm = '';
 	$comment = ($comment_id>0)?'&comment_id_scroll='.$comment_id:'';
 	if(get_post_type($post_id) == 'question_post'){
-	    $url_confirm = get_admin_url(). 'edit.php?post_type=question_post&page=review&post='. $post_id . $comment;
+        $total_comments = get_comments(
+                array(
+                        'orderby' => 'post_date' ,
+                        'order' => 'DESC',
+                        'post_id'=>$post_id,
+                        'parent'=>0
+                )
+                );
+        $per_page = get_option( 'comments_per_page' );
+        $position = 0;
+        foreach($total_comments as $comments){
+            $position ++;
+            if($comments->comment_ID == $comment_id){
+                break;
+            }
+        }
+        $page_scroll = ($position>$per_page)?'&paged='.ceil($position/$per_page):'';
+	    $url_confirm = get_admin_url(). 'edit.php?post_type=question_post&page=review&post='. $post_id . $comment . $page_scroll;
 	}else{
 	    $url_confirm = get_edit_post_link($post_id) . $comment;
 	}
 	$title_post = get_the_title( $post_id );
 	$subject = $title_post . 'が通報されました。';
-	$content = '新しく'.$title_post.'が通報されました。\n('.$url_confirm.')をチェックしてください。';
+	$content = "新しく$title_post が通報されました。<br>(<a href=$url_confirm>URL</a>)をチェックしてください。";
     $email_to = $spc_option['report_email'];
-	
-	$headers[] = 'From: Guest';
+    $email_from = 'noreply@mugyuu.jp';
+	$headers[] = "From: $email_from";
+	$headers[] = "Content-Type: text/html; charset=UTF-8\r\n";
 	
 	$emails_sent = wp_mail($email_to, $subject, $content, $headers);
 	return ($emails_sent);
