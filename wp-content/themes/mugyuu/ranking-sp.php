@@ -20,7 +20,7 @@
                             'thumbnail_height' => 75,
                             'range' => 'daily', // 期間(1日daily,1週間weekly,1ヶ月monthly,全期間all)
                             'order_by' => 'views', // ソート順（これは閲覧数）
-                            'post_type' => 'post', // 投稿タイプ（カスタム投稿タイプを表示したくない場合など）
+                            'post_type' => 'post,thread_post,question_post', // 投稿タイプ（カスタム投稿タイプを表示したくない場合など）
                             'stats_views' => 1, // 閲覧数を表示する(1)/表示しない(0)
                             'stats_date' => 1, // 日付を表示する(1)/表示しない(0)
                             'stats_date_format' => 'Y/m/d', // 日付のフォーマット
@@ -49,7 +49,7 @@
                             'thumbnail_height' => 75,
                             'range' => 'weekly',
                             'order_by' => 'views',
-                            'post_type' => 'post',
+                            'post_type' => 'post,thread_post,question_post',
                             'stats_views' => 1,
                             'stats_date' => 1,
                             'stats_date_format' => 'Y/m/d',
@@ -77,7 +77,7 @@
                             'thumbnail_height' => 75,
                             'range' => 'monthly',
                             'order_by' => 'views',
-                            'post_type' => 'post',
+                            'post_type' => 'post,thread_post,question_post',
                             'stats_views' => 1,
                             'stats_date' => 1,
                             'stats_date_format' => 'Y/m/d',
