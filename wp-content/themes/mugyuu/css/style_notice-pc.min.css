@@ -4247,8 +4247,8 @@ textarea {
 }
 .btnArea .reportBtn:hover,
 .btnArea .cancelBtn:hover {
-    color: #fff !important;
-    background: #fc8c96 !important;
+    color: #fc8c96 !important;
+    background: #fff !important;
 }
 .flr{
 	float: right;
