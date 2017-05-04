@@ -12,7 +12,7 @@
             <?php $spc_option = get_option('spc_options'); ?>
 			<?php if( $spc_option['allowpost']) :?>
             <div class="btnArea">
-                <a href="/add-thread">
+                <a href="<?php echo home_url('/'); ?>add-thread">
 					トピックを投稿する
                 </a>
             </div>

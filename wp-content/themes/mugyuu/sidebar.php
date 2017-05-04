@@ -188,7 +188,7 @@
         <section class="sideCat sideQaCat">
             <h2>
             	<i class="arrow fa fa-angle-down" aria-hidden="true"></i>
-            	<a href="notice/">質問掲示板</a>
+            	<a href="<?php echo home_url('/'); ?>notice/">質問掲示板</a>
         	</h2>
         </section>
         <section class="sideCat sideItemCat">
