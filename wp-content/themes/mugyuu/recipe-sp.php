@@ -7,7 +7,7 @@
         <?php
             $args = array(
                 'posts_per_page' => 6,
-                'post_type' => array('movingimage_post', 'thread_post', 'question_post'),
+                'post_type' => 'movingimage_post',
             );
         ?>
         <?php $movie = new WP_Query($args); ?>

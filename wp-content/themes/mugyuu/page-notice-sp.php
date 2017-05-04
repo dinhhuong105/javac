@@ -13,7 +13,7 @@
                 <p class="all">スレッド一覧</p>
                 <ul class="articleList newList">
                     <?php
-                        $posts_per_page = 10;
+                        $posts_per_page = 15;
                         $val = new WP_Query([
                             'posts_per_page' => $posts_per_page,
                         ]);

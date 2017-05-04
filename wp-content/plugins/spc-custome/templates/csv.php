@@ -30,10 +30,10 @@ function download_send_headers($filename) {
     header("Content-Disposition: attachment;filename={$filename}");
     header("Content-Transfer-Encoding: binary");
 }
-global $post;
-$id = isset($post->ID)?$post->ID:$_GET['post'];
+
+
 $param = array(
-    'post_id'=>$id
+    'post_id'=>$post->ID
 );
 $comments = get_comments($param);
 $answer = array();
@@ -69,12 +69,10 @@ foreach ($question as $key => $value) {
 	}
 	$report_ans[$key] = array_count_values($_ans);
 }
-
 $post_metas = get_post_meta($_GET['post'],'_question_type', TRUE);
 $csv = array();
-$stt = 1;
  foreach ($post_metas[$_GET['post']] as $key => $value){
-	$csv[$key]['設問 '.($stt++).'.'] = $value['question'];
+	$csv[$key]['設問 '.($key+1).'.'] = $value['question'];
 	if(isset($value['answer'])){ 
 		foreach ($value['answer'] as $k_ques => $ans){
 			$csv[$key][$ans] = $report_ans[$key][$k_ques];
@@ -94,10 +92,16 @@ foreach ($csv as $value) {
     }
 }
 
-// Fix csv encoding
+/**
+ * Fix csv encoding
+ *
+ * @author Edward <duc.nguyen@spc-vn.com>
+ * @date 2017-05-04
+ */
+
 $str_csv=array2csv($a);
 
-ob_clean();
+ob_clean(); // Clear all specific string before render downloading
 download_send_headers("data_export_" . date("Y-m-d") . ".csv");
 echo "\xEF\xBB\xBF"; // UTF-8 BOM
 echo $str_csv;

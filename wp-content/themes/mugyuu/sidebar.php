@@ -1,11 +1,5 @@
 
 <div class="sideArea">
-    <section>
-    	<?php $spc_option = get_option('spc_options'); ?>
-		<?php if( $spc_option['allowpost']) :?>
-        	<div class="threadAdd"><a href="<?php echo home_url(); ?>/add-thread">＋トピックを投稿する</a></div>
-        <?php endif; ?>
-    </section>
     <section class="sideCatArea">
         <h2 class="heading">
             <span>C</span><span>A</span><span>T</span><span>E</span><span>G</span><span>O</span><span>R</span><span>Y</span>
@@ -191,9 +185,12 @@
                 <?php } ?>
             </ul>
         </section>
-        <!-- <section class="sideCat sideQaCat">
-            <h2><a href="<?php //echo home_url('/'); ?>questionary/public/">質問掲示板</a></h2>
-        </section> -->
+        <section class="sideCat sideQaCat">
+            <h2>
+            	<i class="arrow fa fa-angle-down" aria-hidden="true"></i>
+            	<a href="<?php echo home_url('/'); ?>notice/">質問掲示板</a>
+        	</h2>
+        </section>
         <section class="sideCat sideItemCat">
             <h2><a href="<?php echo home_url('/'); ?>item-search">商品を探す</a></h2>
         </section>

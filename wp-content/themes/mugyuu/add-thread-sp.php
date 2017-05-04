@@ -42,7 +42,7 @@
                         </div>
                 	</li>
                 </ul>-->
-                <ul class="categoryArea">
+                <!--<ul class="categoryArea">
                 	<li>
                     	<label for="select" class="selectArea">
                     	<select name="parent_cat" id="parent_cat"> 
@@ -65,7 +65,7 @@
                     	</select>
                     	</label>
                 	</li>
-                </ul>
+                </ul>-->
                 <input type="hidden" name="submitted" id="submitted" value="true" />
                 <button type="submit" name="action" value="send" class="sendBtn">スレッドを作成</button>
             </form>
