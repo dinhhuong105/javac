@@ -185,9 +185,12 @@
                 <?php } ?>
             </ul>
         </section>
-        <!-- <section class="sideCat sideQaCat">
-            <h2><a href="<?php //echo home_url('/'); ?>questionary/public/">質問掲示板</a></h2>
-        </section> -->
+        <section class="sideCat sideQaCat">
+            <h2>
+            	<i class="arrow fa fa-angle-down" aria-hidden="true"></i>
+            	<a href="notice/">質問掲示板</a>
+        	</h2>
+        </section>
         <section class="sideCat sideItemCat">
             <h2><a href="<?php echo home_url('/'); ?>item-search">商品を探す</a></h2>
         </section>
