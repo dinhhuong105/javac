@@ -12,7 +12,7 @@
                     <ul class="recipeList">
 						<?php
 			                $args = array(
-			                    'post_type' => array('movingimage_post', 'thread_post', 'question_post'),
+			                    'post_type' => 'movingimage_post',
 			                    'paged' => $paged,
                                 'posts_per_page' => 10,
 			                );
