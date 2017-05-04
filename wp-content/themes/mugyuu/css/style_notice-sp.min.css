@@ -3237,6 +3237,9 @@ textarea {
     background: #fc8c96;
     color: #fff;
 }
+.notice_pagination a.page-numbers i{
+    font-size: 1.8rem;
+}
 .qaSingle .commentFormArea:before{
     top: 0!important;
 }

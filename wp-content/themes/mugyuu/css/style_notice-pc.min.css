@@ -4299,6 +4299,9 @@ textarea {
     background: #fc8c96;
     color: #fff;
 }
+.notice_pagination a.page-numbers i{
+    font-size: 2rem;
+}
 /* Pagination comment list */
 /* Form add Thread */
 #threadAddForm li .selectArea select {
