@@ -3100,6 +3100,7 @@ textarea {
 /* Button report */
 .buttonReport{
 	float:right;
+	margin-top: -4px;
 }
 .buttonReport .wprc-content{
 	margin-right: 18px;
@@ -3199,6 +3200,9 @@ textarea {
 .qaSingle .content .buttonReport .modal .modal-overlay .modal-wrap .btnArea .cancelBtn:hover {
     color: #fff;
     background: #fc8c96
+}
+.flr{
+	float: right;
 }
 /* Button report */
 /* Image of comment */
