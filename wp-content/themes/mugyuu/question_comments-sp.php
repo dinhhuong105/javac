@@ -189,7 +189,9 @@
                 } ?>
                 <li>
                     <h3>コメント<span class="red">※</span></h3>
-                    <p>参考になるような意見を書いてね！誹謗中傷コメントは消しちゃうよ！的な注意コメント入れる</p>
+                    <p>ご自身の状況や良かった点、困った点などを具体的に書きましょう！
+                        育児で困ってる方の参考になり共感ボタンをもらいやすくなります！
+                        説明が難しい場合は画像などもあるとわかりやすいです。</p>
                     <div class="textArea" id="contentArea">
                         <textarea name="comment" required cols="30" rows="10" required></textarea>
                         <label class="imgBtn">
