@@ -231,9 +231,9 @@ function update_report_status_post( $post_id ) {
 }
 
 /**
-* disable edit post after has comment
+* disable editable post after has comment
 **/
-function stoppostedition_filter( $capauser, $capask, $param){
+/*function stoppostedition_filter( $capauser, $capask, $param){
 
   global $wpdb;   
 
@@ -260,4 +260,4 @@ function stoppostedition_filter( $capauser, $capask, $param){
   }
   return $capauser;
 }
-add_filter('user_has_cap', 'stoppostedition_filter', 100, 3 );
+add_filter('user_has_cap', 'stoppostedition_filter', 100, 3 );*/
