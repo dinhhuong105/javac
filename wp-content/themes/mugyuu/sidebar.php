@@ -1,11 +1,5 @@
 
 <div class="sideArea">
-    <section>
-    	<?php $spc_option = get_option('spc_options'); ?>
-		<?php if( $spc_option['allowpost']) :?>
-        	<div class="threadAdd"><a href="<?php echo home_url(); ?>/add-thread">＋トピックを投稿する</a></div>
-        <?php endif; ?>
-    </section>
     <section class="sideCatArea">
         <h2 class="heading">
             <span>C</span><span>A</span><span>T</span><span>E</span><span>G</span><span>O</span><span>R</span><span>Y</span>
