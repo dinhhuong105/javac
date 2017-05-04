@@ -1,4 +1,3 @@
-*.log
 wp-config.php
 wp-content/advanced-cache.php
 wp-content/backup-db/
@@ -11,7 +10,7 @@ wp-content/wp-cache-config.php
 wp-content/plugins/hello.php
 wp-content/translate-accelerator
 wp-content/ewww
-
+*.log
 /license.txt
 /readme.html
 /sitemap.xml
