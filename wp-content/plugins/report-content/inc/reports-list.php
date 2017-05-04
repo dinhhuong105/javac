@@ -11,7 +11,25 @@ function wprc_add_menu_items()
 	add_menu_page('通報一覧', '通報一覧', $menu_page_permission, 'wprc_reports_page', 'wprc_render_list_page', 'dashicons-format-aside', 10);
 }
 
+function wprc_add_notification_menu(){
+    global $wpdb;
+    global $menu;
+    $query = $wpdb->prepare( "SELECT COUNT(*) FROM wp_contentreports WHERE status=%s;", 'new' );
+    $count_new = $wpdb->get_var( $query );
+    $key_report = false;
+    foreach($menu as $key=>$parent_menu){
+        if($menu[$key][0] == '通報一覧'){
+            $key_report = $key;
+            break;
+        }
+    }
+    if($key_report){
+        $menu[$key_report][0] .= $count_new>0?"<span class='update-plugins count-1 report-count'><span class='update-count'> $count_new </span></span>":'';
+    }
+}
+
 add_action('admin_menu', 'wprc_add_menu_items');
+add_action('admin_menu', 'wprc_add_notification_menu');
 
 function wprc_db_change_admin_notice()
 {
