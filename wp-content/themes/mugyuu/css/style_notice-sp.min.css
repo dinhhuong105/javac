@@ -410,7 +410,6 @@ header .sb-slide {
     z-index: 100;
     overflow: hidden;
     background: #fff;
-    border-top: solid 2px #d9517c;
     -webkit-box-shadow: 0 1px 7px #bdbcbc;
     box-shadow: 0 1px 7px #bdbcbc
 }
@@ -3331,4 +3330,8 @@ textarea {
 .qa .breadcrumbList li:last-child,
 .qaSingle .breadcrumbList li:last-child{
 	padding: 0px;
+}
+header .sb-slide h1 a{
+	width: 200px;
+    margin: auto;
 }
