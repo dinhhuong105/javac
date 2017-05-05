@@ -7,7 +7,16 @@
             $author = get_userdata($post->post_author);
         ?>
         <div id="sb-site" class="wrapper single qaSingle">
-            <?php breadcrumb(); ?>
+            <?php if(count(get_the_category())>0):?>
+            	<?php breadcrumb(); ?>
+            <?php else: ?>
+            	<div id="breadcrumb">
+            		<ul class="breadcrumbList">
+            			<li><a href="<?php echo home_url('/'); ?>">トップ</a></li>
+            			<li><i class="fa fa-angle-right arrowIcon"></i><a href="<?php echo home_url('/'); ?>notice"><span>質問掲示板</span></a></li>
+            		</ul>
+            	</div>
+            <?php endif; ?>
             <article class="singleArea qaSingleArea">
                 <section>
                     <?php if (have_posts()) : ?>
