@@ -405,7 +405,6 @@ a:hover {
 }
 header .sb-slide {
     width: 100%;
-    height: 46px;
     position: fixed;
     z-index: 100;
     overflow: hidden;
@@ -1030,7 +1029,6 @@ footer .copy {
 }
 .breadcrumbList li:last-child {
     /*padding: 10px;*/
-    min-height: 35px;
     box-sizing: border-box
 }
 .pagination {
@@ -1588,7 +1586,6 @@ ul.slider .dot-class li:last-child .icon-2:before {
     line-height: 35px
 }
 .single .singleArea {
-    padding: 0 10px;
     margin-bottom: 40px
 }
 .single .singleArea .dataArea {
