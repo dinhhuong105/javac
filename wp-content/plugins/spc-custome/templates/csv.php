@@ -84,13 +84,25 @@ $csv = array();
 	}
 }
 
-download_send_headers("data_export_" . date("Y-m-d") . ".csv");
 $a = array ();
 
 foreach ($csv as $value) {
-	foreach ($value as $k => $v) {
-		array_push($a,array($k,$v));
-	}
+    foreach ($value as $k => $v) {
+        array_push($a,array($k,$v));
+    }
 }
-echo array2csv($a);
+
+/**
+ * Fix csv encoding
+ *
+ * @author Edward <duc.nguyen@spc-vn.com>
+ * @date 2017-05-04
+ */
+
+$str_csv=array2csv($a);
+
+ob_clean(); // Clear all specific string before render downloading
+download_send_headers("data_export_" . date("Y-m-d") . ".csv");
+echo "\xEF\xBB\xBF"; // UTF-8 BOM
+echo $str_csv;
 die();
