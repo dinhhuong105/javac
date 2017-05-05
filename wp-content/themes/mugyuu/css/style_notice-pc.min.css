@@ -214,7 +214,7 @@ a {
     content: "\e907"
 }
 .icon-mugyuu:before {
-    content: "\e900"
+    content: "\e90a"
 }
 .icon-baby:before {
     content: "\e904"
@@ -1609,7 +1609,7 @@ header:before {
     opacity: .6
 }
 .sideArea .sideCatArea .sideChildCat h2:before {
-    content: "\e904";
+    content: "\e905";
     position: absolute;
     top: 15px;
     left: 10px;
@@ -1628,7 +1628,7 @@ header:before {
     font-size: 2.5rem
 }
 .sideArea .sideCatArea .sideMamaCat h2:before {
-    content: "\e905";
+    content: "\e908";
     position: absolute;
     top: 15px;
     left: 10px;
