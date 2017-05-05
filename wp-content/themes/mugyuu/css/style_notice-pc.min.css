@@ -196,7 +196,7 @@ a {
     content: "\e90c"
 }
 .icon-mama:before {
-    content: "\e905"
+    content: "\e908"
 }
 .icon-mama404:before {
     content: "\e908"
@@ -214,10 +214,10 @@ a {
     content: "\e907"
 }
 .icon-mugyuu:before {
-    content: "\e900"
+    content: "\e90a"
 }
 .icon-baby:before {
-    content: "\e904"
+    content: "\e905"
 }
 .icon-hatebu:before {
     content: "\e901"
@@ -1243,13 +1243,10 @@ header:before {
 .topCatArea .topCatWrap .catContentWrap .catIcon {
     float: left;
     width: calc(100% / 3);
-    height: 140px;
     margin: 0 auto;
     text-align: center
 }
 .topCatArea .topCatWrap .catContentWrap .catIcon .icon {
-    width: 140px;
-    height: 140px;
     display: block;
     margin: 0 auto;
     font-size: 7rem;
@@ -1259,12 +1256,10 @@ header:before {
 .topCatArea .topCatWrap .catContentWrap .catIcon .icon.child {
     color: #fcc68c;
     border: solid 3px #fcc68c;
-    padding: 33px 0
 }
 .topCatArea .topCatWrap .catContentWrap .catIcon .icon.mama {
     color: #fc8c96;
     border: solid 3px #fc8c96;
-    padding: 20px 0 25px;
     font-size: 9rem
 }
 .topCatArea .topCatWrap .catContentWrap .catIcon .icon.age {
@@ -1379,11 +1374,9 @@ header:before {
 .topCatArea .topCatWrap .catContent.cat-child:before {
     border-bottom: solid 22px #fcc68c;
     top: -46px;
-    left: 140px
 }
 .topCatArea .topCatWrap .catContent.cat-child:after {
     top: -41px;
-    left: 140px
 }
 .topCatArea .topCatWrap .catContent.cat-mama {
     border: solid 3px #fc8c96
@@ -1404,11 +1397,9 @@ header:before {
 .topCatArea .topCatWrap .catContent.cat-mama:before {
     border-bottom: solid 22px #fc8c96;
     top: -46px;
-    left: 475px
 }
 .topCatArea .topCatWrap .catContent.cat-mama:after {
     top: -41px;
-    left: 475px
 }
 .topCatArea .topCatWrap .catContent.cat-age {
     border: solid 3px #7fb9ea
@@ -1609,7 +1600,7 @@ header:before {
     opacity: .6
 }
 .sideArea .sideCatArea .sideChildCat h2:before {
-    content: "\e904";
+    content: "\e905";
     position: absolute;
     top: 15px;
     left: 10px;
@@ -1628,7 +1619,7 @@ header:before {
     font-size: 2.5rem
 }
 .sideArea .sideCatArea .sideMamaCat h2:before {
-    content: "\e905";
+    content: "\e908";
     position: absolute;
     top: 15px;
     left: 10px;

@@ -270,16 +270,16 @@ footer .copy small,
     -moz-osx-font-smoothing: grayscale
 }
 .icon-baby:before {
-    content: "\e904"
+    content: "\e905"
 }
 .icon-mama:before {
-    content: "\e905"
+    content: "\e908"
 }
 .icon-heart-o:before {
     content: "\f08a"
 }
 .icon-mugyuu:before {
-    content: "\e900"
+    content: "\e90a"
 }
 .icon-bubbles2:before {
     content: "\e902"
@@ -496,7 +496,7 @@ header nav .sb-left .searchArea form .searchIcon i {
     line-height: 35px
 }
 header nav .sb-left .catArea {
-    background: url(../images/border.png) repeat-x left bottom;
+    /*background: url(../images/border.png) repeat-x left bottom;*/
     margin-bottom: 0
 }
 header nav .sb-left .catArea h2 {
@@ -580,7 +580,7 @@ header nav .sb-left .shareList li {
 }
 header nav .sb-left .shareList li a {
     color: #fff;
-    padding: 10%;
+    /*padding: 10%;*/
     height: 44px;
     box-sizing: border-box
 }
@@ -1501,7 +1501,7 @@ ul.slider .dot-class li:last-child .icon-2:before {
     left: 0;
     height: 2px;
     width: 100%;
-    background: url(../images/borderChild.png) repeat-x left
+    /*background: url(../images/borderChild.png) repeat-x left*/
 }
 .topCat .childArea .bigCat:after {
     content: "";
@@ -1510,7 +1510,7 @@ ul.slider .dot-class li:last-child .icon-2:before {
     left: 0;
     height: 2px;
     width: 100%;
-    background: url(../images/borderChild.png) repeat-x left
+    /*background: url(../images/borderChild.png) repeat-x left*/
 }
 .topCat .mamaArea .bigCat {
     background: #fc8c96
