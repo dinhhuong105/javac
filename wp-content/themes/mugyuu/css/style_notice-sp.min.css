@@ -1501,7 +1501,7 @@ ul.slider .dot-class li:last-child .icon-2:before {
     left: 0;
     height: 2px;
     width: 100%;
-    background: url(../images/borderChild.png) repeat-x left
+    /*background: url(../images/borderChild.png) repeat-x left*/
 }
 .topCat .childArea .bigCat:after {
     content: "";
@@ -1510,7 +1510,7 @@ ul.slider .dot-class li:last-child .icon-2:before {
     left: 0;
     height: 2px;
     width: 100%;
-    background: url(../images/borderChild.png) repeat-x left
+    /*background: url(../images/borderChild.png) repeat-x left*/
 }
 .topCat .mamaArea .bigCat {
     background: #fc8c96
