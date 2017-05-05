@@ -13,7 +13,7 @@
             	<div id="breadcrumb">
             		<ul class="breadcrumbList">
             			<li><a href="<?php echo home_url('/'); ?>">トップ</a></li>
-            			<li><i class="fa fa-angle-right arrowIcon"></i><a href="<?php echo home_url('/'); ?>notice"><span>スレッド一覧</span></a></li>
+            			<li><i class="fa fa-angle-right arrowIcon"></i><a href="<?php echo home_url('/'); ?>notice"><span>質問掲示板</span></a></li>
             		</ul>
             	</div>
             <?php endif; ?>
