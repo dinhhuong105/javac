@@ -85,6 +85,11 @@ class WPRC_Table extends WPRC_List_Table
 	        return '<span>コメント</span>';
 	    }
 	}
+	
+	function column_title($item)
+	{
+        return '<span>'.get_the_title($item['post_id']).'</span>';
+	}
 
 	function column_cb($item)
 	{
@@ -167,7 +172,8 @@ class WPRC_Table extends WPRC_List_Table
 			// Update 2017.04.08 Hung Nguyen start
 			// Change table in admin
 			//'cb'       => '<input type="checkbox" />', //Render a checkbox instead of text
-			'type'   => '通報ジャンル',
+			'type'     => '通報ジャンル',
+	        'title'    => '投稿タイトル',
 			'time'     => '受付日時',
 			'post'     => '確認',
 	        'status'   => '処理',

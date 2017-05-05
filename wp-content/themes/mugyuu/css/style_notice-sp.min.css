@@ -1015,7 +1015,7 @@ footer .copy {
 }
 .breadcrumbList li {
     float: left;
-    padding: 10px;
+    /*padding: 10px;*/
 }
 .breadcrumbList li a,
 .breadcrumbList li i {
@@ -3100,6 +3100,7 @@ textarea {
 /* Button report */
 .buttonReport{
 	float:right;
+	margin-top: -4px;
 }
 .buttonReport .wprc-content{
 	margin-right: 18px;
@@ -3200,6 +3201,9 @@ textarea {
     color: #fff;
     background: #fc8c96
 }
+.flr{
+	float: right;
+}
 /* Button report */
 /* Image of comment */
 .wrapper.single .commentArea .commentList li p img {
@@ -3236,6 +3240,9 @@ textarea {
     box-sizing: border-box;
     background: #fc8c96;
     color: #fff;
+}
+.notice_pagination a.page-numbers i{
+    font-size: 1.8rem;
 }
 .qaSingle .commentFormArea:before{
     top: 0!important;
@@ -3321,3 +3328,7 @@ textarea {
     top: 0!important;
 }
 /* Question Filter */
+.qa .breadcrumbList li:last-child,
+.qaSingle .breadcrumbList li:last-child{
+	padding: 0px;
+}

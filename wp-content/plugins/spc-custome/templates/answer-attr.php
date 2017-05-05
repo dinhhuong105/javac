@@ -49,7 +49,7 @@
 	}
 </style>
 <?php 
-	define('DEFAULT_COMMENTS_PER_PAGE',get_option( 'comments_per_page' ));
+	define('DEFAULT_COMMENTS_PER_PAGE',20);
 	$id=isset($post->ID)?$post->ID:$_GET['post'];
 
 	$page = isset($_GET['paged']) ? $_GET['paged'] : 1; 

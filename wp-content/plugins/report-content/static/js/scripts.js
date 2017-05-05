@@ -75,6 +75,7 @@ jQuery(document).ready(function ($) {
 				data = jQuery.parseJSON(data);
 				if (data.success) {
 					currentTd.html("<span>対応完了</span>");
+					$('span.report-count .update-count').html($('span.report-count .update-count').html()-1);
 				}
 				else {
 					alert(data.message);

@@ -58,33 +58,35 @@
                     </div>
                     <div class="content">
                         <?php the_content(); ?>
-                        <div class="articleData">
-                            <p class="commentCount"><i class="fa fa-comments" aria-hidden="true"></i><?php echo wp_count_comments( get_the_ID() )->total_comments; ?></p>
-                        </div>
-                        <div class="buttonReport">
-                    		<div class="report modal">
-                                <input id="modal-trigger-thread" type="checkbox">
-                                <label for="modal-trigger-thread">
-                                	<?php 
-                                	   $GLOBALS['comment'] = null;
-                                	   wprc_report_submission_form();
-                                	?>
-                                </label>
-                                <div class="modal-overlay">
-                                    <div class="modal-wrap">
-                                        <label for="modal-trigger-thread">✖</label>
-                                        <h3>このスレッドを通報</h3>
-                                        <p>このスレッドを不適切な内容として通報しますか？</p>
-                                        <div class="btnArea">
-                                            <button type="button" class="reportBtn">通報
-                                            </button>
-                                            <button type="button" class="cancelBtn">やめる
-                                            </button>
+                        <div>
+                            <div class="articleData flr">
+                                <p class="commentCount"><i class="fa fa-comments" aria-hidden="true"></i><?php echo wp_count_comments( get_the_ID() )->total_comments; ?></p>
+                            </div>
+                            <div class="buttonReport">
+                        		<div class="report modal">
+                                    <input id="modal-trigger-thread" type="checkbox">
+                                    <label for="modal-trigger-thread">
+                                    	<?php 
+                                    	   $GLOBALS['comment'] = null;
+                                    	   wprc_report_submission_form();
+                                    	?>
+                                    </label>
+                                    <div class="modal-overlay">
+                                        <div class="modal-wrap">
+                                            <label for="modal-trigger-thread">✖</label>
+                                            <h3>このスレッドを通報</h3>
+                                            <p>このスレッドを不適切な内容として通報しますか？</p>
+                                            <div class="btnArea">
+                                                <button type="button" class="reportBtn">通報
+                                                </button>
+                                                <button type="button" class="cancelBtn">やめる
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                    	</div>
+                        	</div>
+                        </div>
                     </div>
                     <br>
                     <div class="btnArea">

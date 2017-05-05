@@ -4004,7 +4004,7 @@ footer .copy small {
 }
 .mainWrap.list.qa .btnArea a {
     position: relative;
-    width: 100%;
+    width: 70%;
     height: 50px;
     line-height: 50px;
     border: solid 2px #fc8c96;
@@ -4150,7 +4150,7 @@ textarea {
 /* Button report*/
 .buttonReport{
 	float:right;
-	margin-top: 30px;
+	/*margin-top: 30px;*/
 }
 .buttonReport .wprc-content{
 	margin-right: 30px;
@@ -4247,8 +4247,11 @@ textarea {
 }
 .btnArea .reportBtn:hover,
 .btnArea .cancelBtn:hover {
-    color: #fff !important;
-    background: #fc8c96 !important;
+    color: #fc8c96 !important;
+    background: #fff !important;
+}
+.flr{
+	float: right;
 }
 /* Button report*/
 /* Button add thread */
@@ -4298,6 +4301,9 @@ textarea {
 .notice_pagination a.page-numbers:hover {
     background: #fc8c96;
     color: #fff;
+}
+.notice_pagination a.page-numbers i{
+    font-size: 2rem;
 }
 /* Pagination comment list */
 /* Form add Thread */
@@ -4386,3 +4392,8 @@ textarea {
     display: inline-block;
 }
 /* Question Filter */
+/* Category: list bulletin board */
+.sideArea .sideCatArea .sideQaCat h2 a{
+	padding: 0px 10px 14px 0px;
+}
+/* Category: list bulletin board */
