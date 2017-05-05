@@ -418,7 +418,6 @@ header .sb-slide h1 {
     width: 86%
 }
 header .sb-slide h1 img {
-    width: 178px;
     display: block;
     margin: 0 auto
 }
@@ -429,7 +428,6 @@ header .sb-slide .shareIcon {
 }
 header .sb-slide .menuIcon i,
 header .sb-slide .shareIcon i {
-    line-height: 48px;
     font-size: 25px;
     color: #d9517c
 }
