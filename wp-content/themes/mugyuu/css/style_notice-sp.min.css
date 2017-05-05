@@ -1015,7 +1015,7 @@ footer .copy {
 }
 .breadcrumbList li {
     float: left;
-    padding: 10px;
+    /*padding: 10px;*/
 }
 .breadcrumbList li a,
 .breadcrumbList li i {
@@ -3328,3 +3328,7 @@ textarea {
     top: 0!important;
 }
 /* Question Filter */
+.qa .breadcrumbList li:last-child,
+.qaSingle .breadcrumbList li:last-child{
+	padding: 0px;
+}

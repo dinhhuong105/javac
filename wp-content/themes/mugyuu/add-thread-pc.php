@@ -1,6 +1,12 @@
 <?php get_header();?>
 <?php add_thread_front();?>
-<?php breadcrumb(); ?>
+	<div id="breadcrumb">
+		<ul class="breadcrumbList">
+			<li><a href="<?php echo home_url('/'); ?>">トップ</a></li>
+			<li><i class="fa fa-angle-right arrowIcon"></i><a href="<?php echo home_url('/'); ?>notice"><span>スレッド一覧</span></a></li>
+			<li><i class="fa fa-angle-right arrowIcon"></i><span>新規スレッド作成</span></li>
+		</ul>
+	</div>
     <div class="mainWrap single addthread">
         <div class="mainArea">
         	<section class="threadFormArea">

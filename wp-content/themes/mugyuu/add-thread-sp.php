@@ -1,7 +1,13 @@
 <?php get_header();?>
 <?php add_thread_front();?>
     <div id="sb-site" class="mainWrap single addthread wrapper">
-        <?php breadcrumb(); ?>
+        <div id="breadcrumb">
+    		<ul class="breadcrumbList">
+    			<li><a href="<?php echo home_url('/'); ?>">トップ</a></li>
+    			<li><i class="fa fa-angle-right arrowIcon"></i><a href="<?php echo home_url('/'); ?>notice"><span>スレッド一覧</span></a></li>
+    			<li><i class="fa fa-angle-right arrowIcon"></i><span>新規スレッド作成</span></li>
+    		</ul>
+    	</div>
     	<section class="threadFormArea">
             <h1 class="heading">新規スレッド作成</h1>
             <form action="" id="threadAddForm" method="POST" enctype="multipart/form-data">
