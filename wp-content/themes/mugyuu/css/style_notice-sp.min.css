@@ -3242,8 +3242,8 @@ textarea {
     top: 0!important;
 }
 .qaSingle .commentFormArea{
-    margin-top: 15px;
-    padding-top: 20px;
+    margin-top: 15px !important;
+    padding-top: 20px !important;
 }
 /* Pagination comment list */
 /* Form add Thread */
@@ -3324,8 +3324,9 @@ textarea {
 /* Question Filter */
 .qa .breadcrumbList li:last-child,
 .qaSingle .breadcrumbList li:last-child{
-	padding: 0px;
+	padding: 0px !important;
 }
+/* Fix for image show home link */
 header .sb-slide h1 a{
 	width: 200px;
     margin: auto;
