@@ -3324,9 +3324,11 @@ textarea {
 /* Question Filter */
 .qa .breadcrumbList li:last-child,
 .qaSingle .breadcrumbList li:last-child{
-	padding: 0px;
+	padding: 0px !important;
 }
+/* Fix for image show home link */
 header .sb-slide h1 a{
 	width: 200px;
     margin: auto;
 }
+/* Fix for image show home link */
