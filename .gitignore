@@ -17,3 +17,4 @@ wp-content/ewww
 /sitemap.xml.gz
 
 .idea
+/wp-config.php

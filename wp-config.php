@@ -41,10 +41,10 @@ define('DB_NAME', 'spc_labo_kaze');
 define('DB_USER', 'root');
 
 /* MySQL データベースのパスワード */
-define('DB_PASSWORD', 'root');
+define('DB_PASSWORD', '');
 
 /* MySQL のホスト名 */
-define('DB_HOST', '127.0.0.1');
+define('DB_HOST', 'localhost');
 
 /* データベースのテーブルを作成する際のデータベースの文字セット */
 define('DB_CHARSET', 'utf8mb4');
