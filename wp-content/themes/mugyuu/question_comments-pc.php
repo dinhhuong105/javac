@@ -28,6 +28,12 @@
     $GLOBALS['questions'] = $questions; 
     $count_comment = wp_count_comments($post->ID);
 
+    //check avalible for button submit comment form
+    $boolAvalible = false;
+    if( ($count_comment->approved < $limited && $limited > 0) || empty($limited) ){
+        $boolAvalible = true;
+    }
+
 ?>
 <section class="commentArea">
     <div class="question_filter">
@@ -116,8 +122,8 @@
              echo '<div style="margin-top:20px; text-align:center;" class="notice_pagination">';
              //ページナビゲーションの表示
              paginate_comments_links([
-                'next_text'    => __('›'),
-                'prev_text'    => __('‹')
+                'next_text'    => __('<i class="fa fa-angle-right"></i>'),
+                'prev_text'    => __('<i class="fa fa-angle-left"></i>')
                 ]);
              echo '</div>';
          }
@@ -127,6 +133,7 @@
 
 
     <div class="commentFormWrap">
+        <?php if( $boolAvalible ): ?>
         <div class="ttlArea">
             <h1>アンケートに答える</h1>
             <p>
@@ -202,6 +209,7 @@
                         }
                     }
                 } ?>
+                
                 <li>
                     <h3>コメント<span class="red">※</span></h3>
                     <p class="notes">
@@ -217,9 +225,10 @@
                         </label>
                     </div>
                 </li>
+                
                 <li>
                     <?php
-                    if( ($count_comment->approved < $limited && $limited > 0) || empty($limited) ): ?>
+                    if( $boolAvalible ): ?>
                         <button type="submit" name="submitted" value="send" class="sendBtn">アンケートに回答する</button>
                     <?php else: ?>
                         <button type="submit" name="submitted" value="send" class="sendBtn btnDisable" disabled="disabled">回答締め切りました。</button>
@@ -227,6 +236,10 @@
                 </li>
             </ul>
         </form>
+    <?php else: ?>
+    <div align="center">回答を締め切りました。<br/>
+ご回答ありがとうございました！</div>
+        <?php endif ?>
     </div>
    
 </section>

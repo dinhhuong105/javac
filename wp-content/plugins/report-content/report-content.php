@@ -63,6 +63,7 @@ function wprc_create_table()
 		post_id mediumint(9) NOT NULL,
 		comment_id mediumint(9) DEFAULT 0 NULL,
 		report_type VARCHAR(55) DEFAULT 'thread_post' NULL,
+		reporter_ip VARCHAR(55) DEFAULT '' NULL,
 		UNIQUE KEY id (id) ) $charset_collate;
 	";
 
@@ -340,6 +341,7 @@ function wprc_add_report()
 		'post_id'        => intval($_POST['id']),
         'comment_id'     => intval($_POST['comment_id']),
         'report_type'    => sanitize_text_field($report_type),
+        'reporter_ip'    => sanitize_text_field(get_user_IP()),
 	);
 	/*if (wprc_is_spam($new_report)) {
 		$message['message'] = 'Your submission has been marked as spam by our filters';

@@ -4,6 +4,9 @@
  * WordPressの実行ユーザと異なる場合にFTPを使用しないでプラグインのインストール等を行いたい場合
  */
 define('FS_METHOD', 'direct');
+rdPressの実行ユーザと異なる場合にFTPを使用しないでプラグインのインストール等を行いたい場合
+ */
+define('FS_METHOD', 'direct');
 
 /*
  * 投稿一覧等のパジネートリンクがバックエンド側のホストを参照してしまうため，/wp-admin/以下でのみHttp-Hostをフロントエンドのホスト名で上書きする．
@@ -100,3 +103,26 @@ if (!defined('ABSPATH')) {
 
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH.'wp-settings.php';
+
+/*
+ * 投稿一覧等のパジネートリンクがバックエンド側のホストを参照してしまうため，/wp-admin/以下でのみHttp-Hostをフロントエンドのホスト名で上書きする．
+ */
+// if (isset($_SERVER['REQUEST_URI']) && substr($_SERVER['REQUEST_URI'],  0, strlen('/wp-admin/')) === '/wp-admin/') {
+//     $_SERVER['HTTP_HOST'] = 'mugyuu.jp';
+//     $_SERVER['SERVER_NAME'] = 'mugyuu.jp';
+//     $_ENV['HTTP_HOST'] = 'mugyuu.jp';
+//     $_ENV['SERVER_NAME'] = 'mugyuu.jp';
+// }
+
+/*
+ * WordPress の基本設定.
+ *
+ * このファイルは、MySQL、テーブル接頭辞、秘密鍵、ABSPATH の設定を含みます。
+ * より詳しい情報は {@link http://wpdocs.sourceforge.jp/wp-config.php_%E3%81%AE%E7%B7%A8%E9%9B%86
+ * wp-config.php の編集} を参照してください。MySQL の設定情報はホスティング先より入手できます。
+ *
+ * このファイルはインストール時に wp-config.php 作成ウィザードが利用します。
+* ウィザードを介さず、このファイルを "wp-config.php" という名前でコピーして直接編集し値を
+* 入力してもかまいません。
+*/
+

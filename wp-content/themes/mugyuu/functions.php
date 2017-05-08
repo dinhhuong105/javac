@@ -2129,23 +2129,25 @@ function noticetheme_comment($comment, $args, $depth) {
             <?php echo get_comment_date(('Y/m/d')) ?>
             <?php printf(__('%s'), get_comment_author_link()) ?>
         </p>
-        <div class="report modal">
-            <input id="modal-trigger-<?php comment_ID() ?>" type="checkbox">
-            <label for="modal-trigger-<?php comment_ID() ?>"><?php wprc_report_submission_form(); ?></label>
-            <div class="modal-overlay">
-                <div class="modal-wrap">
-                    <label for="modal-trigger-<?php comment_ID() ?>">✖</label>
-                    <h3>このコメントを通報</h3>
-                    <p>このコメントを削除すべき不適切なコメントとして通報しますか？</p>
-                    <div class="btnArea">
-                        <button type="button" class="reportBtn">通報
-                        </button>
-                        <button type="button" class="cancelBtn">やめる
-                        </button>
+        <?php if(!ip_report_comment(get_comment_ID(), get_user_IP())):?>
+            <div class="report modal">
+                <input id="modal-trigger-<?php comment_ID() ?>" type="checkbox">
+                <label for="modal-trigger-<?php comment_ID() ?>"><?php wprc_report_submission_form(); ?></label>
+                <div class="modal-overlay">
+                    <div class="modal-wrap">
+                        <label for="modal-trigger-<?php comment_ID() ?>">✖</label>
+                        <h3>このコメントを通報</h3>
+                        <p>このコメントを削除すべき不適切なコメントとして通報しますか？</p>
+                        <div class="btnArea">
+                            <button type="button" class="reportBtn">通報
+                            </button>
+                            <button type="button" class="cancelBtn">やめる
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
     <?php if( cf_is_mobile()) : ?>
     <p class="userCommentArea">
@@ -2653,23 +2655,25 @@ function question_comment($comment, $args, $depth) {
                     <?php echo get_comment_date(('Y/m/d')) ?>
                     <?php printf(__('%s'), get_comment_author_link()) ?>
                 </p>
-                <div class="report modal">
-                    <input id="modal-trigger-1" type="checkbox">
-                    <label for="modal-trigger-1"><?php wprc_report_submission_form(); ?></label>
-                    <div class="modal-overlay">
-                        <div class="modal-wrap">
-                            <label for="modal-trigger-1">✖</label>
-                            <h3>このコメントを通報</h3>
-                            <p>このコメントを削除すべき不適切なコメントとして通報しますか？</p>
-                            <div class="btnArea">
-                                <button type="button" class="reportBtn">通報
-                                </button>
-                                <button type="button" class="cancelBtn">やめる
-                                </button>
+                <?php if(!ip_report_comment(get_comment_ID(), get_user_IP())):?>
+                    <div class="report modal">
+                        <input id="modal-trigger-1" type="checkbox">
+                        <label for="modal-trigger-1"><?php wprc_report_submission_form(); ?></label>
+                        <div class="modal-overlay">
+                            <div class="modal-wrap">
+                                <label for="modal-trigger-1">✖</label>
+                                <h3>このコメントを通報</h3>
+                                <p>このコメントを削除すべき不適切なコメントとして通報しますか？</p>
+                                <div class="btnArea">
+                                    <button type="button" class="reportBtn">通報
+                                    </button>
+                                    <button type="button" class="cancelBtn">やめる
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
             <div class="userCommentArea answerArea">
                 <ul class="answerList">
@@ -2786,9 +2790,61 @@ function unapprove_comment_callback($new_status, $old_status, $comment) {
     }
 }
 
+/**
+ * Add comment id into input hidden for scroll down
+ * @author Hung Nguyen
+ */
 add_action( 'edit_form_after_title', 'add_content_before_editor' );
 function add_content_before_editor() {
     if(isset($_GET['comment_id_scroll'])){
         echo "<input class='comment_id_scroll' type='hidden' value=".$_GET['comment_id_scroll'].">";
     }
 }
+
+/**
+ * Get user IP for check report
+ * @author Hung Nguyen
+ */
+function get_user_IP() {
+    $client = @$_SERVER['HTTP_CLIENT_IP'];
+    $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+    $remote = $_SERVER['REMOTE_ADDR'];
+
+    if ( filter_var( $client, FILTER_VALIDATE_IP ) ) {
+        $ip = $client;
+    } elseif ( filter_var( $forward, FILTER_VALIDATE_IP ) ) {
+        $ip = $forward;
+    } else {
+        $ip = $remote;
+    }
+
+    return $ip;
+}
+
+/**
+ * Check if IP have reported comment
+ * @author Hung Nguyen
+ */
+ function ip_report_comment($comment_id, $ip){
+     global $wpdb;
+     
+     $query = $wpdb->prepare( "SELECT COUNT(*) FROM wp_contentreports WHERE comment_id=%d AND reporter_ip=%s;", $comment_id, $ip );
+     $count_ip = $wpdb->get_var( $query );
+     
+     if($count_ip>0) return true;
+     return false;
+ }
+ 
+ /**
+  * Check if IP have reported thread post
+  * @author Hung Nguyen
+  */
+ function ip_report_post($post_id, $ip){
+     global $wpdb;
+      
+     $query = $wpdb->prepare( "SELECT COUNT(*) FROM wp_contentreports WHERE post_id=%d AND reporter_ip=%s;", $post_id, $ip );
+     $count_ip = $wpdb->get_var( $query );
+      
+     if($count_ip>0) return true;
+     return false;
+ }
