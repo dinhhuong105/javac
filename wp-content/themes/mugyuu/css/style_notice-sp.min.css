@@ -3330,3 +3330,17 @@ header .sb-slide h1 a{
 	width: 200px;
     margin: auto;
 }
+
+/* Category: list bulletin board */
+/* By Uno */
+section.confirm{
+    display: none;
+}
+#backBtn,#submitBtn{
+    width: 46%;
+    display: initial;
+}
+.confirm_textArea{
+    border-top:1px solid #c0c0c0;
+    padding-top: 10px;
+}

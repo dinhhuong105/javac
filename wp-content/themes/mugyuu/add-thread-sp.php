@@ -8,9 +8,9 @@
     			<li><i class="fa fa-angle-right arrowIcon"></i><span>新規スレッド作成</span></li>
     		</ul>
     	</div>
-    	<section class="threadFormArea">
+    <form action="" id="threadAddForm" method="POST" enctype="multipart/form-data">
+        <section class="threadFormArea inputForm">
             <h1 class="heading">新規スレッド作成</h1>
-            <form action="" id="threadAddForm" method="POST" enctype="multipart/form-data">
                 <ul class="threadList">
                     <li>
                         <div class="imgArea">
@@ -73,9 +73,33 @@
                 	</li>
                 </ul>-->
                 <input type="hidden" name="submitted" id="submitted" value="true" />
-                <button type="submit" name="action" value="send" class="sendBtn">スレッドを作成</button>
-            </form>
+                <button id="preview" class="sendBtn">Preview</button>
         </section>
+        <section class="threadFormArea confirm">
+             <h1 class="heading">新規スレッド作成</h1>
+                    <ul class="threadList">
+                            <li>
+                                <div class="imgArea">
+                                    <img src="" id="confirm_no_image" alt="画像" width="80" height="80">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="ttl">
+                                    <label id="confirm_thread_title">title</label>
+                                </div>
+                                <div class="content" id="contentArea">
+                                    <div class="confirm_textArea">
+                                        <label id="confirm_thread_content">message</label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    <div class="row" align="center">
+                        <button id="backBtn" class="sendBtn">Back</button>
+                        <button type="submit" name="action" value="send" class="sendBtn" id="submitBtn">スレッドを作成</button>
+                    </div>
+            </section>
+    </form>
     </div>
 <?php get_footer(); ?>
 <script>

@@ -9,10 +9,11 @@
 	</div>
     <div class="mainWrap single addthread">
         <div class="mainArea">
-        	<section class="threadFormArea">
+        <form action="" id="threadAddForm" method="POST" enctype="multipart/form-data">
+        	<section class="threadFormArea inputForm">
                 <h1 class="heading">新規スレッド作成</h1>
                 <div class="formArea">
-                    <form action="" id="threadAddForm" method="POST" enctype="multipart/form-data">
+                    
                         <ul class="threadList">
                             <li>
                                 <div class="imgArea">
@@ -39,8 +40,8 @@
                             </li>
                         </ul>
                         <!--<ul class="answerInpotList">
-                        	<li>
-                        		<div class="checkArea">
+                            <li>
+                                <div class="checkArea">
                                     <label for="anonymous">
                                         <input style="-webkit-appearance: checkbox;" type="checkbox" id="anonymous" name="anonymous">匿名を投稿
                                     </label>
@@ -48,12 +49,12 @@
                                         <input style="-webkit-appearance: checkbox;" type="checkbox" id="displayID" name="displayID">IDを表示してなりまし防止
                                     </label>
                                 </div>
-                        	</li>
+                            </li>
                         </ul>-->
                         <!--<ul class="categoryArea">
-                        	<li>
-                            	<label for="select" class="selectArea">
-                            	<select name="parent_cat" id="parent_cat"> 
+                            <li>
+                                <label for="select" class="selectArea">
+                                <select name="parent_cat" id="parent_cat"> 
                                     <option value="0">親カテゴリー</option> 
                                     <?php 
                                     $categories = get_categories( array( 'parent' => 0, 'hide_empty'=>false ) );
@@ -65,20 +66,47 @@
                                     }
                                     ?>
                                 </select>
-                            	<select name="child_cat" id="child_cat">
-                            		<option value="0">子カテゴリー</option>
-                            	</select>
-                            	<select name="grandchild_cat" id="grandchild_cat" class="cd-select">
-                            		<option value="0">孫カテゴリー</option>
-                            	</select>
-                            	</label>
-                        	</li>
+                                <select name="child_cat" id="child_cat">
+                                    <option value="0">子カテゴリー</option>
+                                </select>
+                                <select name="grandchild_cat" id="grandchild_cat" class="cd-select">
+                                    <option value="0">孫カテゴリー</option>
+                                </select>
+                                </label>
+                            </li>
                         </ul>-->
                         <input type="hidden" name="submitted" id="submitted" value="true" />
-                        <button type="submit" name="action" value="send" class="sendBtn">スレッドを作成</button>
-                    </form>
+                        <button id="preview" class="sendBtn">Preview</button>
+                    
                 </div>
             </section>
+            <section class="threadFormArea confirm">
+             <h1 class="heading">新規スレッド作成</h1>
+                <div class="formArea">
+                    <ul class="threadList">
+                            <li>
+                                <div class="imgArea">
+                                    <img src="" id="confirm_no_image" alt="画像" width="130" height="130">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="ttl">
+                                    <label id="confirm_thread_title">title</label>
+                                </div>
+                                <div class="content" id="contentArea">
+                                    <div class="confirm_textArea">
+                                        <label id="confirm_thread_content">message</label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    <div class="row" align="center">
+                        <button id="backBtn" class="sendBtn">Back</button>
+                        <button type="submit" name="action" value="send" class="sendBtn" id="submitBtn">スレッドを作成</button>
+                    </div>
+                </div>
+            </section>
+            </form>
         </div>
 		<?php get_sidebar(); ?>
     </div>
