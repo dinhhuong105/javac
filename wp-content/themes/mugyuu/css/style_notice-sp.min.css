@@ -3238,9 +3238,12 @@ textarea {
 .notice_pagination a.page-numbers i{
     font-size: 1.8rem;
 }
+.qaSingle .commentFormArea:before{
+    top: 0!important;
+}
 .qaSingle .commentFormArea{
-    margin-top: 15px;
-    padding-top: 20px;
+    margin-top: 15px !important;
+    padding-top: 20px !important;
 }
 /* Pagination comment list */
 /* Form add Thread */
