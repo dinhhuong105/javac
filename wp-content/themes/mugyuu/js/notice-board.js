@@ -130,4 +130,25 @@ $(function () {
             }
         });
     });
+
+    /**
+    * Confirm layout 
+    * By : Mr.Uno
+    */
+    $("#preview").on('click',function(e){
+        e.preventDefault();
+        $('#confirm_no_image').attr('src',$('#no_image').attr('src'));
+        $('#confirm_thread_title').html($('#thread_title').val());
+        $('#confirm_thread_content').html($('#thread_content').val());
+        $('.inputForm').hide();
+        $('.confirm').show();
+        return false;
+    });
+
+    $("#backBtn").on('click',function(e){
+        e.preventDefault();
+        $('.confirm').hide();
+        $('.inputForm').show();
+        return false;
+    });
 })
