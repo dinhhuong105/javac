@@ -76,7 +76,7 @@
                             </li>
                         </ul>-->
                         <input type="hidden" name="submitted" id="submitted" value="true" />
-                        <button id="preview" type="submit" name="action" value="send" class="sendBtn">Preview</button>
+                        <button id="preview" type="submit" name="action" value="send" class="sendBtn">送信内容を確認</button>
                     
                 </div>
             </section>

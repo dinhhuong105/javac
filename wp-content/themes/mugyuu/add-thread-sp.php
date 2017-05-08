@@ -73,7 +73,7 @@
                 	</li>
                 </ul>-->
                 <input type="hidden" name="submitted" id="submitted" value="true" />
-                <button id="preview" class="sendBtn">Preview</button>
+                <button id="preview" class="sendBtn">送信内容を確認</button>
         </section>
         <section class="threadFormArea confirm">
              <h1 class="heading">新規スレッド作成</h1>
@@ -95,7 +95,7 @@
                             </li>
                         </ul>
                     <div class="row" align="center">
-                        <button id="backBtn" class="sendBtn">Back</button>
+                        <button id="backBtn" class="sendBtn">戻る</button>
                         <button type="submit" name="action" value="send" class="sendBtn" id="submitBtn">スレッドを作成</button>
                     </div>
             </section>
