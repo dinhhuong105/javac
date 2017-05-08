@@ -137,12 +137,26 @@ $(function () {
     */
     $("#preview").on('click',function(e){
         e.preventDefault();
+        if($('#thread_title').val() == ""){
+            $('#thread_title').addClass('error');
+            $('#thread_title').focus();
+            return false;
+        }else{
+            $('#thread_title').removeClass('error');
+        }
+
+        if($('#thread_content').val() == ""){
+            $('.textArea').addClass('error');
+            $('#thread_content').focus();
+            return false;
+        }else{
+            $('.textArea').removeClass('error');
+        }
         $('#confirm_no_image').attr('src',$('#no_image').attr('src'));
         $('#confirm_thread_title').html($('#thread_title').val());
         $('#confirm_thread_content').html($('#thread_content').val());
         $('.inputForm').hide();
         $('.confirm').show();
-        return false;
     });
 
     $("#backBtn").on('click',function(e){
