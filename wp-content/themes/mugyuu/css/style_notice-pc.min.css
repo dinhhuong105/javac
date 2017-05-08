@@ -4238,8 +4238,8 @@ textarea {
 }
 .btnArea .reportBtn:hover,
 .btnArea .cancelBtn:hover {
-    color: #fc8c96 !important;
-    background: #fff !important;
+    color: #fff !important;
+    background: #fc8c96 !important;
 }
 .flr{
 	float: right;
