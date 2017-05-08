@@ -76,7 +76,7 @@
                             </li>
                         </ul>-->
                         <input type="hidden" name="submitted" id="submitted" value="true" />
-                        <button id="preview" class="sendBtn">Preview</button>
+                        <button id="preview" type="submit" name="action" value="send" class="sendBtn">Preview</button>
                     
                 </div>
             </section>
