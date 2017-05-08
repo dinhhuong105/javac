@@ -2,9 +2,6 @@
     .answerList label.check:before{
         content: "✓";
     }
-    .qaSingle .commentFormArea:before{
-        top: 0!important;
-    }
     .editFrom input{
         width: auto!important; 
         height: auto!important;
