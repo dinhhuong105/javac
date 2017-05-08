@@ -23,6 +23,12 @@
     $questions = get_post_meta( $post->ID, '_question_type', true );
     $GLOBALS['questions'] = $questions; 
     $count_comment = wp_count_comments($post->ID);
+
+    //check avalible for button submit comment form
+    $boolAvalible = false;
+    if( ($count_comment->approved < $limited && $limited > 0) || empty($limited) ){
+        $boolAvalible = true;
+    }
 ?>
 <section class="commentArea">
     <div class="question_filter">
@@ -34,7 +40,7 @@
                 <option value="" >口コミ時のアンケート項目の内容</option>
             <?php foreach ($questions[$post->ID] as $qkey => $question) { 
                 if($question['type'] != 'textarea' && $question['type'] != 'textbox'){
-                    $str = mb_strlen($question['question'])<16?$question['question']:mb_substr($question['question'],0,12)."...";
+                    $str = mb_strlen($question['question']) < 16?$question['question']:mb_substr($question['question'],0,12)."...";
                     echo '<optgroup label="'.$str.'">';
                     foreach ($question['answer'] as $anskey => $ansval) {
                         $ansKeys = $qkey.','.$anskey;
@@ -108,14 +114,15 @@
              echo '<div style="margin-top:20px; text-align:center;" class="notice_pagination">';
              //ページナビゲーションの表示
              paginate_comments_links([
-                'next_text'    => __('›'),
-                'prev_text'    => __('‹')
+                'next_text'    => __('<i class="fa fa-angle-right"></i>'),
+                'prev_text'    => __('<i class="fa fa-angle-left"></i>')
                 ]);
              echo '</div>';
          }
      ?>
 </section>
 <section class="commentFormArea" id="send">
+    <?php if( $boolAvalible ): ?>
         <h1>アンケートに答える</h1>
         <p class="notes"><sup class="red">※</sup>は必須項目になります。</p>
         <form action="" id="formComment" method="POST">
@@ -187,6 +194,7 @@
                         }
                     }
                 } ?>
+            <?php if( $boolAvalible ): ?>
                 <li>
                     <h3>コメント<span class="red">※</span></h3>
                     <p>ご自身の状況や良かった点、困った点などを具体的に書きましょう！
@@ -200,16 +208,20 @@
                         </label>
                     </div>
                 </li>
+            <?php endif ?>
                 <li>
                     <?php
-                    if( ($count_comment->approved < $limited && $limited > 0) || empty($limited) ): ?>
+                    if( $boolAvalible ): ?>
                         <button type="submit" name="submitted" value="send" class="sendBtn">アンケートに回答する</button>
                     <?php else: ?>
                         <button type="submit" name="submitted" value="send" class="sendBtn btnDisable" disabled="disabled">回答締め切りました。</button>
                     <?php endif; ?> 
                 </li>
             </ul>
-        </form>      
+        </form>  
+    <?php else: ?> 
+        <div align="center">回答を締め切りました。<br/> ご回答ありがとうございました！</div>
+    <?php endif; ?>
 </section>
 <script type="text/javascript">
     var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
