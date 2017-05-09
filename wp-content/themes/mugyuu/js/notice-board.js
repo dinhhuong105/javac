@@ -170,7 +170,7 @@ $(function () {
 
     $("#threadAddForm").submit(function(e){
         e.preventDefault();
-        $('.confirm').html('<div align="center"><img class="loading-img" src="/wp-content/plugins/report-content/static/img/loading.gif"/> Sending...</div>');
+    $('.confirm').html('<div align="center"><img class="loading-img" src="/wp-content/plugins/report-content/static/img/loading.gif"/> 投稿中です。。。</div>');
         var body = $("html, body");
         body.stop().animate({scrollTop:0}, 500, 'swing', function(){ });
         var data = new FormData(this);
