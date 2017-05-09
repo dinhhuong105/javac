@@ -2456,6 +2456,7 @@ function add_thread_front(){
     if (isset( $_POST['submitted'] )) {
         $user_guest = get_user_by( 'login', 'guest' );
         $content = $_POST['thread_content'];
+        $content = preg_replace("/<img[^>]+\>/i", " ", $content);
         $is_include_url = false;
         $url_pattern_pre = '/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/';
         $url_pattern_tail = '/[\w\d\.]+\.(com|org|ca|net|uk|jp|site|me|link|blog|email|online|mobi|press|website|cloud)/';
@@ -2466,7 +2467,7 @@ function add_thread_front(){
         $post_information = array(
                 'post_title' => wp_strip_all_tags( $_POST['thread_title'] ),
                 'post_name' => wp_strip_all_tags( $_POST['thread_title'] ),
-                'post_content' => $content,
+                'post_content' => $_POST['thread_content'],
                 'post_type' => 'thread_post',
                 'post_author' => $user_guest->ID,//default guest for author
                 'post_status' => $post_status,
@@ -2857,4 +2858,32 @@ function get_user_IP() {
       
      if($count_ip>0) return true;
      return false;
+ }
+ 
+ /**
+  * Add notification for thread menu
+  * @author Hung Nguyen
+  */
+ add_action('admin_menu', 'notification_thread_menu');
+ function notification_thread_menu(){
+     global $menu;
+     $args = array(
+                'post_type' => 'thread_post',
+                'post_status' => 'pending',
+                'posts_per_page' => 10000,
+                'cat' => array(-1,-281),
+            );
+     $pending_post = new WP_Query($args);
+     if($pending_post->post_count>0){
+         $key_thread = false;
+         foreach($menu as $key=>$parent_menu){
+             if($menu[$key][0] == 'スレッド投稿'){
+                 $key_thread = $key;
+                 break;
+             }
+         }
+         if($key_thread){
+             $menu[$key_thread][0] .= "<span class='update-plugins count-1'><span class='update-count'> $pending_post->post_count </span></span>";
+         }
+     }
  }
