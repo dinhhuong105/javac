@@ -21,7 +21,7 @@ $('#thread_content').bind('input propertychange', function() {
 	image_nums = content_html.find('img').length;
 });
 
-$(".imgBtn").click(function(e){
+$("#contentArea .imgBtn").click(function(e){
 	if(image_nums >= max_upload_picture){
 		alert("写真の添付可能枚数は"+max_upload_picture+"枚です。");
 		e.preventDefault();
