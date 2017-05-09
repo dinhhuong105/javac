@@ -2453,16 +2453,23 @@ function myplg_save_meta_box( $post_id ) {
  */
 
 function add_thread_front(){
-// print_r($_POST);exit;
     if (isset( $_POST['submitted'] )) {
         $user_guest = get_user_by( 'login', 'guest' );
+        $content = $_POST['thread_content'];
+        $is_include_url = false;
+        $url_pattern_pre = '/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/';
+        $url_pattern_tail = '/[\w\d\.]+\.(com|org|ca|net|uk|jp|site|me|link|blog|email|online|mobi|press|website|cloud)/';
+        if(preg_match($url_pattern_pre, $content) || preg_match($url_pattern_tail, $content) || strstr($content, "<a href=") || strstr($content, "www")){
+            $is_include_url = true;
+        }
+        $post_status = $is_include_url?'pending':'publish';
         $post_information = array(
                 'post_title' => wp_strip_all_tags( $_POST['thread_title'] ),
                 'post_name' => wp_strip_all_tags( $_POST['thread_title'] ),
-                'post_content' => $_POST['thread_content'],
+                'post_content' => $content,
                 'post_type' => 'thread_post',
                 'post_author' => $user_guest->ID,//default guest for author
-                'post_status' => 'publish'
+                'post_status' => $post_status,
         );
         
         $post_id = wp_insert_post( $post_information );
