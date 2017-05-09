@@ -3349,7 +3349,12 @@ section.confirm{
     border-color:red!important;
 }
 .addthread-result{
-    display: none;
+   display: none;
+}
+.addthread-result h1{
+    padding: 20px;
+    font-size: 2em;
+    font-weight: bold;
 }
 #confirm_thread_content img{
     width: 90%;

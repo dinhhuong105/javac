@@ -4403,6 +4403,11 @@ section.confirm{
 .error{
     border-color:red!important;
 }
+.addthread-result h1{
+    padding: 20px;
+    font-size: 2em;
+    font-weight: bold;
+}
 .addthread-result{
     display: none;
 }

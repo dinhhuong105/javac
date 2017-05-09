@@ -110,7 +110,7 @@
             </section>
             </form>
             <section class="threadFormArea addthread-result">
-                <div class="formArea" align="center" id="result-message"><p style="padding: 20px">投稿完了しました</p>
+                <div class="formArea" align="center" id="result-message"><h1>投稿完了しました</h1>
                     <a href="<?=home_url().'/notice'?>" class="sendBtn">質問掲示板に戻る</a>
                 </div>
             </section>
