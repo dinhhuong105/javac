@@ -72,8 +72,9 @@
                     	</label>
                 	</li>
                 </ul>-->
+                <input type="hidden" name="action" value="add_thread_front" />
                 <input type="hidden" name="submitted" id="submitted" value="true" />
-                <button id="preview" class="sendBtn">送信内容を確認</button>
+                <button id="preview" class="sendBtn">投稿内容を確認</button>
         </section>
         <section class="threadFormArea confirm">
              <h1 class="heading">新規スレッド作成</h1>
@@ -95,11 +96,16 @@
                             </li>
                         </ul>
                     <div class="row" align="center">
-                        <button id="backBtn" class="sendBtn">戻る</button>
-                        <button type="submit" name="action" value="send" class="sendBtn" id="submitBtn">スレッドを作成</button>
+                        <button id="backBtn" class="sendBtn">編集画面に戻る</button>
+                        <button type="submit" name="action" value="send" class="sendBtn" id="submitBtn">スレッドを作成する</button>
                     </div>
             </section>
     </form>
+    <section class="threadFormArea addthread-result">
+                <div class="formArea" align="center" id="result-message"><p style="padding: 20px">投稿完了しました</p>
+                    <a href="<?=home_url().'/notice'?>" class="sendBtn">質問掲示板に戻る</a>
+                </div>
+            </section>
     </div>
 <?php get_footer(); ?>
 <script>

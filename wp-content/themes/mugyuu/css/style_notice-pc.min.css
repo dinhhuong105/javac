@@ -4403,4 +4403,11 @@ section.confirm{
 .error{
     border-color:red!important;
 }
+.addthread-result{
+    display: none;
+}
+#confirm_thread_content img{
+    width: 90%;
+    height: auto;
+}
 

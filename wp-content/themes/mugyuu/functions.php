@@ -2453,6 +2453,7 @@ function myplg_save_meta_box( $post_id ) {
  */
 
 function add_thread_front(){
+// print_r($_POST);exit;
     if (isset( $_POST['submitted'] )) {
         $user_guest = get_user_by( 'login', 'guest' );
         $post_information = array(
@@ -2493,12 +2494,14 @@ function add_thread_front(){
             if(count($category_ids) > 0){
                 wp_set_post_categories( $post_id, $category_ids );
             }
-            wp_redirect( home_url() );
-            exit;
+            // wp_redirect( home_url() );
+            ob_clean();
+            echo json_encode(['result'=>'success']);
+            wp_die();
         }
     }
 }
-
+add_action('wp_ajax_add_thread_front', 'add_thread_front');
 /**
  * Submit comment on Thread post
  * @author Hung Nguyen

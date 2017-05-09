@@ -163,6 +163,37 @@ $(function () {
         e.preventDefault();
         $('.confirm').hide();
         $('.inputForm').show();
+        var body = $("html, body");
+        body.stop().animate({scrollTop:0}, 500, 'swing', function(){ });
+        return false;
+    });
+
+    $("#threadAddForm").submit(function(e){
+        e.preventDefault();
+        $('.confirm').html('<div align="center"><img class="loading-img" src="/wp-content/plugins/report-content/static/img/loading.gif"/> Sending...</div>');
+        var body = $("html, body");
+        body.stop().animate({scrollTop:0}, 500, 'swing', function(){ });
+        var data = new FormData(this);
+        $.ajax({
+            url: ajaxurl,
+            type: "POST",
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (res) {
+              console.log(res);
+                if($.parseJSON(res).result == 'success'){
+                    $('.confirm').hide();
+                    $('.inputForm').hide();
+                    $('.addthread-result').show();
+                }
+            },
+            error: function(data){
+                console.log("error");
+                console.log(data);
+            }
+        });
         return false;
     });
 })
