@@ -5,7 +5,7 @@
     		<ul class="breadcrumbList">
     			<li><a href="<?php echo home_url('/'); ?>">トップ</a></li>
     			<li><i class="fa fa-angle-right arrowIcon"></i><a href="<?php echo home_url('/'); ?>notice"><span>質問掲示板</span></a></li>
-    			<li><i class="fa fa-angle-right arrowIcon"></i><span>新規スレッド作成</span></li>
+    			<li><i class="fa fa-angle-right arrowIcon"></i><a><span>新規スレッド作成</span></a></li>
     		</ul>
     	</div>
     <form action="" id="threadAddForm" method="POST" enctype="multipart/form-data">

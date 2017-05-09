@@ -524,7 +524,7 @@ header:before {
     float: left;
     font-size: 1.4rem;
     min-height: 20px;
-    line-height: 20px;
+    /* line-height: 20px; */
     box-sizing: border-box
 }
 #breadcrumb .breadcrumbList li a {
