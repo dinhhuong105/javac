@@ -4,9 +4,6 @@
  * WordPressの実行ユーザと異なる場合にFTPを使用しないでプラグインのインストール等を行いたい場合
  */
 define('FS_METHOD', 'direct');
-rdPressの実行ユーザと異なる場合にFTPを使用しないでプラグインのインストール等を行いたい場合
- */
-define('FS_METHOD', 'direct');
 
 /*
  * 投稿一覧等のパジネートリンクがバックエンド側のホストを参照してしまうため，/wp-admin/以下でのみHttp-Hostをフロントエンドのホスト名で上書きする．
@@ -38,13 +35,13 @@ define('FS_METHOD', 'direct');
 
 // ** MySQL 設定 - この情報はホスティング先から入手してください。 ** //
 /* WordPress のためのデータベース名 */
-define('DB_NAME', 'spc_labo_kaze');
+define('DB_NAME', 'mugyuu');
 
 /* MySQL データベースのユーザー名 */
-define('DB_USER', 'spc_kaze');
+define('DB_USER', 'root');
 
 /* MySQL データベースのパスワード */
-define('DB_PASSWORD', 'zeLzpUBfYYCmouSU');
+define('DB_PASSWORD', '');
 
 /* MySQL のホスト名 */
 define('DB_HOST', '127.0.0.1');
