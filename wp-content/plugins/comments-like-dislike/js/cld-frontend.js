@@ -26,8 +26,12 @@ var delete_cookie = function(name) {
 
 jQuery(document).ready(function ($) {
     var ajax_flag = 0;
+    var wait = false;
     $('.cld-like-dislike-trigger').click(function () {
-        if (ajax_flag == 0) {
+    	if(wait) return false;
+    	wait = true;
+    	$(this).toggleClass("liked");
+    	if (ajax_flag == 0) {
             var restriction = $(this).data('restriction');
             var comment_id = $(this).data('comment-id');
             var trigger_type = $(this).data('trigger-type');
@@ -40,11 +44,9 @@ jQuery(document).ready(function ($) {
             var like_dislike_flag = 1;
             if (restriction == 'cookie' && cld_cookie != '') {
                 like_dislike_flag = 0;
-                
             }
             if (restriction == 'ip' && ip_check == '1') {
                 like_dislike_flag = 0;
-                
             }
             if (like_dislike_flag == 1) {
                 $.ajax({
@@ -72,6 +74,7 @@ jQuery(document).ready(function ($) {
                             cld_setCookie(cookie_name, 1, 365);
                             var latest_count = res.latest_count;
                             selector.closest('.cld-common-wrap').find('.cld-count-wrap').html('共感！' + latest_count + '件');
+                            wait = false;
                         }
                     }
 
@@ -104,6 +107,7 @@ jQuery(document).ready(function ($) {
                             selector.closest('.cld-common-wrap').find('.cld-count-wrap').html('共感！' + latest_count + '件');
                             
                             like_dislike_flag == 0;
+                            wait = false;
                         }
                     }
 
@@ -114,8 +118,4 @@ jQuery(document).ready(function ($) {
 
 
     $('.cld-like-dislike-wrap br,.cld-like-dislike-wrap p').remove();
-
-    $('.cld-like-trigger').on('click', function() {
-		$(this).toggleClass("liked");
-    });
 });

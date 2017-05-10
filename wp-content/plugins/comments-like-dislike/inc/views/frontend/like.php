@@ -11,7 +11,7 @@
 	?>
 	<div class="actionArea">
         <div class="good">
-	<a href="javascript:void(0);" class="cld-like-trigger cld-like-dislike-trigger <?php echo ($user_ip_check == 1 || isset( $_COOKIE['cld_' . $comment_id] )) ? 'cld-prevent liked' : ''; ?>" title="<?php _e( 'Like', 'comments-like-dislike' ); ?>" data-comment-id="<?php echo $comment_id; ?>" data-trigger-type="like" data-restriction="<?php echo esc_attr( $cld_settings['basic_settings']['like_dislike_resistriction'] ); ?>" data-user-ip="<?php echo $user_ip; ?>" data-ip-check="<?php echo $user_ip_check; ?>">
+	<a href="javascript:void(0);" class="cld-like-trigger cld-like-dislike-trigger <?php echo ($user_ip_check == 1 || isset( $_COOKIE['cld_' . $comment_id] )) ? 'cld-prevent liked' : ''; ?>" title="<?php _e( 'Like', 'comments-like-dislike' ); ?>" data-comment-id="<?php echo $comment_id; ?>" data-trigger-type="like" data-restriction="ip<?php //echo esc_attr( $cld_settings['basic_settings']['like_dislike_resistriction'] ); ?>" data-user-ip="<?php echo $user_ip; ?>" data-ip-check="<?php echo $user_ip_check; ?>">
 		<?php
 		$template = 'template-2';//esc_attr( $cld_settings['design_settings']['template'] );
 		switch ( $template ) {
