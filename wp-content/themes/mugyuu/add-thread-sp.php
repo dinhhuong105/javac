@@ -112,6 +112,6 @@
 <?php get_footer(); ?>
 <script>
 	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
-	var max_upload_picture = "<?php echo get_option('spc_options')['thread_img_no']; ?>";
+	var max_upload_picture = "<?php echo get_option('spc_options')['thread_img_no']; ?>";  
 </script>
 <script src="<?php bloginfo('template_directory'); ?>/js/notice-board.js"></script>
