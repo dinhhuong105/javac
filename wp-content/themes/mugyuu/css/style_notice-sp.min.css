@@ -3360,5 +3360,16 @@ section.confirm{
     width: 95%;
     height: auto;
 }
-
-
+#textareaEditor{
+        height: 88%;
+        padding: 11px;
+        font-size: 12px;
+    }
+#textareaEditor img{ 
+    height: auto;
+    max-width: 460px;
+} 
+.textareaCustom{
+    position: absolute;
+    top: -999px;
+} 

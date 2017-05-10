@@ -4368,7 +4368,7 @@ textarea {
 }
 .mainWrap.single.qa .mainArea .commentArea .sortWrap.lbFilter{
     text-overflow: ellipsis;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 .mainWrap.single.qa .mainArea .commentArea .sortWrap.lbFilter:after{
     top: 2px;
@@ -4415,4 +4415,18 @@ section.confirm{
     width: 90%;
     height: auto;
 }
+#textareaEditor{
+        height: 71%;
+        padding: 11px;
+        font-size: 12px;
+        overflow-y: auto;
+    }
+#textareaEditor img{ 
+    height: auto;
+    max-width: 460px;
+}
+.textareaCustom{
+        position: absolute;
+    top: -999px;
+} 
 

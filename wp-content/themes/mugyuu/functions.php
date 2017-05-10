@@ -2453,7 +2453,6 @@ function myplg_save_meta_box( $post_id ) {
  */
 
 function add_thread_front(){
-// print_r($_POST);exit;
     if (isset( $_POST['submitted'] )) {
         $user_guest = get_user_by( 'login', 'guest' );
         $post_information = array(

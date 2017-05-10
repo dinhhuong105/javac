@@ -55,13 +55,15 @@ $("#content_image").change(function(e){
 			if(response['status'] == 'OK'){
             	var html_image = '<img src="'+response['image_link']+'" alt="'+response['image_title']+'" width="960" height="1280" class="alignnone size-full wp-image-'+response['id']+'" />';
             	//$('#thread_content').append(html_image);
-            	$('#thread_content').val( $('#thread_content').val() + " " + html_image );
+                // $('#thread_content').val( $('#thread_content').val() + " " + html_image );
+            	$('#textareaEditor').html( $('#textareaEditor').html() + " " + html_image );
             	$('#thread_content').trigger('input');
             	//count_upload ++;
             }
         }
     });
 });
+
 // drag image
 $(function () {
 	// Drag and drop file
@@ -145,16 +147,17 @@ $(function () {
             $('#thread_title').removeClass('error');
         }
 
-        if($('#thread_content').val() == ""){
+        if($('#textareaEditor').html() == ""){
             $('.textArea').addClass('error');
-            $('#thread_content').focus();
+            $('#textareaEditor').focus();
             return false;
         }else{
             $('.textArea').removeClass('error');
         }
         $('#confirm_no_image').attr('src',$('#no_image').attr('src'));
         $('#confirm_thread_title').html($('#thread_title').val());
-        $('#confirm_thread_content').html($('#thread_content').val());
+        $('#confirm_thread_content').html($('#textareaEditor').html());
+        $('#thread_content').val($('#textareaEditor').html());
         $('.inputForm').hide();
         $('.confirm').show();
     });
@@ -170,7 +173,7 @@ $(function () {
 
     $("#threadAddForm").submit(function(e){
         e.preventDefault();
-    $('.confirm').html('<div align="center"><img class="loading-img" src="/wp-content/plugins/report-content/static/img/loading.gif"/> 投稿中です。。。</div>');
+        $('.confirm').html('<div align="center"><img class="loading-img" src="/wp-content/plugins/report-content/static/img/loading.gif"/> 投稿中です。。。</div>');
         var body = $("html, body");
         body.stop().animate({scrollTop:0}, 500, 'swing', function(){ });
         var data = new FormData(this);

@@ -27,7 +27,8 @@
                         </div>
                         <div class="content" id="contentArea">
                     		<div class="textArea">
-                            	<textarea name="thread_content" id="thread_content" required cols="30" rows="10" placeholder="本文を入力してください"></textarea>
+
+                            	<div id="textareaEditor" contenteditable></div>
                             	<label class="imgBtn">
                                     <i class="fa fa-camera" aria-hidden="true"></i>画像を選択
                                     <input type="file" id="content_image" name="content_image">
@@ -72,6 +73,7 @@
                     	</label>
                 	</li>
                 </ul>-->
+                <textarea name="thread_content" id="thread_content" class="textareaCustom"></textarea>
                 <input type="hidden" name="action" value="add_thread_front" />
                 <input type="hidden" name="submitted" id="submitted" value="true" />
                 <button id="preview" class="sendBtn">投稿内容を確認</button>
