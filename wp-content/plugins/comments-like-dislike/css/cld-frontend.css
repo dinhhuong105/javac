@@ -64,3 +64,6 @@ a.cld-twitter:hover {
 .liked{
         color: #fc8c96 !important;
 }
+a.cld-like-dislike-trigger:hover{
+	transition: all 0s ease-in;
+}
