@@ -4426,7 +4426,9 @@ section.confirm{
     max-width: 460px;
 }
 .textareaCustom{
-        position: absolute;
+    position: absolute;
     top: -999px;
 } 
-
+#threadAddForm div.textArea{
+	resize: vertical;
+}

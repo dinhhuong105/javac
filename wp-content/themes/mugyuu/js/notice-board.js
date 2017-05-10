@@ -69,7 +69,7 @@ $(function () {
 	// Drag and drop file
 	$('#contentArea').on({
         dragenter: function(e) {
-            $(this).css('background-color', 'lightBlue');
+            //$(this).css('background-color', 'lightBlue');
         },
         dragleave: function(e) {
             $(this).css('background-color', 'white');
