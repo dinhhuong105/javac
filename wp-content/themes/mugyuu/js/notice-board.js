@@ -69,7 +69,7 @@ $(function () {
 	// Drag and drop file
 	$('#contentArea').on({
         dragenter: function(e) {
-            $(this).css('background-color', 'lightBlue');
+            //$(this).css('background-color', 'lightBlue');
         },
         dragleave: function(e) {
             $(this).css('background-color', 'white');
@@ -185,16 +185,22 @@ $(function () {
             contentType: false,
             processData: false,
             success: function (res) {
-              console.log(res);
                 if($.parseJSON(res).result == 'success'){
                     $('.confirm').hide();
                     $('.inputForm').hide();
                     $('.addthread-result').show();
+                }else{
+                	$('.addthread-result div h1').html('FAIL!');
+                	$('.confirm').hide();
+                    $('.inputForm').hide();
+                    $('.addthread-result').show();
                 }
             },
-            error: function(data){
-                console.log("error");
-                console.log(data);
+            error: function(res){
+            	$('.addthread-result div h1').html('ERROR!');
+            	$('.confirm').hide();
+                $('.inputForm').hide();
+                $('.addthread-result').show();
             }
         });
         return false;
