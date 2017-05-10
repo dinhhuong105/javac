@@ -2503,10 +2503,11 @@ function add_thread_front(){
                 wp_set_post_categories( $post_id, $category_ids );
             }
             // wp_redirect( home_url() );
-            ob_clean();
-            echo json_encode(['result'=>'success']);
-            wp_die();
+            $return = array('result'=>'success');
+        }else{
+            $return = array('result'=>'fail');
         }
+        wp_send_json($return);
     }
 }
 add_action('wp_ajax_add_thread_front', 'add_thread_front');
