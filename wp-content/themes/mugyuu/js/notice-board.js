@@ -208,4 +208,10 @@ $(function () {
     $('#formComment').submit(function(){
         $('#thread_content').val($('#textareaEditor').html());
     });
+
+    $('#textareaEditor').on('paste',function(e){
+        var pasteData = e.originalEvent.clipboardData.getData('text');
+        $('#textareaEditor').append(pasteData);
+        return false;
+    });
 })

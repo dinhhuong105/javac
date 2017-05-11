@@ -4431,11 +4431,12 @@ section.confirm{
     left: -999px;
 } 
 #threadAddForm div.textArea{
-	resize: vertical;
+	resize:vertical;
     position: relative;
 }
 #contentArea {
     position: relative;
+    resize:vertical;
 }
 .mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea div#textareaEditor {
     min-height: 150px;
@@ -4443,8 +4444,8 @@ section.confirm{
     text-indent: auto;
     resize: none;
     padding: 5px 10px 20px;
-    border: none
+    border: none;
 }
-.mainWrap.single.qa .mainArea .commentFormArea form ul li textarea {
-
+.mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea .imgBtn input {
+    font-size: 14px!important;
 }

@@ -3378,6 +3378,7 @@ section.confirm{
     position: absolute;
     left: -999px;
 } 
+.commentFormWrap div.textArea,
 #threadAddForm div.textArea{
     resize: vertical;
     position: relative;
