@@ -211,7 +211,16 @@ $(function () {
 
     $('#textareaEditor').on('paste',function(e){
         var pasteData = e.originalEvent.clipboardData.getData('text');
-        $('#textareaEditor').append(pasteData);
-        return false;
+        var htmlConverter = $.parseHTML(pasteData);
+        if(pasteData !== ""){
+            $.each(htmlConverter, function(key, el) {
+                    console.log(el.nodeName);
+                if(el.nodeName == 'IMG'){
+                    $('#textareaEditor').append(pasteData);
+                    return false;    
+                }
+            });
+        }
+        
     });
 })
