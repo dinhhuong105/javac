@@ -2856,7 +2856,7 @@ function get_user_IP() {
  function ip_report_post($post_id, $ip){
      global $wpdb;
       
-     $query = $wpdb->prepare( "SELECT COUNT(*) FROM wp_contentreports WHERE post_id=%d AND reporter_ip=%s;", $post_id, $ip );
+     $query = $wpdb->prepare( "SELECT COUNT(*) FROM wp_contentreports WHERE post_id=%d AND comment_id=0 AND reporter_ip=%s;", $post_id, $ip );
      $count_ip = $wpdb->get_var( $query );
       
      if($count_ip>0) return true;

@@ -24,7 +24,7 @@
                             'cat' =>array(-1, -281),
                             'post_type' => array('thread_post', 'question_post'),
                             'paged' => $paged,
-                            'posts_per_page' => 10,
+                            'posts_per_page' => 15,
                         ]);
                     ?>
                     <?php
