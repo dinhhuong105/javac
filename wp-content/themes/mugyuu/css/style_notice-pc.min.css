@@ -4099,17 +4099,18 @@ footer .copy small {
     -moz-appearance: none;
     appearance: none
 }
-.mainWrap.addthread .threadFormArea .formArea .threadList li .content .textArea .imgBtn {
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
+.mainWrap.addthread .threadFormArea .formArea .threadList li .content .imgBtn {
     font-size: 1rem;
-    cursor: pointer
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+
 }
-.mainWrap.addthread .threadFormArea .formArea .threadList li .content .textArea .imgBtn i {
+.mainWrap.addthread .threadFormArea .formArea .threadList li .content .imgBtn i {
     margin-right: 5px
 }
-.mainWrap.addthread .threadFormArea .formArea .threadList li .content .textArea .imgBtn input {
+.mainWrap.addthread .threadFormArea .formArea .threadList li .content .imgBtn input {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -4416,19 +4417,34 @@ section.confirm{
     height: auto;
 }
 #textareaEditor{
-        height: 71%;
         padding: 11px;
         font-size: 12px;
+        height: 100%;
         overflow-y: auto;
     }
 #textareaEditor img{ 
     height: auto;
-    max-width: 460px;
+    max-width: 99%;
 }
 .textareaCustom{
     position: absolute;
-    top: -999px;
+    left: -999px;
 } 
 #threadAddForm div.textArea{
 	resize: vertical;
+    position: relative;
+}
+#contentArea {
+    position: relative;
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea div#textareaEditor {
+    min-height: 150px;
+    line-height: 1.6;
+    text-indent: auto;
+    resize: none;
+    padding: 5px 10px 20px;
+    border: none
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li textarea {
+
 }

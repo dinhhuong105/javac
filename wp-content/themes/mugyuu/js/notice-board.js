@@ -185,7 +185,7 @@ $(function () {
             contentType: false,
             processData: false,
             success: function (res) {
-                if($.parseJSON(res).result == 'success'){
+                if(res.result == 'success'){
                     $('.confirm').hide();
                     $('.inputForm').hide();
                     $('.addthread-result').show();
@@ -204,5 +204,8 @@ $(function () {
             }
         });
         return false;
+    });
+    $('#formComment').submit(function(){
+        $('#thread_content').val($('#textareaEditor').html());
     });
 })

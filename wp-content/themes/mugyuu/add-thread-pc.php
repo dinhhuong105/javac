@@ -1,5 +1,4 @@
 <?php get_header();?>
-<?php add_thread_front();?>
 	<div id="breadcrumb">
 		<ul class="breadcrumbList">
 			<li><a href="<?php echo home_url('/'); ?>">トップ</a></li>
@@ -9,7 +8,7 @@
 	</div>
     <div class="mainWrap single addthread">
         <div class="mainArea">
-        <form action="" id="threadAddForm" method="POST" enctype="multipart/form-data">
+        <form id="threadAddForm" method="POST" enctype="multipart/form-data">
         	<section class="threadFormArea inputForm">
                 <h1 class="heading">新規スレッド作成</h1>
                 <div class="formArea">
@@ -30,11 +29,11 @@
                                 <div class="content" id="contentArea">
                             		<div class="textArea">
                                         <div id="textareaEditor" contenteditable></div>
-                                    	<label class="imgBtn">
-                                            <i class="fa fa-camera" aria-hidden="true"></i>画像を選択
-                                            <input type="file" id="content_image" name="content_image">
-                                        </label>
-                                	</div>
+                                    </div>
+                                	<label class="imgBtn">
+                                        <i class="fa fa-camera" aria-hidden="true"></i>画像を選択
+                                        <input type="file" id="content_image" name="content_image">
+                                    </label>
                                 </div>
                             </li>
                         </ul>

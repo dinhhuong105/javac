@@ -201,7 +201,7 @@
                         育児で困ってる方の参考になり共感ボタンをもらいやすくなります！
                         説明が難しい場合は画像などもあるとわかりやすいです。</p>
                     <div class="textArea" id="contentArea">
-                        <textarea name="comment" required cols="30" rows="10" required></textarea>
+                        <div id="textareaEditor" contenteditable></div>
                         <label class="imgBtn">
                             <i class="fa fa-camera" aria-hidden="true"></i>画像を選択する
                             <input type="file" id="content_image" name="content_image">
@@ -210,6 +210,7 @@
                 </li>
             <?php endif ?>
                 <li>
+                    <textarea name="comment" id="thread_content" class="textareaCustom"></textarea>
                     <?php
                     if( $boolAvalible ): ?>
                         <button type="submit" name="submitted" value="send" class="sendBtn">アンケートに回答する</button>

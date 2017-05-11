@@ -1,5 +1,4 @@
 <?php get_header();?>
-<?php add_thread_front();?>
     <div id="sb-site" class="mainWrap single addthread wrapper">
         <div id="breadcrumb">
     		<ul class="breadcrumbList">
@@ -8,7 +7,7 @@
     			<li><i class="fa fa-angle-right arrowIcon"></i><a><span>新規スレッド作成</span></a></li>
     		</ul>
     	</div>
-    <form action="" id="threadAddForm" method="POST" enctype="multipart/form-data">
+    <form id="threadAddForm" method="POST" enctype="multipart/form-data">
         <section class="threadFormArea inputForm">
             <h1 class="heading">新規スレッド作成</h1>
                 <ul class="threadList">
@@ -27,13 +26,12 @@
                         </div>
                         <div class="content" id="contentArea">
                     		<div class="textArea">
-
                             	<div id="textareaEditor" contenteditable></div>
-                            	<label class="imgBtn">
-                                    <i class="fa fa-camera" aria-hidden="true"></i>画像を選択
-                                    <input type="file" id="content_image" name="content_image">
-                                </label>
-                        	</div>
+                            </div>
+                        	<label class="imgBtn">
+                                <i class="fa fa-camera" aria-hidden="true"></i>画像を選択
+                                <input type="file" id="content_image" name="content_image">
+                            </label>
                         </div>
                     </li>
                 </ul>

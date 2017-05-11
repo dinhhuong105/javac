@@ -2507,9 +2507,11 @@ function add_thread_front(){
         }else{
             $return = array('result'=>'fail');
         }
+        ob_clean();
         wp_send_json($return);
     }
 }
+add_action('wp_ajax_nopriv_add_thread_front', 'add_thread_front');
 add_action('wp_ajax_add_thread_front', 'add_thread_front');
 /**
  * Submit comment on Thread post
