@@ -3394,3 +3394,6 @@ section.confirm{
     padding: 5px 10px 20px;
     border: none
 }
+.qaSingle .commentArea .commentList li img{
+    max-width: 100%;
+}

@@ -215,11 +215,11 @@ $(function () {
         if(pasteData !== ""){
             $.each(htmlConverter, function(key, el) {
                     console.log(el.nodeName);
-                if(el.nodeName == 'IMG'){
+                if(el.nodeName == 'IMG' || el.nodeName == '#text'){
                     $('#textareaEditor').append(pasteData);
-                    return false;    
                 }
             });
+            return false;
         }
         
     });

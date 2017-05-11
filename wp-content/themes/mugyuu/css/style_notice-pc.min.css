@@ -4449,3 +4449,6 @@ section.confirm{
 .mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea .imgBtn input {
     font-size: 14px!important;
 }
+.mainWrap.single.qa .mainArea .commentArea .commentList li img{
+    max-width: 100%;
+}
