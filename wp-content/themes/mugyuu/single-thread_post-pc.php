@@ -73,6 +73,7 @@
                                 <i class="fa fa-comments" aria-hidden="true"></i>
                                 <?php echo wp_count_comments( get_the_ID() )->total_comments; ?>
                         </div>
+                        <?php if(!ip_report_post(get_the_ID(), get_user_IP())):?>
     					<div class="buttonReport">
                     		<div class="report modal">
                                 <input id="modal-trigger-thread" type="checkbox">
@@ -97,6 +98,7 @@
                                 </div>
                             </div>
                     	</div>
+                    	<?php endif; ?>
                 	</div>
                 </div>
                 <br>
