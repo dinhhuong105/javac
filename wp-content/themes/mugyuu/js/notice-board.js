@@ -15,9 +15,9 @@ $("#thread_thumb").change(function(){
 });
 
 var image_nums = 0;
-$('#thread_content').bind('input propertychange', function() {
+$('#textareaEditor').bind('input propertychange', function() {
 	var content_html = $("<div></div>");
-	content_html.html($(this).val());
+	content_html.html($(this).html());
 	image_nums = content_html.find('img').length;
 });
 
@@ -57,7 +57,7 @@ $("#content_image").change(function(e){
             	//$('#thread_content').append(html_image);
                 // $('#thread_content').val( $('#thread_content').val() + " " + html_image );
             	$('#textareaEditor').html( $('#textareaEditor').html() + " " + html_image );
-            	$('#thread_content').trigger('input');
+            	$('#textareaEditor').trigger('input');
             	//count_upload ++;
             }
         }
@@ -214,13 +214,12 @@ $(function () {
         var htmlConverter = $.parseHTML(pasteData);
         if(pasteData !== ""){
             $.each(htmlConverter, function(key, el) {
-                console.log(el.nodeName);
                 if(el.nodeName == 'IMG' || el.nodeName == '#text'){
-                    // $('#textareaEditor').append(pasteData);
                     pasteHtmlAtCaret(pasteData);
                 }
                 return false;
             });
+            $('#textareaEditor').trigger('input');
             return false;
         }
         
