@@ -4417,9 +4417,9 @@ section.confirm{
     height: auto;
 }
 #textareaEditor{
-        padding: 11px;
+        padding: 10px;
         font-size: 12px;
-        height: 100%;
+        height: calc(100% - 50px);
         overflow-y: auto;
     }
 #textareaEditor img{ 
