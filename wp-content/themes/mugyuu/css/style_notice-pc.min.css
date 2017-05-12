@@ -4085,7 +4085,7 @@ footer .copy small {
     border: solid 1px #c9c9c9;
     border-radius: 3px;
     overflow: hidden;
-    height: 180px;
+    height: 250px;
     box-sizing: border-box
 }
 .mainWrap.addthread .threadFormArea .formArea .threadList li .content .textArea textarea {
@@ -4103,8 +4103,8 @@ footer .copy small {
     font-size: 1rem;
     cursor: pointer;
     position: absolute;
-    right: 10px;
-    bottom: 15px;
+    right: 20px;
+    bottom: 10px;
 
 }
 .mainWrap.addthread .threadFormArea .formArea .threadList li .content .imgBtn i {

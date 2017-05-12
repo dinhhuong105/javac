@@ -3042,7 +3042,7 @@ ul.slider .dot-class li:last-child .icon-2:before {
     border: solid 1px #c9c9c9;
     border-radius: 3px;
     overflow: hidden;
-    height: 180px;
+    height: 250px;
     box-sizing: border-box
 }
 .addthread .threadFormArea .threadList li .content .textArea textarea {
@@ -3059,7 +3059,7 @@ ul.slider .dot-class li:last-child .icon-2:before {
 .addthread .threadFormArea .threadList li .content  .imgBtn {
     position: absolute;
     bottom: 10px;
-    right: 15px;
+    right: 20px;
     font-size: 1rem
 }
 .addthread .threadFormArea .threadList li .content  .imgBtn i {

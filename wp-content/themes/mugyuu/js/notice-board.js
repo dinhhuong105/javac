@@ -54,11 +54,9 @@ $("#content_image").change(function(e){
             $("form :input").prop("disabled",false);
 			if(response['status'] == 'OK'){
             	var html_image = '<img src="'+response['image_link']+'" alt="'+response['image_title']+'" width="960" height="1280" class="alignnone size-full wp-image-'+response['id']+'" />';
-            	//$('#thread_content').append(html_image);
                 // $('#thread_content').val( $('#thread_content').val() + " " + html_image );
             	$('#textareaEditor').html( $('#textareaEditor').html() + " " + html_image );
             	$('#textareaEditor').trigger('input');
-            	//count_upload ++;
             }
         }
     });
