@@ -4417,11 +4417,14 @@ section.confirm{
     height: auto;
 }
 #textareaEditor{
-        padding: 10px;
-        font-size: 12px;
-        height: calc(100% - 50px);
-        overflow-y: auto;
-    }
+    padding: 10px;
+    font-size: 12px;
+    height: calc(100% - 50px);
+    overflow-y: auto;
+}
+#formComment #textareaEditor{
+	height: calc(100% - 20px);
+}
 #textareaEditor img{ 
     height: auto;
     max-width: 60%;
@@ -4437,6 +4440,7 @@ section.confirm{
 #contentArea {
     position: relative;
     resize:vertical;
+    height: 250px;
 }
 .mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea div#textareaEditor {
     min-height: 150px;
