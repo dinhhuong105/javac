@@ -217,7 +217,7 @@ $(function () {
                 console.log(el.nodeName);
                 if(el.nodeName == 'IMG' || el.nodeName == '#text'){
                     // $('#textareaEditor').append(pasteData);
-                    insertAtCaret('textareaEditor',pasteData);
+                    pasteHtmlAtCaret(pasteData);
                 }
                 return false;
             });
@@ -226,40 +226,38 @@ $(function () {
         
     });
 
-    function insertAtCaret(areaId, text) {
-        var txtarea = document.getElementById(areaId);  
-        if (!txtarea) { return; }
+    function pasteHtmlAtCaret(html) {
+    var sel, range;
+    if (window.getSelection) {
+        // IE9 and non-IE
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            range.deleteContents();
 
-        var scrollPos = txtarea.scrollTop;
-        var strPos = 0;
-        var br = ((txtarea.selectionStart || txtarea.selectionStart == '0') ?
-            "ff" : (document.selection ? "ie" : false ) );
-        if (br == "ie") {
-            txtarea.focus();
-            var range = document.selection.createRange();
-            range.moveStart ('character', -txtarea.value.length);
-            strPos = range.text.length;
-        } else if (br == "ff") {
-            strPos = txtarea.selectionStart;
+            // Range.createContextualFragment() would be useful here but is
+            // only relatively recently standardized and is not supported in
+            // some browsers (IE9, for one)
+            var el = document.createElement("div");
+            el.innerHTML = html;
+            var frag = document.createDocumentFragment(), node, lastNode;
+            while ( (node = el.firstChild) ) {
+                lastNode = frag.appendChild(node);
+            }
+            range.insertNode(frag);
+
+            // Preserve the selection
+            if (lastNode) {
+                range = range.cloneRange();
+                range.setStartAfter(lastNode);
+                range.collapse(true);
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
         }
-
-        var front = (txtarea.value).substring(0, strPos);
-        var back = (txtarea.value).substring(strPos, txtarea.value.length);
-        txtarea.value = front + text + back;
-        strPos = strPos + text.length;
-        if (br == "ie") {
-            txtarea.focus();
-            var ieRange = document.selection.createRange();
-            ieRange.moveStart ('character', -txtarea.value.length);
-            ieRange.moveStart ('character', strPos);
-            ieRange.moveEnd ('character', 0);
-            ieRange.select();
-        } else if (br == "ff") {
-            txtarea.selectionStart = strPos;
-            txtarea.selectionEnd = strPos;
-            txtarea.focus();
-        }
-
-        txtarea.scrollTop = scrollPos;
+    } else if (document.selection && document.selection.type != "Control") {
+        // IE < 9
+        document.selection.createRange().pasteHTML(html);
     }
+}
 });
