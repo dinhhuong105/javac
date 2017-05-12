@@ -3368,7 +3368,7 @@ section.confirm{
 }
 #textareaEditor img{ 
     height: auto;
-    max-width: 99%;
+    max-width: 60%;
 } 
 .textareaCustom{
     position: absolute;
