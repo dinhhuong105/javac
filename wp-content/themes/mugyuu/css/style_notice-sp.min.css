@@ -3369,10 +3369,7 @@ section.confirm{
 #textareaEditor img{ 
     height: auto;
     max-width: 60%;
-}
-#formComment #textareaEditor{
-	height: calc(100% - 20px);
-}
+} 
 .textareaCustom{
     position: absolute;
     top: -999px;
@@ -3388,8 +3385,6 @@ section.confirm{
 }
 #contentArea {
     position: relative;
-    resize:vertical;
-    height: 250px;
 }
 .qaSingle .commentFormArea form ul li .textArea div#textareaEditor {
     min-height: 150px;
