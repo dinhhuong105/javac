@@ -23,6 +23,7 @@
     
 </style>
 <?php 
+    $description = get_post_meta( $post->ID, '_question_description', true );
     $limited = get_post_meta( $post->ID, '_limited_answer', true );
     $questions = get_post_meta( $post->ID, '_question_type', true );
     $GLOBALS['questions'] = $questions; 
@@ -213,9 +214,10 @@
                 <li>
                     <h3>コメント<span class="red">※</span></h3>
                     <p class="notes">
-                        ご自身の状況や良かった点、困った点などを具体的に書きましょう！
+                        <?=($description != '')?$description:'ご自身の状況や良かった点、困った点などを具体的に書きましょう！
                         育児で困ってる方の参考になり共感ボタンをもらいやすくなります！
-                        説明が難しい場合は画像などもあるとわかりやすいです。
+                        説明が難しい場合は画像などもあるとわかりやすいです。' ?>
+                        
                     </p>
                     <div class="textArea" id="contentArea">
                         <div id="textareaEditor" contenteditable></div>
