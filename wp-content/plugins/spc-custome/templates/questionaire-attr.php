@@ -1,3 +1,9 @@
+<?php 
+	$_question_description = get_post_meta($post->ID, '_question_description', TRUE);
+	$_limited_answer = get_metadata('post', $post->ID, '_limited_answer');
+	$post_metas = get_metadata('post', $post->ID, '_question_type');
+	$GLOBALS['post_metas'] = $post_metas[0];
+?>
 <style type="text/css">
 	.box-question{
 		padding: 20px;
@@ -16,18 +22,22 @@
 		border: 1px solid #a0a0a0;
 		cursor: pointer;
 	}
+	.row{
+		padding: 10px 0;
+	}
 </style>
-<div id="frm_question">
+<div class="row">
+	<label> Description :  <input type="text" name="ques_description" value="<?=$_question_description?>" style="width: 70%"></label>
+</div>
+<hr>
+<div id="frm_question ui-sortable postbox">
 	<?php 
-		$_limited_answer = get_metadata('post', $post->ID, '_limited_answer');
-		$post_metas = get_metadata('post', $post->ID, '_question_type');
-		$GLOBALS['post_metas'] = $post_metas[0];
 		if($post_metas[0]){
 			foreach ($post_metas[0] as $key => $post_meta) {
 				foreach ($post_meta as $id => $meta) {
 					// print_r($meta);
 					if($meta['type'] == 'checkbox'){
-						echo '<div class="box-question"><a class="btn_remove">x</a>';
+						echo '<div class="box-question hndle " id="ques'.$id.'"><a class="btn_remove">x</a>';
 						echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目 </label>';
 						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
@@ -39,7 +49,7 @@
 						}
 						echo '</div>';
 					}elseif($meta['type'] == 'radio'){
-						echo '<div class="box-question"><a class="btn_remove">x</a>';
+						echo '<div class="box-question hndle " id="ques'.$id.'"><a class="btn_remove">x</a>';
 						echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
 						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
@@ -51,7 +61,7 @@
 						}
 						echo '</div>';
 					}elseif($meta['type'] == 'pulldown'){
-						echo '<div class="box-question"><a class="btn_remove">x</a>';
+						echo '<div class="box-question hndle " id="ques'.$id.'"><a class="btn_remove">x</a>';
 						echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
 						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
@@ -62,13 +72,13 @@
 						}
 						echo '</div>';
 					}elseif($meta['type'] == 'textbox'){
-						echo '<div class="box-question"><a class="btn_remove">x</a>';
+						echo '<div class="box-question hndle " id="ques'.$id.'"><a class="btn_remove">x</a>';
 						echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
 						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';
 						echo '</div>';
 					}elseif($meta['type'] == 'textarea'){
-						echo '<div class="box-question"><a class="btn_remove">x</a>';
+						echo '<div class="box-question hndle " id="ques'.$id.'"><a class="btn_remove">x</a>';
 						echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
 						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><br/>';

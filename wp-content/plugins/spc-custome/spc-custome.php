@@ -101,10 +101,15 @@ function questionaire_attr( $post )
 if(isset($_POST)){
   function questionaire_attr_save( $post_id )
   {
-       $question =   $_POST['question']  ;
+      //Description form questionnair
+      $ques_description =   $_POST['ques_description']  ;
+      update_post_meta( $post_id, '_question_description', $ques_description );
+
+      $question =   $_POST['question']  ;
       update_post_meta( $post_id, '_question_type', $question );
-       $limited_answer =   $_POST['limited_answer']  ;
-       update_post_meta( $post_id, '_limited_answer', $limited_answer );
+
+      $limited_answer =   $_POST['limited_answer']  ;
+      update_post_meta( $post_id, '_limited_answer', $limited_answer );
   }
   add_action( 'save_post', 'questionaire_attr_save' );
 }
