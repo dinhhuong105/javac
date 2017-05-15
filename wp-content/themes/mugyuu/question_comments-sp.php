@@ -197,9 +197,9 @@
             <?php if( $boolAvalible ): ?>
                 <li>
                     <h3>コメント<span class="red">※</span></h3>
-                    <p>ご自身の状況や良かった点、困った点などを具体的に書きましょう！
+                    <p><?=($description != '')?$description:'ご自身の状況や良かった点、困った点などを具体的に書きましょう！
                         育児で困ってる方の参考になり共感ボタンをもらいやすくなります！
-                        説明が難しい場合は画像などもあるとわかりやすいです。</p>
+                        説明が難しい場合は画像などもあるとわかりやすいです。' ?></p>
                     <div class="textArea" id="contentArea">
                         <div id="textareaEditor" contenteditable></div>
                         <label class="imgBtn">
