@@ -105,11 +105,14 @@ if(isset($_POST)){
       $ques_description =   $_POST['ques_description']  ;
       update_post_meta( $post_id, '_question_description', $ques_description );
 
-      $question =   $_POST['question']  ;
+      $question =   $_POST['question'];
       update_post_meta( $post_id, '_question_type', $question );
 
       $limited_answer =   $_POST['limited_answer']  ;
       update_post_meta( $post_id, '_limited_answer', $limited_answer );
+
+      $_sort_question =   $_POST['_sort_question'];
+      update_post_meta( $post_id, '_sort_question', $_sort_question );
   }
   add_action( 'save_post', 'questionaire_attr_save' );
 }
@@ -147,7 +150,6 @@ function update_report_status_comment($comment_id){
         global $wpdb;
         $table_name = wprc_table_name();
         $query = "UPDATE $table_name SET status='processed' WHERE comment_id = $comment_id";
-    
         $wpdb->query($query);
     }
 }

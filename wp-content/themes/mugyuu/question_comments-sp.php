@@ -134,15 +134,17 @@
                 <?php 
                 if($questions[$post->ID]){
                     foreach ($questions[$post->ID] as $qkey => $question) {
+                        $required = isset($question['required'])?"required":"";
+                        $star = isset($question['required'])?'<span class="red">※</span>':"";
                         if($question['type'] == 'checkbox'){
                             ?>
                             <li class="editFrom">
-                                <h3><?=$question['question']?><span class="red">※</span></h3>
+                                <h3><?=$question['question'].$star?></h3>
                                 <div class="checkArea">
                                     <?php foreach ($question['answer'] as $anskey => $ansval) {
                                         ?>
                                     <label>
-                                        <input value="<?=$anskey?>" name="answer[<?=$qkey?>][]" type="checkbox" id="option-<?=$anskey?>" required ><?=$ansval?>
+                                        <input value="<?=$anskey?>" name="answer[<?=$qkey?>][]" type="checkbox" id="option-<?=$anskey?>" <?=$required?> ><?=$ansval?>
                                     </label>
                                         <?php
                                     } ?>
@@ -152,11 +154,11 @@
                         }elseif($question['type'] == 'radio'){
                             ?>
                             <li class="editFrom">
-                                <h3><?=$question['question']?><span class="red">※</span></h3>
+                                <h3><?=$question['question'].$star?></h3>
                                 <?php foreach ($question['answer'] as $anskey => $ansval) {
                                     ?>
                                     <label >
-                                        <input value="<?=$anskey?>" name="answer[<?=$qkey?>][]" type="radio" required><?=$ansval?>
+                                        <input value="<?=$anskey?>" name="answer[<?=$qkey?>][]" type="radio" <?=$required?>><?=$ansval?>
                                     </label>
                                 <?php
                                 } ?>
@@ -165,9 +167,9 @@
                         }elseif($question['type'] == 'pulldown'){
                             ?>
                             <li class="editFrom">
-                                <h3><?=$question['question']?><span class="red">※</span></h3>
+                                <h3><?=$question['question'].$star?></h3>
                                 <label for="select" class="selectArea">
-                                    <select name="answer[<?=$qkey?>][]" id="select" required class="selectArea">
+                                    <select name="answer[<?=$qkey?>][]" id="select" <?=$required?> class="selectArea">
                                     <?php foreach ($question['answer'] as $anskey => $ansval) {
                                         ?>
                                         <option value="<?=$anskey?>"><?=$ansval?></option>
@@ -180,15 +182,15 @@
                         }elseif($question['type'] == 'textbox'){
                             ?>
                             <li>
-                                <h3><?=$question['question']?><span class="red">※</span></h3>
-                                <input name="answer[<?=$qkey?>][textbox]" type="text" placeholder="回答を入力してください" required>
+                                <h3><?=$question['question'].$star?></h3>
+                                <input name="answer[<?=$qkey?>][textbox]" type="text" placeholder="回答を入力してください" <?=$required?>>
                             </li>
                             <?php
                         }elseif($question['type'] == 'textarea'){
                             ?>
                             <li>
-                                <h3><?=$question['question']?><span class="red">※</span></h3>
-                                <textarea name="answer[<?=$qkey?>][textarea]" placeholder="回答を入力してください" required></textarea>
+                                <h3><?=$question['question'].$star?></h3>
+                                <textarea name="answer[<?=$qkey?>][textarea]" placeholder="回答を入力してください" <?=$required?>></textarea>
                             </li>
                             <?php
                         }

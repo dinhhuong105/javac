@@ -2692,18 +2692,33 @@ function question_comment($comment, $args, $depth) {
             <div class="userCommentArea answerArea">
                 <ul class="answerList">
                     <?php 
+                        $_sort_question = get_post_meta($comment->comment_post_ID,'_sort_question',true);
                         $answers = get_comment_meta($comment->comment_ID,'_question_comment',true);
                         $GLOBALS['answers'] = $answers; 
+                        $stt=1;
                         if($answers){
-                            foreach ($answers as $queskey => $answer) {
-                                echo "<li>".($queskey+1).'. ';
+                            // echo "<pre>";print_r($_sort_question);echo "</pre>";
+                            foreach ($_sort_question as $ksort => $vsort) {
+                                foreach ($answers as $queskey => $answer) {
+                                    if($queskey == $vsort){
+                                        echo "<li>".($stt++).'. ';
+                                        foreach ($answer as $las_ans) {
+                                            ?>
+                                            <label class="<?=(count($answer)>1)?'check':''?>"><?=($questions[key($questions)][$queskey]['answer'][$las_ans] != '')?$questions[key($questions)][$queskey]['answer'][$las_ans]:$las_ans ?></label>
+                                            <?php
+                                        }
+                                    }
+                                }
+                            }
+                            /*foreach ($answers as $queskey => $answer) {
+                                echo "<li>".($stt++).'. ';
                                 foreach ($answer as $las_ans) {
                                     ?>
                                     <label class="<?=(count($answer)>1)?'check':''?>"><?=($questions[key($questions)][$queskey]['answer'][$las_ans] != '')?$questions[key($questions)][$queskey]['answer'][$las_ans]:$las_ans ?></label>
                                     <?php
                                 }
                                 echo "</li>";
-                            }
+                            }*/
                         }
                     ?>
                 </ul>
