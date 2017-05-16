@@ -258,7 +258,7 @@ function question_input($id,$multi = 1){
 	var $str = '';
 	//posid_'+ post_id +'_question_' + $id + '
 	for(var i=0; i<$multi; i++){
-		$str += '<label for="posid_'+ post_id +'_question_' + $id + '">アンケート項目 </label><input id="posid_'+ post_id +'_question_' + $id + '" type="text" name="question['+ post_id +']['+ $id +'][question]" required>';
+		$str += '<label for="posid_'+ post_id +'_question_' + $id + '">アンケート項目 </label><input id="posid_'+ post_id +'_question_' + $id + '" type="text" name="question['+ post_id +']['+ $id +'][question]" required> <label> 必須 :  <input type="checkbox" name="question['+post_id+']['+ $id +'][required]" checked="checked" ></label>';
 	}
 	return $str;
 }
