@@ -2456,18 +2456,34 @@ function add_thread_front(){
     if (isset( $_POST['submitted'] )) {
         $user_guest = get_user_by( 'login', 'guest' );
         $content = $_POST['thread_content'];
-        $content = preg_replace("/<img[^>]+\>/i", " ", $content);
+        $content_url = preg_replace("/<img[^>]+\>/i", " ", $content);
         $is_include_url = false;
         $url_pattern_pre = '/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/';
         $url_pattern_tail = '/[\w\d\.]+\.(com|org|ca|net|uk|jp|site|me|link|blog|email|online|mobi|press|website|cloud)/';
-        if(preg_match($url_pattern_pre, $content) || preg_match($url_pattern_tail, $content) || strstr($content, "<a href=") || strstr($content, "www")){
+        if(preg_match($url_pattern_pre, $content_url) || preg_match($url_pattern_tail, $content_url) || strstr($content_url, "<a href=") || strstr($content_url, "www")){
             $is_include_url = true;
         }
         $post_status = $is_include_url?'pending':'publish';
+        
+        // Convert URL
+        $content =
+        preg_replace(
+                '~(;|>|\s|^)(https?://.+?)(;|<|\s|$)~im',
+                '$1<a href="$2" target="_blank">$2</a>$3',
+                $content
+                );
+        $content =
+        preg_replace(
+                '~(;|>|\s|^)(www\..+?)(;|<|\s|$)~im',
+                '$1<a href="http://$2" target="_blank">$2</a>$3',
+                $content
+                );
+        //$content = nl2br($content);
+        
         $post_information = array(
                 'post_title' => wp_strip_all_tags( $_POST['thread_title'] ),
                 'post_name' => wp_strip_all_tags( $_POST['thread_title'] ),
-                'post_content' => $_POST['thread_content'],
+                'post_content' => $content,
                 'post_type' => 'thread_post',
                 'post_author' => $user_guest->ID,//default guest for author
                 'post_status' => $post_status,
