@@ -5,7 +5,7 @@
 	$GLOBALS['post_metas'] = $post_metas[0];
 ?>
 <style type="text/css">
-	.box-question{
+	li.ui-state-default{
 		padding: 20px;
 		border: 1px solid #ccc;
 		margin: 10px 0; 
@@ -19,8 +19,28 @@
 		display: none;
 		cursor: pointer;
 	}
+	.btn-add{
+		    /* padding: 20px; */
+	    display: inline-block;
+	    /* height: 39px; */
+	    /* background: blue; */
+	    border: 1px solid #eee;
+	    padding: 6px 0 4px;
+	    margin-top: 10px;
+	    margin-left: 24px;
+	    width: 170px;
+	    text-align: center;
+	}
+	.btn-add[data-type=pulldown]{
+		margin-left: 0px;
+	}
+	
+	.btn-remove{
+		display: none;
+	}
+	li.ui-state-default:hover .btn-remove,
 	li.ui-state-default:hover .btn-group{
-		display: block;
+		display: inline-block;
 	}
 	.btn-group a{
 		display: block;
@@ -39,6 +59,12 @@
 	  position: relative;
 	  /** More li styles **/
 	}
+	
+	a.btn.btn-restore span{
+		font-size: 16px;
+		vertical-align: middle;
+	}
+
 </style>
 <div class="row">
 	<label> コメント説明欄 :  <input type="text" name="ques_description" value="<?=$_question_description?>" style="width: 70%"></label>
@@ -57,7 +83,7 @@
 						<div class="btn-group">
 							<a class="btn_first btn"><span class="dashicons dashicons-arrow-up-alt2"></span></a>
 							<a class="btn_up btn"><span class="dashicons dashicons-arrow-up"></span></a>
-							<a class="btn_remove"><span class="dashicons dashicons-no-alt"></span></a>
+							<a class="btn_trash"><span class="dashicons dashicons-no-alt"></span></a>
 							<a class="btn_down btn"><span class="dashicons dashicons-arrow-down"></span></a>
 							<a class="btn_last btn"><span class="dashicons dashicons-arrow-down-alt2"></span></a>
 							<input type="hidden" name="_sort_question[]" value="'.$id.'"/>
@@ -68,17 +94,19 @@
 						$i=0;
 						foreach ($meta['answer'] as $answer) {
 							echo '<input type="checkbox" name="posid_'. $key .'_answer_'. $id .'_' . $i . '"> 
-							<input type="text" name="question['. $key .']['. $id .'][answer]['.$i.']" value="'.$answer.'"><br/>';
+							<input type="text" name="question['. $key .']['. $id .'][answer]['.$i.']" value="'.$answer.'">
+							<a class="btn btn-remove" title="Remove"><span class="dashicons dashicons-trash"></span></a> 
+							<br/>';
 							$i++;
 						}
-						echo '</div></li>';
+						echo '</div><a class="btn btn-add" data-id="'. $id .'" data-type="checkbox"><span class="dashicons dashicons-plus"></span></a></li>';
 					}elseif($meta['type'] == 'radio'){
 						echo '<li class="ui-state-default">';
 						echo '<div class="box-question holddiv" id="ques'.$id.'">
 						<div class="btn-group">
 							<a class="btn_first btn"><span class="dashicons dashicons-arrow-up-alt2"></span></a>
 							<a class="btn_up btn"><span class="dashicons dashicons-arrow-up"></span></a>
-							<a class="btn_remove"><span class="dashicons dashicons-no-alt"></span></a>
+							<a class="btn_trash"><span class="dashicons dashicons-no-alt"></span></a>
 							<a class="btn_down btn"><span class="dashicons dashicons-arrow-down"></span></a>
 							<a class="btn_last btn"><span class="dashicons dashicons-arrow-down-alt2"></span></a>
 							<input type="hidden" name="_sort_question[]" value="'.$id.'"/>
@@ -89,17 +117,19 @@
 						$i=0;
 						foreach ($meta['answer'] as $answer) {
 							echo '<input type="radio" name="posid_'. $key .'_answer_'. $id .'"> 
-							<input type="text" name="question['. $key .']['. $id .'][answer]['.$i.']" value="'.$answer.'"><br/>';
+							<input type="text" name="question['. $key .']['. $id .'][answer]['.$i.']" value="'.$answer.'">
+							<a class="btn btn-remove" title="Remove"><span class="dashicons dashicons-trash"></span></a> 
+							<br/>';
 							$i++;
 						}
-						echo '</div></li>';
+						echo '</div><a class="btn btn-add" data-id="'. $id .'" data-type="radio"><span class="dashicons dashicons-plus"></span></a></li>';
 					}elseif($meta['type'] == 'pulldown'){
 						echo '<li class="ui-state-default">';
 						echo '<div class="box-question holddiv" id="ques'.$id.'">
 						<div class="btn-group">
 							<a class="btn_first btn"><span class="dashicons dashicons-arrow-up-alt2"></span></a>
 							<a class="btn_up btn"><span class="dashicons dashicons-arrow-up"></span></a>
-							<a class="btn_remove"><span class="dashicons dashicons-no-alt"></span></a>
+							<a class="btn_trash"><span class="dashicons dashicons-no-alt"></span></a>
 							<a class="btn_down btn"><span class="dashicons dashicons-arrow-down"></span></a>
 							<a class="btn_last btn"><span class="dashicons dashicons-arrow-down-alt2"></span></a>
 							<input type="hidden" name="_sort_question[]" value="'.$id.'"/>
@@ -109,17 +139,19 @@
 						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><label> 必須 :  <input type="checkbox" name="question['. $key .']['. $id .'][required]" '.$check.' ></label><br/>';
 						$i=0;
 						foreach ($meta['answer'] as $answer) {
-							echo '<input type="text" name="question['. $key .']['. $id .'][answer]['.$i.']" value="'.$answer.'"><br/>';
+							echo '<input type="text" name="question['. $key .']['. $id .'][answer]['.$i.']" value="'.$answer.'">
+							<a class="btn btn-remove" title="Remove"><span class="dashicons dashicons-trash"></span></a> 
+							<br/>';
 							$i++;
 						}
-						echo '</div></li>';
+						echo '</div><a class="btn btn-add" data-id="'. $id .'" data-type="pulldown"><span class="dashicons dashicons-plus"></span></a></li>';
 					}elseif($meta['type'] == 'textbox'){
 						echo '<li class="ui-state-default">';
 						echo '<div class="box-question holddiv" id="ques'.$id.'">
 						<div class="btn-group">
 							<a class="btn_first btn"><span class="dashicons dashicons-arrow-up-alt2"></span></a>
 							<a class="btn_up btn"><span class="dashicons dashicons-arrow-up"></span></a>
-							<a class="btn_remove"><span class="dashicons dashicons-no-alt"></span></a>
+							<a class="btn_trash"><span class="dashicons dashicons-no-alt"></span></a>
 							<a class="btn_down btn"><span class="dashicons dashicons-arrow-down"></span></a>
 							<a class="btn_last btn"><span class="dashicons dashicons-arrow-down-alt2"></span></a>
 							<input type="hidden" name="_sort_question[]" value="'.$id.'"/>
@@ -134,7 +166,7 @@
 						<div class="btn-group">
 							<a class="btn_first btn"><span class="dashicons dashicons-arrow-up-alt2"></span></a>
 							<a class="btn_up btn"><span class="dashicons dashicons-arrow-up"></span></a>
-							<a class="btn_remove"><span class="dashicons dashicons-no-alt"></span></a>
+							<a class="btn_trash"><span class="dashicons dashicons-no-alt"></span></a>
 							<a class="btn_down btn"><span class="dashicons dashicons-arrow-down"></span></a>
 							<a class="btn_last btn"><span class="dashicons dashicons-arrow-down-alt2"></span></a>
 							<input type="hidden" name="_sort_question[]" value="'.$id.'"/>
@@ -174,33 +206,37 @@
 <script type="text/javascript">
 var post_id = <?=$post->ID?>;
 jQuery(document).ready(function($){
-	var id_frm = $('.box-question').length;
+	var id_frm = $.now();
 
 	$('.btn_create').on('click',function(e){
 		e.preventDefault();
 		var id = id_frm++;
 		var number_question = $('input[name=no_of_item]').val();
 
+		var selected = $('select[name=question_type] :selected').val();
+		var btnAdd = '<a class="btn btn-add" data-id="'+ id +'" data-type="'+ selected +'"><span class="dashicons dashicons-plus"></span></a>';
+
 		var str = '';
 			str += '<div class="box-question">';
-			str += '<div class="btn-group"><a class="btn_first btn"><span class="dashicons dashicons-arrow-up-alt2"></span></a><a class="btn_up btn"><span class="dashicons dashicons-arrow-up"></span></a><a class="btn_remove"><span class="dashicons dashicons-no-alt"></span></a><a class="btn_down btn"><span class="dashicons dashicons-arrow-down"></span></a><a class="btn_last btn"><span class="dashicons dashicons-arrow-down-alt2"></span></a><input type="hidden" name="_sort_question[]" value="'+id+'"/></div>';
+			str += '<div class="btn-group"><a class="btn_first btn"><span class="dashicons dashicons-arrow-up-alt2"></span></a><a class="btn_up btn"><span class="dashicons dashicons-arrow-up"></span></a><a class="btn_trash"><span class="dashicons dashicons-no-alt"></span></a><a class="btn_down btn"><span class="dashicons dashicons-arrow-down"></span></a><a class="btn_last btn"><span class="dashicons dashicons-arrow-down-alt2"></span></a><input type="hidden" name="_sort_question[]" value="'+id+'"/></div>';
 			str += hidden($('select[name=question_type] :selected').val(),id);
 			str += question_input(id,1);
 			str += "<br/><br/>"
-		if($('select[name=question_type] :selected').val() == 'checkbox'){
+		if( selected == 'checkbox'){
 			str += checkbox( id,number_question );
-		}else if($('select[name=question_type] :selected').val() == 'radio'){
+		}else if( selected == 'radio'){
 			str += radio( id,number_question );
-		}else if($('select[name=question_type] :selected').val() == 'pulldown'){
+		}else if( selected == 'pulldown'){
 			str += pulldown( id,number_question );
-		}else if($('select[name=question_type] :selected').val() == 'textbox'){
-			// str += pulldown( id,1 );
-		}else if($('select[name=question_type] :selected').val() == 'textarea'){
-
+		}else if( selected == 'textbox'){
+			btnAdd = '';
+		}else if( selected == 'textarea'){
+			btnAdd = '';
 		}else{
 			return;
 		}
-		str += '</div>';
+
+		str += '</div>'+btnAdd;
 		$('#frm_question ul').append('<li class="ui-state-default">'+str+'</li>');
 
 	});
@@ -232,6 +268,41 @@ jQuery(document).ready(function($){
 	  $('html, body').animate({ scrollTop: $("#frm_question").offset().top - 200 }, 200);
 	});
 
+	/* button remove */
+	$('#frm_question').on('click','.btn-remove',function(){
+		var currentInput = $(this).prev('input');
+		currentInput.attr('disabled','disabled');
+		$(this).html('<span class="dashicons dashicons-image-rotate"></span>');
+		$(this).removeClass('btn-remove');
+		$(this).addClass('btn-restore').attr('title','Undo');
+	});
+
+	/* button restore */
+	$('#frm_question').on('click','.btn-restore',function(){
+		var currentInput = $(this).prev('input');
+		currentInput.removeAttr('disabled');
+		$(this).html('<span class="dashicons dashicons-trash"></span>');
+		$(this).removeClass('btn-restore');
+		$(this).addClass('btn-remove').attr('title','Remove');
+	});
+
+	/* button add */
+	$('#frm_question').on('click','.btn-add',function(){
+		var id = $(this).attr('data-id');
+		var number_question = 1;
+		var type = $(this).attr('data-type');
+		var customID = $(this).closest('li.ui-state-default').find('input[type=text]').length - 1;// minus textfile qusetion.
+		if(type == 'checkbox'){
+			$(this).closest('li.ui-state-default').children('.box-question').append(checkbox( id,number_question,customID ));
+		}else if(type == 'radio'){
+			$(this).closest('li.ui-state-default').children('.box-question').append(radio( id,number_question,customID ));
+		}else if(type == 'pulldown'){
+			$(this).closest('li.ui-state-default').children('.box-question').append(pulldown(id,number_question,customID));
+		}else{
+			return;
+		}
+	});
+
 	$('#frm_question').on('click','li a.btn_down',function(){
 	  var current = $(this).closest('li.ui-state-default');
 	  current.next().after(current);
@@ -248,7 +319,7 @@ jQuery(document).ready(function($){
 	});
 
 });
-jQuery(document).on('click', '.btn_remove', function($){
+jQuery(document).on('click', '.btn_trash', function($){
 	var res = confirm('あなたはそれを削除したいですか？');
 		if(res) jQuery(this).closest('li').remove();
 		
@@ -263,26 +334,29 @@ function question_input($id,$multi = 1){
 	return $str;
 }
 
-function checkbox($id,$multi){
+function checkbox($id,$multi, $customID = null){
 	var $str = '';
 	for(var i=0; i<$multi; i++){
-		$str += '<input type="checkbox" name="posid_'+ post_id +'_answer_'+ $id +'_' + i + '"> <input type="text" name="question['+ post_id +']['+ $id +'][answer]['+i+']"><br/>';
+		if($customID != null) i = $customID;
+		$str += '<input type="checkbox" name="posid_'+ post_id +'_answer_'+ $id +'_' + i + '"> <input type="text" name="question['+ post_id +']['+ $id +'][answer]['+i+']"><a class="btn btn-remove" title="Remove"><span class="dashicons dashicons-trash"></span></a> <br/>';
 	}
 	return $str;
 }
 
-function radio($id,$multi){
+function radio($id,$multi, $customID = null){
 	var $str = '';
 	for(var i=0; i<$multi; i++){
-		$str += '<input type="radio" name="posid_'+ post_id +'_answer_'+ $id +'"> <input type="text" name="question['+ post_id +']['+ $id +'][answer]['+i+']"><br/>';
+		if($customID != null) i = $customID;
+		$str += '<input type="radio" name="posid_'+ post_id +'_answer_'+ $id +'"> <input type="text" name="question['+ post_id +']['+ $id +'][answer]['+i+']"><a class="btn btn-remove" title="Remove"><span class="dashicons dashicons-trash"></span></a> <br/>';
 	}
 	return $str;
 }
 
-function pulldown($id, $multi){
+function pulldown($id, $multi, $customID = null){
 	var $str = '';
 	for(var i=0; i<$multi; i++){
-		$str += '<input id="posid_'+ post_id +'_answer_' + $id + '" type="text" name="question['+ post_id +']['+ $id +'][answer]['+i+']"><br>';
+		if($customID != null) i = $customID;
+		$str += '<input id="posid_'+ post_id +'_answer_' + $id + '" type="text" name="question['+ post_id +']['+ $id +'][answer]['+i+']"><a class="btn btn-remove" title="Remove"><span class="dashicons dashicons-trash"></span></a> <br>';
 	}
 	return $str;
 }

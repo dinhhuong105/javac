@@ -103,7 +103,7 @@
 	'type'         => 'plain');
 
 	$question_meta = get_post_meta($id, '_question_type', TRUE);
-	
+	// echo "<pre>";print_r($question_meta); echo "</pre>";
 	
 ?>
 <div class="wp_comment_list postbox">
@@ -141,12 +141,30 @@
 			<td><?=$comment->comment_author?></td>
 			<?php
 				$comment_metas = get_comment_meta($comment->comment_ID,'_question_comment',TRUE);
-				
-				for ($i=0; $i < count($question_meta[$id]); $i++) { 					
+				foreach ($question_meta[$id] as $kQuestion => $question) {
+					?>
+					<td>
+						<?php
+						if(isset($comment_metas[$kQuestion])){
+							foreach ($comment_metas[$kQuestion] as $answer) {
+								if($question['answer'][$answer] == ""){
+									echo $answer;
+								}else{
+									echo $question['answer'][$answer].', ';
+								}
+							}
+						}else{
+							echo "---";
+						}
+						?>
+					</td>
+					<?php
+				}
+				/*for ($i=0; $i < count($question_meta[$id]); $i++) { 					
 					?>
 					<td>
 						<?php 
-							if($comment_metas && count($comment_metas[$i]) != 0){
+							if($comment_metas){
 								foreach ($comment_metas[$i] as $id_answer => $val_answer) {
 									echo ($question_meta[$id][$i]['answer'][$val_answer])?$question_meta[$id][$i]['answer'][$val_answer]:$val_answer;
 									if(count($question_meta[$id][$i]['answer']) > 2) echo ", ";
@@ -157,7 +175,7 @@
 						?>
 					</td>
 					<?php
-				}
+				}*/
 			?>
 			<td>
 				<div class="wrapper">
