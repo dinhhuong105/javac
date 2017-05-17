@@ -3,6 +3,8 @@
 	$_limited_answer = get_metadata('post', $post->ID, '_limited_answer');
 	$post_metas = get_metadata('post', $post->ID, '_question_type');
 	$GLOBALS['post_metas'] = $post_metas[0];
+
+	$count_comment = wp_count_comments($post->ID);
 ?>
 <style type="text/css">
 	li.ui-state-default{
@@ -207,7 +209,7 @@
 var post_id = <?=$post->ID?>;
 jQuery(document).ready(function($){
 	var id_frm = $.now();
-
+	var count_comment = <?=$count_comment->all?>;
 	$('.btn_create').on('click',function(e){
 		e.preventDefault();
 		var id = id_frm++;
@@ -317,6 +319,12 @@ jQuery(document).ready(function($){
 	  }
 	  $('html, body').animate({ scrollTop: $("#frm_question").offset().top + $("#frm_question").outerHeight(true)-200  }, 200);
 	});
+
+	$(function () {
+		if(count_comment > 0)
+	     $('a.btn.btn-remove').hide();
+	 });
+
 
 });
 jQuery(document).on('click', '.btn_trash', function($){

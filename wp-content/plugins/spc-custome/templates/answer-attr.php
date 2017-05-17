@@ -160,22 +160,6 @@
 					</td>
 					<?php
 				}
-				/*for ($i=0; $i < count($question_meta[$id]); $i++) { 					
-					?>
-					<td>
-						<?php 
-							if($comment_metas){
-								foreach ($comment_metas[$i] as $id_answer => $val_answer) {
-									echo ($question_meta[$id][$i]['answer'][$val_answer])?$question_meta[$id][$i]['answer'][$val_answer]:$val_answer;
-									if(count($question_meta[$id][$i]['answer']) > 2) echo ", ";
-								}
-							}else{
-								echo "---";
-							}
-						?>
-					</td>
-					<?php
-				}*/
 			?>
 			<td>
 				<div class="wrapper">
