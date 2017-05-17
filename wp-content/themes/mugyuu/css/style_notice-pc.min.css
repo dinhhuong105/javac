@@ -3363,6 +3363,7 @@ footer .copy small {
 .mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea .imgBtn {
     position: absolute;
     bottom: 0;
+    margin-bottom: 0px;
     right: 10px;
     -webkit-appearance: none;
     appearance: none;
@@ -4448,6 +4449,9 @@ section.confirm{
 }
 .mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea .imgBtn input {
     font-size: 14px!important;
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea .imgBtn {
+    font-size: inherit;
 }
 .mainWrap.single.qa .mainArea .commentArea .commentList li img{
     max-width: 100%;

@@ -3386,6 +3386,9 @@ section.confirm{
 #contentArea {
     position: relative;
 }
+.qaSingle .commentFormArea form ul li .textArea .imgBtn{
+	font-size: inherit;
+}
 .qaSingle .commentFormArea form ul li .textArea div#textareaEditor {
     min-height: 150px;
     line-height: 1.6;
