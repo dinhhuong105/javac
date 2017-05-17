@@ -4456,3 +4456,7 @@ section.confirm{
 .mainWrap.single.qa .mainArea .commentArea .commentList li img{
     max-width: 100%;
 }
+/* fixed layout */
+.mainWrap.single.qa .mainArea .commentFormArea h1{
+    margin-bottom: 0px!important;
+}

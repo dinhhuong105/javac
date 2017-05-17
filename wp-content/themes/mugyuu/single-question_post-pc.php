@@ -75,7 +75,7 @@
                 </div>
                 <br>
                 <div class="btnArea">
-                    <a href="#send">コメントする
+                    <a href="#send">アンケートに答える
                     </a>
                 </div>
 				<?php endwhile; ?>
