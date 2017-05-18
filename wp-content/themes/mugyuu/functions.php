@@ -2468,13 +2468,13 @@ function add_thread_front(){
         // Convert URL
         $content =
         preg_replace(
-                '~(;|>|\s|^)(https?://.+?)(;|<|\s|$)~im',
+                '~(;|>|\s|^)(https?://.+?)(<|\s|$)~im',
                 '$1<a href="$2" target="_blank">$2</a>$3',
                 $content
                 );
         $content =
         preg_replace(
-                '~(;|>|\s|^)(www\..+?)(;|<|\s|$)~im',
+                '~(;|>|\s|^)(www\..+?)(<|\s|$)~im',
                 '$1<a href="http://$2" target="_blank">$2</a>$3',
                 $content
                 );
