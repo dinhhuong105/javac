@@ -259,6 +259,7 @@
         if($cbx_group.is(":checked")){
           $cbx_group.prop('required', false);
         }
+
     });
 
     $('#qaFilter').on('change',function(){

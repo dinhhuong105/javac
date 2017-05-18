@@ -212,7 +212,7 @@
                 </li>
             <?php endif ?>
                 <li>
-                    <textarea name="comment" id="thread_content" class="textareaCustom"></textarea>
+                    <textarea name="comment" id="thread_content" class="textareaCustom" required="required"></textarea>
                     <?php
                     if( $boolAvalible ): ?>
                         <button type="submit" name="submitted" value="send" class="sendBtn">アンケートに回答する</button>

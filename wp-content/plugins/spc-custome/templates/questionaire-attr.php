@@ -214,7 +214,7 @@ jQuery(document).ready(function($){
 		e.preventDefault();
 		var id = id_frm++;
 		var number_question = $('input[name=no_of_item]').val();
-
+		if(number_question <= 0) { $('input[name=no_of_item]').focus(); return false; }
 		var selected = $('select[name=question_type] :selected').val();
 		var btnAdd = '<a class="btn btn-add" data-id="'+ id +'" data-type="'+ selected +'"><span class="dashicons dashicons-plus"></span></a>';
 
