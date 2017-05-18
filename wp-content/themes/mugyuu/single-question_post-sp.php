@@ -62,9 +62,11 @@
                     <h1>
                         <?php the_title(); ?>
                     </h1>
+                    <?php if($image[0] != ''): ?>
                     <div class="imgArea" style="background-image: url(<?php echo $image[0]; ?>);">
                         <img src='data:image/gif;base64,R0lGODlhAQABAIAAAP//////zCH5BAEHAAAALAAAAAABAAEAAAICRAEAOw=='>
                     </div>
+                    <?php endif ?>
                     <div class="content">
                         <?php the_content(); ?>
                         <div class="articleData">
