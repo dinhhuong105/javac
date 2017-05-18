@@ -205,7 +205,7 @@ $(function () {
     });
     $('#formComment').submit(function(){
         $('#thread_content').val($('#textareaEditor').html());
-        if($('#thread_content').val() == ""){ $('#contentArea').addClass('error').children('#textareaEditor').focus(); return false; } 
+        if($('#textareaEditor').html() == ""){ $('#contentArea').addClass('error').children('#textareaEditor').focus(); return false; } 
             else{ $('#contentArea').removeClass('error'); }
     });
 
