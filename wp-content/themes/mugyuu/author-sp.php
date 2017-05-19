@@ -96,6 +96,9 @@
                                     if( $catId !== 1) { $catNameGrandson = end($post_cat)->cat_name; }
                                     $thumbnail_id = get_post_thumbnail_id();
                                     $image = wp_get_attachment_image_src( $thumbnail_id, 'list_thumbnail' );
+                                    if($post->post_type == 'thread_post' && !$image[0]){
+                                        $image[0] = get_template_directory_uri()."/images/noimage-thumbnail-sp.png";
+                                    }
                                 ?>
                                 <li>
                                     <a href="<?php the_permalink(); ?>">

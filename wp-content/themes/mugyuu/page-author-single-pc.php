@@ -93,10 +93,10 @@
                                         $col_maxpage = new WP_Query([
                                             'posts_per_page' => $posts_per_page,
                                             'author' => $author_id,
-                                            'post_type' => 'post',
+                                            'post_type' => array('post', 'thread_post', 'question_post'),
                                         ]);
                 						$col_query = new WP_Query([
-                							'post_type' => 'post',
+                							'post_type' => array('post', 'thread_post', 'question_post'),
                 							'posts_per_page' => $posts_per_page,
                 							'author' => $author_id,
                                             'paged' => ($current_page > $col_maxpage->max_num_pages) ? $col_maxpage->max_num_pages : $current_page,
@@ -112,6 +112,9 @@
                                         if( $catId !== 1) { $catNameGrandson = end($post_cat)->cat_name; }
                 						$thumbnail_id = get_post_thumbnail_id();
                 	                    $image = wp_get_attachment_image_src( $thumbnail_id, 'pcList_thumbnail' );
+                	                    if($post->post_type == 'thread_post' && !$image[0]){
+                	                        $image[0] = get_template_directory_uri()."/images/noimage-thumbnail.png";
+                	                    }
                                     ?>
                 						<li>
                                             <a href="<?php the_permalink(); ?>">
