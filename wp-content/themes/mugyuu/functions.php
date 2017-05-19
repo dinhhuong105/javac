@@ -466,6 +466,9 @@ function my_custom_popular_posts_html_list( $mostpopular, $instance ){
                 // サムネイル
                 $thumbnail_id = get_post_thumbnail_id($popular->id);
                 $thumbnail = wp_get_attachment_image_src( $thumbnail_id, 'thumbnail' );
+                if(get_post_type($popular->id) == 'thread_post' && !$thumbnail[0]){
+                    $thumbnail[0] = get_template_directory_uri()."/images/noimage-thumbnail-sp.png";
+                }
                 // 投稿者
                 $author = get_the_author_meta('display_name', $popular->uid);
 				$author_roles = get_the_author_meta('roles', $popular->uid);
@@ -613,6 +616,9 @@ function my_custom_popular_posts_html_list( $mostpopular, $instance ){
                 // サムネイル
                 $thumbnail_id = get_post_thumbnail_id($popular->id);
                 $thumbnail = wp_get_attachment_image_src( $thumbnail_id, '200_thumbnail' );
+                if(get_post_type($popular->id) == 'thread_post' && !$thumbnail[0]){
+                    $thumbnail[0] = get_template_directory_uri()."/images/noimage-thumbnail.png";
+                }
                 // 投稿者
                 $author = get_the_author_meta('display_name', $popular->uid);
 				$author_roles = get_the_author_meta('roles', $popular->uid);
