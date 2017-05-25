@@ -41,6 +41,9 @@
                             }
 							$thumbnail_id = get_post_thumbnail_id();
 							$image = wp_get_attachment_image_src( $thumbnail_id, 'list_thumbnail' );
+							if($post->post_type == 'thread_post' && !$image[0]){
+							    $image[0] = get_template_directory_uri()."/images/noimage-thumbnail-sp.png";
+							}
                             $author = get_userdata($post->post_author);
                             $authorRoles = $author->roles;
                             usort( $authorRoles , '_usort_terms_by_ID');
