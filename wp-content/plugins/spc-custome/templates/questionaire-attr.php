@@ -5,9 +5,17 @@
 	$GLOBALS['post_metas'] = $post_metas[0];
 	
 	$unit1 = get_option('spc_options')['list_unit1'];
-	$list_unit1 = @explode(',', $unit1);
+	if($unit1){
+	   $list_unit1 = @explode(',', $unit1);
+	}else{
+	    $list_unit1 = array();
+	}
 	$unit2 = get_option('spc_options')['list_unit2'];
-	$list_unit2 = @explode(',', $unit2);
+	if($unit2){
+	   $list_unit2 = @explode(',', $unit2);
+	}else{
+	    $list_unit2 = array();
+	}
 
 	$count_comment = wp_count_comments($post->ID);
 ?>
@@ -229,9 +237,15 @@
 <script type="text/javascript">
 var post_id = <?=$post->ID?>;
 var list_unit1 = <?php echo json_encode(get_option('spc_options')['list_unit1']); ?>;
-var arr_unit1 = list_unit1.split(',');
+var arr_unit1 = [];
+if(list_unit1){
+	arr_unit1 = list_unit1.split(',');
+}
 var list_unit2 = <?php echo json_encode(get_option('spc_options')['list_unit2']); ?>;
-var arr_unit2 = list_unit2.split(',');
+var arr_unit2 = [];
+if(list_unit2){
+	arr_unit2 = list_unit2.split(',');
+}
 
 jQuery(document).ready(function($){
 	var id_frm = $.now();
