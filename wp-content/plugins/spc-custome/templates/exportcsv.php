@@ -28,19 +28,36 @@ foreach ($comment_metas as $key => $answ) {
 	}
 }
 $report_ans = array();
+// global $post_metas;
+$post_metas = get_post_meta($id, '_question_type', TRUE);
+
 foreach ($question as $key => $value) {
 	$_ans = array();
 	foreach ($value as $v) {
 		// if()
 		foreach ($v as $type => $id_ans) {
-			array_push($_ans,$id_ans);
+		    if($type === 'textbox'){
+		        $list_unit = $post_metas[key($post_metas)][$key]['answer'];
+                $answer_string = '';
+                if($list_unit[0]){
+                    $answer_string .= $id_ans[1] . $list_unit[0];
+                    if($list_unit[1]){
+                        $answer_string .= ' ' . $id_ans[2] . $list_unit[1];
+                    }
+                    $answer_string .= ': ';
+                }
+                $answer_string .= $id_ans[0];
+                
+		        array_push($_ans,$answer_string); 
+		    }else
+		      array_push($_ans,$id_ans);
 		}
 		
 	}
+	
 	$report_ans[$key] = array_count_values($_ans);
 }
-// global $post_metas;
-$post_metas = get_post_meta($id, '_question_type', TRUE);
+
 $_limited_answer = get_metadata('post', $id, '_limited_answer');
 $csv = array();
 
@@ -138,7 +155,7 @@ $count_comment =  count($comments);
 				<h2 class="hndle ui-sortable-handle"><?=$value['question']?></h2><br/>
 				<ul>
 				<?php 
-				if(isset($value['answer'])) :
+				if(isset($value['answer']) && $value['type'] !== 'textbox') :
 					foreach ($value['answer'] as $k_ques => $ans): 
 						$csv[$key][$ans] = $report_ans[$key][$k_ques];
 						?>
