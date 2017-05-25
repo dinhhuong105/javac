@@ -58,6 +58,19 @@
             </tr>
             </tbody>
         </table>
+        <h2>Option</h2>
+        <table class="form-table">
+            <tbody>
+            <tr>
+                <th scop="row"><label for="list_unit1">単位１の選択肢</label></th>
+                <td><input type="text" name="spc_options[list_unit1]" value="<?php echo esc_attr( $spc_option['list_unit1'] ); ?>" placeholder="単位１の選択肢" id="list_unit1"/><label for="list_unit1">Input options separate by comma(,)</label></td>
+            </tr>
+            <tr>
+                <th scop="row"><label for="list_unit2">単位2の選択肢</label></th>
+                <td><input type="text" name="spc_options[list_unit2]" value="<?php echo esc_attr( $spc_option['list_unit2'] ); ?>" placeholder="単位2の選択肢" id="list_unit2"/><label for="list_unit2">Input options separate by comma(,)</label></td>
+            </tr>
+            </tbody>
+        </table>
         <p class="submit"><input type="submit" id="submit" class="button button-primary" value="Save Setting"/></p>
     </form>
 </div>

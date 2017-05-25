@@ -17,6 +17,16 @@
     .qaSingle .commentFormArea form ul li .textArea .imgBtn input{
         font-size: inherit!important;
     }
+    .answer_unit{
+        margin-top: 10px;
+    }
+    .answer_unit input{
+        width: 30% !important;
+        margin-right: 5px !important;
+    }
+    .answer_unit label{
+        font-size: inherit !important;
+    }
 </style>
 <?php 
     $limited = get_post_meta( $post->ID, '_limited_answer', true );
@@ -183,7 +193,20 @@
                             ?>
                             <li>
                                 <h3><?=$question['question'].$star?></h3>
-                                <input name="answer[<?=$qkey?>][textbox]" type="text" placeholder="回答を入力してください" <?=$required?>>
+                                <input name="answer[<?=$qkey?>][textbox][]" type="text" placeholder="回答を入力してください" <?=($question['answer'][0])?'':$required?>>
+                                <?php if($question['answer'][0]){?>
+                                    <div class="answer_unit">
+                                    <?php foreach ($question['answer'] as $anskey => $ansval) {
+                                        ?>
+                                            <?php if($ansval){?>
+                                            	<label><input <?=$required?> name="answer[<?=$qkey?>][textbox][]" type="number" placeholder="<?=$ansval?>" ><?=$ansval?></label>
+                                            <?php
+                                            } ?>
+                                        <?php
+                                    } ?>
+                                    </div>
+                                <?php
+                                } ?>
                             </li>
                             <?php
                         }elseif($question['type'] == 'textarea'){

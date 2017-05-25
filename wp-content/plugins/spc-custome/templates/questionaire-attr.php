@@ -3,6 +3,11 @@
 	$_limited_answer = get_metadata('post', $post->ID, '_limited_answer');
 	$post_metas = get_metadata('post', $post->ID, '_question_type');
 	$GLOBALS['post_metas'] = $post_metas[0];
+	
+	$unit1 = get_option('spc_options')['list_unit1'];
+	$list_unit1 = @explode(',', $unit1);
+	$unit2 = get_option('spc_options')['list_unit2'];
+	$list_unit2 = @explode(',', $unit2);
 
 	$count_comment = wp_count_comments($post->ID);
 ?>
@@ -161,6 +166,22 @@
 						echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
 						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><label> 必須 :  <input type="checkbox" name="question['. $key .']['. $id .'][required]" '.$check.' ></label><br/>';
+						$unit = '';
+						$unit .= '<select name="question['. $key .']['. $id .'][answer][0]">';
+						$unit .= '<option value="">単位１</option>';
+						foreach($list_unit1 as $unit_value){
+						    $is_selected = ($unit_value == $meta['answer'][0])?'selected':'';
+						    $unit .= '<option value="'.$unit_value.'"'.$is_selected.'>'.$unit_value.'</option>';
+						}
+						$unit .= '</select>';
+						$unit .= '<select name="question['. $key .']['. $id .'][answer][1]">';
+						$unit .= '<option value="">単位２</option>';
+						foreach($list_unit2 as $unit_value){
+						    $is_selected = ($unit_value == $meta['answer'][1])?'selected':'';
+						    $unit .= '<option value="'.$unit_value.'"'.$is_selected.'>'.$unit_value.'</option>';
+						}
+						$unit .= '</select>';
+						echo $unit;
 						echo '</div></li>';
 					}elseif($meta['type'] == 'textarea'){
 						echo '<li class="ui-state-default">';
@@ -207,6 +228,11 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
 var post_id = <?=$post->ID?>;
+var list_unit1 = <?php echo json_encode(get_option('spc_options')['list_unit1']); ?>;
+var arr_unit1 = list_unit1.split(',');
+var list_unit2 = <?php echo json_encode(get_option('spc_options')['list_unit2']); ?>;
+var arr_unit2 = list_unit2.split(',');
+
 jQuery(document).ready(function($){
 	var id_frm = $.now();
 	var count_comment = <?=$count_comment->all?>;
@@ -232,6 +258,7 @@ jQuery(document).ready(function($){
 			str += pulldown( id,number_question );
 		}else if( selected == 'textbox'){
 			btnAdd = '';
+			str += textbox(id,number_question);
 		}else if( selected == 'textarea'){
 			btnAdd = '';
 		}else{
@@ -370,7 +397,20 @@ function pulldown($id, $multi, $customID = null){
 }
 
 function textbox($id, $multi = 1){
-	return;
+	var textbox_html = '';
+	textbox_html += '<select name="question['+ post_id +']['+ $id +'][answer][]">';
+	textbox_html += '<option value="">単位１</option>';
+	for(var j in arr_unit1){
+		textbox_html += '<option value="'+arr_unit1[j]+'">'+arr_unit1[j]+'</option>';
+	}
+	textbox_html += '</select>';
+	textbox_html += '<select name="question['+ post_id +']['+ $id +'][answer][]">';
+	textbox_html += '<option value="">単位２</option>';
+	for(var j in arr_unit2){
+		textbox_html += '<option value="'+arr_unit2[j]+'">'+arr_unit2[j]+'</option>';
+	}
+	textbox_html += '</select>';
+	return textbox_html;
 }
 
 function textarea($id, $multi = 1){

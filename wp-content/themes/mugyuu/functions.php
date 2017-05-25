@@ -2717,17 +2717,31 @@ function question_comment($comment, $args, $depth) {
                         $_sort_question = get_post_meta($comment->comment_post_ID,'_sort_question',true);
                         $answers = get_comment_meta($comment->comment_ID,'_question_comment',true);
                         $GLOBALS['answers'] = $answers; 
-                        $stt=1;
                         if($answers){
-                            // echo "<pre>";print_r($_sort_question);echo "</pre>";
                             foreach ($_sort_question as $ksort => $vsort) {
                                 foreach ($answers as $queskey => $answer) {
                                     if($queskey == $vsort){
-                                        echo "<li>".($stt++).'. ';
-                                        foreach ($answer as $las_ans) {
+                                        echo "<li>".($ksort+1).'. ';
+                                        foreach ($answer as $key_ans => $las_ans) {
+                                            if(is_array($las_ans) && $key_ans == 'textbox'){
+                                                $list_unit = $questions[key($questions)][$queskey]['answer'];
+                                                $answer_string = '';
+                                                if($list_unit[0]){
+                                                    $answer_string .= $las_ans[1] . $list_unit[0];
+                                                    if($list_unit[1]){
+                                                        $answer_string .= ' ' . $las_ans[2] . $list_unit[1];
+                                                    }
+                                                    $answer_string .= ': ';
+                                                }
+                                                $answer_string .= $las_ans[0];
+                                                ?>
+                                                	<label><?= $answer_string; ?></label>
+                                                <?php
+                                            }else{
                                             ?>
-                                            <label class="<?=(count($answer)>1)?'check':''?>"><?=($questions[key($questions)][$queskey]['answer'][$las_ans] != '')?$questions[key($questions)][$queskey]['answer'][$las_ans]:$las_ans ?></label>
+                                            	<label class="<?=(count($answer)>1)?'check':''?>"><?=($questions[key($questions)][$queskey]['answer'][$las_ans] != '')?$questions[key($questions)][$queskey]['answer'][$las_ans]:$las_ans ?></label>
                                             <?php
+                                            }
                                         }
                                     }
                                 }
