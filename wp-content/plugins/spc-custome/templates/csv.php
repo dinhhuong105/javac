@@ -73,9 +73,10 @@ foreach ($question as $key => $value) {
                     if($list_unit[1]){
                         $answer_string .= ' ' . $id_ans[2] . $list_unit[1];
                     }
-                    $answer_string .= ': ';
                 }
-                $answer_string .= $id_ans[0];
+                if($id_ans[0]){
+                    $answer_string .= ':' . $id_ans[0];
+                }
                 
 		        array_push($_ans,$answer_string);
 		    }else
@@ -119,7 +120,7 @@ foreach ($csv as $value) {
 $str_csv=array2csv($a);
 
 ob_clean(); // Clear all specific string before render downloading
-//download_send_headers("data_export_" . date("Y-m-d") . ".csv");
+download_send_headers("data_export_" . date("Y-m-d") . ".csv");
 echo "\xEF\xBB\xBF"; // UTF-8 BOM
 echo $str_csv;
 die();

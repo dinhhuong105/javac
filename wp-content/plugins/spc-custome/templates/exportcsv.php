@@ -44,9 +44,10 @@ foreach ($question as $key => $value) {
                     if($list_unit[1]){
                         $answer_string .= ' ' . $id_ans[2] . $list_unit[1];
                     }
-                    $answer_string .= ': ';
                 }
-                $answer_string .= $id_ans[0];
+		        if($id_ans[0]){
+                    $answer_string .= ':' . $id_ans[0];
+                }
                 
 		        array_push($_ans,$answer_string); 
 		    }else

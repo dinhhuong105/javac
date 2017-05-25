@@ -2731,9 +2731,10 @@ function question_comment($comment, $args, $depth) {
                                                     if($list_unit[1]){
                                                         $answer_string .= ' ' . $las_ans[2] . $list_unit[1];
                                                     }
-                                                    $answer_string .= ': ';
                                                 }
-                                                $answer_string .= $las_ans[0];
+                                                if($las_ans[0]){
+                                                    $answer_string .= ':' . $las_ans[0];
+                                                }
                                                 ?>
                                                 	<label><?= $answer_string; ?></label>
                                                 <?php

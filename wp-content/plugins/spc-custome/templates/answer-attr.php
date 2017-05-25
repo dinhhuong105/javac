@@ -156,9 +156,10 @@
 								        if($list_unit[1]){
 								            $answer_string .= ' ' . $answer[2] . $list_unit[1];
 								        }
-								        $answer_string .= ': ';
 								    }
-								    $answer_string .= $answer[0];
+								if($answer[0]){
+                                    $answer_string .= ':' . $answer[0];
+                                }
 								    echo $answer_string;
 								}
 						        elseif($question['answer'][$answer] == ""){
