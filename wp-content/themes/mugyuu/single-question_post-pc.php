@@ -86,7 +86,6 @@
 				<?php endif; ?>
             </section>
             <?php comments_template('/question_comments.php'); ?>
-            <?php get_template_part('toppost'); ?>
             <?php get_template_part('related-entries'); ?>
         </div>
 		<?php get_sidebar(); ?>
