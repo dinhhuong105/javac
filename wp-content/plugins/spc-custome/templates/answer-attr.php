@@ -146,12 +146,30 @@
 					<td>
 						<?php
 						if(isset($comment_metas[$kQuestion])){
-							foreach ($comment_metas[$kQuestion] as $answer) {
-								if($question['answer'][$answer] == ""){
+							$first = true;
+						    foreach ($comment_metas[$kQuestion] as $key => $answer) {
+								if($question['type'] == 'textbox'){
+								    $list_unit = $question['answer'];
+								    $answer_string = '';
+								    if($list_unit[0]){
+								        $answer_string .= $answer[1] . $list_unit[0];
+								        if($list_unit[1]){
+								            $answer_string .= ' ' . $answer[2] . $list_unit[1];
+								        }
+								        $answer_string .= ': ';
+								    }
+								    $answer_string .= $answer[0];
+								    echo $answer_string;
+								}
+						        elseif($question['answer'][$answer] == ""){
 									echo $answer;
 								}else{
-									echo $question['answer'][$answer].', ';
+								    if($first)
+									    echo $question['answer'][$answer];
+								    else
+								        echo ', ' . $question['answer'][$answer];
 								}
+								$first = false;
 							}
 						}else{
 							echo "---";
