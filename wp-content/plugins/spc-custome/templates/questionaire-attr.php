@@ -175,18 +175,19 @@
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
 						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><label> 必須 :  <input type="checkbox" name="question['. $key .']['. $id .'][required]" '.$check.' ></label><br/>';
 						$unit = '';
-						$unit .= '<select name="question['. $key .']['. $id .'][answer][0]">';
+						$unit .= '<select class="option1_enable" name="question['. $key .']['. $id .'][answer][0]">';
 						$unit .= '<option value="">単位１</option>';
 						foreach($list_unit1 as $unit_value){
 						    $is_selected = ($unit_value == $meta['answer'][0])?'selected':'';
 						    $unit .= '<option value="'.$unit_value.'"'.$is_selected.'>'.$unit_value.'</option>';
 						}
 						$unit .= '</select>';
-						$unit .= '<select name="question['. $key .']['. $id .'][answer][1]">';
+						$is_disable = ($meta['answer'][0])?'':'disabled';
+						$unit .= '<select ' . $is_disable . ' name="question['. $key .']['. $id .'][answer][1]">';
 						$unit .= '<option value="">単位２</option>';
 						foreach($list_unit2 as $unit_value){
 						    $is_selected = ($unit_value == $meta['answer'][1])?'selected':'';
-						    $unit .= '<option value="'.$unit_value.'"'.$is_selected.'>'.$unit_value.'</option>';
+						    $unit .= '<option ' . $is_disable .' value="'.$unit_value.'"'.$is_selected.'>'.$unit_value.'</option>';
 						}
 						$unit .= '</select>';
 						echo $unit;
@@ -373,6 +374,15 @@ jQuery(document).on('click', '.btn_trash', function($){
 		if(res) jQuery(this).closest('li').remove();
 		
 });
+jQuery(document).on("change", 'select.option1_enable',function(e){
+	var target = jQuery(this);
+	if(!target.val()){
+		target.next().val('');
+		target.next().prop("disabled", true);
+	}else{
+		target.next().prop("disabled", false);
+	}
+});
 
 function question_input($id,$multi = 1){
 	var $str = '';
@@ -412,13 +422,13 @@ function pulldown($id, $multi, $customID = null){
 
 function textbox($id, $multi = 1){
 	var textbox_html = '';
-	textbox_html += '<select name="question['+ post_id +']['+ $id +'][answer][]">';
+	textbox_html += '<select class="option1_enable" name="question['+ post_id +']['+ $id +'][answer][]">';
 	textbox_html += '<option value="">単位１</option>';
 	for(var j in arr_unit1){
 		textbox_html += '<option value="'+arr_unit1[j]+'">'+arr_unit1[j]+'</option>';
 	}
 	textbox_html += '</select>';
-	textbox_html += '<select name="question['+ post_id +']['+ $id +'][answer][]">';
+	textbox_html += '<select disabled name="question['+ post_id +']['+ $id +'][answer][]">';
 	textbox_html += '<option value="">単位２</option>';
 	for(var j in arr_unit2){
 		textbox_html += '<option value="'+arr_unit2[j]+'">'+arr_unit2[j]+'</option>';
