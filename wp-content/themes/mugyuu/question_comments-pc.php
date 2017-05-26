@@ -194,7 +194,7 @@
                             <li>
                                 <h3><?=$question['question'].$star?></h3>
                                 <label for="select" class="selectArea">
-                                    <select name="answer[<?=$qkey?>][]" id="select">
+                                    <select name="answer[<?=$qkey?>][]">
                                     <?php foreach ($question['answer'] as $anskey => $ansval) {
                                         ?>
                                         <option value="<?=$anskey?>"><?=$ansval?></option>

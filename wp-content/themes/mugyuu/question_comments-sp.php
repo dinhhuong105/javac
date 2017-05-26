@@ -189,7 +189,7 @@
                             <li class="editFrom">
                                 <h3><?=$question['question'].$star?></h3>
                                 <label for="select" class="selectArea">
-                                    <select name="answer[<?=$qkey?>][]" id="select" <?=$required?> class="selectArea">
+                                    <select name="answer[<?=$qkey?>][]" <?=$required?> class="selectArea">
                                     <?php foreach ($question['answer'] as $anskey => $ansval) {
                                         ?>
                                         <option value="<?=$anskey?>"><?=$ansval?></option>
