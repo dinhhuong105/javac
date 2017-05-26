@@ -1,37 +1,3 @@
-<style type="text/css">
-    .answerList label.check:before{
-        content: "✓";
-    }
-    .qaSingle .commentFormArea:before{
-        top: 0!important;
-    }
-    .qaSingle .commentFormArea{
-        margin-top:0px;
-        padding-top: 20px;
-    }
-    .btnDisable:hover{ 
-        background-color: #ccc!important;
-        color:#fff!important;
-    }
-    .btnDisable{
-        color:#ccc!important;
-        border-color: #ccc!important;
-    }
-    .mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea .imgBtn input{
-        font-size: inherit!important;
-    }
-    .answer_unit{
-        margin-top: 10px;
-    }
-    .answer_unit input{
-        width: 30% !important;
-        margin-right: 5px !important;
-    }
-    .answer_unit label{
-        font-size: inherit !important;
-    }
-    
-</style>
 <?php 
     $description = get_post_meta( $post->ID, '_question_description', true );
     $limited = get_post_meta( $post->ID, '_limited_answer', true );
@@ -154,6 +120,38 @@
         </div>
         <form action="" id="formComment" method="POST">
             <ul class="answerInpotList" >
+                <li class="user_pro">
+                    <h3>回答者プロフイール（仮）</h3>
+                    <ul>
+                    	<li>
+                    		<p class="radio_h4">回答するお子さんの性別</p>
+                    		<label>
+                    			<input type="radio" value="male" name="profile[baby_sex]">男の子
+                    		</label>
+                    		<label>
+                    			<input type="radio" value="female" name="profile[baby_sex]">女の子
+                    		</label>
+                    	</li>
+                    	<li class="user_age">
+                    		<p>お子さんの年齢</p>
+                    		<label>
+                    			<input type="number" name="profile[baby_year]">歳
+                    		</label>
+                    		<label>
+                    			<input type="number" name="profile[baby_month]">ヶ月
+                    		</label>
+                    	</li>
+                    	<li>
+                    		<p class="radio_h4">回答する人</p>
+                    		<label>
+                    			<input type="radio" value="mother" name="profile[parent]">ママ
+                    		</label>
+                    		<label>
+                    			<input type="radio" value="father" name="profile[parent]">パパ
+                    		</label>
+                    	</li>
+                    </ul>
+                </li>
                 <li>
                     <h3>ニックネーム<span class="red">※</span></h3>
                     <input required type="text" name="name" placeholder="ニックネームを入力してください">

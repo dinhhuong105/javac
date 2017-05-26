@@ -2675,6 +2675,7 @@ function add_comment_on_questions($post_id) {
         if(($count_comment->approved < $limited && $limited > 0) || empty($limited)){
             $comment_id = wp_insert_comment($data);
             add_comment_meta( $comment_id, '_question_comment', $_POST['answer'] );
+            add_comment_meta( $comment_id, '_question_comment_profile', $_POST['profile'] );
         }
         wp_redirect( get_post_permalink($post_id) );
         exit;
@@ -2682,8 +2683,9 @@ function add_comment_on_questions($post_id) {
 }
 
 function question_comment($comment, $args, $depth) {
-    $GLOBALS['comment'] = $comment; 
+    $GLOBALS['comment'] = $comment;
     global $questions;
+    $user_profile = get_comment_meta($comment->comment_ID,'_question_comment_profile',true);
     ?>
         <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
             <div id="comment-<?php comment_ID(); ?>" class="commentData">
@@ -2710,6 +2712,19 @@ function question_comment($comment, $args, $depth) {
                         </div>
                     </div>
                 <?php endif; ?>
+                <?php if($user_profile):?>
+                <div class="user_comment_info">
+                	<h3>回答者プロフイール（仮）</h3>
+                		<div class="user_comment_info_baby">
+                			<p>子供の年齢</p>
+                			<label><?= $user_profile['baby_year']?>歳<?= $user_profile['baby_month']?>ヶ月</label>
+                		</div>
+                		<div class="<?= ($user_profile['parent']=='mother')? 'user_comment_info_mother': 'user_comment_info_father'?>">
+                			<p><?= ($user_profile['parent']=='mother')? '母親の年齢': '父親の年齢'?></p>
+                			<label>27歳</label>
+                		</div>
+                </div>
+                <?php endif; ?>
             </div>
             <div class="userCommentArea answerArea">
                 <ul class="answerList">
@@ -2731,9 +2746,11 @@ function question_comment($comment, $args, $depth) {
                                                     if($list_unit[1]){
                                                         $answer_string .= ' ' . $las_ans[2] . $list_unit[1];
                                                     }
-                                                }
-                                                if($las_ans[0]){
-                                                    $answer_string .= ':' . $las_ans[0];
+                                                    if($las_ans[0]){
+                                                        $answer_string .= ': ' . $las_ans[0];
+                                                    }
+                                                }else{
+                                                    $answer_string .= $las_ans[0];
                                                 }
                                                 ?>
                                                 	<label><?= $answer_string; ?></label>

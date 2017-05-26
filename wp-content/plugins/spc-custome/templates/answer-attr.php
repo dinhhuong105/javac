@@ -155,10 +155,12 @@
 								        $answer_string .= $answer[1] . $list_unit[0];
 								        if($list_unit[1]){
 								            $answer_string .= ' ' . $answer[2] . $list_unit[1];
-								        }
-								    }
-								if($answer[0]){
-                                    $answer_string .= ':' . $answer[0];
+							        }
+							        if($answer[0]){
+							            $answer_string .= ':' . $answer[0];
+							        }
+							    }else{
+                                    $answer_string .= $answer[0];
                                 }
 								    echo $answer_string;
 								}
