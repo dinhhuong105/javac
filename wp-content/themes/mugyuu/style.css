@@ -3296,6 +3296,9 @@ span.bold {
 .info .infoArea .text {
   padding: 20px 10px 40px;
 }
+.info .infoArea .text p {
+    padding: 0 10px;
+}
 .info .infoArea section {
     position: relative;
     margin-bottom: 10px;
@@ -5074,23 +5077,3 @@ ul .none {
         transform:translateY(0);
     }
 }
-.mainWrap.addthread .threadFormArea .heading:before{background:#fba2aa}
-.mainWrap.addthread .threadFormArea .formArea{background:#fff;border-radius:5px;padding:30px;box-sizing:border-box;margin:0 20px;box-shadow:2px -2px 5px rgba(199,199,199,0.2),-2px 2px 5px
-rgba(199,199,199,0.2)}
-.mainWrap.addthread .threadFormArea .formArea .threadList{display:flex;justify-content:space-between;margin-bottom:50px}
-.mainWrap.addthread .threadFormArea .formArea .threadList li:nth-child(2){width:100%}
-.mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea{width:130px;margin-right:20px}
-.mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea img{margin-bottom:10px;border-radius:10px}
-.mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea .imgBtn{display:block;background:#fff;position:relative;width:130px;padding:5px 10px;box-sizing:border-box;border:solid 1px #c9c9c9;border-radius:3px;font-size:1.2rem;cursor:pointer}
-.mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea .imgBtn i{margin-right:10px}
-.mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea .imgBtn input[type="file"]{display:block;width:130px;position:absolute;left:0;opacity:0;cursor:pointer;border:none;box-sizing:border-box}
-.mainWrap.addthread .threadFormArea .formArea .threadList li .ttl{margin-bottom:30px}
-.mainWrap.addthread .threadFormArea .formArea .threadList li .ttl input{width:100%;border:solid 1px #c9c9c9;border-radius:3px;padding:10px;box-sizing:border-box}
-.mainWrap.addthread .threadFormArea .formArea .threadList li .content .textArea{position:relative;border:solid 1px #c9c9c9;border-radius:3px;overflow:hidden;height:180px;box-sizing:border-box}
-.mainWrap.addthread .threadFormArea .formArea .threadList li .content .textArea textarea{border:none;width:100%;height:150px;box-sizing:border-box;padding:10px;resize:none;-webkit-appearance:none;-moz-appearance:none;appearance:none}
-.mainWrap.addthread .threadFormArea .formArea .threadList li .content .textArea .imgBtn{position:absolute;bottom:10px;right:15px;font-size:1rem;cursor:pointer}
-.mainWrap.addthread .threadFormArea .formArea .threadList li .content .textArea .imgBtn i{margin-right:5px}
-.mainWrap.addthread .threadFormArea .formArea .threadList li .content .textArea .imgBtn input{position:absolute;bottom:0;right:0;opacity:0}
-.mainWrap.addthread .threadFormArea .formArea .sendBtn{width:100%;height:50px;line-height:50px;font-size:100%;color:#fc8c96;height:50px;line-height:50px;border:solid 2px #fc8c96;text-align:center;box-sizing:border-box;background:none;cursor:pointer;transition:all .2s ease-in}
-.mainWrap.addthread .threadFormArea .formArea .sendBtn:hover{background:#fc8c96;color:#fff}
-input[type="text"]:focus,textarea{outline:0}
