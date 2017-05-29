@@ -1,6 +1,7 @@
 <?php 
 	$_question_description = get_post_meta($post->ID, '_question_description', TRUE);
 	$_limited_answer = get_metadata('post', $post->ID, '_limited_answer');
+	$profile_require = get_post_meta($post->ID, '_question_profile_require', TRUE);
 	$post_metas = get_metadata('post', $post->ID, '_question_type');
 	$GLOBALS['post_metas'] = $post_metas[0];
 	
@@ -82,7 +83,11 @@
 
 </style>
 <div class="row">
-	<label> コメント説明欄 :  <input type="text" name="ques_description" value="<?=$_question_description?>" style="width: 70%"></label>
+	<p>よくある質問</p>
+	<label><input type="checkbox" name="pro_require[baby_sex]" <?= ($profile_require && $profile_require['baby_sex'])? 'checked':''?>>お子さんの性別  </label><br>
+	<label><input type="checkbox" name="pro_require[baby_age]" <?= ($profile_require && $profile_require['baby_age'])? 'checked':''?>>お子さんの年齢  </label><br>
+	<label><input type="checkbox" name="pro_require[parent_sex]" <?= ($profile_require && $profile_require['parent_sex'])? 'checked':''?>>回答する人  </label><br>
+	<label><input type="checkbox" name="pro_require[parent_age]" <?= ($profile_require && $profile_require['parent_age'])? 'checked':''?>>回答する人の年齢 </label>
 </div>
 <hr>
 <div id="frm_question" class="meta-box-sortables ui-sortable">
@@ -228,6 +233,10 @@
 </select>
 <input type="number" name="no_of_item" value="2" placeholder="（項目数）">
 <button class="btn_create">作成</button>
+<hr>
+<div class="row">
+	<label> コメント説明欄 :  <input type="text" name="ques_description" value="<?=$_question_description?>" style="width: 70%"></label>
+</div>
 <hr>
 <label for="limited_answer">リミット回答数 ></label>
 <input type="number" name="limited_answer" id="limited_answer" value="<?php echo $_limited_answer[0]; ?>" placeholder="回答数を入力"><label> 件</label>
