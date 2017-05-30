@@ -121,6 +121,7 @@
         </div>
         <form action="" id="formComment" method="POST">
             <ul class="answerInpotList" >
+                <?php if($profile_require): ?>
                 <li class="user_pro">
                     <h3>よくある質問</h3>
                     <ul>
@@ -156,8 +157,8 @@
                     			<input type="radio" value="father" name="profile[parent]" required>パパ
                     		</label>
                     	</li>
-                    	<?php if($profile_require['parent_age']): ?>
                     	<?php endif; ?>
+                    	<?php if($profile_require['parent_age']): ?>
                     	<li class="user_parent_age">
                     		<p>回答する人の年齢</p>
                     		<label>
@@ -167,6 +168,7 @@
                     	<?php endif; ?>
                     </ul>
                 </li>
+                <?php endif; ?>
                 <li>
                     <h3>ニックネーム<span class="red">※</span></h3>
                     <input required type="text" name="name" placeholder="ニックネームを入力してください">

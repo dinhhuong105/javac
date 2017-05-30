@@ -116,6 +116,7 @@
         <p class="notes"><sup class="red">※</sup>は必須項目になります。</p>
         <form action="" id="formComment" method="POST">
             <ul class="answerList">
+                <?php if($profile_require): ?>
                 <li class="user_pro">
                     <h3>よくある質問</h3>
                     <ul>
@@ -162,6 +163,7 @@
                     	<?php endif; ?>
                     </ul>
                 </li>
+                <?php endif; ?>
                 <li>
                     <h3>ニックネーム<span class="red">※</span></h3>
                     <input type="text" name="name" required placeholder="ニックネームを入力してください">
