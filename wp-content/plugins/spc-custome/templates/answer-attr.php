@@ -148,20 +148,15 @@
 						if(isset($comment_metas[$kQuestion])){
 							$first = true;
 						    foreach ($comment_metas[$kQuestion] as $key => $answer) {
-								if($question['type'] == 'textbox'){
+								if($question['type'] == 'unit'){
 								    $list_unit = $question['answer'];
 								    $answer_string = '';
 								    if($list_unit[0]){
-								        $answer_string .= $answer[1] . $list_unit[0];
+								        $answer_string .= $answer[0] . $list_unit[0];
 								        if($list_unit[1]){
-								            $answer_string .= ' ' . $answer[2] . $list_unit[1];
-							        }
-							        if($answer[0]){
-							            $answer_string .= ':' . $answer[0];
-							        }
-							    }else{
-                                    $answer_string .= $answer[0];
-                                }
+								            $answer_string .= ' ' . $answer[1] . $list_unit[1];
+							            }
+    							    }
 								    echo $answer_string;
 								}
 						        elseif($question['answer'][$answer] == ""){

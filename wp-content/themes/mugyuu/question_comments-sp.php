@@ -220,13 +220,19 @@
                             ?>
                             <li>
                                 <h3><?=$question['question'].$star?></h3>
-                                <input name="answer[<?=$qkey?>][textbox][]" type="text" placeholder="回答を入力してください" <?=($question['answer'][0])?'':$required?>>
+                                <input <?= $required?> name="answer[<?=$qkey?>][textbox]" type="text" placeholder="回答を入力してください" >
+                            </li>
+                            <?php
+                        }elseif($question['type'] == 'unit'){
+                            ?>
+                            <li>
+                                <h3><?=$question['question'].$star?></h3>
                                 <?php if($question['answer'][0]){?>
                                     <div class="answer_unit">
                                     <?php foreach ($question['answer'] as $anskey => $ansval) {
                                         ?>
                                             <?php if($ansval){?>
-                                            	<label><input <?=$required?> name="answer[<?=$qkey?>][textbox][]" type="number" placeholder="<?=$ansval?>" ><?=$ansval?></label>
+                                            	<label><input <?=$required?> name="answer[<?=$qkey?>][unit][]" type="number" min="0" placeholder="<?=$ansval?>" ><?=$ansval?></label>
                                             <?php
                                             } ?>
                                         <?php

@@ -2756,19 +2756,14 @@ function question_comment($comment, $args, $depth) {
                                     if($queskey == $vsort){
                                         echo "<li>".($ksort+1).'. ';
                                         foreach ($answer as $key_ans => $las_ans) {
-                                            if(is_array($las_ans) && $key_ans == 'textbox'){
+                                            if(is_array($las_ans) && $key_ans == 'unit'){
                                                 $list_unit = $questions[key($questions)][$queskey]['answer'];
                                                 $answer_string = '';
                                                 if($list_unit[0]){
-                                                    $answer_string .= $las_ans[1] . $list_unit[0];
+                                                    $answer_string .= $las_ans[0] . $list_unit[0];
                                                     if($list_unit[1]){
-                                                        $answer_string .= ' ' . $las_ans[2] . $list_unit[1];
+                                                        $answer_string .= ' ' . $las_ans[1] . $list_unit[1];
                                                     }
-                                                    if($las_ans[0]){
-                                                        $answer_string .= ': ' . $las_ans[0];
-                                                    }
-                                                }else{
-                                                    $answer_string .= $las_ans[0];
                                                 }
                                                 ?>
                                                 	<label><?= $answer_string; ?></label>
