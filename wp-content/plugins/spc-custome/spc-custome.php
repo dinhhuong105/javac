@@ -63,6 +63,7 @@ add_action( 'init', 'spc_questionaire' );
 */
 function change_post_menu_label() {
   global $submenu;
+
   // echo "<pre>";print_r($submenu);echo "</pre>"; //Print menus and find out the index of your custom post type menu from it.
   $submenu['edit.php?post_type=question_post'][5][0] = 'アンケート一覧'; // Replace the 27 with your custom post type menu index from displayed above $menu array 
   $submenu['edit.php?post_type=question_post'][10][0] = 'アンケート作成'; 
