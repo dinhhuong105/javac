@@ -2715,12 +2715,30 @@ function question_comment($comment, $args, $depth) {
                 <?php if($user_profile):?>
                 <div class="user_comment_info">
                 	<h3>よくある質問</h3>
-                		<div class="<?= ($user_profile['baby_sex']=='male')? 'user_comment_info_boy': ''?><?= ($user_profile['baby_sex']=='female')? 'user_comment_info_girl': ''?>">
+                		<div class="<?php if($user_profile['baby_sex']=='male'){ 
+                                              echo 'user_comment_info_boy';
+                		                  }elseif($user_profile['baby_sex']=='female'){
+                                              echo 'user_comment_info_girl';
+                                          }
+                                    ?>">
                 			<p>子供の年齢</p>
                 			<label><?= $user_profile['baby_year']?>歳<?= $user_profile['baby_month']?>ヶ月</label>
                 		</div>
-                		<div class="<?= ($user_profile['parent']=='mother')? 'user_comment_info_mother': ''?> <?= ($user_profile['parent']=='father')? 'user_comment_info_father': ''?>">
-                			<p><?= ($user_profile['parent']=='mother')? '母親の年齢': ''?> <?= ($user_profile['parent']=='father')? '父親の年齢': ''?></p>
+                		<div class="<?php if($user_profile['parent']=='mother'){
+                                		    echo 'user_comment_info_mother';
+                                		}elseif($user_profile['parent']=='father'){
+                                		    echo 'user_comment_info_father';
+                                		}
+                		            ?>">
+                			<p><?php if($user_profile['parent']=='mother'){
+                        			    echo '母親の年齢';
+                        			}elseif($user_profile['parent']=='father'){
+                        			    echo '父親の年齢';
+                                    }else{
+                                    echo '回答する人';
+                                    }
+                                ?>
+                            </p>
                 			<label><?= $user_profile['parent_age']?>歳</label>
                 		</div>
                 </div>
