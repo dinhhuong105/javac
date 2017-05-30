@@ -135,10 +135,10 @@
                     	<li class="user_baby_age">
                     		<p>お子さんの年齢</p>
                     		<label>
-                    			<input type="number" name="profile[baby_year]" required>歳
+                    			<input type="number" name="profile[baby_year]" required min="0" max="20">歳
                     		</label>
                     		<label>
-                    			<input type="number" name="profile[baby_month]" required>ヶ月
+                    			<input type="number" name="profile[baby_month]" required min="0" max="11">ヶ月
                     		</label>
                     	</li>
                     	<?php endif; ?>
@@ -157,7 +157,7 @@
                     	<li class="user_parent_age">
                     		<p>回答する人の年齢</p>
                     		<label>
-                    			<input type="number" name="profile[parent_age]" required>歳
+                    			<input type="number" name="profile[parent_age]" required min="0" max="99">歳
                     		</label>
                     	</li>
                     	<?php endif; ?>
