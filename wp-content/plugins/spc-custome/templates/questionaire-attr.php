@@ -1,8 +1,22 @@
 <?php 
 	$_question_description = get_post_meta($post->ID, '_question_description', TRUE);
 	$_limited_answer = get_metadata('post', $post->ID, '_limited_answer');
+	$profile_require = get_post_meta($post->ID, '_question_profile_require', TRUE);
 	$post_metas = get_metadata('post', $post->ID, '_question_type');
 	$GLOBALS['post_metas'] = $post_metas[0];
+	
+	$unit1 = get_option('spc_options')['list_unit1'];
+	if($unit1){
+	   $list_unit1 = @explode(',', $unit1);
+	}else{
+	    $list_unit1 = array();
+	}
+	$unit2 = get_option('spc_options')['list_unit2'];
+	if($unit2){
+	   $list_unit2 = @explode(',', $unit2);
+	}else{
+	    $list_unit2 = array();
+	}
 
 	$count_comment = wp_count_comments($post->ID);
 ?>
@@ -69,7 +83,11 @@
 
 </style>
 <div class="row">
-	<label> コメント説明欄 :  <input type="text" name="ques_description" value="<?=$_question_description?>" style="width: 70%"></label>
+	<p>よくある質問</p>
+	<label><input type="checkbox" name="pro_require[baby_sex]" <?= ($profile_require && $profile_require['baby_sex'])? 'checked':''?>>お子さんの性別  </label><br>
+	<label><input type="checkbox" name="pro_require[baby_age]" <?= ($profile_require && $profile_require['baby_age'])? 'checked':''?>>お子さんの年齢  </label><br>
+	<label><input type="checkbox" name="pro_require[parent_sex]" <?= ($profile_require && $profile_require['parent_sex'])? 'checked':''?>>回答する人  </label><br>
+	<label><input type="checkbox" name="pro_require[parent_age]" <?= ($profile_require && $profile_require['parent_age'])? 'checked':''?>>回答する人の年齢 </label>
 </div>
 <hr>
 <div id="frm_question" class="meta-box-sortables ui-sortable">
@@ -161,6 +179,23 @@
 						echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
 						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><label> 必須 :  <input type="checkbox" name="question['. $key .']['. $id .'][required]" '.$check.' ></label><br/>';
+						$unit = '';
+						$unit .= '<select class="option1_enable" name="question['. $key .']['. $id .'][answer][0]">';
+						$unit .= '<option value="">単位１</option>';
+						foreach($list_unit1 as $unit_value){
+						    $is_selected = ($unit_value == $meta['answer'][0])?'selected':'';
+						    $unit .= '<option value="'.$unit_value.'"'.$is_selected.'>'.$unit_value.'</option>';
+						}
+						$unit .= '</select>';
+						$is_disable = ($meta['answer'][0])?'':'disabled';
+						$unit .= '<select ' . $is_disable . ' name="question['. $key .']['. $id .'][answer][1]">';
+						$unit .= '<option value="">単位２</option>';
+						foreach($list_unit2 as $unit_value){
+						    $is_selected = ($unit_value == $meta['answer'][1])?'selected':'';
+						    $unit .= '<option ' . $is_disable .' value="'.$unit_value.'"'.$is_selected.'>'.$unit_value.'</option>';
+						}
+						$unit .= '</select>';
+						echo $unit;
 						echo '</div></li>';
 					}elseif($meta['type'] == 'textarea'){
 						echo '<li class="ui-state-default">';
@@ -199,6 +234,10 @@
 <input type="number" name="no_of_item" value="2" placeholder="（項目数）">
 <button class="btn_create">作成</button>
 <hr>
+<div class="row">
+	<label> コメント説明欄 :  <input type="text" name="ques_description" value="<?=$_question_description?>" style="width: 70%"></label>
+</div>
+<hr>
 <label for="limited_answer">リミット回答数 ></label>
 <input type="number" name="limited_answer" id="limited_answer" value="<?php echo $_limited_answer[0]; ?>" placeholder="回答数を入力"><label> 件</label>
 <?php 
@@ -207,6 +246,17 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
 var post_id = <?=$post->ID?>;
+var list_unit1 = <?php echo json_encode(get_option('spc_options')['list_unit1']); ?>;
+var arr_unit1 = [];
+if(list_unit1){
+	arr_unit1 = list_unit1.split(',');
+}
+var list_unit2 = <?php echo json_encode(get_option('spc_options')['list_unit2']); ?>;
+var arr_unit2 = [];
+if(list_unit2){
+	arr_unit2 = list_unit2.split(',');
+}
+
 jQuery(document).ready(function($){
 	var id_frm = $.now();
 	var count_comment = <?=$count_comment->all?>;
@@ -232,6 +282,7 @@ jQuery(document).ready(function($){
 			str += pulldown( id,number_question );
 		}else if( selected == 'textbox'){
 			btnAdd = '';
+			str += textbox(id,number_question);
 		}else if( selected == 'textarea'){
 			btnAdd = '';
 		}else{
@@ -332,6 +383,15 @@ jQuery(document).on('click', '.btn_trash', function($){
 		if(res) jQuery(this).closest('li').remove();
 		
 });
+jQuery(document).on("change", 'select.option1_enable',function(e){
+	var target = jQuery(this);
+	if(!target.val()){
+		target.next().val('');
+		target.next().prop("disabled", true);
+	}else{
+		target.next().prop("disabled", false);
+	}
+});
 
 function question_input($id,$multi = 1){
 	var $str = '';
@@ -370,7 +430,20 @@ function pulldown($id, $multi, $customID = null){
 }
 
 function textbox($id, $multi = 1){
-	return;
+	var textbox_html = '';
+	textbox_html += '<select class="option1_enable" name="question['+ post_id +']['+ $id +'][answer][]">';
+	textbox_html += '<option value="">単位１</option>';
+	for(var j in arr_unit1){
+		textbox_html += '<option value="'+arr_unit1[j]+'">'+arr_unit1[j]+'</option>';
+	}
+	textbox_html += '</select>';
+	textbox_html += '<select disabled name="question['+ post_id +']['+ $id +'][answer][]">';
+	textbox_html += '<option value="">単位２</option>';
+	for(var j in arr_unit2){
+		textbox_html += '<option value="'+arr_unit2[j]+'">'+arr_unit2[j]+'</option>';
+	}
+	textbox_html += '</select>';
+	return textbox_html;
 }
 
 function textarea($id, $multi = 1){

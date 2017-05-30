@@ -1,26 +1,15 @@
 <style type="text/css">
-    .answerList label.check:before{
-        content: "✓";
-    }
-    .qaSingle .commentFormArea:before{
-        top: 0!important;
-    }
-    .editFrom input{
+    .editFrom input,
+    .user_pro input
+    {
         width: auto!important; 
         height: auto!important;
-    }
-    .btnDisable{
-        color:#fff!important;
-        border-color: #ccc!important;
-        background-color: #ccc!important;
-    }
-    .qaSingle .commentFormArea form ul li .textArea .imgBtn input{
-        font-size: inherit!important;
     }
 </style>
 <?php 
     $limited = get_post_meta( $post->ID, '_limited_answer', true );
     $questions = get_post_meta( $post->ID, '_question_type', true );
+    $profile_require = get_post_meta($post->ID, '_question_profile_require', TRUE);
     $GLOBALS['questions'] = $questions; 
     $count_comment = wp_count_comments($post->ID);
 
@@ -127,6 +116,54 @@
         <p class="notes"><sup class="red">※</sup>は必須項目になります。</p>
         <form action="" id="formComment" method="POST">
             <ul class="answerList">
+                <?php if($profile_require): ?>
+                <li class="user_pro">
+                    <h3>よくある質問</h3>
+                    <ul>
+                    	<?php if($profile_require['baby_sex']): ?>
+                    	<li class="baby_sex">
+                    		<p class="radio_h4">お子さんの性別</p>
+                    		<label>
+                    			<input type="radio" value="male" name="profile[baby_sex]" required>男の子
+                    		</label>
+                    		<label>
+                    			<input type="radio" value="female" name="profile[baby_sex]" required>女の子
+                    		</label>
+                    	</li>
+                    	<?php endif; ?>
+                    	<?php if($profile_require['baby_age']): ?>
+                    	<li class="user_baby_age">
+                    		<p>お子さんの年齢</p>
+                    		<label>
+                    			<input type="number" name="profile[baby_year]" required min="0" max="20">歳
+                    		</label>
+                    		<label>
+                    			<input type="number" name="profile[baby_month]" required min="0" max="11">ヶ月
+                    		</label>
+                    	</li>
+                    	<?php endif; ?>
+                    	<?php if($profile_require['parent_sex']): ?>
+                    	<li class="user_parent">
+                    		<p class="radio_h4">回答する人</p>
+                    		<label>
+                    			<input type="radio" value="mother" name="profile[parent]" required>ママ
+                    		</label>
+                    		<label>
+                    			<input type="radio" value="father" name="profile[parent]" required>パパ
+                    		</label>
+                    	</li>
+                    	<?php endif; ?>
+                    	<?php if($profile_require['parent_age']): ?>
+                    	<li class="user_parent_age">
+                    		<p>回答する人の年齢</p>
+                    		<label>
+                    			<input type="number" name="profile[parent_age]" required min="0" max="99">歳
+                    		</label>
+                    	</li>
+                    	<?php endif; ?>
+                    </ul>
+                </li>
+                <?php endif; ?>
                 <li>
                     <h3>ニックネーム<span class="red">※</span></h3>
                     <input type="text" name="name" required placeholder="ニックネームを入力してください">
@@ -169,7 +206,7 @@
                             <li class="editFrom">
                                 <h3><?=$question['question'].$star?></h3>
                                 <label for="select" class="selectArea">
-                                    <select name="answer[<?=$qkey?>][]" id="select" <?=$required?> class="selectArea">
+                                    <select name="answer[<?=$qkey?>][]" <?=$required?> class="selectArea">
                                     <?php foreach ($question['answer'] as $anskey => $ansval) {
                                         ?>
                                         <option value="<?=$anskey?>"><?=$ansval?></option>
@@ -183,7 +220,20 @@
                             ?>
                             <li>
                                 <h3><?=$question['question'].$star?></h3>
-                                <input name="answer[<?=$qkey?>][textbox]" type="text" placeholder="回答を入力してください" <?=$required?>>
+                                <input name="answer[<?=$qkey?>][textbox][]" type="text" placeholder="回答を入力してください" <?=($question['answer'][0])?'':$required?>>
+                                <?php if($question['answer'][0]){?>
+                                    <div class="answer_unit">
+                                    <?php foreach ($question['answer'] as $anskey => $ansval) {
+                                        ?>
+                                            <?php if($ansval){?>
+                                            	<label><input <?=$required?> name="answer[<?=$qkey?>][textbox][]" type="number" placeholder="<?=$ansval?>" ><?=$ansval?></label>
+                                            <?php
+                                            } ?>
+                                        <?php
+                                    } ?>
+                                    </div>
+                                <?php
+                                } ?>
                             </li>
                             <?php
                         }elseif($question['type'] == 'textarea'){

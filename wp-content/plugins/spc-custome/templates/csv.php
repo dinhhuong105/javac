@@ -58,18 +58,38 @@ foreach ($comment_metas as $key => $answ) {
 	}
 }
 $report_ans = array();
+$post_metas = get_post_meta($_GET['post'],'_question_type', TRUE);
 foreach ($question as $key => $value) {
 	$_ans = array();
 	foreach ($value as $v) {
 		// if()
 		foreach ($v as $type => $id_ans) {
-			array_push($_ans,$id_ans);
+			if($type === 'textbox'){
+		        $list_unit = $post_metas[key($post_metas)][$key]['answer'];
+		        
+                $answer_string = '';
+                if($list_unit[0]){
+                    $answer_string .= $id_ans[1] . $list_unit[0];
+                    if($list_unit[1]){
+                        $answer_string .= ' ' . $id_ans[2] . $list_unit[1];
+                    }
+                    if($id_ans[0]){
+                        $answer_string .= ':' . $id_ans[0];
+                    }
+                }else{
+                    $answer_string .= $id_ans[0];
+                }
+                
+		        array_push($_ans,$answer_string);
+		    }else
+		      array_push($_ans,$id_ans);
 		}
 		
 	}
+	
 	$report_ans[$key] = array_count_values($_ans);
 }
-$post_metas = get_post_meta($_GET['post'],'_question_type', TRUE);
+
 $csv = array();
  foreach ($post_metas[$_GET['post']] as $key => $value){
 	$csv[$key]['設問 '.($key+1).'.'] = $value['question'];

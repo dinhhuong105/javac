@@ -2675,6 +2675,7 @@ function add_comment_on_questions($post_id) {
         if(($count_comment->approved < $limited && $limited > 0) || empty($limited)){
             $comment_id = wp_insert_comment($data);
             add_comment_meta( $comment_id, '_question_comment', $_POST['answer'] );
+            add_comment_meta( $comment_id, '_question_comment_profile', $_POST['profile'] );
         }
         wp_redirect( get_post_permalink($post_id) );
         exit;
@@ -2682,8 +2683,9 @@ function add_comment_on_questions($post_id) {
 }
 
 function question_comment($comment, $args, $depth) {
-    $GLOBALS['comment'] = $comment; 
+    $GLOBALS['comment'] = $comment;
     global $questions;
+    $user_profile = get_comment_meta($comment->comment_ID,'_question_comment_profile',true);
     ?>
         <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
             <div id="comment-<?php comment_ID(); ?>" class="commentData">
@@ -2710,6 +2712,37 @@ function question_comment($comment, $args, $depth) {
                         </div>
                     </div>
                 <?php endif; ?>
+                <?php if($user_profile):?>
+                <div class="user_comment_info">
+                	<h3>よくある質問</h3>
+                		<div class="<?php if($user_profile['baby_sex']=='male'){ 
+                                              echo 'user_comment_info_boy';
+                		                  }elseif($user_profile['baby_sex']=='female'){
+                                              echo 'user_comment_info_girl';
+                                          }
+                                    ?>">
+                			<p>子供の年齢</p>
+                			<label><?= $user_profile['baby_year']?>歳<?= $user_profile['baby_month']?>ヶ月</label>
+                		</div>
+                		<div class="<?php if($user_profile['parent']=='mother'){
+                                		    echo 'user_comment_info_mother';
+                                		}elseif($user_profile['parent']=='father'){
+                                		    echo 'user_comment_info_father';
+                                		}
+                		            ?>">
+                			<p><?php if($user_profile['parent']=='mother'){
+                        			    echo '母親の年齢';
+                        			}elseif($user_profile['parent']=='father'){
+                        			    echo '父親の年齢';
+                                    }else{
+                                    echo '回答する人';
+                                    }
+                                ?>
+                            </p>
+                			<label><?= $user_profile['parent_age']?>歳</label>
+                		</div>
+                </div>
+                <?php endif; ?>
             </div>
             <div class="userCommentArea answerArea">
                 <ul class="answerList">
@@ -2717,17 +2750,34 @@ function question_comment($comment, $args, $depth) {
                         $_sort_question = get_post_meta($comment->comment_post_ID,'_sort_question',true);
                         $answers = get_comment_meta($comment->comment_ID,'_question_comment',true);
                         $GLOBALS['answers'] = $answers; 
-                        $stt=1;
                         if($answers){
-                            // echo "<pre>";print_r($_sort_question);echo "</pre>";
                             foreach ($_sort_question as $ksort => $vsort) {
                                 foreach ($answers as $queskey => $answer) {
                                     if($queskey == $vsort){
-                                        echo "<li>".($stt++).'. ';
-                                        foreach ($answer as $las_ans) {
+                                        echo "<li>".($ksort+1).'. ';
+                                        foreach ($answer as $key_ans => $las_ans) {
+                                            if(is_array($las_ans) && $key_ans == 'textbox'){
+                                                $list_unit = $questions[key($questions)][$queskey]['answer'];
+                                                $answer_string = '';
+                                                if($list_unit[0]){
+                                                    $answer_string .= $las_ans[1] . $list_unit[0];
+                                                    if($list_unit[1]){
+                                                        $answer_string .= ' ' . $las_ans[2] . $list_unit[1];
+                                                    }
+                                                    if($las_ans[0]){
+                                                        $answer_string .= ': ' . $las_ans[0];
+                                                    }
+                                                }else{
+                                                    $answer_string .= $las_ans[0];
+                                                }
+                                                ?>
+                                                	<label><?= $answer_string; ?></label>
+                                                <?php
+                                            }else{
                                             ?>
-                                            <label class="<?=(count($answer)>1)?'check':''?>"><?=($questions[key($questions)][$queskey]['answer'][$las_ans] != '')?$questions[key($questions)][$queskey]['answer'][$las_ans]:$las_ans ?></label>
+                                            	<label class="<?=(count($answer)>1)?'check':''?>"><?=($questions[key($questions)][$queskey]['answer'][$las_ans] != '')?$questions[key($questions)][$queskey]['answer'][$las_ans]:$las_ans ?></label>
                                             <?php
+                                            }
                                         }
                                     }
                                 }

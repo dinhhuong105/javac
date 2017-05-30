@@ -102,9 +102,13 @@ function questionaire_attr( $post )
 if(isset($_POST)){
   function questionaire_attr_save( $post_id )
   {
-      //Description form questionnair
+      //Description form questionnaire
       $ques_description =   $_POST['ques_description']  ;
       update_post_meta( $post_id, '_question_description', $ques_description );
+      
+      //List require profile of user comment
+      $pro_require =   $_POST['pro_require']  ;
+      update_post_meta( $post_id, '_question_profile_require', $pro_require );
 
       $question =   $_POST['question'];
       update_post_meta( $post_id, '_question_type', $question );
