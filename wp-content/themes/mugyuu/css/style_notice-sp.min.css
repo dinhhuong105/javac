@@ -3439,9 +3439,11 @@ section.confirm{
 }
 .answerList .user_pro ul{
     display: inline-flex;
+    width: 100%;
+    padding-right: 30px;
 }
 .answerList .user_pro .user_baby_age{
-	width: 45% !important;
+	width: 60% !important;
 	float: left;
 }
 .answerList .user_pro .user_baby_age label{
