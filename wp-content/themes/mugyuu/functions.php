@@ -2720,7 +2720,6 @@ function question_comment($comment, $args, $depth) {
                                           echo 'user_comment_info_girl';
                                       }
                                 ?>">
-            			<p>子供の年齢</p>
             			<label><?= $user_profile['baby_year']?>歳<?= $user_profile['baby_month']?>ヶ月</label>
             		</div>
             		<div class="<?php if($user_profile['parent']=='mother'){
@@ -2729,15 +2728,6 @@ function question_comment($comment, $args, $depth) {
                             		    echo 'user_comment_info_father';
                             		}
             		            ?>">
-            			<p><?php if($user_profile['parent']=='mother'){
-                    			    echo '母親の年齢';
-                    			}elseif($user_profile['parent']=='father'){
-                    			    echo '父親の年齢';
-                                }else{
-                                echo '回答する人';
-                                }
-                            ?>
-                        </p>
             			<label><?= $user_profile['parent_age']?>歳</label>
             		</div>
                 </div>
