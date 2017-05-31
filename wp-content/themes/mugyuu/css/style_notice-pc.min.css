@@ -4549,7 +4549,7 @@ section.confirm{
 .commentList .user_comment_info div.user_comment_info_boy:before{
     content: "\e905";
     position: absolute;
-    top: 80px;
+    top: 55px;
     left: 40px;
     font-family: "icomoon";
     font-size: 3rem;
@@ -4557,7 +4557,7 @@ section.confirm{
 .commentList .user_comment_info div.user_comment_info_girl:before{
     content: "\e901";
     position: absolute;
-    top: 80px;
+    top: 55px;
     left: 40px;
     font-family: "icomoon-kaze";
     font-size: 3.2rem;
@@ -4565,7 +4565,7 @@ section.confirm{
 .commentList .user_comment_info div.user_comment_info_mother:before{
     content: "\e908";
     position: absolute;
-    top: 75px;
+    top: 50px;
     left: 210px;
     font-family: "icomoon";
     font-size: 3.5rem;
@@ -4573,7 +4573,7 @@ section.confirm{
 .commentList .user_comment_info div.user_comment_info_father:before{
     content: "\e900";
     position: absolute;
-    top: 77px;
+    top: 55px;
     left: 210px;
     font-family: "icomoon-kaze";
     font-size: 3.2rem;
