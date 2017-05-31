@@ -251,7 +251,7 @@
                             ?>
                             <li>
                                 <h3><?=$question['question'].$star?></h3>
-                                <textarea <?=$required?> name="answer[<?=$qkey?>][textarea]" placeholder="回答を入力してください"></textarea>
+                                <textarea <?=$required?> name="answer[<?=$qkey?>][textarea]" placeholder="回答を入力してください" style="resize: vertical;"></textarea>
                             </li>
                             <?php
                         }
