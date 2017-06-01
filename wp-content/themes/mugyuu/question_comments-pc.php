@@ -125,6 +125,10 @@
         </div>
         <form action="" id="formComment" method="POST">
             <ul class="answerInpotList" >
+                <li>
+                    <h3>ニックネーム<span class="red">※</span></h3>
+                    <input required type="text" name="name" placeholder="ニックネームを入力してください">
+                </li>
                 <?php if($profile_require): ?>
                 <li class="user_pro">
                     <h3>よくある質問</h3>
@@ -173,10 +177,7 @@
                     </ul>
                 </li>
                 <?php endif; ?>
-                <li>
-                    <h3>ニックネーム<span class="red">※</span></h3>
-                    <input required type="text" name="name" placeholder="ニックネームを入力してください">
-                </li>
+                
                 <?php 
                 if($questions[$post->ID]){
                     foreach ($questions[$post->ID] as $qkey => $question) {

@@ -122,7 +122,11 @@
                 <li class="user_pro">
                     <h3>よくある質問</h3>
                     <ul>
-                    	<?php if($profile_require['baby_sex']): ?>
+                    	<li>
+                            <h3>ニックネーム<span class="red">※</span></h3>
+                            <input type="text" name="name" required placeholder="ニックネームを入力してください">
+                        </li>
+                        <?php if($profile_require['baby_sex']): ?>
                     	<li class="baby_sex">
                     		<p class="radio_h4">お子さんの性別</p>
                     		<label>
@@ -166,10 +170,7 @@
                     </ul>
                 </li>
                 <?php endif; ?>
-                <li>
-                    <h3>ニックネーム<span class="red">※</span></h3>
-                    <input type="text" name="name" required placeholder="ニックネームを入力してください">
-                </li>
+                
                 <?php 
                 if($questions[$post->ID]){
                     foreach ($questions[$post->ID] as $qkey => $question) {
