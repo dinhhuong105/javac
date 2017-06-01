@@ -2714,7 +2714,7 @@ function question_comment($comment, $args, $depth) {
                 <?php endif; ?>
                 <?php if($user_profile):?>
                 <div class="user_comment_info">
-            		<div class="<?php if($user_profile['baby_sex']=='male'){ 
+            		<div class="user-comment-info <?php echo $user_profile['baby_sex']; ?> <?php if($user_profile['baby_sex']=='male'){ 
                                           echo 'user_comment_info_boy';
             		                  }elseif($user_profile['baby_sex']=='female'){
                                           echo 'user_comment_info_girl';
@@ -2722,7 +2722,7 @@ function question_comment($comment, $args, $depth) {
                                 ?>">
             			<label><?= $user_profile['baby_year']?>歳<?= $user_profile['baby_month']?>ヶ月</label>
             		</div>
-            		<div class="<?php if($user_profile['parent']=='mother'){
+            		<div class="user-comment-info <?php echo $user_profile['parent']; ?> <?php if($user_profile['parent']=='mother'){
                             		    echo 'user_comment_info_mother';
                             		}elseif($user_profile['parent']=='father'){
                             		    echo 'user_comment_info_father';

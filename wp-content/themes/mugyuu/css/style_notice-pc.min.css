@@ -4546,46 +4546,54 @@ section.confirm{
 }
 .commentList div.user_comment_info h3{
 	margin-bottom: 5px;
+    min-height: 30px;
+}
+.commentList div.user_comment_info .user-comment-info {
+    position: relative;
 }
 .commentList .user_comment_info div.user_comment_info_boy:before{
     content: "\e905";
     position: absolute;
-    top: 45px;
-    left: 40px;
+    top: -4px;
+    left: 5px;
     font-family: "icomoon";
     font-size: 3rem;
 }
 .commentList .user_comment_info div.user_comment_info_girl:before{
     content: "\e901";
     position: absolute;
-    top: 45px;
-    left: 40px;
+    top: -4px;
+    left: 5px;
     font-family: "icomoon-kaze";
     font-size: 3.2rem;
 }
 .commentList .user_comment_info div.user_comment_info_mother:before{
     content: "\e908";
     position: absolute;
-    top: 40px;
-    left: 200px;
+    top: -7px;
+    left: 5px;
     font-family: "icomoon";
     font-size: 3.5rem;
 }
 .commentList .user_comment_info div.user_comment_info_father:before{
     content: "\e900";
     position: absolute;
-    top: 45px;
-    left: 200px;
+    top: -4px;
+    left: 5px;
     font-family: "icomoon-kaze";
     font-size: 3.2rem;
 }
 .commentList .user_comment_info div.user-comment-info.style:before{
     content: "\e902";
     position: absolute;
-    top: 45px;
-    left: 200px;
+    top: -4px;
+    left: 5px;
     font-family: "icomoon-kaze";
-    font-size: 3.2rem;
+    font-size: 3rem;
+}
+
+.commentList .user_comment_info div.user-comment-info.style {
+    padding-left: 35px;
 }
 .commentList div.user_comment_info div{
 	padding: 5px 45px;

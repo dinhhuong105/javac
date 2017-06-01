@@ -185,7 +185,7 @@
                                 <li class="user_parent_age">
                                     <p><?php echo esc_attr__('回答する人のタイプ', 'huongdinh'); ?></p>
                                     <label class="selectArea">
-                                        <select name="profile[style]" class="selectbox">
+                                        <select name="profile[style]" class="selectbox" required>
                                             <option value="">単位</option>
                                             <?php foreach ($list_tyles as $style) : ?>
                                                 <option value="<?php echo $style; ?>"><?php echo $style; ?></option>                                                
