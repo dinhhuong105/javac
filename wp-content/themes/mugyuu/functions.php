@@ -2730,6 +2730,13 @@ function question_comment($comment, $args, $depth) {
             		            ?>">
             			<label><?= $user_profile['parent_age']?>歳</label>
             		</div>
+
+                    <?php if ($user_profile['style']) : ?>
+                        <div class="user-comment-info style">
+                            <label><?php echo $user_profile['style']; ?></label>
+                        </div>
+                    <?php endif;?>
+
                 </div>
                 <?php endif; ?>
             </div>

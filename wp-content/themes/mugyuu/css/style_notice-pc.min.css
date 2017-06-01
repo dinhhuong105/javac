@@ -3323,7 +3323,7 @@ footer .copy small {
     vertical-align: text-top
 }
 .mainWrap.single.qa .mainArea .commentFormArea form ul li {
-    margin-bottom: 30px
+    margin-bottom: 30px;
 }
 .mainWrap.single.qa .mainArea .commentFormArea form ul li h3 {
     margin-bottom: 5px
@@ -4579,8 +4579,23 @@ section.confirm{
     font-family: "icomoon-kaze";
     font-size: 3.2rem;
 }
+.commentList .user_comment_info div.user-comment-info.style:before{
+    content: "\e902";
+    position: absolute;
+    top: 45px;
+    left: 200px;
+    font-family: "icomoon-kaze";
+    font-size: 3.2rem;
+}
 .commentList div.user_comment_info div{
 	padding: 5px 45px;
 	float: left;
 }
+.mainWrap.single.qa .mainArea .commentFormArea form ul li.user_pro .list-option-profile ul {
+    width: 100%;
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li.user_pro .list-option-profile li {
+    margin-bottom: 15px;
+}
+
 /*Questionnaire Comment*/
