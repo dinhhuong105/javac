@@ -4570,7 +4570,7 @@ section.confirm{
 .commentList .user_comment_info div.user_comment_info_mother:before{
     content: "\e908";
     position: absolute;
-    top: -7px;
+    top: -9px;
     left: 5px;
     font-family: "icomoon";
     font-size: 3.5rem;

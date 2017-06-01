@@ -246,7 +246,7 @@
 	<option value="pulldown">プルダウン</option>
 	<option value="textbox">テキストボックス</option>
 	<option value="textarea">テキストエリア</option>
-	<option value="unit">単位</option>
+	<option value="unit">単位のみ</option>
 </select>
 <input type="number" name="no_of_item" value="2" placeholder="（項目数）">
 <button class="btn_create">作成</button>
