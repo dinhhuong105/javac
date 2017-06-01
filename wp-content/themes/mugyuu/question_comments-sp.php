@@ -8,15 +8,17 @@
 </style>
 <?php 
     $limited = get_post_meta( $post->ID, '_limited_answer', true );
+    $unpublish = get_post_meta( $post->ID, '_unpublish_answer', true );
     $questions = get_post_meta( $post->ID, '_question_type', true );
     $profile_require = get_post_meta($post->ID, '_question_profile_require', TRUE);
     $GLOBALS['questions'] = $questions; 
     $count_comment = wp_count_comments($post->ID);
 
     //check avalible for button submit comment form
-    $boolAvalible = false;
-    if( ($count_comment->approved < $limited && $limited > 0) || empty($limited) ){
-        $boolAvalible = true;
+    if (isset($unpublish) && $unpublish == false) {
+        if( ($count_comment->approved < $limited && $limited > 0) || (strlen($limited) < 1) ){
+            $boolAvalible = true;
+        }
     }
 ?>
 <section class="commentArea">

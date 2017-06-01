@@ -201,8 +201,8 @@ function test_init(){
 function update_status_limited_comment(){
   if(isset($_POST['post_ID'])){
     $post_id = $_POST['post_ID'];
-    $status = $_POST['status']*-1;
-    $result = update_post_meta( $post_id,'_limited_answer',$status );
+    $status = $_POST['status'];
+    $result = update_post_meta( $post_id,'_unpublish_answer', $status );
     wp_send_json(['success'=>$result,'status'=>$status]);
   }
 }

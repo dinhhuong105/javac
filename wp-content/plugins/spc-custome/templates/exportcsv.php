@@ -56,6 +56,7 @@ foreach ($question as $key => $value) {
 }
 
 $_limited_answer = get_metadata('post', $id, '_limited_answer');
+$_unpublish_answer = get_metadata('post', $id, '_unpublish_answer');
 $csv = array();
 
 $count_comment =  count($comments);
@@ -122,16 +123,16 @@ $count_comment =  count($comments);
 <div class="row postbox" id="revisionsdiv">
 	<div class="btn">
 		<span id="loading"></span>
-		<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?=$_limited_answer[0]?>" 
+		<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?php echo ($_unpublish_answer[0] == 1) ? 0: 1; ?>" 
 		<?php
 		$m = ($_limited_answer[0] < 0 )?$_limited_answer[0]*-1:$_limited_answer[0];
-		if($count_comment < $m || empty($_limited_answer[0])) {
+		if($count_comment < $m || empty($_limited_answer[0]) || $_unpublish_answer == 0) {
 			//show
 		}else{
 			echo 'disabled="disabled"';
 		} ?>
-		><?=($_limited_answer[0] > 0)?'回答受付中':'停止中'?></button>
-		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" ><?=(get_post_status($id) == '公開中')?'公開中':'公開停止'?></button>
+		><?php echo ($_unpublish_answer[0] == 1) ? '回答受付中' : '停止中'; ?></button>
+		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" ><?=(get_post_status($id) == 'publish')?'公開停止':'公開中'?></button>
 	</div>
 <h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>
 <h3 class="header-box"><?=get_the_title( $id );?></h3>
@@ -197,12 +198,15 @@ jQuery(document).ready(function($){
 				'status' : status
 			},
 			success:function(res){
-				if(res['status'] < 0){
-					$button.html('停止中');
-				}else{
+				if(res['status'] == 1){
 					$button.html('回答受付中');
+					status = 0;
+				}else{
+					$button.html('停止中');
+					status = 1;
 				}
-				$button.attr('data-status',res['status']);
+				
+				$button.attr('data-status',status);
 				$button.attr("disabled", false);
 				$button.parent().find('#loading').empty();
 			}
@@ -226,9 +230,9 @@ jQuery(document).ready(function($){
 			},
 			success:function(res){
 				if(res['status'] == 'publish'){
-					$button.html('公開中');
-				}else{
 					$button.html('公開停止');
+				}else{
+					$button.html('公開中');
 				}
 				$button.attr('data-status',res['status']);
 				$button.attr("disabled", false);

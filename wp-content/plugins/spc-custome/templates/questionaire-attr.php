@@ -1,6 +1,7 @@
 <?php 
 	$_question_description = get_post_meta($post->ID, '_question_description', TRUE);
 	$_limited_answer = get_metadata('post', $post->ID, '_limited_answer');
+	$_unpublish_answer = get_metadata('post', $post->ID, '_unpublish_answer');
 	$profile_require = get_post_meta($post->ID, '_question_profile_require', TRUE);
 	$post_metas = get_metadata('post', $post->ID, '_question_type');
 	$GLOBALS['post_metas'] = $post_metas[0];
@@ -254,7 +255,7 @@
 </div>
 <hr>
 <label for="limited_answer">リミット回答数 ></label>
-<input type="number" name="limited_answer" id="limited_answer" value="<?php echo $_limited_answer[0]; ?>" placeholder="回答数を入力"><label> 件</label>
+<input <?php echo ($_unpublish_answer[0]) ? 'disabled="disabled"' : '' ; ?> min="0" type="number" name="limited_answer" id="limited_answer" value="<?php echo $_limited_answer[0]; ?>" placeholder="回答数を入力"><label> 件 <?php echo ($_unpublish_answer[0]) ? ' &nbsp; <strong>(停止中)</strong>' : '' ; ?></label>
 <?php 
 	wp_enqueue_script('jquery'); 
 ?>
