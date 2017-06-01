@@ -2714,33 +2714,22 @@ function question_comment($comment, $args, $depth) {
                 <?php endif; ?>
                 <?php if($user_profile):?>
                 <div class="user_comment_info">
-                	<h3>よくある質問</h3>
-                		<div class="<?php if($user_profile['baby_sex']=='male'){ 
-                                              echo 'user_comment_info_boy';
-                		                  }elseif($user_profile['baby_sex']=='female'){
-                                              echo 'user_comment_info_girl';
-                                          }
-                                    ?>">
-                			<p>子供の年齢</p>
-                			<label><?= $user_profile['baby_year']?>歳<?= $user_profile['baby_month']?>ヶ月</label>
-                		</div>
-                		<div class="<?php if($user_profile['parent']=='mother'){
-                                		    echo 'user_comment_info_mother';
-                                		}elseif($user_profile['parent']=='father'){
-                                		    echo 'user_comment_info_father';
-                                		}
-                		            ?>">
-                			<p><?php if($user_profile['parent']=='mother'){
-                        			    echo '母親の年齢';
-                        			}elseif($user_profile['parent']=='father'){
-                        			    echo '父親の年齢';
-                                    }else{
-                                    echo '回答する人';
-                                    }
-                                ?>
-                            </p>
-                			<label><?= $user_profile['parent_age']?>歳</label>
-                		</div>
+            		<div class="<?php if($user_profile['baby_sex']=='male'){ 
+                                          echo 'user_comment_info_boy';
+            		                  }elseif($user_profile['baby_sex']=='female'){
+                                          echo 'user_comment_info_girl';
+                                      }
+                                ?>">
+            			<label><?= $user_profile['baby_year']?>歳<?= $user_profile['baby_month']?>ヶ月</label>
+            		</div>
+            		<div class="<?php if($user_profile['parent']=='mother'){
+                            		    echo 'user_comment_info_mother';
+                            		}elseif($user_profile['parent']=='father'){
+                            		    echo 'user_comment_info_father';
+                            		}
+            		            ?>">
+            			<label><?= $user_profile['parent_age']?>歳</label>
+            		</div>
                 </div>
                 <?php endif; ?>
             </div>
@@ -2756,19 +2745,14 @@ function question_comment($comment, $args, $depth) {
                                     if($queskey == $vsort){
                                         echo "<li>".($ksort+1).'. ';
                                         foreach ($answer as $key_ans => $las_ans) {
-                                            if(is_array($las_ans) && $key_ans == 'textbox'){
+                                            if(is_array($las_ans) && $key_ans == 'unit'){
                                                 $list_unit = $questions[key($questions)][$queskey]['answer'];
                                                 $answer_string = '';
                                                 if($list_unit[0]){
-                                                    $answer_string .= $las_ans[1] . $list_unit[0];
+                                                    $answer_string .= $las_ans[0] . $list_unit[0];
                                                     if($list_unit[1]){
-                                                        $answer_string .= ' ' . $las_ans[2] . $list_unit[1];
+                                                        $answer_string .= ' ' . $las_ans[1] . $list_unit[1];
                                                     }
-                                                    if($las_ans[0]){
-                                                        $answer_string .= ': ' . $las_ans[0];
-                                                    }
-                                                }else{
-                                                    $answer_string .= $las_ans[0];
                                                 }
                                                 ?>
                                                 	<label><?= $answer_string; ?></label>

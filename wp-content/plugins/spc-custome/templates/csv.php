@@ -64,20 +64,15 @@ foreach ($question as $key => $value) {
 	foreach ($value as $v) {
 		// if()
 		foreach ($v as $type => $id_ans) {
-			if($type === 'textbox'){
+			if($type === 'unit'){
 		        $list_unit = $post_metas[key($post_metas)][$key]['answer'];
 		        
                 $answer_string = '';
                 if($list_unit[0]){
-                    $answer_string .= $id_ans[1] . $list_unit[0];
+                    $answer_string .= $id_ans[0] . $list_unit[0];
                     if($list_unit[1]){
-                        $answer_string .= ' ' . $id_ans[2] . $list_unit[1];
+                        $answer_string .= ' ' . $id_ans[1] . $list_unit[1];
                     }
-                    if($id_ans[0]){
-                        $answer_string .= ':' . $id_ans[0];
-                    }
-                }else{
-                    $answer_string .= $id_ans[0];
                 }
                 
 		        array_push($_ans,$answer_string);

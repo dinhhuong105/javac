@@ -3439,9 +3439,11 @@ section.confirm{
 }
 .answerList .user_pro ul{
     display: inline-flex;
+    width: 100%;
+    padding-right: 30px;
 }
 .answerList .user_pro .user_baby_age{
-	width: 45% !important;
+	width: 60% !important;
 	float: left;
 }
 .answerList .user_pro .user_baby_age label{
@@ -3463,6 +3465,7 @@ section.confirm{
 }
 .commentList div.user_comment_info{
 	margin: 10px 10px;
+	padding-bottom: 10px;
 	float: left;
 	width: 100%;
 	border-bottom: dashed 1px #c9c9c9;
@@ -3473,7 +3476,7 @@ section.confirm{
 .commentList .user_comment_info div.user_comment_info_boy:before{
     content: "\e905";
     position: absolute;
-    top: 64px;
+    top: 30px;
     left: 30px;
     font-family: "icomoon";
     font-size: 3rem;
@@ -3481,7 +3484,7 @@ section.confirm{
 .commentList .user_comment_info div.user_comment_info_girl:before{
     content: "\e901";
     position: absolute;
-    top: 64px;
+    top: 30px;
     left: 30px;
     font-family: "icomoon-kaze";
     font-size: 3.2rem;
@@ -3489,16 +3492,16 @@ section.confirm{
 .commentList .user_comment_info div.user_comment_info_mother:before{
     content: "\e908";
     position: absolute;
-    top: 58px;
-    left: 165px;
+    top: 24px;
+    left: 150px;
     font-family: "icomoon";
-    font-size: 3.5rem;
+    font-size: 3.7rem;
 }
 .commentList .user_comment_info div.user_comment_info_father:before{
     content: "\e900";
     position: absolute;
-    top: 60px;
-    left: 162px;
+    top: 30px;
+    left: 150px;
     font-family: "icomoon-kaze";
     font-size: 3.2rem;
 }
@@ -3506,11 +3509,10 @@ section.confirm{
 	padding: 5px 0px;
 	float: left;
 }
-.commentList div.user_comment_info div.user_comment_info_boy,
-.commentList div.user_comment_info div.user_comment_info_girl
+.commentList div.user_comment_info div
 {
 	margin-left: 45px;
-	margin-right: 60px;
+	margin-right: 15px;
 }
 @media screen and (max-width: 480px){
 	.answerList .user_pro ul{

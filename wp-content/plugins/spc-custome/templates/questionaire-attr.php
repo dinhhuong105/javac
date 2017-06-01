@@ -165,7 +165,7 @@
 							$i++;
 						}
 						echo '</div><a class="btn btn-add" data-id="'. $id .'" data-type="pulldown"><span class="dashicons dashicons-plus"></span></a></li>';
-					}elseif($meta['type'] == 'textbox'){
+					}elseif($meta['type'] == 'unit'){
 						echo '<li class="ui-state-default">';
 						echo '<div class="box-question holddiv" id="ques'.$id.'">
 						<div class="btn-group">
@@ -180,16 +180,15 @@
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
 						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><label> 必須 :  <input type="checkbox" name="question['. $key .']['. $id .'][required]" '.$check.' ></label><br/>';
 						$unit = '';
-						$unit .= '<select class="option1_enable" name="question['. $key .']['. $id .'][answer][0]">';
-						$unit .= '<option value="">単位１</option>';
+						$unit .= '<select required class="option1_enable" name="question['. $key .']['. $id .'][answer][0]">';
+						$unit .= '<option disabled value="">単位</option>';
 						foreach($list_unit1 as $unit_value){
 						    $is_selected = ($unit_value == $meta['answer'][0])?'selected':'';
 						    $unit .= '<option value="'.$unit_value.'"'.$is_selected.'>'.$unit_value.'</option>';
 						}
 						$unit .= '</select>';
-						$is_disable = ($meta['answer'][0])?'':'disabled';
-						$unit .= '<select ' . $is_disable . ' name="question['. $key .']['. $id .'][answer][1]">';
-						$unit .= '<option value="">単位２</option>';
+						$unit .= '<select name="question['. $key .']['. $id .'][answer][1]">';
+						$unit .= '<option value="">単位</option>';
 						foreach($list_unit2 as $unit_value){
 						    $is_selected = ($unit_value == $meta['answer'][1])?'selected':'';
 						    $unit .= '<option ' . $is_disable .' value="'.$unit_value.'"'.$is_selected.'>'.$unit_value.'</option>';
@@ -212,6 +211,21 @@
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
 						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><label> 必須 :  <input type="checkbox" name="question['. $key .']['. $id .'][required]" '.$check.' ></label><br/>';
 						echo '</div></li>';
+					}elseif($meta['type'] == 'textbox'){
+					    echo '<li class="ui-state-default">';
+					    echo '<div class="box-question holddiv" id="ques'.$id.'">
+						<div class="btn-group">
+							<a class="btn_first btn"><span class="dashicons dashicons-arrow-up-alt2"></span></a>
+							<a class="btn_up btn"><span class="dashicons dashicons-arrow-up"></span></a>
+							<a class="btn_trash"><span class="dashicons dashicons-no-alt"></span></a>
+							<a class="btn_down btn"><span class="dashicons dashicons-arrow-down"></span></a>
+							<a class="btn_last btn"><span class="dashicons dashicons-arrow-down-alt2"></span></a>
+							<input type="hidden" name="_sort_question[]" value="'.$id.'"/>
+						</div>';
+					    echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
+					    echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
+					    echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><label> 必須 :  <input type="checkbox" name="question['. $key .']['. $id .'][required]" '.$check.' ></label><br/>';
+					    echo '</div></li>';
 					}
 					
 				}
@@ -230,6 +244,7 @@
 	<option value="pulldown">プルダウン</option>
 	<option value="textbox">テキストボックス</option>
 	<option value="textarea">テキストエリア</option>
+	<option value="unit">単位</option>
 </select>
 <input type="number" name="no_of_item" value="2" placeholder="（項目数）">
 <button class="btn_create">作成</button>
@@ -285,6 +300,9 @@ jQuery(document).ready(function($){
 			str += textbox(id,number_question);
 		}else if( selected == 'textarea'){
 			btnAdd = '';
+		}else if(selected == 'unit'){
+			btnAdd = '';
+			str += unit(id,number_question);
 		}else{
 			return;
 		}
@@ -295,7 +313,7 @@ jQuery(document).ready(function($){
 	});
 
 	$('select[name=question_type]').on('change',function(){
-		if($(this).val() == 'textbox' || $(this).val() == 'textarea'){
+		if($(this).val() == 'textbox' || $(this).val() == 'textarea' || $(this).val() == 'unit'){
 			$('input[name=no_of_item]').attr('disabled','disabled');
 		}else{
 			$('input[name=no_of_item]').removeAttr('disabled');
@@ -429,16 +447,16 @@ function pulldown($id, $multi, $customID = null){
 	return $str;
 }
 
-function textbox($id, $multi = 1){
+function unit($id, $multi = 1){
 	var textbox_html = '';
-	textbox_html += '<select class="option1_enable" name="question['+ post_id +']['+ $id +'][answer][]">';
-	textbox_html += '<option value="">単位１</option>';
+	textbox_html += '<select required class="option1_enable" name="question['+ post_id +']['+ $id +'][answer][]">';
+	textbox_html += '<option disabled value="">単位</option>';
 	for(var j in arr_unit1){
 		textbox_html += '<option value="'+arr_unit1[j]+'">'+arr_unit1[j]+'</option>';
 	}
 	textbox_html += '</select>';
-	textbox_html += '<select disabled name="question['+ post_id +']['+ $id +'][answer][]">';
-	textbox_html += '<option value="">単位２</option>';
+	textbox_html += '<select name="question['+ post_id +']['+ $id +'][answer][]">';
+	textbox_html += '<option value="">単位</option>';
 	for(var j in arr_unit2){
 		textbox_html += '<option value="'+arr_unit2[j]+'">'+arr_unit2[j]+'</option>';
 	}
@@ -448,6 +466,9 @@ function textbox($id, $multi = 1){
 
 function textarea($id, $multi = 1){
 	return '<textarea name="question['+ post_id +']['+ $id +'][answer]['+i+']"></textarea><br>';
+}
+function textbox($id, $multi = 1){
+	return '';
 }
 
 function hidden($type,$id){
