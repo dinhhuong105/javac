@@ -239,10 +239,8 @@ $(function () {
     	var target = $(this);
     	var required = target.attr('required');
     	if(required != 'undefined'){
-    		
 	    	var value_unit = target.val();
 	    	var parent_unit = target.closest( "div.answer_unit" );
-	    	console.log(parent_unit);
 	    	if(value_unit.length>0){
 	    		parent_unit.find('input').prop('required', false);
 	    	}else{
