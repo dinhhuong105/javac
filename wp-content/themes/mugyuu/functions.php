@@ -2714,7 +2714,7 @@ function question_comment($comment, $args, $depth) {
                 <?php endif; ?>
                 <?php if($user_profile):?>
                 <div class="user_comment_info">
-                    <?php if (strlen($user_profile['baby_year']) > 0 || strlen($user_profile['baby_month']) > 0 || strlen($user_profile['baby_sex']) > 0) : ?>
+                    <?php if (isset($user_profile['baby_year']) || isset($user_profile['baby_month']) || isset($user_profile['baby_sex'])) : ?>
             		<div class="user-comment-info <?php echo $user_profile['baby_sex']; ?> <?php if($user_profile['baby_sex']=='male'){ 
                                           echo 'user_comment_info_boy';
             		                  }elseif($user_profile['baby_sex']=='female'){
@@ -2723,19 +2723,18 @@ function question_comment($comment, $args, $depth) {
                                 ?>">
             			<label>
                             <?php 
-                                if (strlen($user_profile['baby_year']) > 0) {
+                                if (isset($user_profile['baby_year'])) {
                                     echo $user_profile['baby_year'] . '歳';
                                 }
 
-                                if (strlen($user_profile['baby_month']) > 0) {
+                                if (isset($user_profile['baby_month'])) {
                                     echo $user_profile['baby_month'] . 'ヶ月';
                                 }
                             ?>
-                            &nbsp;
                         </label>
             		</div>
                     <?php endif;?>
-                    <?php if (strlen($user_profile['parent']) > 0 || strlen($user_profile['parent_age']) > 0) : ?>
+                    <?php if (isset($user_profile['parent']) || isset($user_profile['parent_age'])) : ?>
             		<div class="user-comment-info <?php echo $user_profile['parent']; ?> <?php if($user_profile['parent']=='mother'){
                             		    echo 'user_comment_info_mother';
                             		}elseif($user_profile['parent']=='father'){
@@ -2743,17 +2742,16 @@ function question_comment($comment, $args, $depth) {
                             		}
             		            ?>">
             			<label>
-                        <?php if (strlen($user_profile['parent_age']) > 0) : ?>
+                        <?php if (isset($user_profile['parent_age'])) : ?>
                         <?php echo $user_profile['parent_age']; ?>歳
                         <?php endif;?>
-                        &nbsp;
                         </label>
             		</div>
                     <?php endif;?>
 
-                    <?php if (strlen($user_profile['style']) > 0) : ?>
+                    <?php if (isset($user_profile['style'])) : ?>
                         <div class="user-comment-info style">
-                            <label><?php echo $user_profile['style']; ?>&nbsp;</label>
+                            <label><?php echo $user_profile['style']; ?></label>
                         </div>
                     <?php endif;?>
 
