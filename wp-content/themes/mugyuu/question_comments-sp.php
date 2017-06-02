@@ -174,16 +174,11 @@
                     <div class="list-option-profile">
                         <ul>
                             <?php if ($profile_require['style']) : ?>
-                                <li class="user_parent_age">
-                                    <p><?php echo esc_attr__('回答する人のタイプ', 'huongdinh'); ?></p>
-                                    <label class="selectArea">
-                                        <select name="profile[style]" class="selectbox">
-                                            <option value="">単位</option>
-                                            <?php foreach ($list_tyles as $style) : ?>
-                                                <option value="<?php echo $style; ?>"><?php echo $style; ?></option>                                                
-                                            <?php endforeach;?>
-                                        </select>
-                                    </label>
+                                <li class="user-option-profile-style" style="width: 100%;">
+                                    <p class="radio_h4"><?php echo esc_attr__('あなたのタイプは', 'huongdinh'); ?></p>
+                                    <?php foreach ($list_tyles as $style) : ?>
+                                    <label><input type="radio" name="profile[style]" value="<?php echo $style; ?>" required /><?php echo $style; ?></label>
+                                    <?php endforeach;?>
                                 </li>
                             <?php endif; ?>
                         </ul>

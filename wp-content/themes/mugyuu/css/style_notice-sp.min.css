@@ -3475,7 +3475,6 @@ section.confirm{
 }
 .commentList div.user_comment_info .user-comment-info {
     position: relative;
-    min-height: 30px;
 }
 .commentList .user_comment_info div.user_comment_info_boy:before{
     content: "\e905";
@@ -3551,5 +3550,8 @@ section.confirm{
 	.answerList .user_pro .user_baby_age label {
     	width: 30%;
 	}
+    .commentList div.user_comment_info .user-comment-info {
+        min-height: 30px;
+    }
 }
 /*Questionnaire Comment*/
