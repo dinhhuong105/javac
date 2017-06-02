@@ -2714,7 +2714,7 @@ function question_comment($comment, $args, $depth) {
                 <?php endif; ?>
                 <?php if($user_profile):?>
                 <div class="user_comment_info">
-                    <?php if (isset($user_profile['baby_year']) || isset($user_profile['baby_month']) || isset($user_profile['baby_sex'])) : ?>
+                    <?php if (strlen($user_profile['baby_year']) > 0 || strlen($user_profile['baby_month']) > 0 || strlen($user_profile['baby_sex']) > 0) : ?>
             		<div class="user-comment-info <?php echo $user_profile['baby_sex']; ?> <?php if($user_profile['baby_sex']=='male'){ 
                                           echo 'user_comment_info_boy';
             		                  }elseif($user_profile['baby_sex']=='female'){
@@ -2723,18 +2723,19 @@ function question_comment($comment, $args, $depth) {
                                 ?>">
             			<label>
                             <?php 
-                                if (isset($user_profile['baby_year'])) {
+                                if (strlen($user_profile['baby_year']) > 0) {
                                     echo $user_profile['baby_year'] . '歳';
                                 }
 
-                                if (isset($user_profile['baby_month'])) {
+                                if (strlen($user_profile['baby_month']) > 0) {
                                     echo $user_profile['baby_month'] . 'ヶ月';
                                 }
                             ?>
+                            &nbsp;
                         </label>
             		</div>
                     <?php endif;?>
-                    <?php if (isset($user_profile['parent']) || isset($user_profile['parent_age'])) : ?>
+                    <?php if (strlen($user_profile['parent']) > 0 || strlen($user_profile['parent_age']) > 0) : ?>
             		<div class="user-comment-info <?php echo $user_profile['parent']; ?> <?php if($user_profile['parent']=='mother'){
                             		    echo 'user_comment_info_mother';
                             		}elseif($user_profile['parent']=='father'){
@@ -2742,14 +2743,15 @@ function question_comment($comment, $args, $depth) {
                             		}
             		            ?>">
             			<label>
-                        <?php if (isset($user_profile['parent_age'])) : ?>
+                        <?php if (strlen($user_profile['parent_age']) > 0) : ?>
                         <?php echo $user_profile['parent_age']; ?>歳
                         <?php endif;?>
+                        &nbsp;
                         </label>
             		</div>
                     <?php endif;?>
 
-                    <?php if (isset($user_profile['style'])) : ?>
+                    <?php if (strlen($user_profile['style']) > 0) : ?>
                         <div class="user-comment-info style">
                             <label><?php echo $user_profile['style']; ?></label>
                         </div>
@@ -2774,12 +2776,25 @@ function question_comment($comment, $args, $depth) {
                                             if(is_array($las_ans) && $key_ans == 'unit'){
                                                 $list_unit = $questions[key($questions)][$queskey]['answer'];
                                                 $answer_string = '';
-                                                if($list_unit[0]){
+                                                // if($list_unit[0]){
+                                                //     $answer_string .= $las_ans[0] . $list_unit[0];
+                                                //     if($list_unit[1]){
+                                                //         $answer_string .= ' ' . $las_ans[1] . $list_unit[1];
+                                                //     }
+                                                // }
+
+                                                if (strlen($las_ans[0]) > 0) {
                                                     $answer_string .= $las_ans[0] . $list_unit[0];
-                                                    if($list_unit[1]){
+                                                }
+
+                                                if (strlen($las_ans[1]) > 0) {
+                                                    if (strlen($las_ans[0]) > 0) {
                                                         $answer_string .= ' ' . $las_ans[1] . $list_unit[1];
+                                                    } else {
+                                                        $answer_string .= $las_ans[1] . $list_unit[1];
                                                     }
                                                 }
+
                                                 ?>
                                                 	<label><?= $answer_string; ?></label>
                                                 <?php
