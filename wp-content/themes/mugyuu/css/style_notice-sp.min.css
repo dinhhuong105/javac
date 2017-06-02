@@ -2795,8 +2795,9 @@ ul.slider .dot-class li:last-child .icon-2:before {
     margin-bottom: 10px !important;
 }
 .qaSingle .commentFormArea form ul li {
-    margin-bottom: 20px
+    margin-bottom: 20px;
 }
+
 .qaSingle .commentFormArea form ul li h3 {
     margin-bottom: 5px;
     font-size: 1.1rem;
@@ -3433,31 +3434,44 @@ section.confirm{
     font-size: inherit !important;
 }
 .answerList .user_pro ul li{
-    width: 32%;
-    margin: 5px 10px 0;
+    padding: 5px 10px 0;
     margin-bottom: 0px !important;
+    float: left;
+    width: 22%;
+    padding-left: 0;
 }
 .answerList .user_pro ul{
-    display: inline-flex;
+    display: block;
     width: 100%;
     padding-right: 30px;
 }
-.answerList .user_pro .user_baby_age{
-	width: 60% !important;
-	float: left;
+.answerList .user_pro .user_baby_age {
+	width: 32% !important;
 }
-.answerList .user_pro .user_baby_age label{
-    width: 40%;
+.qaSingle .commentFormArea form ul li.user_pro .list-option-profile li.user_parent {
+    width: 19%;
+}
+.qaSingle .commentFormArea form ul li.user_pro .list-option-profile li:last-child {
+    padding-right: 0;
+}
+.qaSingle .commentFormArea .answerList .user_pro .user_baby_age label {
+    width: 48%;
+    margin-right: 0;
     float: left;
 }
-.answerList .user_pro .user_baby_age label input{
+.answerList .user_pro .user_baby_age label:last-child {
+    margin-right: 0;
+}
+.answerList .user_pro .user_baby_age label input {
     width: 60% !important;
     height: 30px !important;
+    line-height: 30px !important;
     margin-right: 5px;
 }
-.answerList .user_pro .user_parent_age label input{
+.answerList .user_pro .user_parent_age label input {
     width: 40% !important;
     height: 30px !important;
+    line-height: 30px !important;
     margin-right: 5px;
 }
 .answerList .radio_h4{
@@ -3526,6 +3540,9 @@ section.confirm{
 }
 .mainWrap.single.qa .mainArea .commentFormArea form ul li.user_pro .list-option-profile li {
     margin-bottom: 15px;
+    float: left;
+    width: 22%;
+    padding-left: 0;
 }
 
 .commentList div.user_comment_info div{

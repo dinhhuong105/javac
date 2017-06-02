@@ -4500,38 +4500,35 @@ section.confirm{
     font-size: inherit !important;
 }
 .answerInpotList li.user_pro{
-    margin-bottom: 0px !important;
+    margin-bottom: 15px !important;
 }
 .answerInpotList .user_pro ul li{
     width: 32%;
-    margin: 5px 10px 0;
+    padding: 5px 10px 0;
 }
 .answerInpotList .user_pro ul{
-    display: inline-flex;
+    display: block;
 }
 .answerInpotList .user_pro li.baby_sex{
-    width: 40%;
+    /*width: 40%;*/
 }
 .answerInpotList .user_pro li.user_baby_age{
-    width: 60%;
+    /*width: 60%;*/
+    width: 27%;
 }
-.answerInpotList .user_pro .user_baby_age label{
-    width: 40%;
+.answerInpotList .user_pro .user_baby_age label {
     float: left;
 }
 .answerInpotList .user_pro .user_baby_age label input{
     width: 60% !important;
     height: 30px !important;
-    margin-right: 5px;
-}
-.answerInpotList .user_pro .user_parent_age label input{
-    width: 60% !important;
-    height: 30px !important;
+    line-height: 30px !important;
     margin-right: 5px;
 }
 .answerInpotList .user_pro .user_parent_age label input{
     width: 40% !important;
     height: 30px !important;
+    line-height: 30px !important;
     margin-right: 5px;
 }
 .answerInpotList .radio_h4{
@@ -4604,6 +4601,25 @@ section.confirm{
 }
 .mainWrap.single.qa .mainArea .commentFormArea form ul li.user_pro .list-option-profile li {
     margin-bottom: 15px;
+    float: left;
+    width: 22%;
+    padding-left: 0;
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li.user_pro .list-option-profile li.user_parent {
+    width: 19%;
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li.user_pro .list-option-profile li:last-child {
+    padding-right: 0;
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li.user_pro .list-option-profile li.user_baby_age {
+    width: 32%;
+}
+.mainWrap.single.qa .mainArea .commentFormArea li.user_baby_age label {
+    width: 48%;
+    margin-right: 0;
+}
+.mainWrap.single.qa .mainArea .commentFormArea li.user_baby_age label:last-child {
+    margin-right: 0;
 }
 
 /*Questionnaire Comment*/

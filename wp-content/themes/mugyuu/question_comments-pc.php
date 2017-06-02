@@ -132,12 +132,12 @@
                 </li>
                 <?php if($profile_require): ?>
                 <li class="user_pro">
-                    <h3>よくある質問</h3>
+                    <!-- <h3>よくある質問</h3> -->
                     <div class="list-option-profile">
                         <ul>
                         	<?php if($profile_require['baby_sex']): ?>
                         	<li class="baby_sex">
-                        		<p class="radio_h4">お子さんの性別</p>
+                        		<h3 class="radio_h4">お子さんの性別</h3>
                         		<label>
                         			<input type="radio" value="male" name="profile[baby_sex]" required>男の子
                         		</label>
@@ -148,7 +148,7 @@
                         	<?php endif; ?>
                         	<?php if($profile_require['baby_age']): ?>
                         	<li class="user_baby_age">
-                        		<p>お子さんの年齢</p>
+                        		<h3>お子さんの年齢</h3>
                         		<label>
                         			<input type="number" name="profile[baby_year]" required min="0" max="20">歳
                         		</label>
@@ -159,7 +159,7 @@
                         	<?php endif; ?>
                         	<?php if($profile_require['parent_sex']): ?>
                         	<li class="user_parent">
-                        		<p class="radio_h4">回答する人</p>
+                        		<h3 class="radio_h4">回答する人</h3>
                         		<label>
                         			<input type="radio" value="mother" name="profile[parent]" required>ママ
                         		</label>
@@ -170,7 +170,7 @@
                         	<?php endif; ?>
                         	<?php if($profile_require['parent_age']): ?>
                         	<li class="user_parent_age">
-                        		<p>回答する人の年齢</p>
+                        		<h3>回答する人の年齢</h3>
                         		<label>
                         			<input type="number" name="profile[parent_age]" required min="0" max="99">歳
                         		</label>
@@ -183,7 +183,7 @@
                         <ul>
                             <?php if ($profile_require['style']) : ?>
                                 <li class="user-option-profile-style" style="width: 100%;">
-                                    <p class="radio_h4"><?php echo esc_attr__('あなたのタイプは', 'huongdinh'); ?></p>
+                                    <h3 class="radio_h4"><?php echo esc_attr__('あなたのタイプは', 'huongdinh'); ?></h3>
                                     <?php foreach ($list_tyles as $style) : ?>
                                     <label><input type="radio" name="profile[style]" value="<?php echo $style; ?>" required /><?php echo $style; ?></label>
                                     <?php endforeach;?>
