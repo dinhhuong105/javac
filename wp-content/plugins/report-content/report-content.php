@@ -341,7 +341,7 @@ function wprc_add_report()
 		'post_id'        => intval($_POST['id']),
         'comment_id'     => intval($_POST['comment_id']),
         'report_type'    => sanitize_text_field($report_type),
-        //'reporter_ip'    => sanitize_text_field(get_user_IP()),
+        'reporter_ip'    => sanitize_text_field(get_user_IP()),
 	);
 	/*if (wprc_is_spam($new_report)) {
 		$message['message'] = 'Your submission has been marked as spam by our filters';
