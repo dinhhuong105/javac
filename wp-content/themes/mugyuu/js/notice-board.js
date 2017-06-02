@@ -224,39 +224,65 @@ $(function () {
         }
         
     });
+    
+    $('.user_baby_age input').on('change', function(e){
+    	var target = $(this);
+    	var value_unit = target.val();
+    	if(value_unit.length>0){
+    		$('.user_baby_age').find('input').prop('required', false);
+    	}else{
+    		$('.user_baby_age').find('input').prop('required', true);
+    	}
+    });
+    
+    $('.answer_unit input').on('change', function(e){
+    	var target = $(this);
+    	var required = target.attr('required');
+    	if(required != 'undefined'){
+    		
+	    	var value_unit = target.val();
+	    	var parent_unit = target.closest( "div.answer_unit" );
+	    	console.log(parent_unit);
+	    	if(value_unit.length>0){
+	    		parent_unit.find('input').prop('required', false);
+	    	}else{
+	    		parent_unit.find('input').prop('required', true);
+	    	}
+    	}
+    });
 
     function pasteHtmlAtCaret(html) {
-    var sel, range;
-    if (window.getSelection) {
-        // IE9 and non-IE
-        sel = window.getSelection();
-        if (sel.getRangeAt && sel.rangeCount) {
-            range = sel.getRangeAt(0);
-            range.deleteContents();
-
-            // Range.createContextualFragment() would be useful here but is
-            // only relatively recently standardized and is not supported in
-            // some browsers (IE9, for one)
-            var el = document.createElement("div");
-            el.innerHTML = html;
-            var frag = document.createDocumentFragment(), node, lastNode;
-            while ( (node = el.firstChild) ) {
-                lastNode = frag.appendChild(node);
-            }
-            range.insertNode(frag);
-
-            // Preserve the selection
-            if (lastNode) {
-                range = range.cloneRange();
-                range.setStartAfter(lastNode);
-                range.collapse(true);
-                sel.removeAllRanges();
-                sel.addRange(range);
-            }
-        }
-    } else if (document.selection && document.selection.type != "Control") {
-        // IE < 9
-        document.selection.createRange().pasteHTML(html);
-    }
-}
+	    var sel, range;
+	    if (window.getSelection) {
+	        // IE9 and non-IE
+	        sel = window.getSelection();
+	        if (sel.getRangeAt && sel.rangeCount) {
+	            range = sel.getRangeAt(0);
+	            range.deleteContents();
+	
+	            // Range.createContextualFragment() would be useful here but is
+	            // only relatively recently standardized and is not supported in
+	            // some browsers (IE9, for one)
+	            var el = document.createElement("div");
+	            el.innerHTML = html;
+	            var frag = document.createDocumentFragment(), node, lastNode;
+	            while ( (node = el.firstChild) ) {
+	                lastNode = frag.appendChild(node);
+	            }
+	            range.insertNode(frag);
+	
+	            // Preserve the selection
+	            if (lastNode) {
+	                range = range.cloneRange();
+	                range.setStartAfter(lastNode);
+	                range.collapse(true);
+	                sel.removeAllRanges();
+	                sel.addRange(range);
+	            }
+	        }
+	    } else if (document.selection && document.selection.type != "Control") {
+	        // IE < 9
+	        document.selection.createRange().pasteHTML(html);
+	    }
+	}
 });

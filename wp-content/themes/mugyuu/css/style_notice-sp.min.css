@@ -2792,7 +2792,7 @@ ul.slider .dot-class li:last-child .icon-2:before {
     position: relative
 }
 .qaSingle .commentFormArea h1 {
-    margin-bottom: 10px
+    margin-bottom: 10px !important;
 }
 .qaSingle .commentFormArea form ul li {
     margin-bottom: 20px
