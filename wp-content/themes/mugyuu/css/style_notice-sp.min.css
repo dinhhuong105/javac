@@ -2921,12 +2921,6 @@ ul.slider .dot-class li:last-child .icon-2:before {
 }
 .qaSingle .commentFormArea .answerList li label {
     margin: 0 10px 10px 0;
-    vertical-align: middle;
-    -o-vertical-align: middle;
-    -ms-vertical-align: middle;
-    -moz-vertical-align: middle;
-    -webkit-vertical-align: middle;
-
 }
 .qaSingle .commentFormArea .answerList li input[type="radio"] {
     -webkit-appearance: radio;
