@@ -183,13 +183,14 @@
 						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><label> 必須 :  <input type="checkbox" name="question['. $key .']['. $id .'][required]" '.$check.' ></label><br/>';
 						$unit = '';
 						$unit .= '<select required class="option1_enable" name="question['. $key .']['. $id .'][answer][0]">';
-						$unit .= '<option disabled value="">単位</option>';
+						$unit .= '<option value="">単位</option>';
 						foreach($list_unit1 as $unit_value){
 						    $is_selected = ($unit_value == $meta['answer'][0])?'selected':'';
 						    $unit .= '<option value="'.$unit_value.'"'.$is_selected.'>'.$unit_value.'</option>';
 						}
 						$unit .= '</select>';
-						$unit .= '<select name="question['. $key .']['. $id .'][answer][1]">';
+						$is_disable = ($meta['answer'][0])?'':'disabled';
+						$unit .= '<select ' . $is_disable . ' name="question['. $key .']['. $id .'][answer][1]">';
 						$unit .= '<option value="">単位</option>';
 						foreach($list_unit2 as $unit_value){
 						    $is_selected = ($unit_value == $meta['answer'][1])?'selected':'';
@@ -452,12 +453,12 @@ function pulldown($id, $multi, $customID = null){
 function unit($id, $multi = 1){
 	var textbox_html = '';
 	textbox_html += '<select required class="option1_enable" name="question['+ post_id +']['+ $id +'][answer][]">';
-	textbox_html += '<option disabled value="">単位</option>';
+	textbox_html += '<option value="">単位</option>';
 	for(var j in arr_unit1){
 		textbox_html += '<option value="'+arr_unit1[j]+'">'+arr_unit1[j]+'</option>';
 	}
 	textbox_html += '</select>';
-	textbox_html += '<select name="question['+ post_id +']['+ $id +'][answer][]">';
+	textbox_html += '<select disabled name="question['+ post_id +']['+ $id +'][answer][]">';
 	textbox_html += '<option value="">単位</option>';
 	for(var j in arr_unit2){
 		textbox_html += '<option value="'+arr_unit2[j]+'">'+arr_unit2[j]+'</option>';
