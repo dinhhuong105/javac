@@ -3571,3 +3571,8 @@ section.confirm{
     }
 }
 /*Questionnaire Comment*/
+/* Fix for Breadcrumb */
+.breadcrumbList li a{
+	padding-right: 0px !important;
+}
+/* Fix for Breadcrumb */

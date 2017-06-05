@@ -525,7 +525,8 @@ header:before {
     font-size: 1.4rem;
     min-height: 20px;
     /* line-height: 20px; */
-    box-sizing: border-box
+    box-sizing: border-box;
+    margin-right: 0px !important;
 }
 #breadcrumb .breadcrumbList li a {
     color: inherit
