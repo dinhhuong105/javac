@@ -2932,19 +2932,19 @@ function add_content_before_editor() {
  * @author Hung Nguyen
  */
 function get_user_IP() {
-    $tmp = getenv("HTTP_CLIENT_IP");
-    if ( $tmp && !strcasecmp( $tmp, "unknown"))
-        return $tmp;
+    $client = @$_SERVER['HTTP_CLIENT_IP'];
+	$forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+	$remote = $_SERVER['REMOTE_ADDR'];
 
-    $tmp = getenv("HTTP_X_FORWARDED_FOR");
-    if( $tmp && !strcasecmp( $tmp, "unknown"))
-        return $tmp;
+	if ( filter_var( $client, FILTER_VALIDATE_IP ) ) {
+		$ip = $client;
+	} elseif ( filter_var( $forward, FILTER_VALIDATE_IP ) ) {
+		$ip = $forward;
+	} else {
+		$ip = $remote;
+	}
 
-    $tmp = getenv("REMOTE_ADDR");
-    if($tmp && !strcasecmp($tmp, "unknown"))
-        return $tmp;
-
-    return("unknown");
+	return $ip;
 }
 
 /**

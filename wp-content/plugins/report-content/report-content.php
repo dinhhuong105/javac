@@ -347,7 +347,7 @@ function wprc_add_report()
 		$message['message'] = 'Your submission has been marked as spam by our filters';
 		die(json_encode($message));
 	}*/
-
+var_dump($new_report); die('111');
 	if (!wprc_insert_data($new_report)) {
 		$message['message'] = 'An unexpected error occured. Please try again later';
 		die(json_encode($message));
