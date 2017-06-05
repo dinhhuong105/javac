@@ -3217,8 +3217,12 @@ footer .copy small {
     color: #fff;
     background: #fc8c96
 }
+.mainWrap.single.qa .mainArea .commentArea .commentList li .comment p {
+    margin-left: 15px;
+    line-height: 1.6
+}
 .mainWrap.single.qa .mainArea .commentArea .commentList li .comment {
-    margin: 15px;
+    margin: 0px !important;
     line-height: 1.6
 }
 .mainWrap.single.qa .mainArea .commentArea .commentList li .actionArea {
