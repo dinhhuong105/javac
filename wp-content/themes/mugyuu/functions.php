@@ -2681,6 +2681,8 @@ function add_comment_on_questions($post_id) {
 function question_comment($comment, $args, $depth) {
     $GLOBALS['comment'] = $comment;
     global $questions;
+    $list_no = array('①','②','③','④','⑤','⑥','⑦','⑧','⑨','⑩','⑪','⑫','⑬','⑭','⑮','⑯','⑰','⑱','⑲','⑳','㉑','㉒','㉓','㉔','㉕',
+            '㉖','㉗','㉘','㉙','㉚','㉛','㉜','㉝','㉞','㉟','㊱','㊲','㊳','㊴','㊵','㊶','㊷','㊸','㊹','㊺','㊻','㊼','㊽','㊾','㊿');
     $user_profile = get_comment_meta($comment->comment_ID,'_question_comment_profile',true);
     ?>
         <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
@@ -2767,7 +2769,7 @@ function question_comment($comment, $args, $depth) {
                             foreach ($_sort_question as $ksort => $vsort) {
                                 foreach ($answers as $queskey => $answer) {
                                     if($queskey == $vsort){
-                                        echo "<li>".($ksort+1).'. ';
+                                        echo "<li>".$list_no[$ksort];
                                         foreach ($answer as $key_ans => $las_ans) {
                                             if(is_array($las_ans) && $key_ans == 'unit'){
                                                 $list_unit = $questions[key($questions)][$queskey]['answer'];

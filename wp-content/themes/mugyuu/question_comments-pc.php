@@ -28,7 +28,7 @@
             <select id="qaFilter" name="qaFilter" class="sort">
                 <option value="" >口コミ時のアンケート項目の内容</option>
             <?php foreach ($questions[$post->ID] as $qkey => $question) { 
-                if($question['type'] != 'textarea' && $question['type'] != 'textbox'){
+                if($question['type'] != 'textarea' && $question['type'] != 'textbox' && $question['type'] != 'unit'){
                     $str = mb_strlen($question['question'])<16?$question['question']:mb_substr($question['question'],0,12)."...";
                     echo '<optgroup label="'.$str.'">';
                     foreach ($question['answer'] as $anskey => $ansval) {
