@@ -2885,7 +2885,7 @@ ul.slider .dot-class li:last-child .icon-2:before {
     margin-bottom: 20px
 }
 .qaSingle .commentArea .commentList li .userCommentArea .answerList {
-    margin-bottom: 10px;
+    margin: 0px 15px 10px 15px;
     display: flex;
     flex-wrap: wrap;
     border-bottom: dashed 1px #c9c9c9
