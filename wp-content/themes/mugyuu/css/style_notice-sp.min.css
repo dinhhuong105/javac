@@ -630,8 +630,8 @@ footer .infoList {
     box-sizing: border-box
 }
 footer .infoList li {
-    width: calc(100% / 2);
-    float: left;
+    /*width: calc(100% / 2);
+    float: left;*/
     text-align: center;
     height: 36px;
     line-height: 36px;
@@ -644,8 +644,7 @@ footer .infoList li a {
 footer .infoList li:nth-child(2n+1) {
     border-right: solid 1px #c9c9c9
 }
-footer .infoList li:last-child,
-footer .infoList li:nth-last-child(2) {
+footer .infoList li:last-child{
     border-bottom: none
 }
 footer .copy {
