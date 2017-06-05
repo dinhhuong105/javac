@@ -2932,16 +2932,19 @@ function add_content_before_editor() {
  * @author Hung Nguyen
  */
 function get_user_IP() {
-    if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
-    //check ip from share internet
-    $ip = $_SERVER['HTTP_CLIENT_IP'];
-    } elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
-    //to check ip is pass from proxy
-    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    } else {
-    $ip = $_SERVER['REMOTE_ADDR'];
-    }
-    return apply_filters( 'wpb_get_ip', $ip );
+    $tmp = getenv("HTTP_CLIENT_IP");
+    if ( $tmp && !strcasecmp( $tmp, "unknown"))
+        return $tmp;
+
+    $tmp = getenv("HTTP_X_FORWARDED_FOR");
+    if( $tmp && !strcasecmp( $tmp, "unknown"))
+        return $tmp;
+
+    $tmp = getenv("REMOTE_ADDR");
+    if($tmp && !strcasecmp($tmp, "unknown"))
+        return $tmp;
+
+    return("unknown");
 }
 
 /**
