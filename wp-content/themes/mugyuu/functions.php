@@ -2128,10 +2128,13 @@ function mytheme_comment($comment, $args, $depth) {
  */
 
 function noticetheme_comment($comment, $args, $depth) {
-    $GLOBALS['comment'] = $comment; ?>
+    $GLOBALS['comment'] = $comment; 
+    global $thread_no;
+?>
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
     <div id="comment-<?php comment_ID(); ?>" class="commentData">
         <p class="data">
+            <?php echo ($thread_no && array_key_exists($comment->comment_ID, $thread_no)) ? $thread_no[$comment->comment_ID] . '.' : ''; ?>
             <?php echo get_comment_date(('Y/m/d')) ?>
             <?php printf(__('%s'), get_comment_author_link()) ?>
         </p>
@@ -2551,7 +2554,11 @@ function add_comment_on_notice($post_id) {
             'comment_date' => $time,
             'comment_approved' => 1
         );
-        wp_insert_comment($data);
+
+        $orders = get_post_meta($post_id, '_thread_comment_no', true);
+        $comment_id = wp_insert_comment($data);
+        $orders[$comment_id] = ($orders) ? max($orders) + 1 : 1;
+        update_post_meta($post_id, '_thread_comment_no', $orders);
         
         wp_redirect( get_post_permalink($post_id) );
         exit;
@@ -2695,7 +2702,7 @@ function question_comment($comment, $args, $depth) {
         <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
             <div id="comment-<?php comment_ID(); ?>" class="commentData">
                 <p class="data">
-                    <?php echo (array_key_exists($comment->comment_ID, $comment_no)) ? $comment_no[$comment->comment_ID] . '.' : ''; ?>
+                    <?php echo ($comment_no && array_key_exists($comment->comment_ID, $comment_no)) ? $comment_no[$comment->comment_ID] . '.' : ''; ?>
                     <?php echo get_comment_date(('Y/m/d')) ?>
                     <?php printf(__('%s'), get_comment_author_link()) ?>
                 </p>

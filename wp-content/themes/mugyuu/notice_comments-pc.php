@@ -1,3 +1,6 @@
+<?php
+    $GLOBALS['thread_no'] = get_post_meta($post->ID, '_thread_comment_no', true);
+?>
 <section class="commentArea">
 	<label for="qaSort" class="sortWrap">
 		<select id="qaSort" name="qaSort" class="sort">
