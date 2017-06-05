@@ -2671,9 +2671,15 @@ function add_comment_on_questions($post_id) {
         );
         $count_comment =  wp_count_comments( $post_id );
         $limited = get_post_meta( $post_id, '_limited_answer', true );
+        $orders = get_post_meta($post_id, '_question_comment_no', true);
 
         if(($count_comment->approved < $limited && $limited > 0) || empty($limited)){
             $comment_id = wp_insert_comment($data);
+
+            // insert comment number for each comment.
+            $orders[$comment_id] = ($orders) ? max($orders) + 1 : 1;
+            update_post_meta($post_id, '_question_comment_no', $orders);
+
             add_comment_meta( $comment_id, '_question_comment', $_POST['answer'] );
             add_comment_meta( $comment_id, '_question_comment_profile', $_POST['profile'] );
         }
@@ -2684,12 +2690,14 @@ function add_comment_on_questions($post_id) {
 
 function question_comment($comment, $args, $depth) {
     $GLOBALS['comment'] = $comment;
-    global $questions;
+
+    global $questions, $comment_no;
     $user_profile = get_comment_meta($comment->comment_ID,'_question_comment_profile',true);
     ?>
         <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
             <div id="comment-<?php comment_ID(); ?>" class="commentData">
                 <p class="data">
+                    <?php echo (array_key_exists($comment->comment_ID, $comment_no)) ? $comment_no[$comment->comment_ID] . '.' : ''; ?>
                     <?php echo get_comment_date(('Y/m/d')) ?>
                     <?php printf(__('%s'), get_comment_author_link()) ?>
                 </p>

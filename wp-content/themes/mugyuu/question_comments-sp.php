@@ -14,6 +14,7 @@
     $GLOBALS['questions'] = $questions; 
     $count_comment = wp_count_comments($post->ID);
     $list_tyles = array('慎重', '普通', 'お気楽');
+    $GLOBALS['comment_no'] = get_post_meta($post->ID, '_question_comment_no', true);
 
     //check avalible for button submit comment form
     if (isset($unpublish) && $unpublish == false) {
