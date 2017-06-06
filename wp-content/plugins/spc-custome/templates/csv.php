@@ -62,22 +62,28 @@ $post_metas = get_post_meta($_GET['post'],'_question_type', TRUE);
 foreach ($question as $key => $value) {
 	$_ans = array();
 	foreach ($value as $v) {
-		// if()
-		foreach ($v as $type => $id_ans) {
+
+		foreach ($v as $type => $answer) {
 			if($type === 'unit'){
+
 		        $list_unit = $post_metas[key($post_metas)][$key]['answer'];
 		        
                 $answer_string = '';
-                if($list_unit[0]){
-                    $answer_string .= $id_ans[0] . $list_unit[0];
-                    if($list_unit[1]){
-                        $answer_string .= ' ' . $id_ans[1] . $list_unit[1];
-                    }
+                if (strlen($answer[0]) > 0) {
+                    $answer_string .= $answer[0] . $list_unit[0];
                 }
-                
-		        array_push($_ans,$answer_string);
-		    }else
-		      array_push($_ans,$id_ans);
+
+                if (strlen($answer[1]) > 0) {
+                    $ext = (strlen($answer[0]) > 0) ? ' ' : '';
+                    $answer_string .= $ext . $answer[1] . $list_unit[1];
+                }
+            
+            if ($answer_string) {
+              array_push($_ans,$answer_string);
+            }
+		    } else {
+		      array_push($_ans,$answer);
+        }
 		}
 		
 	}
@@ -86,9 +92,10 @@ foreach ($question as $key => $value) {
 }
 
 $csv = array();
+$no = 0;
  foreach ($post_metas[$_GET['post']] as $key => $value){
-	$csv[$key]['設問 '.($key+1).'.'] = $value['question'];
-	if(isset($value['answer'])){ 
+	$csv[$key]['設問 '.$no++] = $value['question'];
+	if(isset($value['answer']) && $value['type'] != 'unit'){ 
 		foreach ($value['answer'] as $k_ques => $ans){
 			$csv[$key][$ans] = $report_ans[$key][$k_ques];
 		}
