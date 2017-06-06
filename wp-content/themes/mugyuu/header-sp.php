@@ -9,9 +9,9 @@
         <?php get_template_part('twitter-card');?>
         <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="<?php bloginfo('template_directory'); ?>/images/favicon.ico">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/style_sp.css" rel="stylesheet" type="text/css">
-<!--        <link rel="stylesheet" href="--><?php //bloginfo('template_directory'); ?><!--/css/style_notice-sp.min.css" rel="stylesheet" type="text/css">-->
-<!--        <link rel="stylesheet" href="--><?php //echo get_stylesheet_uri(); ?><!--" rel="stylesheet" type="text/css">-->
+<!--        <link rel="stylesheet" href="--><?php //bloginfo('template_directory'); ?><!--/css/style_sp.css" rel="stylesheet" type="text/css">-->
+        <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/style_notice-sp.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" rel="stylesheet" type="text/css">
         <?php
             if (is_home()) {
             	$canonical_url = get_bloginfo('url');
