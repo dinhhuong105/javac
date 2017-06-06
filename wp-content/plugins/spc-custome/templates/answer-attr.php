@@ -151,12 +151,16 @@
 								if($question['type'] == 'unit'){
 								    $list_unit = $question['answer'];
 								    $answer_string = '';
-								    if($list_unit[0]){
-								        $answer_string .= $answer[0] . $list_unit[0];
-								        if($list_unit[1]){
-								            $answer_string .= ' ' . $answer[1] . $list_unit[1];
-							            }
-    							    }
+
+								    if (strlen($answer[0]) > 0) {
+                                        $answer_string .= $answer[0] . $list_unit[0];
+                                    }
+
+                                    if (strlen($answer[1]) > 0) {
+                                        $ext = (strlen($answer[0]) > 0) ? ' ' : '';
+                                        $answer_string .= $ext . $answer[1] . $list_unit[1];
+                                    }
+
 								    echo $answer_string;
 								}
 						        elseif($question['answer'][$answer] == ""){

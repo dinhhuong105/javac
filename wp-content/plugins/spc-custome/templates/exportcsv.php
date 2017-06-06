@@ -34,20 +34,25 @@ $post_metas = get_post_meta($id, '_question_type', TRUE);
 foreach ($question as $key => $value) {
 	$_ans = array();
 	foreach ($value as $v) {
-		// if()
-		foreach ($v as $type => $id_ans) {
-		    if($type == 'unit'){
+		
+		foreach ($v as $type => $answer) {
+		    if($type === 'unit'){
+
 		        $list_unit = $post_metas[key($post_metas)][$key]['answer'];
                 $answer_string = '';
-                if($list_unit[0]){
-                    $answer_string .= $id_ans[0] . $list_unit[0];
-                    if($list_unit[1]){
-                        $answer_string .= ' ' . $id_ans[1] . $list_unit[1];
-                    }
+
+                if (strlen($answer[0]) > 0) {
+                    $answer_string .= $answer[0] . $list_unit[0];
                 }
+
+                if (strlen($answer[1]) > 0) {
+                    $ext = (strlen($answer[0]) > 0) ? ' ' : '';
+                    $answer_string .= $ext . $answer[1] . $list_unit[1];
+                }
+
 		        array_push($_ans,$answer_string); 
 		    }else
-		      array_push($_ans,$id_ans);
+		      array_push($_ans,$answer);
 		}
 		
 	}
