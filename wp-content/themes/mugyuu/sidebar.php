@@ -185,11 +185,11 @@
                 <?php } ?>
             </ul>
         </section>
-        <section class="sideCat sideQaCat">
+        <!--<section class="sideCat sideQaCat">
             <h2>
             	<a href="<?php echo home_url('/'); ?>notice/">質問掲示板<i class="arrow fa fa-angle-down" aria-hidden="true"></i></a>
         	</h2>
-        </section>
+        </section>-->
         <section class="sideCat sideItemCat">
             <h2><a href="<?php echo home_url('/'); ?>item-search">商品を探す</a></h2>
         </section>
