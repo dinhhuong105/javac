@@ -7,7 +7,7 @@
     <ul class="articleList newList">
         <?php
             $args = array(
-                'post_type' => array('post', 'thread_post', 'question_post'),
+                'post_type' => 'post',//array('post', 'thread_post', 'question_post'),
                 'posts_per_page' => 4,
                 'cat' => array(-1,-281),
             );

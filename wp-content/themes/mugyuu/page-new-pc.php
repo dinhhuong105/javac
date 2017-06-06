@@ -13,7 +13,7 @@
                 <?php
                     $query = new WP_Query([
                         'cat' =>array(-1, -281),
-                        'post_type' => array('post', 'thread_post', 'question_post'),
+                        'post_type' => 'post',//array('post', 'thread_post', 'question_post'),
                         'paged' => $paged,
                         'posts_per_page' => 10,
                     ]);
