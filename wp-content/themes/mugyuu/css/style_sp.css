@@ -724,7 +724,7 @@ footer .infoList li a {
   color: inherit;
 }
 footer .infoList li:nth-child(2n+1) {
-  /*border-right: solid 1px #c9c9c9;*/
+  border-right: solid 1px #c9c9c9;
 }
 footer .infoList li:last-child, footer .infoList li:nth-last-child(2) {
   border-bottom: none;
