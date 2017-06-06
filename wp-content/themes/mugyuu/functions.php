@@ -2453,6 +2453,29 @@ function myplg_save_meta_box( $post_id ) {
 // }
 
 /**
+ * is_link_on_content
+ *
+ * @param string $content
+ * @return boolean
+ * @author Dinh Van Huong
+ */
+function is_link_on_content($content)
+{
+    if (empty($content)) {
+        return false;
+    }
+
+    $content_url = preg_replace("/<img[^>]+\>/i", " ", $content);
+    $url_pattern_pre = '/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/';
+    $url_pattern_tail = '/[\w\d\.]+\.(com|org|ca|net|uk|jp|site|me|link|blog|email|online|mobi|press|website|cloud)/';
+    if(preg_match($url_pattern_pre, $content_url) || preg_match($url_pattern_tail, $content_url) || strstr($content_url, "<a href=") || strstr($content_url, "www")){
+        return true;
+    }
+
+    return false;
+}
+
+/**
  * Submit add Thread post on front
  * @author Hung Nguyen
  */
@@ -2468,6 +2491,7 @@ function add_thread_front(){
         if(preg_match($url_pattern_pre, $content_url) || preg_match($url_pattern_tail, $content_url) || strstr($content_url, "<a href=") || strstr($content_url, "www")){
             $is_include_url = true;
         }
+
         $post_status = $is_include_url?'pending':'publish';
         
         // Convert URL
@@ -2546,13 +2570,14 @@ function add_comment_on_notice($post_id) {
         $comment = $_POST['comment'];
 
         $time = current_time('mysql');
+        $is_link = is_link_on_content($comment);
 
         $data = array(
             'comment_post_ID' => $post_id,
             'comment_author' => $current_user,
             'comment_content' => $comment,
             'comment_date' => $time,
-            'comment_approved' => 1
+            'comment_approved' => ($is_link) ? 0 : 1
         );
 
         $orders = get_post_meta($post_id, '_thread_comment_no', true);
@@ -2662,15 +2687,15 @@ function add_comment_on_questions($post_id) {
 
         $current_user = $_POST['name'];
         $comment = $_POST['comment'];
-
         $time = current_time('mysql');
+        $is_link = is_link_on_content($comment);
 
         $data = array(
             'comment_post_ID' => $post_id,
             'comment_author' => $current_user,
             'comment_content' => $comment,
             'comment_date' => $time,
-            'comment_approved' => 1
+            'comment_approved' => ($is_link) ? 0 : 1
         );
         $count_comment =  wp_count_comments( $post_id );
         $limited = get_post_meta( $post_id, '_limited_answer', true );
