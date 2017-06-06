@@ -2158,7 +2158,7 @@ function noticetheme_comment($comment, $args, $depth) {
             </div>
         <?php endif; ?>
     </div>
-    <div class="<?=( cf_is_mobile())?'userCommentArea':'comment'?>">
+    <div class="comment">
         <?php comment_text() ?>
     </div>
 </li>
@@ -2857,7 +2857,7 @@ function question_comment($comment, $args, $depth) {
                         }
                     ?>
                 </ul>
-                <div class="<?=( cf_is_mobile())?'userCommentArea':'comment'?>">
+                <div class="comment">
                     <?php comment_text() ?>
                 </div>
             </div>

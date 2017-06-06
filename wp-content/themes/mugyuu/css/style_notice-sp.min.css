@@ -2709,9 +2709,19 @@ ul.slider .dot-class li:last-child .icon-2:before {
     color: #fff;
     background: #fc8c96
 }
-.qaSingle .commentArea .commentList li .userCommentArea p {
-    margin: 0 15px 0px 15px;
-    line-height: 1.4
+.qaSingle .commentArea .commentList li .userCommentArea {
+    /*margin: 0 15px 15px;
+    line-height: 1.4*/
+}
+.qaSingle .commentArea .commentList li .comment{
+	padding-left: 0px !important;
+	margin-bottom: 0px !important;
+	word-break: break-word;
+}
+.qaSingle .commentArea .commentList li .comment > :not(.cld-like-dislike-wrap){
+	margin-left: 15px;
+    margin-right: 15px;
+    line-height: 1.6
 }
 .qaSingle .commentArea .commentList li .actionArea {
     overflow: hidden;

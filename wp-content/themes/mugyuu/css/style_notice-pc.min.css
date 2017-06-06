@@ -3218,13 +3218,15 @@ footer .copy small {
     color: #fff;
     background: #fc8c96
 }
-.mainWrap.single.qa .mainArea .commentArea .commentList li .comment p {
+.mainWrap.single.qa .mainArea .commentArea .commentList li .comment > :not(.cld-like-dislike-wrap) {
     margin-left: 15px;
+    margin-right: 15px;
     line-height: 1.6
 }
 .mainWrap.single.qa .mainArea .commentArea .commentList li .comment {
     margin: 0px !important;
-    line-height: 1.6
+    line-height: 1.6;
+    word-break: break-word;
 }
 .mainWrap.single.qa .mainArea .commentArea .commentList li .actionArea {
     overflow: hidden;
