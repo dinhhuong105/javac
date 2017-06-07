@@ -3383,11 +3383,9 @@ section.confirm{
 .textareaCustom{
     position: absolute;
     top: -999px;
-}
-.textareaCustom{
-    position: absolute;
     left: -999px;
-} 
+    visibility: hidden;
+}
 .commentFormWrap div.textArea,
 #threadAddForm div.textArea{
     resize: vertical;
