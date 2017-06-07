@@ -3577,6 +3577,9 @@ section.confirm{
     .commentList div.user_comment_info .user-comment-info {
         min-height: 30px;
     }
+    .qaSingle .commentFormArea form ul li.user_pro .list-option-profile li.user_parent{
+    	width: 100%;
+    }
 }
 /*Questionnaire Comment*/
 /* Fix for Breadcrumb */
