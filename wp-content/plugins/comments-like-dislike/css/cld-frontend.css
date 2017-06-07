@@ -67,3 +67,7 @@ a.cld-twitter:hover {
 a.cld-like-dislike-trigger:hover{
 	transition: all 0s ease-in;
 }
+.mainWrap.single.qa .mainArea .commentArea .commentList li .actionArea .reply a {
+    color: inherit;
+    text-decoration: none;
+}

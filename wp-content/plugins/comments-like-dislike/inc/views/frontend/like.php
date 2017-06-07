@@ -54,6 +54,13 @@
 		?>
     	</a>
     	</div>
+
+    	<!-- reply comment -->
+    	<div class="reply">
+            <a href="#send"><i class="fa fa-reply" aria-hidden="true"></i></a>
+        </div>
+        <!-- end reply comment -->
+
 	</div>
 	<div class="countArea">
         <i class="icon fa fa-heart" aria-hidden="true"></i><span class="cld-like-count-wrap cld-count-wrap">共感！<?php echo (empty( $like_count )) ? 0 : number_format( $like_count ); ?>件</span>
