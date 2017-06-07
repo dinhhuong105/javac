@@ -4436,7 +4436,9 @@ section.confirm{
 }
 .textareaCustom{
     position: absolute;
+    top: -999px;
     left: -999px;
+    visibility: hidden;
 } 
 #threadAddForm div.textArea{
 	resize:vertical;
