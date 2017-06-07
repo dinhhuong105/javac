@@ -770,9 +770,10 @@ header:before {
 #breadcrumb .breadcrumbList li {
     float: left;
     font-size: 1.4rem;
-    min-height: 57px;
+    min-height: 20px;
+    /* line-height: 20px; */
     box-sizing: border-box;
-    margin-right: 20px
+    margin-right: 0px !important;
 }
 
 #breadcrumb .breadcrumbList li a {
@@ -783,7 +784,10 @@ header:before {
 
 #breadcrumb .breadcrumbList li a i {
     font-size: 1.6rem;
-    margin: 0 20px
+    margin: 0 20px;
+    display: inline-block;
+    height: 57px;
+    line-height: 57px
 }
 
 #breadcrumb .breadcrumbList li a:hover {
@@ -831,7 +835,7 @@ header:before {
     overflow: hidden;
     width: 900px;
     height: 400px;
-    background-size: cover;
+    background-size: 100%;
     margin: 0 auto
 }
 
@@ -867,7 +871,12 @@ header:before {
     height: auto;
     margin-right: 20px
 }
-
+.slider .dot-class li .icon-2 {
+    color: #b3b3b3;
+    display: inline-block;
+    transition: all .2s ease-in;
+    font-size: 2rem
+}
 .slider .dot-class li .icon-uma {
     color: #b3b3b3;
     display: inline-block;
@@ -879,7 +888,14 @@ header:before {
 .slider .dot-class li:last-child {
     margin-right: 0
 }
-
+.slider .dot-class li.slick-active .icon-2 {
+    color: #a27043;
+    transform: rotate(-20deg);
+    -ms-transform: rotate(-20deg);
+    -moz-transform: rotate(-20deg);
+    -webkit-transform: rotate(-20deg);
+    -o-transform: rotate(-20deg)
+}
 .slider .dot-class li.slick-active .icon-uma {
     color: #a27043;
     transform: rotate(-20deg);
@@ -923,7 +939,7 @@ header:before {
 }
 
 .articleListArea {
-    margin-bottom: 100px
+    margin-bottom: 30px
 }
 
 .articleList {
@@ -955,7 +971,7 @@ header:before {
 
 .articleList li .imgArea img {
     width: 100%;
-    height: 100%
+    height: 150px
 }
 
 .articleList li .imgArea .overlay {
@@ -996,6 +1012,8 @@ header:before {
 }
 
 .articleList li .imgArea .overlay .ovWrap .bd {
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
     -webkit-transition: all .3s ease;
     transition: all .3s ease
 }
@@ -1089,6 +1107,7 @@ header:before {
 }
 
 .articleList li .content .articleData .pv i {
+    margin-right: 5px;
     color: #fd97a0
 }
 
@@ -1115,7 +1134,9 @@ header:before {
 .articleList li:hover .content {
     opacity: .7
 }
-
+.articleList li:nth-child(3n) {
+    margin-right: 0
+}
 @media all and (-ms-high-contrast: none) {
     .articleList li .imgArea .overlay .ovWrap p {
         font-weight: bold
@@ -1141,7 +1162,7 @@ header:before {
 .moreBtn a {
     color: #fc8c96;
     height: 50px;
-    line-height: 46px;
+    line-height: 50px;
     border: solid 2px #fc8c96;
     text-align: center;
     box-sizing: border-box
@@ -1341,7 +1362,9 @@ header:before {
 .newArea .newList li:nth-child(3n) {
     margin-right: 20px
 }
-
+.movieArea .heading:before {
+    background: #7feab4
+}
 .movieList {
     padding: 0 20px;
     margin-bottom: 50px;
@@ -1454,6 +1477,8 @@ header:before {
 }
 
 .movieList li .overlay .ovWrap .bd {
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
     -webkit-transition: all .3s ease;
     transition: all .3s ease
 }
@@ -2204,6 +2229,12 @@ header:before {
 .pulsArea .heading:before {
     background: #6fd74b
 }
+.pulsArea .articleList li {
+    margin-right: 20px
+}
+.pulsArea .articleList li:nth-child(2n) {
+    margin-right: 0
+}
 
 .pulsArea .plusList li {
     margin-right: 20px
@@ -2226,6 +2257,7 @@ header:before {
     float: left;
     margin: 0 20px 20px 0;
     width: 220px;
+    padding: 20px;
     background: #fff;
     box-sizing: border-box;
     box-shadow: 1px 1px 5px rgba(199, 199, 199, 0.5), -1px -1px 5px rgba(199, 199, 199, 0.5)
@@ -2253,7 +2285,8 @@ header:before {
 }
 
 .itemList li a .imgArea img {
-    width: 100%
+    width: 100%;
+    text-align: center
 }
 
 .itemList li a .starArea {
@@ -2322,6 +2355,8 @@ header:before {
 }
 
 .itemList li a .overlay .ovWrap .bd {
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
     -webkit-transition: all .3s ease;
     transition: all .3s ease
 }
@@ -2498,6 +2533,8 @@ header:before {
 }
 
 .topCatArea .topCatWrap .catContentWrap .catIcon {
+    float: left;
+    width: calc(100% / 3);
     height: 180px;
     margin: 0 auto;
     text-align: center
@@ -2532,6 +2569,19 @@ header:before {
     padding: 53px 0;
     font-size: 7rem
 }
+.topCatArea .topCatWrap .catContentWrap .childCat.active .icon.child {
+    background: #fcc68c;
+    color: #fff
+}
+.topCatArea .topCatWrap .catContentWrap .mamaCat.active .icon.mama {
+    background: #fc8c96;
+    color: #fff
+}
+.topCatArea .topCatWrap .catContentWrap .ageCat.active .icon.age {
+    background: #7fb9ea;
+    color: #fff
+}
+
 
 .topCatArea .topCatWrap .catContentWrap .catIcon .icon.recipe {
     color: #f9b48b;
@@ -3149,7 +3199,13 @@ header:before {
 .sideArea .sideCatArea .sideCat .catList li.active .grandsonCatList {
     display: block
 }
-
+.sideArea .sideCatArea .sideCat .catList a {
+    position: relative;
+    color: inherit
+}
+.sideArea .sideCatArea .sideCat .catList a:hover {
+    opacity: .6
+}
 .sideArea .sideCatArea .sideCat .catList li a {
     position: relative;
     color: inherit
@@ -3374,11 +3430,15 @@ header:before {
     overflow: hidden;
     margin: 0 auto 10px
 }
-
+.sideArea .authorArea .authorList li a .imgArea img {
+    height: 100%
+}
 .sideArea .authorArea .authorList li a .name {
     text-align: center
 }
-
+.sideArea .authorArea .authorList li a:hover .name {
+    opacity: .7
+}
 .sideArea .authorArea .authorList li a:hover {
     opacity: .7
 }
@@ -3451,6 +3511,7 @@ header:before {
     margin: 0 5px 0 0;
     position: static;
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center
 }
 
@@ -3651,8 +3712,12 @@ footer .aboutArea .left .otherArea .fbArea {
 footer .aboutArea .left .otherArea .bnrArea {
     float: left
 }
-
-footer .aboutArea .left .otherArea .bnrArea .bnr a:hover {
+footer .aboutArea .left .otherArea .bnrArea .bnr1 {
+    margin-bottom: 10px
+}
+footer .aboutArea .left .otherArea .bnrArea .bnr a:hover,
+footer .aboutArea .left .otherArea .bnrArea .bnr1:hover,
+footer .aboutArea .left .otherArea .bnrArea .bnr2:hover{
     opacity: .6
 }
 
@@ -3707,7 +3772,9 @@ footer .copy small {
 }
 
 #page-top a img {
-    display: block
+    display: block;
+    width: 80%;
+    height: 80%
 }
 
 .mainWrap.list {
@@ -3984,7 +4051,9 @@ footer .copy small {
     overflow: hidden;
     margin: 0 auto 20px
 }
-
+.mainWrap.list.authorListWrap .articleListArea.author .authorList li a .imgArea img {
+    height: 100%
+}
 .mainWrap.list.authorListWrap .articleListArea.author .authorList li a .name {
     text-align: center
 }
@@ -4060,12 +4129,75 @@ footer .copy small {
     min-height: 200px;
     margin-bottom: 30px
 }
-
+.mainWrap.author .mainArea .profileArea .dataArea .profile .skill {
+    position: relative;
+    padding: 0 0 30px 25px;
+    margin-bottom: 20px
+}
 .mainWrap.author .mainArea .profileArea .dataArea .profile .heading {
     padding: 0 0 5px 25px;
     margin-bottom: 40px
 }
-
+.mainWrap.author .mainArea .profileArea .dataArea .profile .skill:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 66px;
+    height: 26px;
+    background: url(../images/hiyoko.png) no-repeat left bottom;
+    background-size: 66px 26px
+}
+.mainWrap.author .mainArea .profileArea .dataArea .profile .skill:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: url("../images/border.png") repeat-x left bottom;
+    left: 70px;
+    bottom: 8px
+}
+.mainWrap.author .mainArea .profileArea .dataArea .profile .profileText {
+    padding: 0 0 0 25px;
+    line-height: 1.6
+}
+.mainWrap.author .mainArea .profileArea .dataArea .profile .snsArea {
+    overflow: hidden;
+    position: absolute;
+    right: 30px;
+    bottom: 0
+}
+.mainWrap.author .mainArea .profileArea .dataArea .profile .snsArea .iconArea {
+    float: left;
+    margin-right: 10px
+}
+.mainWrap.author .mainArea .profileArea .dataArea .profile .snsArea .iconArea:last-child {
+    margin-right: 0
+}
+.mainWrap.author .mainArea .profileArea .dataArea .profile .snsArea .iconArea a {
+    color: #727272;
+    height: 27px;
+    line-height: 27px;
+    font-size: 2.6rem
+}
+.mainWrap.author .mainArea .profileArea .dataArea .profile .snsArea .iconArea.pc a {
+    font-size: 2.4rem
+}
+.mainWrap.author .mainArea .profileArea .dataArea .profile .snsArea .iconArea.pc a i {
+    vertical-align: bottom
+}
+.mainWrap.author .mainArea .profileArea .dataArea .profile .snsArea .iconArea.pc a:hover {
+    color: #fc8c96
+}
+.mainWrap.author .mainArea .profileArea .dataArea .profile .snsArea .iconArea.fb a:hover {
+    color: #315096
+}
+.mainWrap.author .mainArea .profileArea .dataArea .profile .snsArea .iconArea.tw a:hover {
+    color: #55acee
+}
+.mainWrap.author .mainArea .profileArea .dataArea .profile .snsArea .iconArea.inst a:hover {
+    color: #3f729b
+}
 .mainWrap.author .mainArea .profileArea .dataArea .profile .heading .icon-mugyuu {
     color: inherit;
     -webkit-transform: none;
@@ -4487,6 +4619,7 @@ footer .copy small {
 .mainWrap.about.contact .mainArea .form .formArea {
     background: #fff;
     padding: 20px;
+    -webkit-box-shadow: 2px -2px 5px rgba(199, 199, 199, 0.2), -2px 2px 5px rgba(199, 199, 199, 0.2);
     box-shadow: 2px -2px 5px rgba(199, 199, 199, 0.2), -2px 2px 5px rgba(199, 199, 199, 0.2)
 }
 
@@ -4557,6 +4690,7 @@ footer .copy small {
     height: 30px;
     padding: 5px;
     border: solid 1px #c9c9c9;
+    color: #c9c9c9;
     border-radius: 0;
     background: #fff;
     width: 440px;
@@ -4728,7 +4862,11 @@ footer .copy small {
     width: 630px;
     margin: 0 auto 20px
 }
-
+.mainWrap.about.job .mainArea .jobArea .jobWrap .detailArea table th,
+.mainWrap.about.job .mainArea .jobArea .jobWrap .detailArea table td {
+    border: solid 1px #c7c5c5;
+    padding: 20px
+}
 .mainWrap.about.job .mainArea .jobArea .jobWrap .detailArea table tr th {
     background: #fdafb6;
     color: #fff;
@@ -4774,7 +4912,10 @@ footer .copy small {
     height: 1px;
     border-bottom: solid 1px #fc8c96
 }
-
+.mainWrap.about.job .mainArea .form p {
+    margin-bottom: 20px;
+    padding-left: 20px
+}
 .mainWrap.about.job .mainArea .form .red {
     font-size: 1.2rem
 }
@@ -4785,9 +4926,87 @@ footer .copy small {
     padding: 10px 20px 10px;
     background: #fff;
     margin: 20px auto;
+    -webkit-box-shadow: 2px -2px 5px rgba(199, 199, 199, 0.2), -2px 2px 5px rgba(199, 199, 199, 0.2);
     box-shadow: 2px -2px 5px rgba(199, 199, 199, 0.2), -2px 2px 5px rgba(199, 199, 199, 0.2)
 }
-
+.mainWrap.about.job .mainArea .form .formArea table {
+    margin-bottom: 40px
+}
+.mainWrap.about.job .mainArea .form .formArea table tr {
+    height: 60px;
+    box-sizing: border-box
+}
+.mainWrap.about.job .mainArea .form .formArea table tr.textarea {
+    height: 170px
+}
+.mainWrap.about.job .mainArea .form .formArea table tr:nth-last-child(2) th {
+    line-height: 1.4
+}
+.mainWrap.about.job .mainArea .form .formArea table th,
+.mainWrap.about.job .mainArea .form .formArea table td {
+    box-sizing: border-box;
+    vertical-align: middle
+}
+.mainWrap.about.job .mainArea .form .formArea table th {
+    width: 250px
+}
+.mainWrap.about.job .mainArea .form .formArea table td {
+    position: relative
+}
+.mainWrap.about.job .mainArea .form .formArea table td input {
+    border: solid 1px #c9c9c9;
+    width: 340px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    box-sizing: border-box
+}
+.mainWrap.about.job .mainArea .form .formArea table td.radio label:nth-child(1) {
+    margin-right: 20px
+}
+.mainWrap.about.job .mainArea .form .formArea table td.radio input {
+    -webkit-appearance: radio;
+    -moz-appearance: radio;
+    appearance: radio;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    line-height: 0;
+    vertical-align: text-top;
+    margin-right: 5px
+}
+.mainWrap.about.job .mainArea .form .formArea table td select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 340px;
+    height: 40px;
+    padding-left: 10px;
+    border: solid 1px #c9c9c9;
+    border-radius: 0;
+    background: #fff;
+    box-sizing: border-box
+}
+.mainWrap.about.job .mainArea .form .formArea table td textarea {
+    width: 340px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: solid 1px #c9c9c9;
+    resize: vertical
+}
+.mainWrap.about.job .mainArea .form .formArea table td.select {
+    position: relative
+}
+.mainWrap.about.job .mainArea .form .formArea table td.select:before {
+    content: "\f078";
+    position: absolute;
+    top: 26px;
+    right: 5px;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 1.2rem;
+    text-rendering: auto;
+    z-index: 1
+}
 .mainWrap.about.job .mainArea .form .formArea dl {
     overflow: hidden;
     margin-bottom: 20px
@@ -6880,6 +7099,9 @@ footer .copy small {
     padding: 20px 0 15px;
     width: auto
 }
+.mainWrap.single.movie .mainArea .rankingListArea .movieList li .overlay .ovWrap .contentData {
+    width: auto
+}
 
 .mainWrap.single.movie .mainArea .rankingListArea .movieList li .overlay .ovWrap .contentData {
     width: auto;
@@ -8223,7 +8445,15 @@ footer .copy small {
     box-shadow: 1px 1px 1px rgba(199, 199, 199, 0.5), -1px -1px 1px rgba(199, 199, 199, 0.5);
     margin: 0 2px 80px
 }
-
+.mainWrap.itemPost .reviewPostingArea:before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    border-top: solid 5px #fc8c96
+}
 .mainWrap.itemPost .reviewPostingArea .reviewBox {
     position: relative;
     background: #ffffff;
