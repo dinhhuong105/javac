@@ -151,11 +151,11 @@ webfont カテゴリアイコン
 *************************/
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?ies58p');
-  src:  url('fonts/icomoon.eot?ies58p#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?ies58p') format('truetype'),
-    url('fonts/icomoon.woff?ies58p') format('woff'),
-    url('fonts/icomoon.svg?ies58p#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?ies58p');
+  src:  url('../fonts/icomoon.eot?ies58p#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?ies58p') format('truetype'),
+    url('../fonts/icomoon.woff?ies58p') format('woff'),
+    url('../fonts/icomoon.svg?ies58p#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -5073,12 +5073,10 @@ section.confirm{
   max-width: 60%;
 }
 .textareaCustom{
-  position: absolute;
-  top: -999px;
-}
-.textareaCustom{
-  position: absolute;
-  left: -999px;
+    position: absolute;
+    top: -999px;
+    left: -999px;
+    visibility: hidden;
 }
 .commentFormWrap div.textArea,
 #threadAddForm div.textArea{

@@ -24,6 +24,7 @@
     }
 ?>
 <section class="commentArea">
+    <?php if(have_comments()): ?>
     <div class="question_filter">
         <div class="icon_search">
         	<i class="fa fa-search" aria-hidden="true"></i> 絞り込む
@@ -53,8 +54,7 @@
             <option value="like_count" <?php if($_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
        </select>
    </label>
-    <?php if(have_comments()): ?>
-   　<ul class="commentList">
+   <ul class="commentList">
        <?php 
         $page = intval( get_query_var( 'cpage' ) );
         if ( 0 == $page ) {

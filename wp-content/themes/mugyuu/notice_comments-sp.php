@@ -2,6 +2,7 @@
     $GLOBALS['thread_no'] = get_post_meta($post->ID, '_thread_comment_no', true);
 ?>
 <section class="commentArea">
+	<?php if(have_comments()): ?>
 	<label for="qaSort" class="sortWrap">
 		<select id="qaSort" name="qaSort" class="sort">
 			<option value="old" <?php if($_GET['comment_order_by'] == 'old' || (!isset($_GET['comment_order_by']) && get_option('comment_order') != 'desc')) echo 'selected' ?>>古い順</option>
@@ -9,7 +10,6 @@
 			<option value="like_count" <?php if($_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
 		</select>
 	</label>
-	<?php if(have_comments()): ?>
 	<?php 
     	$page = intval( get_query_var( 'cpage' ) );
         if ( 0 == $page ) {

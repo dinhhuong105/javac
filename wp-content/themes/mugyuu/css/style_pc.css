@@ -771,15 +771,15 @@ header:before {
     float: left;
     font-size: 1.4rem;
     min-height: 20px;
-    /* line-height: 20px; */
+    line-height: 57px;
     box-sizing: border-box;
-    margin-right: 0px !important;
+    margin-right: 20px;
 }
 
 #breadcrumb .breadcrumbList li a {
     display: inline-block;
     color: inherit;
-    padding: 20px 0
+    padding: 0
 }
 
 #breadcrumb .breadcrumbList li a i {
@@ -9179,7 +9179,9 @@ section.confirm{
 }
 .textareaCustom{
     position: absolute;
+    top: -999px;
     left: -999px;
+    visibility: hidden;
 }
 #threadAddForm div.textArea{
 	resize:vertical;
