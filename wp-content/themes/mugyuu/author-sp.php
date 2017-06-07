@@ -81,7 +81,8 @@
                             <ul class="articleList authorArticleList">
                                 <?php
                                     $query = new WP_Query([
-                                        'post_type' => array('post', 'thread_post', 'question_post'),
+                                        // 'post_type' => array('post', 'thread_post', 'question_post'),
+                                        'post_type' => array('post'),
                                         'posts_per_page' => 4,
                                         'author' => $author_id,
                                     ]);
