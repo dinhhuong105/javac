@@ -92,7 +92,7 @@ foreach ($question as $key => $value) {
 }
 
 $csv = array();
-$no = 0;
+$no = 1;
  foreach ($post_metas[$_GET['post']] as $key => $value){
 	$csv[$key]['設問 '.$no++] = $value['question'];
 	if(isset($value['answer']) && $value['type'] != 'unit'){ 
