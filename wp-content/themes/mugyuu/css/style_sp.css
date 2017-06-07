@@ -5254,24 +5254,24 @@ section.confirm{
   margin-right: 15px;
 }
 @media screen and (max-width: 480px){
-  .answerList .user_pro ul{
-    display: inherit;
-  }
-  .answerList .user_pro ul li {
-    width: 100%;
-  }
-  .answerList .user_pro .user_baby_age {
-    width: 100% !important;
-  }
-  .answerList .user_pro .user_baby_age label {
-    width: 30%;
-  }
-  .commentList div.user_comment_info .user-comment-info {
-    min-height: 30px;
-  }
-  .qaSingle .commentFormArea form ul li.user_pro .list-option-profile li.user_parent{
-  	width: 100%;
-  }
+	.answerList .user_pro ul{
+		display: inherit;
+	}
+	.answerList .user_pro ul li {
+		width: 100%;
+	}
+	.answerList .user_pro .user_baby_age {
+		width: 100% !important;
+	}
+	.answerList .user_pro .user_baby_age label {
+		width: 30%;
+	}
+	.commentList div.user_comment_info .user-comment-info {
+		min-height: 30px;
+	}
+	.qaSingle .commentFormArea form ul li.user_pro .list-option-profile li.user_parent{
+		width: 100%;
+	}
 }
 /*Questionnaire Comment*/
 
