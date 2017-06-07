@@ -2133,7 +2133,7 @@ function noticetheme_comment($comment, $args, $depth) {
 ?>
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
     <div id="comment-<?php comment_ID(); ?>" class="commentData">
-        <p class="data">
+        <p class="data" data-comment-author="<?php echo $comment->comment_author; ?>">
             <?php echo ($thread_no && array_key_exists($comment->comment_ID, $thread_no)) ? $thread_no[$comment->comment_ID] . '.' : ''; ?>
             <?php echo get_comment_date(('Y/m/d')) ?>
             <?php printf(__('%s'), get_comment_author_link()) ?>

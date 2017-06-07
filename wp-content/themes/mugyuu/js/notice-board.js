@@ -283,4 +283,30 @@ $(function () {
 	        document.selection.createRange().pasteHTML(html);
 	    }
 	}
+
+    // reply comment
+    jQuery('.commentList .comment .reply a').click(function() {
+        var $this = jQuery(this);
+        var $textareaEditor = jQuery('#contentArea #textareaEditor');
+        var commentAuthor = $this.closest('li.comment').find('p.data').attr('data-comment-author');
+        $textareaEditor.html(">>"+ commentAuthor +"さん");
+        placeCaretAtEnd( document.getElementById("textareaEditor") );
+    });    
 });
+
+function placeCaretAtEnd(el) {
+    el.focus();
+    if (typeof window.getSelection != "undefined" && typeof document.createRange != "undefined") {
+        var range = document.createRange();
+        range.selectNodeContents(el);
+        range.collapse(false);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+    } else if (typeof document.body.createTextRange != "undefined") {
+        var textRange = document.body.createTextRange();
+        textRange.moveToElementText(el);
+        textRange.collapse(false);
+        textRange.select();
+    }
+}
