@@ -2342,7 +2342,7 @@ span.bold {
 }
 
 .single .singleArea .content .subhead2 {
-  /*border-left: solid 5px #e95383;*/
+  border-left: solid 5px #e95383;
   padding: 5px 0 5px 25px;
     margin-top: 20px;
     margin-bottom: 5px;
@@ -3468,7 +3468,9 @@ span.bold {
   display: block;
   margin: 0 auto 20px
 }
-
+.author .authorProfileArea img.mugyuu {
+  border: solid 2px #e95383
+}
 .author .authorProfileArea .imgArea img {
   width: 140px;
   height: 140px;
@@ -3491,6 +3493,7 @@ span.bold {
   text-align: center;
 }
 .author .authorProfileArea .type, .author .authorProfileArea .profile {
+  text-align: center;
   margin-bottom: 15px;
 }
 .author .authorProfileArea .type {
@@ -3678,6 +3681,16 @@ span.bold {
   height: 21px;
   background: url(../images/hiyoko.png) no-repeat left center;
   background-size: 51px 21px;
+}
+.info .infoArea:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 51px;
+  height: 21px;
+  background: url(../images/hiyoko.png) no-repeat left center;
+  background-size: 51px 21px
 }
 .info .infoArea:after , .info .infoArea section:after  {
   content: "";
