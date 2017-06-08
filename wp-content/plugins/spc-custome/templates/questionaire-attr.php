@@ -85,11 +85,11 @@
 </style>
 <div class="row">
 	<p>よくある質問</p>
-	<label><input type="checkbox" name="pro_require[baby_sex]" <?= ($profile_require && $profile_require['baby_sex'])? 'checked':''?>>お子さんの性別  </label><br>
-	<label><input type="checkbox" name="pro_require[baby_age]" <?= ($profile_require && $profile_require['baby_age'])? 'checked':''?>>お子さんの年齢  </label><br>
-	<label><input type="checkbox" name="pro_require[parent_sex]" <?= ($profile_require && $profile_require['parent_sex'])? 'checked':''?>>回答する人  </label><br>
-	<label><input type="checkbox" name="pro_require[parent_age]" <?= ($profile_require && $profile_require['parent_age'])? 'checked':''?>>回答する人の年齢 </label><br/>
-	<label><input type="checkbox" name="pro_require[style]" <?php echo ($profile_require && $profile_require['style']) ? 'checked' : ''; ?>><?php echo esc_attr__('回答する人のタイプ', 'huongdinh'); ?> </label>
+	<label><input type="checkbox" name="pro_require[baby_sex]" <?= ((get_current_screen()->action == 'add') ||($profile_require && $profile_require['baby_sex']))? 'checked':''?>>お子さんの性別  </label><br>
+	<label><input type="checkbox" name="pro_require[baby_age]" <?= ((get_current_screen()->action == 'add') ||($profile_require && $profile_require['baby_age']))? 'checked':''?>>お子さんの年齢  </label><br>
+	<label><input type="checkbox" name="pro_require[parent_sex]" <?= ((get_current_screen()->action == 'add') ||($profile_require && $profile_require['parent_sex']))? 'checked':''?>>回答する人  </label><br>
+	<label><input type="checkbox" name="pro_require[parent_age]" <?= ((get_current_screen()->action == 'add') ||($profile_require && $profile_require['parent_age']))? 'checked':''?>>回答する人の年齢 </label><br/>
+	<label><input type="checkbox" name="pro_require[style]" <?= ((get_current_screen()->action == 'add') ||($profile_require && $profile_require['style'])) ? 'checked' : ''; ?>>回答する人のタイプ</label>
 </div>
 <hr>
 <div id="frm_question" class="meta-box-sortables ui-sortable">
