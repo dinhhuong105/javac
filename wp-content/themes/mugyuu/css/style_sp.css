@@ -1194,7 +1194,7 @@ footer .copy {
 
 /*QA用パンくず*/
 .qa .breadcrumbList li i, .qaSingle .breadcrumbList li i {
-    padding: 12px 10px 10px;
+    /*padding: 12px 10px 10px;*/
 }
 
 .qa .breadcrumbList li:last-child , .qaSingle .breadcrumbList li:last-child {
