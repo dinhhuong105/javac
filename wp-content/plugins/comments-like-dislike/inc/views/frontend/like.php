@@ -55,11 +55,17 @@
     	</a>
     	</div>
 
+
+    	<?php
+    		$post_type = get_post_type(get_the_ID());
+    		if ($post_type == 'thread_post') :
+    	?>
     	<!-- reply comment -->
     	<div class="reply">
             <a href="#send"><i class="fa fa-reply" aria-hidden="true"></i></a>
         </div>
         <!-- end reply comment -->
+    	<?php endif; ?>
 
 	</div>
 	<div class="countArea">
