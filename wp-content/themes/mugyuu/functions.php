@@ -703,7 +703,7 @@ function mytheme_post_edit_required() {
                     return false;
                 }
 
-                var cate = ($('#post_type').val() == 'post' || $('#post_type').val() == 'thread_post')?$("#taxonomy-category input:checked"):$("#taxonomy-movingimage_cat input:checked");
+                var cate = ($('#post_type').val() == 'post' || $('#post_type').val() == 'thread_post' || $('#post_type').val() == 'question_post')?$("#taxonomy-category input:checked"):$("#taxonomy-movingimage_cat input:checked");
                 if(cate.length < 1) { // カテゴリーがチェックされているかどうか。条件を要確認。普通は設定したカテゴリーになるから要らない
                    alert('カテゴリーを選択してください');
                    $('.spinner').hide();
