@@ -8996,6 +8996,7 @@ textarea {
 }
 .flr{
 	float: right;
+	padding-right: 0px !important;
 }
 /* Button report*/
 /* Button add thread */
