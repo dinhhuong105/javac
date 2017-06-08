@@ -691,7 +691,9 @@ function mytheme_post_edit_required() {
     jQuery(document).ready(function($){
         if(
           $('#post_type').val() == 'post' ||
-          $('#post_type').val() == 'movingimage_post'){ // post_type 判定。例は投稿ページ。固定ページ、カスタム投稿タイプは適宜追加
+          $('#post_type').val() == 'movingimage_post' || 
+          $('#post_type').val() == 'thread_post' || 
+          $('#post_type').val() == 'question_post'){ // post_type 判定。例は投稿ページ。固定ページ、カスタム投稿タイプは適宜追加
             $("#post").submit(function(e){ // 更新あるいは下書き保存を押したとき
                 if('' == $('#title').val()) { // タイトル欄の場合
                     alert('タイトルを入力してください！');
@@ -701,8 +703,8 @@ function mytheme_post_edit_required() {
                     return false;
                 }
 
-                var cate = $('#post_type').val() == 'post'?$("#taxonomy-category input:checked"):$("#taxonomy-movingimage_cat input:checked");
-                if(cate.length < 1 ) { // カテゴリーがチェックされているかどうか。条件を要確認。普通は設定したカテゴリーになるから要らない
+                var cate = ($('#post_type').val() == 'post' || $('#post_type').val() == 'thread_post')?$("#taxonomy-category input:checked"):$("#taxonomy-movingimage_cat input:checked");
+                if(cate.length < 1 && $('#post_type').val() != 'question_post') { // カテゴリーがチェックされているかどうか。条件を要確認。普通は設定したカテゴリーになるから要らない
                    alert('カテゴリーを選択してください');
                    $('.spinner').hide();
                    $('#publish').removeClass('button-primary-disabled');
