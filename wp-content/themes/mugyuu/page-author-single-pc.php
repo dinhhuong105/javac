@@ -93,12 +93,12 @@
                                         $col_maxpage = new WP_Query([
                                             'posts_per_page' => $posts_per_page,
                                             'author' => $author_id,
-                                            // 'post_type' => array('post', 'thread_post', 'question_post'),
-                                            'post_type' => array('post'),
+                                            'post_type' => array('post', 'thread_post', 'question_post'),
+                                            // 'post_type' => array('post'),
                                         ]);
                 						$col_query = new WP_Query([
-                                            // 'post_type' => array('post', 'thread_post', 'question_post'),
-                							'post_type' => array('post'),
+                                            'post_type' => array('post', 'thread_post', 'question_post'),
+                							// 'post_type' => array('post'),
                 							'posts_per_page' => $posts_per_page,
                 							'author' => $author_id,
                                             'paged' => ($current_page > $col_maxpage->max_num_pages) ? $col_maxpage->max_num_pages : $current_page,
