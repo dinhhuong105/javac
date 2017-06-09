@@ -771,7 +771,7 @@ header:before {
     float: left;
     font-size: 1.4rem;
     min-height: 20px;
-    line-height: 57px;
+    /*line-height: 57px;*/
     box-sizing: border-box;
     margin-right: 20px;
 }
@@ -779,7 +779,7 @@ header:before {
 #breadcrumb .breadcrumbList li a {
     display: inline-block;
     color: inherit;
-    padding: 0
+    padding: 20px 0
 }
 
 #breadcrumb .breadcrumbList li a i {
