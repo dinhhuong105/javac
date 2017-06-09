@@ -5,13 +5,19 @@
 	.wp_comment_list tbody tr:nth-child(odd){
 		background-color: #f9f9f9;
 	}
-	.wp_comment_list tbody tr td{ padding: 5px 10px }
+	.wp_comment_list tbody tr td{ 
+        padding: 5px 10px;
+    }
 	.wp_comment_list thead th{
 		min-width: 130px;
-		padding: 11px 0 0 3px;
+		padding: 7px 0 7px 8px;
 		border-top: 1px solid #ccc;
 		border-bottom: 1px solid #ccc;
 		text-align: left;
+	}
+	.wp_comment_list tbody tr td:last-child,
+	.wp_comment_list thead th:last-child{
+        text-align: center;
 	}
 	.pagination-links{
 	    text-align: right;
