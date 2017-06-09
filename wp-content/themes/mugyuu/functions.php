@@ -194,7 +194,7 @@ function breadcrumb(){
         elseif( is_page('author-more') ) {
             $author_id = $_GET['uID'];
             $author = get_userdata($author_id);
-            $str.= '<li class=""><i class="fa fa-angle-right arrowIcon"></i><span>'. $author->display_name .'</span></li>';
+            $str.= '<li class="fixPage"><i class="fa fa-angle-right arrowIcon"></i><span>'. $author->display_name .'</span></li>';
         }
         /* 固定ページ */
         elseif(is_page()){
@@ -204,14 +204,14 @@ function breadcrumb(){
                     $str.='<li><i class="fa fa-angle-right arrowIcon"></i><a href="'. get_permalink($ancestor).'"><span>'. get_the_title($ancestor) .'</span></a></li>';
                 }
             }
-            $str.= '<li><i class="fa fa-angle-right arrowIcon"></i><span>'. $post->post_title .'</span></li>';
+            $str.= '<li class="fixPage"><i class="fa fa-angle-right arrowIcon"></i><span>'. $post->post_title .'</span></li>';
         }
 
         /* カテゴリページ */
         elseif(is_category()) {
             $cat = get_queried_object();
             $parent = get_category($cat->category_parent);
-            $str.='<li><i class="fa fa-angle-right arrowIcon"></i><span>' . $cat->name . '</span></li>';
+            $str.='<li class="fixPage"><i class="fa fa-angle-right arrowIcon"></i><span>' . $cat->name . '</span></li>';
         }
 
         /* タグページ */
@@ -280,7 +280,7 @@ function breadcrumb(){
 
         /* 投稿者ページ */
         elseif(is_author()){
-            $str .='<li class=""><i class="fa fa-angle-right arrowIcon"></i><span>'. get_the_author_meta('display_name', get_query_var('author')).'</span></li>';
+            $str .='<li class="fixPage"><i class="fa fa-angle-right arrowIcon"></i><span>'. get_the_author_meta('display_name', get_query_var('author')).'</span></li>';
         }
 
         /* 添付ファイルページ */
@@ -293,12 +293,12 @@ function breadcrumb(){
 
         /* 検索結果ページ */
         elseif(is_search()){
-            $str.='<li class=""><i class="fa fa-angle-right arrowIcon"></i><span>「'. get_search_query() .'」の検索結果</span></li>';
+            $str.='<li class="fixPage"><i class="fa fa-angle-right arrowIcon"></i><span>「'. get_search_query() .'」の検索結果</span></li>';
         }
 
         /* 404 Not Found ページ */
         elseif(is_404()){
-            $str.='<li class=""><i class="fa fa-angle-right arrowIcon"></i><span>お探しのページが見つかりません</span></li>';
+            $str.='<li class="fixPage"><i class="fa fa-angle-right arrowIcon"></i><span>お探しのページが見つかりません</span></li>';
         }
 
         /* その他のページ */
