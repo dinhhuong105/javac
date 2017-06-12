@@ -1704,53 +1704,6 @@ ul.slider .dot-class li.slick-active .icon-2 {
 ul.slider .dot-class li:last-child .icon-2:before {
   margin-right: 0
 }
-.topCat .childArea .bigCat,
-.topCat .mamaArea .bigCat,
-.topCat .ageArea .bigCat {
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  height: 45px;
-  line-height: 45px;
-  padding: 0 10px;
-  box-sizing: border-box
-}
-.topCat .childArea .bigCat .icon,
-.topCat .mamaArea .bigCat .icon,
-.topCat .ageArea .bigCat .icon {
-  margin-right: 10px;
-  transition: all .1s ease-in;
-  float: left;
-  display: block;
-  height: 45px;
-  line-height: 45px
-}
-.topCat .childArea .bigCat .icon:nth-child(2),
-.topCat .mamaArea .bigCat .icon:nth-child(2),
-.topCat .ageArea .bigCat .icon:nth-child(2) {
-  margin: 0;
-  float: right;
-  font-size: inherit;
-  transition: all .2s ease-in
-}
-.topCat .childArea .bigCat.active .icon:nth-child(2),
-.topCat .mamaArea .bigCat.active .icon:nth-child(2),
-.topCat .ageArea .bigCat.active .icon:nth-child(2) {
-  transform: rotate(180deg)
-}
-.topCat .childArea .catList,
-.topCat .mamaArea .catList,
-.topCat .ageArea .catList {
-  display: none
-}
-.topCat .childArea .catList li,
-.topCat .mamaArea .catList li,
-.topCat .ageArea .catList li {
-  position: relative;
-  padding: 4% 10px 4% 13%;
-  box-sizing: border-box;
-  background: url(../images/border.png) repeat-x left bottom
-}
 
 div.slider {
   width: 100%;
@@ -1913,7 +1866,9 @@ div.slider .dot-class li:last-child .icon-uma:before {
 }
 .topCat .childArea .catList .grandsonCatList,
 .topCat .mamaArea .catList .grandsonCatList,
-.topCat .ageArea .catList .grandsonCatList {
+.topCat .ageArea .catList .grandsonCatList,
+.topCat .recipeArea .catList .grandsonCatList,
+.topCat .movieArea .catList .grandsonCatList {
     display: none;
     overflow: hidden;
     padding-top: 10px
@@ -1924,14 +1879,6 @@ div.slider .dot-class li:last-child .icon-uma:before {
   /*width: calc(100% / 2);*/
   width: 100%;
   background: none;
-}
-.topCat .childArea .catList .grandsonCatList li,
-.topCat .mamaArea .catList .grandsonCatList li,
-.topCat .ageArea .catList .grandsonCatList li {
-  padding: 0;
-  float: left;
-  width: calc(100% / 2);
-  background: none
 }
 
 .topCat .childArea .catList .grandsonCatList li a , .topCat .catArea .catList .grandsonCatList li a, .topCat .mamaArea .catList .grandsonCatList li a, .topCat .ageArea .catList .grandsonCatList li a {
