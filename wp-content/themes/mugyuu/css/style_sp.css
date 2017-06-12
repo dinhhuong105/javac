@@ -1859,10 +1859,8 @@ div.slider .dot-class li:last-child .icon-uma:before {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
-.topCat .childArea .catList li:last-child,
-.topCat .mamaArea .catList li:last-child,
-.topCat .ageArea .catList li:last-child {
-    background: none
+.topCat .catArea .catList li:last-child {
+  background: none;
 }
 .topCat .childArea .catList .grandsonCatList,
 .topCat .mamaArea .catList .grandsonCatList,
