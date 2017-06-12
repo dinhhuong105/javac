@@ -4419,7 +4419,8 @@ span.bold {
 .qaSingle .commentFormArea {
     padding: 68px 10px 0;
     margin-bottom: 40px;
-    margin-top: -48px;
+    /*margin-top: -48px;*/
+    margin-top: -28px;
     position: relative
 }
 .qaSingle .commentFormArea h1 {
@@ -4873,13 +4874,13 @@ textarea {
 .notice_pagination a.page-numbers i{
   font-size: 1.8rem;
 }
-.qaSingle .commentFormArea:before{
+/*.qaSingle .commentFormArea:before{
   top: 0!important;
-}
-.qaSingle .commentFormArea{
+}*/
+/*.qaSingle .commentFormArea{
   margin-top: 15px !important;
   padding-top: 20px !important;
-}
+}*/
 /* Pagination comment list */
 /* Form add Thread */
 #threadAddForm li .selectArea select {
@@ -5044,9 +5045,9 @@ section.confirm{
 .answerList label.check:before{
   content: "✓";
 }
-.qaSingle .commentFormArea:before{
+/*.qaSingle .commentFormArea:before{
   top: 0!important;
-}
+}*/
 .btnDisable{
   color:#fff!important;
   border-color: #ccc!important;
