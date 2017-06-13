@@ -4419,8 +4419,7 @@ span.bold {
 .qaSingle .commentFormArea {
     padding: 68px 10px 0;
     margin-bottom: 40px;
-    /*margin-top: -48px;*/
-    margin-top: -28px;
+    margin-top: 0;
     position: relative
 }
 .qaSingle .commentFormArea h1 {
@@ -4503,7 +4502,7 @@ span.bold {
   display: block;
   width: 80%;
   margin: 0 auto;
-    border: none;
+  border: none;
 }
 .qaSingle .commentFormArea:before {
   content: "";
